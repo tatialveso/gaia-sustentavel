@@ -1,0 +1,309 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+
+.top-menu {
+    background-color: white;
+}
+
+.top-menu>ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-menu>ul>li>a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border: 1px solid #ced4da;
+}
+
+header>.navbar>form>.btn {
+    border: none;
+    background: white;
+}
+
+nav button {
+    display: none;
+}
+
+.nav {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.dropdown-item:active {
+    background-color: transparent;
+}
+
+/* menu aside */
+
+.page {
+    display: flex;
+    margin-top: 50px;
+}
+
+aside {
+    width: 45%;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.accountmenu {
+    color: black;
+    line-height: 2;
+}
+
+.accountmenu:hover, .accountmenu-active {
+    font-weight: 700;
+    color: #699f8d;
+    text-decoration: none;
+}
+
+/* main */
+
+main {
+    width: 55%;
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+.purchase {
+    clear:left;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.date-title, .purchase-id-title {
+    font-weight: bold;
+}
+
+.purchase-id-title {
+    margin-left: 50px;
+}
+
+.purchases .item-details {
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.purchases .account-image {
+    float: left;
+    margin-right: 12px;
+}
+
+.purchases .item-details span {
+    display: block;
+    padding: 1px 0px;
+}
+
+.purchases .item-details .name {
+    padding-top: 16px;
+}
+
+.seller {
+    color: #54775e;
+}
+
+.seller:hover {
+    text-decoration: none;
+    color: #699f8d;
+}
+
+.btn {
+    background-color: #54775e;
+}
+
+/* dados */
+
+.line {
+    margin: 5px;
+}
+
+.line input {
+    width: 400px;
+}
+
+.address {
+    margin-bottom: 50px;
+}
+
+.addresstitle {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.input-left {
+    width: 40%;
+}
+
+.input-right {
+    width: 60%;
+}
+
+#number {
+    width: 72px;
+}
+
+#complement {
+    width: 150px;
+    margin-left: 10px;
+}
+
+.multi {
+    display: flex;
+}
+
+label {
+    width: 145px;
+}
+
+/* favoritos */
+
+.fav-item {
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+.card-img-top {
+    margin: 0 auto;
+    width: auto;
+}
+
+.account-image {
+    height: 160px;
+}
+
+.fav-check {
+    margin: 7px 0 0 7px;
+}
+
+.fav-image-label {
+    width: 100%;
+}
+
+.float-right>i {
+    color: black;
+}
+
+.float-right>i:hover {
+    color: #8fccb8;
+}
+
+/* footer */
+
+footer{
+	height: 250px;
+	background-color: #54775e;
+	color:#FFF;
+	margin-top: auto;
+}
+
+footer>.container>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .bottom-menu {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+footer .bottom-menu>li>a {
+    text-decoration: none;
+    color: white;
+}
+
+footer>img {
+    width: 100px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer>.container>div>ul>li>a {
+    text-decoration: none;
+    padding: 5px;
+}
+
+/* header responsivo */
+
+@media (max-width: 751px) {
+    nav {
+        margin-bottom: 0;
+    }
+
+    nav>ul {
+		flex-direction: column;
+		height: 0;
+		overflow: hidden;
+	}
+	
+	nav>ul>li>a {
+		width: 100%;
+		text-align: center;
+	}
+
+	nav>button {
+		display: block;
+        width: 100%;
+        padding: 20px;
+		border: none;
+		background-color: transparent;
+		outline: none;
+        cursor: pointer;
+	}
+}
+
+@media (max-width: 570px) {
+    header>.navbar {
+        flex-direction: column;
+    }
+
+    header>.navbar>form {
+        display: flex;
+        flex-flow: row nowrap;
+        margin-bottom: 15px;
+    }
+    
+}
