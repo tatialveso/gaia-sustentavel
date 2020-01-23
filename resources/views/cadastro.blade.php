@@ -1,77 +1,276 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{{-- chamada do bootstrap --}}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+{{-- chamada do css --}}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/StylesIndex.css') }}">
+    
+{{-- nome da página --}}
+<title>Gaia Sustentável</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <style>
-        .btn {
-            background-color: #54775e;
-        }
-    </style>
-    <title>Gaia Sustentável</title>
-</head>
+<div class="container">
+    {{-- logo --}}
+    <div class="d-flex justify-content-center">
+        <header>
+            <a href="/"><img src="/img/logo/gaia-branco.png" alt="Gaia Sustentável"></a>
+        </header>
+    </div>
 
-<body>
-    <div class="container">
-        <div class="d-flex flex-row justify-content-center col-lg-12 col-md-6 col-sm-3">
-            <header>
-                <a href="./index.html"><img src="./img/logo/gaia-branco.png" alt="Gaia Sustentável"></a>
-            </header>
-        </div>
-
-        <div class="row d-flex justify-content-center" style="height: 100px;">
-            <span class="align-self-center">
-                <h5>Crie sua Conta</h5>
-            </span>
-        </div>
-
-        <form>
-            <label for="">Tipo de cadastro:</label>
-            <div class=" container-fluid form-check form-check-inline">
-                <input class="form-check-input ml-2" type="checkbox" id="check1" value="opcao1">
-                <label class="form-check-label" for="check1">Cliente</label>
-                <input class="form-check-input ml-2" type="checkbox" id="check2" value="opcao2">
-                <label class="form-check-label" for="check2">Vendedor</label>
+    {{-- campos para preenchimento --}}
+    <div class="mb-3 d-flex justify-content-center">
+        <h5>Crie a sua conta:</h5>
+    </div>
+    <div class="d-flex justify-content-center">
+        <form method="POST">
+            {{-- raciocínio: ao clicar na página irá aparecer apenas essa pergunta e dependendo da
+                resposta do usuário as próximas perguntas aparecem na tela --}}
+            <div class="form-group">
+                <label><b>Qual tipo de cadastro você quer fazer?</b></label>
+                <div class="container-fluid form-check-inline">
+                    <input class="form-check-input" type="radio" name="tipo_cadastro" value="cliente">
+                    <label class="form-check-label" for="exampleRadios1">
+                        Cliente
+                    </label>
+                    <input class="ml-3 form-check-input" type="radio" name="tipo_cadastro" value="vendedor">
+                    <label class="form-check-label" for="exampleRadios1">
+                        Vendedor
+                    </label>
+                </div>
             </div>
 
-            <label class="mt-3" for="nome">Nome da Loja</label>
-            <input class="form-control mb-3 d-flex justify-content-center" name="nomeLoja" type="text" id="nomeLoja"
-                placeholder="Digite o nome de sua Loja" required>
+            {{-- cadastro de cliente --}}
+            <div class="form-group">
+                <label><b>Nome completo</b></label>
+                <input type="text" class="form-control" placeholder="Digite o seu nome completo">
+            </div>
+            <div class="form-group">
+                <label><b>Endereço de e-mail</b></label>
+                <input type="email" class="form-control" placeholder="Digite o seu endereço de e-mail">
+            </div>
+            <div class="form-group">
+                <label><b>Data de nascimento</b></label>
+                <input type="date" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label><b>CPF</b></label>
+                <input type="text" class="form-control" placeholder="Digite o número do seu CPF">
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label><b>Endereço</b></label>
+                    <input type="text" class="form-control" placeholder="Digite o seu endereço residencial">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>Número</b></label>
+                    <input type="text" class="form-control" placeholder="Digite o número">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>Complemento</b></label>
+                    <input type="text" class="form-control" placeholder="Ex: apto. 55">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label><b>Cidade</b></label>
+                    <input type="text" class="form-control" placeholder="Digite o nome da sua cidade">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>Estado</b></label>
+                    <select class="form-control">
+                        <option disabled selected>Selecione um UF</option>
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AM</option>
+                        <option>AP</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MG</option>
+                        <option>MS</option>
+                        <option>MT</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>PR</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>RS</option>
+                        <option>SC</option>
+                        <option>SE</option>
+                        <option>SP</option>
+                        <option>TO</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>CEP</b></label>
+                    <input type="text" class="form-control" placeholder="CEP">
+                </div>
+            </div>
+            <div class="form-group">
+                <label><b>Senha</b></label>
+                <input type="password" class="form-control" placeholder="Digite a sua senha">
+            </div>
+            <div class="form-group">
+                <label><b>Confirme a sua senha</b></label>
+                <input type="password" class="form-control" placeholder="Digite novamente a sua senha">
+            </div>
 
-            <label for="nome">Nome</label>
-            <input class="form-control mb-3 d-flex justify-content-center" name="nome" type="text" id="nome"
-                placeholder="Digite seu nome" required>
-
-            <label for="email">E-mail</label>
-            <input class="form-control mb-3 d-flex justify-content-center" name="email" type="email" id="email"
-                placeholder="Digite seu E-mail" required>
-
-            <label for="senha">Senha</label>
-            <input class="form-control mb-3 d-flex justify-content-center" name="senha" type="password" id="senha"
-                placeholder="Digite sua Senha" required>
-
-            <label for="senha">Confirmar a sua senha</label>
-            <input class="form-control mb-3 d-flex justify-content-center" name="csenha" type="password" id="csenha"
-                placeholder="Confirme sua senha" required>
+            {{-- cadastro do vendedor --}}
+            <label><b>Parte 1: Informações pessoais</b></label>
+            <div class="form-group">
+                <label><b>Nome completo</b></label>
+                <input type="text" class="form-control" placeholder="Digite o seu nome completo">
+            </div>
+            <div class="form-group">
+                <label><b>Endereço de e-mail</b></label>
+                <input type="email" class="form-control" placeholder="Digite o seu endereço de e-mail">
+            </div>
+            <div class="form-group">
+                <label><b>Data de nascimento</b></label>
+                <input type="date" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label><b>CPF</b></label>
+                <input type="text" class="form-control" placeholder="Digite o número do seu CPF">
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label><b>Endereço</b></label>
+                    <input type="text" class="form-control" placeholder="Digite o seu endereço residencial">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>Número</b></label>
+                    <input type="text" class="form-control" placeholder="Digite o número">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>Complemento</b></label>
+                    <input type="text" class="form-control" placeholder="Ex: apto. 55">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label><b>Cidade</b></label>
+                    <input type="text" class="form-control" placeholder="Digite o nome da sua cidade">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>Estado</b></label>
+                    <select class="form-control">
+                        <option disabled selected>Selecione um UF</option>
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AM</option>
+                        <option>AP</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MG</option>
+                        <option>MS</option>
+                        <option>MT</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>PR</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>RS</option>
+                        <option>SC</option>
+                        <option>SE</option>
+                        <option>SP</option>
+                        <option>TO</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>CEP</b></label>
+                    <input type="text" class="form-control" placeholder="CEP">
+                </div>
+            </div>
+            <div class="form-group">
+                <label><b>Senha</b></label>
+                <input type="password" class="form-control" placeholder="Digite a sua senha">
+            </div>
+            <div class="form-group">
+                <label><b>Confirme a sua senha</b></label>
+                <input type="password" class="form-control" placeholder="Digite novamente a sua senha">
+            </div>
+            <label><b>Parte 2: Informações da loja</b></label>
+            <div class="form-group">
+                <label><b>Nome da Loja</b></label>
+                <input type="text" class="form-control" placeholder="Digite o nome de sua loja">
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label><b>Cidade</b></label>
+                    <input type="text" class="form-control" placeholder="Digite o nome da sua cidade">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>Estado</b></label>
+                    <select class="form-control">
+                        <option disabled selected>Selecione um UF</option>
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AM</option>
+                        <option>AP</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MG</option>
+                        <option>MS</option>
+                        <option>MT</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>PR</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>RS</option>
+                        <option>SC</option>
+                        <option>SE</option>
+                        <option>SP</option>
+                        <option>TO</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label><b>CEP</b></label>
+                    <input type="text" class="form-control" placeholder="CEP">
+                </div>
+            </div>
+            <div class="form-group">
+                <label><b>Categoria</b></label>
+                <select class="form-control">
+                    <option selected disabled>Selecione uma categoria</option>
+                    <option>Higiene pessoal</option>
+                    <option>Casa e ambiente</option>
+                </select>
+            </div>
         </form>
-
-
-        <div class="btn-produto d-flex justify-content-around">
-            <a href="./index-logado.html"><button type="button" class="btn text-light my-5">Cadastrar</button></a>
-        </div>
-
-
-        <div class="row d-flex justify-content-center">
-            <h5>Já possui cadastro? <a href="./login.html" class="align-self-center text-dark"
-                    style="text-decoration: none;">Faça o login.</a></h5>
-        </div>
-
     </div>
-</body>
 
-</html>
+    {{-- botão de envio --}}
+    <div class="btn-produto d-flex justify-content-around">
+        <a href="/perfil"><button type="button" class="btn text-light">Cadastrar</button></a>
+    </div>
+
+
+    {{-- chamada para cadastro --}}
+    <div class="d-flex justify-content-center mt-3">
+        <h6>Já é cadastrado? <a class="text-dark" style="text-decoration:none" href="/login">Faça seu login.</a></h6>
+    </div>
+
+</div>
