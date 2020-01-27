@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/StylesIndex.css') }}">
     
 {{-- nome da página --}}
-<title>Gaia Sustentável</title>
+<title>Gaia sustentável: Cadastro</title>
 
 <div class="container">
     {{-- logo --}}

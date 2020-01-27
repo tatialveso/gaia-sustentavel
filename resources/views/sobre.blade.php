@@ -4,6 +4,9 @@
 {{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/StylesIndex.css') }}">
 
+{{-- nome da página --}}
+<title>Sobre a Gaia sustentável</title>
+
 {{-- separando o css particular da página --}}
 @section('sobre-assets') 
     <style>
