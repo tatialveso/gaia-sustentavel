@@ -13,6 +13,6 @@ class Usuario extends Model
     }
 
     public function pedido () {
-        return $this->hasMany('app\Pedido', 'pedido_id', 'id');
+        return $this->hasMany('app\Pedido', 'id');
     }
 }

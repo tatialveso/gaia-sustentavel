@@ -10,9 +10,14 @@ class Pedido extends Model
 
     public function pagamento () {
         return $this->hasOne('app\Pagamento', 'id');
-}
+    }
+
     public function rastreamento () {
-        return $this->hasOne('app\Pagamento', 'id');
-}
+        return $this->hasOne('app\Rastreamento', 'id');
+    }
+
+    public function usuario () {
+        return $this->belongsTo('app\Usuario', 'usuario_id', 'id');
+    }
 
 }
