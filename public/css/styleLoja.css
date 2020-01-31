@@ -1,0 +1,38 @@
+.perfil img {
+    width: 300px;
+    border-radius: 50%;
+}
+
+.btn-produto .btn, .perfil .btn {
+    background-color: #54775e;
+}
+
+.titulo {
+    height: 50px;
+    background-color: #54775e;
+}
+
+.titulo h5 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-produto>a:hover, .avaliacao a:hover {
+    color: #8fccb8;
+}
+
+.btn-produto>a {
+    align-self: center;
+    color: black;
+}
+
+.avaliacao a {
+    color: black;
+    text-decoration: none;
+}
+

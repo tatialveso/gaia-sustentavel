@@ -2,7 +2,7 @@
 @extends('layout')
 
 {{-- chamada do css --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('css/StylesIndex.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/styleIndex.css') }}">
 
 {{-- nome da página --}}
 <title>Gaia Sustentável</title>

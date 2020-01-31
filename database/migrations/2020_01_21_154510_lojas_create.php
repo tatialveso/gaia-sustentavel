@@ -15,8 +15,11 @@ class LojasCreate extends Migration
     {
         Schema::create('lojas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
+            $table->string('nome_loja');
             $table->string('localizacao');
+            $table->bigInteger('categoria_id');
+            $table->string('descricao');
+            $table->year('criacao');
             $table->timestamps();
         });
     }

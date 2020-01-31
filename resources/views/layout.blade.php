@@ -212,12 +212,13 @@
     @yield('sobre')
     @yield('como-funciona')
     @yield('contato')
+    @yield('loja')
 
     {{-- footer da página --}}
     <footer class="mt-5">
         <div class="container">
             <div>
-                <img src="./img/logo/gaia-verde.png" class="rounded float-left" alt="...">
+                <img src="/img/logo/gaia-verde.png" class="rounded float-left" alt="...">
                 <ul class="bottom-menu mt-4">
                     <li><strong>Gaia sustentável</strong></li>
                     <li><a href="/sobre">Quem somos</a></li>

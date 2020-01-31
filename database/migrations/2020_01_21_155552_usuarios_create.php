@@ -20,8 +20,12 @@ class UsuariosCreate extends Migration
             $table->string('senha');
             $table->date('data_nascimento');
             $table->string('cpf', 11);
-            $table->string('cep', 8);
             $table->string('endereco');
+            $table->number('numero');
+            $table->string('complemento');
+            $table->string('cidade');
+            $table->bigInteger('uf_id');
+            $table->string('cep', 8);
             $table->timestamps();
         });
     }
