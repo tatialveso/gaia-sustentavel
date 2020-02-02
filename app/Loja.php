@@ -12,8 +12,8 @@ class Loja extends Model
         return $this->belongsTo('app\Usuario', 'usuario_id', 'id');
     }
 
-    public function avaliacao () {
-        return $this->hasMany('app\Avaliacao', 'avaliacao_id', 'id');
+    public function avaliacaoLoja () {
+        return $this->hasMany('app\AvaliacaoLoja', 'avaliacao_loja_id', 'id');
     }
 
     public function produto () {

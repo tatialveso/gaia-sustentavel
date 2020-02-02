@@ -9,7 +9,7 @@ class Pagamento extends Model
     protected $fillable = [];
 
     public function pedido () {
-        return $this->belongsTo('app\Pedido', 'id');
+        return $this->hasMany('app\Pedido', 'pedido_id', 'id');
 }
 
 

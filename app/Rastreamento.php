@@ -9,6 +9,6 @@ class Rastreamento extends Model
     protected $fillable = [];
 
     public function pedido () {
-        return $this->belongsTo('app\Pedido', 'id');
+        return $this->hasMany('app\Pedido', 'id');
 }
 }
