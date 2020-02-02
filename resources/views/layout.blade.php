@@ -213,6 +213,8 @@
     @yield('como-funciona')
     @yield('contato')
     @yield('loja')
+    @yield('resumo')
+    @yield('compras')
 
     {{-- footer da página --}}
     <footer class="mt-5">
