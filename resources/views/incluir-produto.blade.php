@@ -1,60 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{{-- chamada do bootstrap --}}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gaia Sustentável</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./css/stylesProduto.css">
-</head>
 
-<body>
+{{-- chamada do css --}}
 
-    <div class="container top-menu font-weight-bold mt-1">
-        <ul>
-            <li><a href="#"><i class="material-icons">
-                        favorite
-                    </i></a></li>
-            <li><a href="#"><i class="material-icons">
-                        shopping_basket
-                    </i></a></li>
-            <li><a href="login.html"><i class="material-icons">
-                        person
-                    </i></a></li>
-        </ul>
-    </div>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesProduto.css') }}">
 
-    <header>
-        <nav class="container navbar navbar-light">
-            <a class="navbar-brand p-0 m-0" href="index.html"><img src="./img/logo/gaia-branco.png"
-                    alt="Logo de Gaia sustentável"></a>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Digite a sua busca..."
-                    aria-label="Search">
-                <button class="btn p-0" type="submit">
-                    <i class="material-icons align-middle">
-                        search
-                    </i>
-                </button>
-            </form>
-        </nav>
-    </header>
+
+<div class="container">
+    {{-- logo --}}
+    <div class="d-flex justify-content-center">
+        <header>
+            <a href="/"><img src="/img/logo/gaia-branco.png" alt="Gaia Sustentável"></a>
+        </header>
+</div>
+
 
     <div class="titulo">
         <span class="container d-block">
@@ -67,7 +27,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card incluir">
-                        <img src="./img/pagina/incluir-produto.png" class="card-img-top img-incluir"
+                        <img src="./img/paginas/incluir-produto.png" class="card-img-top img-incluir"
                             alt="Botão de selecionar imagens">
                         <div class="card-body">
                             <p class="text-center"><b>Capriche! As fotos são a primeira impressão que o cliente terá
@@ -180,9 +140,8 @@
             <label class="form-check-label" for="defaultCheck2">Frete Grátis acima de um valor mínimo</label>
         </div>
         <br />
-        <button type="submit" class="btn btn-cadastro  text-light mb-2">Cadastrar produto</button>
-    </div>
+        <div class="btn-produto">
+            <a href="#" class="mb-5 btn text-light">Cadastrar produto</a>    
+        </div>
+        
 
-</body>
-
-</html>

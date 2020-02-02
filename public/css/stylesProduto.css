@@ -123,10 +123,11 @@ nav button {
 /* incluir produto */
 
 .img-incluir {
-    width: 100px;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-self: center;
+    opacity: 0.6;
 }
 
 .incluir p {
