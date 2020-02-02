@@ -213,8 +213,13 @@
     @yield('como-funciona')
     @yield('contato')
     @yield('loja')
+<<<<<<< HEAD
     @yield('higiene')
     @yield('produto')
+=======
+    @yield('resumo')
+    @yield('compras')
+>>>>>>> dc0ba65b74dd97f35812a4eb350e5c7c38b119f7
 
     {{-- footer da página --}}
     <footer class="mt-5">
