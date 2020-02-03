@@ -143,7 +143,7 @@
             <li><a href="/carrinho"><i class="material-icons">
                         shopping_basket
                     </i></a></li>
-            <li><a href="login"><i class="material-icons">
+            <li><a href="/login"><i class="material-icons">
                         person
                     </i></a></li>
         </ul>
@@ -213,13 +213,15 @@
     @yield('como-funciona')
     @yield('contato')
     @yield('loja')
-<<<<<<< HEAD
+    @yield('favoritos')
+    @yield('vendas')
+    @yield('seguranca')
+    @yield('configuracoes')
     @yield('higiene')
     @yield('produto')
-=======
     @yield('resumo')
     @yield('compras')
->>>>>>> dc0ba65b74dd97f35812a4eb350e5c7c38b119f7
+
 
     {{-- footer da página --}}
     <footer class="mt-5">

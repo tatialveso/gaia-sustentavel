@@ -1,28 +1,30 @@
-
 {{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesCarrinho.css') }}"> 
-    
-{{-- nome da página --}}
-<title>Compras</title>
+{{-- chamada do bootstrap --}}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+{{-- chamada do css --}}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesMinhaConta.css')}}">
+
+{{-- chamada do Gfonts --}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
 @section('compras')
     <!-- Topo da página -->
     <div id="topo" class="p-3 mb-2 text-center text-white">Histórico de Compras</div>
     <!-- Fim do Topo da página-->
-
 
     <div class="page container">
         <aside>
             <div>
                 <h1>Minha Conta</h1>
                 <ul>
-                    <li><a class="accountmenu" href="minhaconta-dados.html">Meus Dados</a></li>
-                    <li><a class="accountmenu" href="minhaconta-seguranca.html">Segurança</a></li>
-                    <li><a class="accountmenu accountmenu-active" href="minhaconta-compras.html">Minhas Compras</a></li>
-                    <li><a class="accountmenu" href="minhaconta-favoritos.html">Favoritos</a></li>
+                    <li><a class="accountmenu" href="meusdados">Meus Dados</a></li>
+                    <li><a class="accountmenu" href="seguranca">Segurança</a></li>
+                    <li><a class="accountmenu" href="favoritos">Favoritos</a></li>
+                    <li><a class="accountmenu accountmenu-active" href="historico-compras">Minhas Compras</a></li>
+                    <li><a class="accountmenu" href="historico-vendas">Minhas Vendas</a></li>
                 </ul>
             </div>
         </aside>
@@ -68,5 +70,4 @@
 
         </main>
     </div>
-
 @endsection

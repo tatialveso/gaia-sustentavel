@@ -51,7 +51,7 @@ Route::get('/casa-ambiente', 'CasaController@show');
 Route::get('/favoritos', 'FavoritoController@show');
 
 // Configurações de dados do usuário
-Route::get('/configuracoes', 'ConfiguracoesController@show');
+Route::get('/meusdados', 'ConfiguracoesController@show');
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@show');
