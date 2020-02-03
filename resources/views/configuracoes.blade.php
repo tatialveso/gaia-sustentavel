@@ -1,134 +1,104 @@
 {{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do bootstrap --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 {{-- chamada do css --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesMinhaConta.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/styleConfiguracoes.css')}}">
 
-{{-- chamada do Gfonts --}}
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<title>Minhas configurações</title>
 
 @section('configuracoes')
+    <div class="titulo">
+        <h5>Minhas configurações</h5>
+    </div>
 
-    
-        <div class="page container">
-            <aside>
-                <div>
-                    <h1>Minha Conta</h1>
-                    <ul>
-                        <li><a class="accountmenu accountmenu-active" href="meusdados">Meus Dados</a></li>
-                        <li><a class="accountmenu" href="seguranca">Segurança</a></li>
-                        <li><a class="accountmenu" href="favoritos">Favoritos</a></li>
-                        <li><a class="accountmenu" href="historico-compras">Minhas Compras</a></li>
-                        <li><a class="accountmenu" href="historico-vendas">Minhas Vendas</a></li>
-                    </ul>
+    <div class="pagina container">
+        @include('aside-conta')
+
+        <main>
+            <form action="" method="POST">
+                <h1 class="mb-3">Dados pessoais</h1>
+                <div class="form-group">
+                    <label for="name"><b>Nome completo</b></label>
+                    <input type="text" class="form-control" name="name" id="name">
                 </div>
-            </aside>
-
-            <main>
-                <div>
-                    <form action="" method="POST">
-                        <div>
-                            <h3>Dados da Conta</h3>
-
-                            <div class="line">
-                                <label for="name">Nome Completo</label>
-                                <input type="text" name="name" id="name" required />
-                            </div>
-                            <div class="line">
-                                <label for="cpf">CPF</label>
-                                <input type="text" name="cpf" id="cpf" required />
-                            </div>
-                            <div class="line">
-                                <label for="phone">Telefone</label>
-                                <input type="text" name="phone" id="phone" required />
-                            </div>
-                            <div class="line">
-                                <label for="e-mail">E-mail</label>
-                                <!-- <input type="email" name="email" id="email" required /> -->
-                                <span id="email">carolegal@gmail.com</span>
-                            </div>
-                        </div>
-
-                        <div class="address">
-                            <h3 class="addresstitle">Endereço</h3>
-
-                            <div class="line">
-                                <label for="zipcode">CEP</label>
-                                <input type="text" name="zipcode" id="zipcode" required />
-                            </div>
-                            <div class="line">
-                                <label for="address">Endereço</label>
-                                <input type="text" name="address" id="address" required />
-                            </div>
-                            <div class="line multi">
-                                <div class="input-left">
-                                    <label for="number">número</label>
-                                    <input type="text" name="number" id="number" required />
-                                </div>
-
-                                <div class="input-right">
-                                    <label for="complement">complemento</label>
-                                    <input type="text" name="complement" id="complement" />
-                                </div>
-                            </div>
-                            <div class="line">
-                                <label for="bairro">Bairro</label>
-                                <input type="text" name="bairro" id="bairro" required />
-                            </div>
-                            <div class="line">
-                                <label for="state">Estado</label>
-                                <select name="state">
-                                    <option>--Selecione--</option>
-                                    <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
-                                </select>
-                            </div>
-                            <div class="line">
-                                <label for="city">Cidade</label>
-                                <input type="text" name="city" id="city" required />
-                            </div>
-                            <div class="line">
-                                <label for="reference">Referência</label>
-                                <input type="text" name="reference" id="reference" />
-                            </div>
-                        </div>
-
-                        <button class="btn btn2 my-2 my-sm-0 text-light" type="submit">Salvar</button>
-                    </form>
+                <div class="form-group">
+                    <label for=""><b>Data de nascimento</b></label>
+                    <input type="date" class="form-control" name="data_nascimento">
                 </div>
-            </main>
-        </div>
+                <div class="form-group">
+                    <label for="cpf"><b>CPF</b></label>
+                    <input type="text" name="cpf" class="form-control" id="cpf">
+                </div>
+                <div class="form-group">
+                    <label for="phone"><b>Telefone</b></label>
+                    <input type="text" name="phone" class="form-control" id="phone">
+                </div>
 
-        
-    </body>
-
-    </html>
+                <h1 class="mb-3">Endereço</h1>
+                <div class="form-group">
+                    <label><b>Endereço</b></label>
+                    <input type="text" class="form-control" name="endereco" placeholder="">
+                </div>
+                <div class="form-row">
+                    <div class="col-4 form-group">
+                        <label><b>Número</b></label>
+                        <input type="text" class="form-control" name="numero" placeholder="">
+                    </div>
+                    <div class="col-4 form-group">
+                        <label><b>Complemento</b></label>
+                        <input type="text" class="form-control" name="complemento" placeholder="">
+                    </div>
+                    <div class="col-4 form-group">
+                        <label><b>Bairro</b></label>
+                        <input type="text" class="form-control" name="complemento" placeholder="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-6 form-group">
+                        <label><b>Cidade</b></label>
+                        <input type="text" class="form-control" name="cidade" placeholder="">
+                    </div>
+                    <div class="col-3 form-group">
+                        <label><b>Estado</b></label>
+                        <select class="form-control" name="uf_id">
+                            <option disabled selected>Selecione um UF</option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AM</option>
+                            <option>AP</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MG</option>
+                            <option>MS</option>
+                            <option>MT</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PE</option>
+                            <option>PI</option>
+                            <option>PR</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>RS</option>
+                            <option>SC</option>
+                            <option>SE</option>
+                            <option>SP</option>
+                            <option>TO</option>
+                        </select>
+                    </div>
+                    <div class="col-3 form-group">
+                        <label><b>CEP</b></label>
+                        <input type="text" class="form-control" name="cep" placeholder="">
+                    </div>
+                </div>
+                
+                <button class="btn text-light" style="background-color: #54775e;" type="submit">Salvar alterações</button>
+            </form>
+        </main>
+    </div>
 @endsection

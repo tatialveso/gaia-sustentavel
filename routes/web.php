@@ -33,7 +33,7 @@ Route::get('/como-funciona', 'ComoController@index');
 Route::get('/contato', 'ContatoController@index');
 
 // Cadastro de usuário
-Route::get('/cadastro', 'CadastroController@create');
+Route::get('/cadastro', 'CadastroController@index');
 Route::post('cadastro/salvo', 'CadastroController@store');
 
 // Login do usuário
