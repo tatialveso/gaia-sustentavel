@@ -6,5 +6,6 @@
         <li><a class="conta-menu" href="/favoritos">Favoritos</a></li>
         <li><a class="conta-menu" href="/historico-compras">Minhas Compras</a></li>
         <li><a class="conta-menu" href="/historico-vendas">Minhas Vendas</a></li>
+        <li><a class="conta-menu" href="/incluir-produto">Incluir produtos</a></li>
     </ul>
 </aside>

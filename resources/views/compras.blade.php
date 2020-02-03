@@ -17,7 +17,7 @@
         @include('aside-conta')
         
         <main>
-            <h1>Minhas Compras</h1>
+            <h1>Minhas compras</h1>
             <div class="produto">
                 <div class="row">
                     <div class="col-6">
