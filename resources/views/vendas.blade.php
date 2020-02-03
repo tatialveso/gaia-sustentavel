@@ -34,7 +34,7 @@
                         <span class="date-title">Data do pedido: </span>
                         <span class="date-value">13/11/2019</span>
 
-                        <span class="purchase-id-title">Nº do pedido:</span>
+                        <span class="purchase-id-title">Nº do pedido: </span>
                         <span class="purchase-id-value">786128</span>
 
                         <div class="item-details">

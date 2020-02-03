@@ -29,14 +29,14 @@
             <div>
                 <form action="" method="POST">
                     <div>
-                        <h3>Modificar Senha</h3>
+                        <h3>Modificar senha</h3>
 
                         <div class="line">
-                            <label for="password">senha atual</label>
+                            <label for="password">Senha atual</label>
                             <input type="text" name="password" id="password" required />
                         </div>
                         <div class="line">
-                            <label for="newpassword">nova senha</label>
+                            <label for="newpassword">Nova senha</label>
                             <input type="text" name="newpassword" id="newpassword" required />
                         </div>
                         <div class="line">
@@ -49,11 +49,11 @@
                         <h3 class="addresstitle">Modificar E-mail</h3>
 
                         <div class="line">
-                            <label for="email">e-mail atual</label>
+                            <label for="email">E-mail atual</label>
                             <input type="email" name="email" id="email" required />
                         </div>
                         <div class="line">
-                            <label for="newemail">novo e-mail</label>
+                            <label for="newemail">Novo e-mail</label>
                             <input type="email" name="newemail" id="newemail" required />
                         </div>
                         <div class="line">
