@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PessoalController extends Controller
 {
-    function show () {
+    function index() {
         return view('higiene');
     }
 }

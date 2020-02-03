@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class IncluirController extends Controller
 {
-    function show () {
+    function index() {
         return view('incluir-produto');
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ComoController extends Controller
 {
-    function show () {
+    function index() {
         return view('como-funciona');
     }
 }

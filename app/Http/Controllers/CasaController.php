@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CasaController extends Controller
 {
-    function show () {
+    function index() {
         return view('casa');
     }
 }
