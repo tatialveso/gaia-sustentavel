@@ -1,147 +1,195 @@
-{{-- chamada do bootstrap --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .titulo {
+        height: 50px;
+        background-color: #54775e;
+        }
+        .titulo h5 {
+            margin: 0;
+            padding: 0;
+            color: white;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .img-incluir {
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            opacity: 0.6;
+        }
 
-{{-- chamada do css --}}
-
-<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesProduto.css') }}">
-
-
-<div class="container">
-    {{-- logo --}}
-    <div class="d-flex justify-content-center">
-        <header>
-            <a href="/"><img src="/img/logo/gaia-branco.png" alt="Gaia Sustentável"></a>
-        </header>
-</div>
-
+        .btn {
+            background-color: #54775e;
+        }
+    </style>
+    <title>Incluir novo produto</title>
+</head>
+<body>
+    <header class="d-flex justify-content-center">
+        <a href="/"><img src="/img/logo/gaia-branco.png" alt="Gaia Sustentável"></a>
+    </header>
 
     <div class="titulo">
-        <span class="container d-block">
-            <h5>Passo 1: Fotos do Produto</h5>
-        </span>
+        <h5>Passo 1: Fotos do produto</h5>
     </div>
 
+    {{-- campo para adicionar fotos --}}
     <div class="container">
         <div class="jumbotron mt-5">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card incluir">
-                        <img src="./img/paginas/incluir-produto.png" class="card-img-top img-incluir"
-                            alt="Botão de selecionar imagens">
+                    <h5>Especificações</h5>
+                    <ul>
+                        <li><b>Tamanho:</b> mínimo de 580 pixels e máximo de 9000 pixels. Recomendamos 1000 pixels;</li>
+                        <li><b>Formato:</b> só serão aceitados arquivos com extensão .jpg e .jpeg;</li>
+                        <li><b>Peso:</b> as fotos poderão ter no máximo 10MB.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="/img/paginas/incluir-produto.png" class="card-img-top img-incluir" alt="">
                         <div class="card-body">
                             <p class="text-center"><b>Capriche! As fotos são a primeira impressão que o cliente terá
                                     sobre seu produto!</b>
                             </p>
-                            <p class="card-text text-center">Dica: utiliza os botões CTRL + SHIFT para selecionar
-                                mais de uma imagem.
-                            </p>
                             <form>
                                 <div class="form-group">
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    <input type="file" class="form-control-file">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <h5>Especificações</h5>
-                    <ul>
-                        <li><b>Quantidade:</b> limite de 5 fotos por produto</li>
-                        <li><b>Tamanho:</b> mínimo de 580 pixels e máximo de 9000 pixels. Recomendamos 1000 pixels;
-                        </li>
-                        <li><b>Formato:</b> só serão aceitados arquivos com extensão .jpg e/ou .jpeg;</li>
-                        <li><b>Peso:</b> as fotos poderão ter no máximo 10MB.</li>
-                    </ul>
-                </div>
+                
 
             </div>
         </div>
     </div>
 
-    <div class="titulo mb-5">
-        <span class="container d-block">
-            <h5>Passo 2: Informações do Produto</h5>
-        </span>
+    <div class="titulo">
+        <h5>Passo 2: Informações do Produto</h5>
     </div>
-
+    
     <div class="container">
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Categoria</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option>Higiene Pessoal</option>
-                <option>Casa e ambiente</option>
-            </select>
-        </div>
-
-        <h6>Especificações</h6>
-        <form>
+        <form action="" class="mt-4">
             <div class="form-row">
-                <div class="col-7">
+                <div class="col-6 form-group">
+                    <label><b>Categoria</b></label>
+                    <select class="form-control">
+                        <option>Higiene Pessoal</option>
+                        <option>Casa e ambiente</option>
+                    </select>
+                </div>
+                <div class="col-6 form-group">
+                    <label><b>Subcategoria</b></label>
+                    <select class="form-control">
+                        <option>Higiene Pessoal</option>
+                        <option>Casa e ambiente</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-8 form-group">
+                    <label><b>Nome do produto</b></label>
                     <input type="text" class="form-control" placeholder="Título do Produto">
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Quantidade estoque">
+                <div class="col-4 form-group">
+                    <label><b>Preço</b></label>
+                    <input type="number" class="form-control" placeholder="Preço do produto">
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Preço unitário">
-                </div>
-            </div><!-- fim form-row // -->
-        </form>
-        <br />
-        <div class="mb-3">
-            <label for="validationTextarea">Conte mais sobre seu produto</label>
-            <textarea class="form-control" id="validationTextarea" placeholder="Descrição" required></textarea>
-        </div>
-        </br>
-        <h6>Dimensões e peso dos produtos</h6>
-        <form>
+            </div>
+            <div class="form-group">
+                <label><b>Descrição do produto</b></label>
+                <textarea class="form-control" placeholder="Escreva aqui as características do seu produto"></textarea>
+            </div>
+            <div class="form-group">
+                <label><b>Composição do produto</b></label>
+                <textarea class="form-control" placeholder="Escreva aqui a composição do seu produto"></textarea>
+            </div>
             <div class="form-row">
-                <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Largura-cm">
+                <div class="col-3 form-group">
+                    <label><b>Largura do produto</b></label>
+                    <input type="number" class="form-control" placeholder="Em centímetros">
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Altura-cm">
+                <div class="col-3 form-group">
+                    <label><b>Altura do produto</b></label>
+                    <input type="number" class="form-control" placeholder="Em centímetros">
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Comprimento-cm">
+                <div class="col-3 form-group">
+                    <label><b>Comprimento do produto</b></label>
+                    <input type="number" class="form-control" placeholder="Em centímetros">
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Peso-gramas">
+                <div class="col-3 form-group">
+                    <label><b>Peso do produto</b></label>
+                    <input type="number" class="form-control" placeholder="Em gramas">
                 </div>
-            </div><!-- fim form-row // -->
+            </div>
+            <div class="form-row">
+                <div class="col-3 form-group">
+                    <label><b>Estoque</b></label>
+                    <input type="number" class="form-control" placeholder="Quantidade em estoque">
+                </div>
+                <div class="col-4 form-group">
+                    <label><b>O seu produto é certificado?</b></label>
+                    <select name="" id="" class="form-control">
+                        <option value="">Selecione uma resposta</option>
+                        <option value="">Sim</option>
+                        <option value="">Não</option>
+                    </select>
+                </div>
+                <div class="col-5 form-group">
+                    <label><b>Que tipo de certificação?</b></label>
+                    <input type="text" class="form-control" placeholder="Descreva a sua certificação">
+                </div>
+            </div>
         </form>
     </div>
 
-
-    <div class="titulo mt-5 mb-5">
-        <span class="container d-block">
-            <h5>Passo 3: Opções de Frete</h5>
-        </span>
+    <div class="titulo mt-3">
+        <h5>Passo 3: Opções de Frete</h5>
+    </div>
+    
+    <div class="container">
+        <form action="" class="mt-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="">
+                <label class="form-check-label">Frete a pagar</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="">
+                <label class="form-check-label">Frete Grátis para todos os estados</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="">
+                <label class="form-check-label">Frete Grátis por estados selecionados</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="">
+                <label class="form-check-label">Frete Grátis acima de um valor mínimo</label>
+            </div>
+    
+            <button type="submit" class=" mt-4 mb-5 btn text-light">Cadastrar novo produto</button>
+        </form>
     </div>
 
-    <div class="container">
-        <div class="form-check">
-            <!-- frete // -->
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">Frete a pagar</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-            <label class="form-check-label" for="defaultCheck2">Frete Grátis para todos os estados</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">Frete Grátis por estados selecionados</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-            <label class="form-check-label" for="defaultCheck2">Frete Grátis acima de um valor mínimo</label>
-        </div>
-        <br />
-        <div class="btn-produto">
-            <a href="#" class="mb-5 btn text-light">Cadastrar produto</a>    
-        </div>
-        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/functions.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+  
 

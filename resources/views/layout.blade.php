@@ -215,6 +215,7 @@
     @yield('carrinho')
     @yield('casa')
     @yield('checkout')
+    @yield('incluir-produto')
 
 
     {{-- footer da página --}}
