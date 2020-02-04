@@ -25,7 +25,7 @@
         <h6>Subcategorias</h6>
         <div class="form-check">
             <input class="form-check-input" type="radio" value="">
-            <label class="form-check-label">Cabelo</label>
+            <label class="form-check-label"></label>
         </div>
     </div>
 
