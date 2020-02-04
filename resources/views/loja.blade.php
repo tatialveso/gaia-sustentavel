@@ -109,11 +109,11 @@
         </div>
         {{-- botão para avaliar a loja --}}
         <div class="btn-produto d-flex justify-content-around">
-            <button type="button" class="btn text-light my-5">Avaliar a (nome da loja)</button>
+            <button type="button" class="btn text-light my-5" id="avaliar-loja">Avaliar a (nome da loja)</button>
         </div>
 
         {{-- lógica: quando o botão acima for clicado o formulário seguinte irá aparecer --}}
-        <form>
+        <form id="form-loja">
             <div class="form-group">
                 <label>Título da avaliação</label>
                 <input type="text" class="form-control">
