@@ -221,6 +221,7 @@
     @yield('produto')
     @yield('resumo')
     @yield('compras')
+    @yield('carrinho')
 
 
     {{-- footer da página --}}
