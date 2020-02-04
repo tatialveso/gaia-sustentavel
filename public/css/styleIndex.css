@@ -38,7 +38,7 @@ header>img {
 	justify-content: space-between;
 }
 
-.btn-produto .btn {
+.btn-produto .btn, .btn-group .btn {
     background-color: #54775e;
 }
 

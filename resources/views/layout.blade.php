@@ -214,6 +214,7 @@
     @yield('compras')
     @yield('carrinho')
     @yield('casa')
+    @yield('checkout')
 
 
     {{-- footer da página --}}
