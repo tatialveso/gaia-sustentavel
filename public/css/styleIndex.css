@@ -51,6 +51,14 @@ header>img {
     color: #8fccb8;
 }
 
+button a:hover {
+    text-decoration: none;
+}
+
+
+
+
+
 /* header responsivo */
 
 @media (max-width: 751px) {
