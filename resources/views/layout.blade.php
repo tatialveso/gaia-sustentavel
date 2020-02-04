@@ -216,6 +216,7 @@
     @yield('casa')
     @yield('checkout')
     @yield('incluir-produto')
+    @yield('perfil')
 
 
     {{-- footer da página --}}
