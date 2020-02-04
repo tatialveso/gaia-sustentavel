@@ -1,25 +1,24 @@
-
 {{-- chamada do layout --}}
 @extends('layout')
 
 {{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLoja.css') }}">
 
-{{-- chamada do bootstrap --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>(nome do produto)</title>
 
-
-    @section ('produto')
-
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-6">
-                <img src="/img/produtos/produto1.jpg" width="500px" alt="">
+@section('produto')
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-6 mt-3">
+                {{-- imagem do produto --}}
+                <img src="#" width="500px" alt="">
             </div>
-            <div class="informacoes col-lg-6">
-                <h4 class="my-5 text-center">Sabonete natural</h4>
-                <h6 class="mb-3"><a href="./perfil-vendedor.html">Saboneteria da Dona Fernanda</a></h6>
+            {{-- informações --}}
+            <div class="informacoes col-6">
+                <h4 class="my-5 text-center">(Nome do produto)</h4>
+                <h6 class="mb-3"><a href="/loja/{id}">(nome da loja)</a></h6>
 
+                {{-- estrelas de avaliação --}}
                 <ul class="list-inline list-unstyled my-3">
                     <li class="list-inline-item"><i class="material-icons">
                             star
@@ -43,17 +42,28 @@
                     </li>
                 </ul>
 
-                <h4 class="mt-5 mb-3">R$20.00</h4>
-                <h6 class="d-inline my-5">Quantidade:</h6>
-                <input type="number" min="1">
-                <a class="mt-4 ml-2 align-middle" href=""><i class="material-icons">
-                        favorite_border
-                    </i></a>
+                <h4 class="mt-5 mb-3">R$</h4>
+
+                {{-- fav e quantidade --}}
+                <div class="dados d-flex justify-content-between mt-1">
+                    <form action="" class="form-inline">
+                        <div class="form-group">
+                            <h6>Quantidade:</h6>
+                            <input type="number" min="1" class="form-control ml-1">
+                        </div>
+                    </form>
+                    <a class="ml-5 align-middle" href="#"><i class="material-icons">favorite_border</i></a>
+                </div>
+
+                {{-- form frete --}}
                 <form class="form-inline mt-3">
-                    <h6 class="d-inline">Calcule o frete:</h6>
-                    <input type="text" placeholder=" Insira o CEP">
+                    <div class="form-group">
+                        <h6>Calcule frete:</h6>
+                        <input type="text" class="form-control ml-1" placeholder="Insira o CEP">
+                    </div>
                     <button class="btn ml-2 text-light" type="submit" style="background-color: #54775e;">OK</button>
                 </form>
+
                 <div class="btn-produto d-flex justify-content-end">
                     <button class="btn my-5" type="submit"><a class="text-light" href="cesta-compras.html">Adicionar no carrinho</a></button>
                 </div>
@@ -61,45 +71,21 @@
         </div>
 
         <div class="row">
-            <div class="detalhe col-lg-6">
+            {{-- descrição do produto --}}
+            <div class="col-lg-6">
                 <h4 class="text-center">Descrição do produto</h4>
-                <p class="mt-3 text-justify">O Shampoo Castanha do Brasil da Arte dos Aromas limpa profundamente os fios
-                    sem
-                    agredir a fibra capilar, deixando os cabelos mais bonitos, saudáveis e fáceis de pentear. Possui
-                    uma fórmula rica em castanha do Pará, um ingrediente altamente nutritivo que devolve o brilho e
-                    maciez aos fios ressecados e danificados. Fonte de vitaminas e minerais, como selênio e zinco, o
-                    shampoo castanha do Brasil promove uma hidratação capilar profunda e duradoura.</p>
-
-                <h6>Características</h6>
-                <ul>
-                    <li>Produto natural e vegano;</li>
-                    <li>Possui propriedades lubrificantes, nutritivas, hidratantes e antioxidantes;</li>
-                    <li>Promove uma limpeza eficaz;</li>
-                    <li>Recupera o brilho e a maciez dos fios ressecados e danificados.</li>
-                </ul>
-
-                <h6>Indicação</h6>
-                <p class="text-justify">O Shampoo Castanha do Brasil da Arte dos Aromas é indicado para cabelos
-                    ressecados, danificados ou
-                    tingidos.
-                </p>
+                <p class="mt-3 text-justify">{descrição do produto}</p>
 
                 <h6>Ingredientes</h6>
-                <p class="text-justify"><b>Composição: </b>Aqua (Water), Coco Glucoside, Lauryl Glucoside , Decyl
-                    Glucoside , Cocamidopropyl
-                    Betaine, Glycol Stearate, Xanthan Gum, Parfum, Panthenol , Bertholletia Excelsa Seed Oil ,
-                    Sodium Benzoate , Citric Acid, Sorbic Acid , Alpha-Isomethyl Ionone, Amyl Cinnamal, Benzyl
-                    Alcohol, Benzyl Benzoate,Benzyl Salicylate, Butylphenyl Methylpropional, Citral, Citronellol,
-                    Geraniol, Hexyl Cinnamal, Hydroxyisohexyl 3-Cyclohexene Carboxaldelyde, Limonene, Linalool.
-                </p>
-
-                <p class="text-justify"><b>Fórmula livre de: </b> parabenos, sulfatos, formaldeídos, corantes
-                    artificiais, derivados de
-                    petróleo, substâncias geneticamente modificadas e substâncias irradiadas e produtos de origem
-                    animal. Não é testado em animais.
-                </p>
+                <p class="text-justify"><b>Composição: </b>(Composição)</p>
+                
+                <h6>Características</h6>
+                <ul>
+                    <li>(Filtro de características</li>
+                </ul>
             </div>
 
+            {{-- avaliações --}}
             <div class="col-lg-6">
                 <h4 class="text-center">Avaliações de clientes</h4>
                 <div class="mt-3">
@@ -110,49 +96,16 @@
                         <li class="list-inline-item"><i class="material-icons">star</i></a></li>
                         <li class="list-inline-item"><i class="material-icons">star</i></a></li>
                     </ul>
-                    <p><b>Muito bom!!!</b></p>
-                    <p class="text-justify">O cheiro é ótimo e por ser natural não vem com toda a química dos shampoos
-                        industriais do
-                        mercado. A embalagem poderia ser maior para o preço e a forma de dispensar o produto poderia ser
-                        melhorada para evitar desperdício.
-                    </p>
+                    <p><b>(título da avaliação)</b></p>
+                    <p class="text-justify">(avaliação)</p>
                 </div>
-                <div class="mt-5">
-                    <ul class="list-inline list-unstyled my-1">
-                        <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star_border</i></a></li>
-                    </ul>
-                    <p><b>Muito bom!!!</b></p>
-                    <p class="text-justify">O cheiro é ótimo e por ser natural não vem com toda a química dos shampoos
-                        industriais do
-                        mercado. A embalagem poderia ser maior para o preço e a forma de dispensar o produto poderia ser
-                        melhorada para evitar desperdício.
-                    </p>
-                </div>
-                <div class="mt-5">
-                    <ul class="list-inline list-unstyled my-1">
-                        <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star_border</i></a></li>
-                        <li class="list-inline-item"><i class="material-icons">star_border</i></a></li>
-                    </ul>
-                    <p><b>Muito bom!!!</b></p>
-                    <p class="text-justify">O cheiro é ótimo e por ser natural não vem com toda a química dos shampoos
-                        industriais do
-                        mercado. A embalagem poderia ser maior para o preço e a forma de dispensar o produto poderia ser
-                        melhorada para evitar desperdício.
-                    </p>
-                </div>
+                
                 <div class="btn-produto d-flex justify-content-around">
-                    <button type="button" class="btn text-light my-5">Avaliar o produto</button>
+                    <button type="button" class="btn text-light my-5" id="avaliar-produto">Avaliar o produto</button>
                 </div>
 
                 <!-- formulário que quando o botão acima for clicado ele aparecerá embaixo -->
-                <form>
+                <form id="form-produto">
                     <div class="form-group">
                         <label>Título</label>
                         <input type="text" class="form-control">
@@ -183,53 +136,17 @@
         <h5 class="text-center">Produtos relacionados</h5>
     </div>
 
+    {{-- produtos relacionados --}}
     <div class="container mt-3">
         <div class="row">
             <div class="col-lg-4">
                 <div class="card">
-                    <img src="/img/produtos/produto.jpg" class="card-img-top" alt="Escova de dente de bambu">
+                    <img src="" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="#">Escova de dente de
-                                bambu</a></h5>
-                        <p class="card-text">R$ 18.00</p>
+                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{id}"> </a></h5>
+                        <p class="card-text"> </p>
                         <div class="btn-produto">
-                            <a href="#" class="btn text-light">Comprar</a>
-                            <a href=""><i class="material-icons">
-                                    favorite_border
-                                </i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card">
-                    <img src="/img/produtos/produto1.jpg" class="card-img-top" alt="Sabonetes veganos">
-                    <div class="card-body">
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="#">Sabonete
-                                vegano</a>
-                        </h5>
-                        <p class="card-text">R$ 20.00</p>
-                        <div class="btn-produto">
-                            <a href="#" class="btn text-light">Comprar</a>
-                            <a href=""><i class="material-icons">
-                                    favorite_border
-                                </i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card">
-                    <img src="/img/produtos/produto2.jpg" class="card-img-top" alt="Navalha de metal">
-                    <div class="card-body">
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="#">Navalha de
-                                metal</a>
-                        </h5>
-                        <p class="card-text">R$ 35.00</p>
-                        <div class="btn-produto">
-                            <a href="#" class="btn text-light">Comprar</a>
+                            <a href="/produto/{id}" class="btn text-light">Comprar</a>
                             <a href=""><i class="material-icons">
                                     favorite_border
                                 </i></a>
@@ -240,4 +157,4 @@
         </div>
     </div>
 
-    @endsection
+@endsection

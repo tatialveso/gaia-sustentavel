@@ -22,10 +22,6 @@
     align-items: center;
 }
 
-.btn-produto>a:hover, .avaliacao a:hover {
-    color: #8fccb8;
-}
-
 .btn-produto>a {
     align-self: center;
     color: black;
@@ -36,6 +32,15 @@
     text-decoration: none;
 }
 
-#form-loja {
+#form-loja, #form-produto {
     display: none;
+}
+
+.dados .material-icons, .informacoes a {
+    color: #54775e;
+}
+
+.dados .material-icons:hover, .informacoes a:hover {
+    color: #8fccb8;
+    text-decoration: none;
 }
