@@ -26,11 +26,11 @@
             <div class="form-group">
                 <label><b>Qual tipo de cadastro você quer fazer?</b></label>
                 <div class="container-fluid form-check-inline">
-                    <input class="form-check-input" type="radio" name="tipo_cadastro" value="cliente">
+                    <input class="form-check-input" type="radio" name="tipo_cadastro" value="cliente" id="cliente">
                     <label class="form-check-label" for="exampleRadios1">
                         Cliente
                     </label>
-                    <input class="ml-3 form-check-input" type="radio" name="tipo_cadastro" value="vendedor">
+                    <input class="ml-3 form-check-input" type="radio" name="tipo_cadastro" value="vendedor" id="vendedor">
                     <label class="form-check-label" for="exampleRadios1">
                         Vendedor
                     </label>
