@@ -13,9 +13,9 @@ class CreateRastreamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('rastreamentos', function (Blueprint $table) {
+        Schema::create('trackings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
+            $table->string('name');
             $table->timestamps();
         });
     }

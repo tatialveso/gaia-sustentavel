@@ -13,10 +13,10 @@ class SubcategoriasCreate extends Migration
      */
     public function up()
     {
-        Schema::create('subcategorias', function (Blueprint $table) {
+        Schema::create('subcategories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->integer('categorias_id');
+            $table->string('name');
+            $table->integer('categories_id');
             $table->timestamps();
         });
     }

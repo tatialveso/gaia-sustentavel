@@ -13,11 +13,11 @@ class AvaliacaoLojaCreate extends Migration
      */
     public function up()
     {
-        Schema::create('avaliacao_loja', function (Blueprint $table) {
+        Schema::create('evaluations_stores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('descricao');
-            $table->integer('loja_id');
+            $table->string('name');
+            $table->string('description');
+            $table->integer('store_id');
             $table->timestamps();
         });
     }

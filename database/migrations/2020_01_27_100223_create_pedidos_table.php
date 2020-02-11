@@ -13,12 +13,12 @@ class CreatePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('request', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('Data');
-            $table->decimal('Valor', 5,2);
-            $table->bigInteger('pagamento_id')->unsigned();
-            $table->bigInteger('rastreamento_id')->unsigned();
+            $table->date('date');
+            $table->decimal('value', 5,2);
+            $table->bigInteger('payment_id')->unsigned();
+            $table->bigInteger('tracking_id')->unsigned();
             $table->timestamps();
         });
     }

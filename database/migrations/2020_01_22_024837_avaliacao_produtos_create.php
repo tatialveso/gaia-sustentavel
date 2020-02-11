@@ -13,11 +13,11 @@ class AvaliacaoProdutosCreate extends Migration
      */
     public function up()
     {
-        Schema::create('avaliacao_produtos', function (Blueprint $table) {
+        Schema::create('evaluations_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('descricao');
-            $table->bigInteger('produtos_id');
+            $table->string('name');
+            $table->string('description');
+            $table->bigInteger('product_id');
             $table->timestamps();
         });
     }
