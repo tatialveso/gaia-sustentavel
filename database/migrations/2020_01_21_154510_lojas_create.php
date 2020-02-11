@@ -13,12 +13,12 @@ class LojasCreate extends Migration
      */
     public function up()
     {
-        Schema::create('lojas', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome_loja');
-            $table->string('localizacao');
-            $table->bigInteger('categoria_id');
-            $table->string('descricao');
+            $table->string('name_store');
+            $table->string('location');
+            $table->bigInteger('category_id');
+            $table->string('description');
             $table->year('criacao');
             $table->timestamps();
         });

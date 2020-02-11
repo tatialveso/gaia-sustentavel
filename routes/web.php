@@ -51,6 +51,7 @@ Route::post('/avaliacao-loja','LojaController@store');
 // Incluir produto
 
 Route::get('/incluir-produto','IncluirController@create');
+Route::post('/incluir-produto','IncluirController@store');
 // Página do produto
 Route::get('/produto/{id}', 'ProdutoController@index');
 // Catálogo de higiene pessoal
