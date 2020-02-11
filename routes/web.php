@@ -11,21 +11,20 @@
 |
 */
 
-// Quem Somos
 Route::get('/sobre', function () {
     return view('sobre');
 });
 
-// Como funciona
 Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-// ROTAS PARA CRUD DE USUÁRIO
-// Cadastro de usuário
-Route::get('/cadastro', 'CadastroController@index');
-// Configurações de dados do usuário
-Route::get('/configuracoes', 'ConfiguracoesController@index');
+Route::get('/cadastro', 'UsuarioController@create');
+Route::post('/cadastro', 'UsuarioController@store');
+Route::get('/configuracoes/{id}', 'UsuarioController@edit');
+Route::put('/configuracoes/{id}', 'UsuarioController@update');
+Route::delete('/delete/{id}', 'UsuarioController@destroy');
+
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index');
 
@@ -41,8 +40,10 @@ Route::get('/incluir-produto', 'ConfiguracoesLojaController@index');
 
 
 // ROTAS PARA CRUD DE PRODUTO
+
 // Incluir produto
-Route::get('/incluir-produto','IncluirController@index');
+
+Route::get('/incluir-produto','IncluirController@create');
 // Página do produto
 Route::get('/produto/{id}', 'ProdutoController@index');
 // Catálogo de higiene pessoal
