@@ -23,7 +23,7 @@ Route::get('/cadastro', 'UsuarioController@create');
 Route::post('/cadastro', 'UsuarioController@store');
 Route::get('/configuracoes/{id}', 'UsuarioController@edit');
 Route::put('/configuracoes/{id}', 'UsuarioController@update');
-Route::delete('/conta/delete/{id}', 'UsuarioController@destroy');
+Route::delete('/delete/{id}', 'UsuarioController@destroy');
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index');

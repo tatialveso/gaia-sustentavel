@@ -20,9 +20,8 @@
         <h5>Crie a sua conta:</h5>
     </div>
     <div class="d-flex justify-content-center">
-        <form method="POST">
-            {{-- raciocínio: ao clicar na página irá aparecer apenas essa pergunta e dependendo da
-                resposta do usuário as próximas perguntas aparecem na tela --}}
+        {{-- raciocínio: ao clicar na página irá aparecer apenas essa pergunta e dependendo da
+            resposta do usuário as próximas perguntas aparecem na tela --}}
             <div class="form-group">
                 <label><b>Qual tipo de cadastro você quer fazer?</b></label>
                 <div class="container-fluid form-check-inline">
@@ -36,7 +35,8 @@
                     </label>
                 </div>
             </div>
-
+            
+        <form method="POST">
             {{-- cadastro de cliente --}}
             <div class="form-group">
                 <label><b>Nome completo</b></label>
