@@ -113,8 +113,9 @@
         </div>
 
         {{-- lógica: quando o botão acima for clicado o formulário seguinte irá aparecer --}}
-        <form id="form-loja">
+        <form action ="/avaliacao-loja" method="POST" id="form-loja">
             <div class="form-group">
+            @csrf
                 <label>Título da avaliação</label>
                 <input type="text" class="form-control">
             </div>

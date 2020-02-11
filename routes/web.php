@@ -32,6 +32,7 @@ Route::get('/seguranca', 'SegurancaController@index');
 // Cadastro de Loja
 Route::get('/cadastro', 'CadastroController@create');
 Route::post('/cadastro', 'CadastroController@store');
+
 // Configurações de dados da Loja
 Route::get('/minha-loja/{id}', 'LojaController@edit');
 Route::patch('/minha-loja/{id}', 'LojaController@update');
@@ -42,6 +43,8 @@ Route::get('/historico-vendas', 'CadastroController@index'); //Editar
 // Incluir produtos da Loja
 Route::get('/incluir-produto', 'ConfiguracoesLojaController@index'); //Editar
 
+// Avaliacao loja
+Route::post('/avaliacao-loja','LojaController@store');
 
 // ROTAS PARA CRUD DE PRODUTO
 
