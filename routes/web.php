@@ -29,8 +29,18 @@ Route::get('/configuracoes', 'ConfiguracoesController@index');
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index');
 
+//ROTAS PARA CRUD DE LOJA
+// Cadastro de Loja
+Route::get('/cadastro', 'CadastroController@index');
+// Configurações de dados da Loja
+Route::get('/minha-loja', 'LojaController@edit');
+// Vendas da Loja
+Route::get('/historico-vendas', 'CadastroController@index');
+// Incluir produtos da Loja
+Route::get('/incluir-produto', 'ConfiguracoesLojaController@index');
 
-// ROTAS PARA CRUD DE LOJA
+
+// ROTAS PARA CRUD DE PRODUTO
 // Incluir produto
 Route::get('/incluir-produto','IncluirController@index');
 // Página do produto
