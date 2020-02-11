@@ -51,7 +51,8 @@ Route::get('/higiene-pessoal', 'PessoalController@index');
 // Catálogo de casa e ambiente
 Route::get('/casa-ambiente', 'CasaController@index');
 
-
+// Avaliacao produto
+Routte::post('/avaliacaoProduto','ProdutoController@store');
 
 // Página inicial
 Route::get('/', 'HomeController@index');
