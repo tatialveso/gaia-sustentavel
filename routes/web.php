@@ -11,23 +11,23 @@
 |
 */
 
-// Quem Somos
 Route::get('/sobre', function () {
     return view('sobre');
 });
 
-// Como funciona
 Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-// ROTAS PARA CRUD DE USUÁRIO
-// Cadastro de usuário
-Route::get('/cadastro', 'CadastroController@index');
-// Configurações de dados do usuário
-Route::get('/configuracoes', 'ConfiguracoesController@index');
+Route::get('/cadastro', 'UsuarioController@create');
+Route::post('/cadastro', 'UsuarioController@store');
+Route::get('/configuracoes', 'UsuarioController@edit');
+Route::put('/configuracoes', 'UsuarioController@update');
+Route::delete('/conta/delete', 'UsuarioController@destroy');
+
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index');
+
 
 
 // ROTAS PARA CRUD DE LOJA
