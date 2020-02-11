@@ -23,7 +23,7 @@ class AvaliacaoProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('form-produto');
     }
 
     /**
