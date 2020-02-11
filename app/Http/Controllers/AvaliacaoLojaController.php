@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LojaController extends Controller
+class AvaliacaoLojaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class LojaController extends Controller
      */
     public function index()
     {
-        return view('loja');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class LojaController extends Controller
      */
     public function create()
     {
-        return view('/cadastro');
+        //
     }
 
     /**
@@ -34,9 +34,7 @@ class LojaController extends Controller
      */
     public function store(Request $request)
     {
-        $loja = Loja::create($request->all());
-
-        return redirect('/loja/{id}');
+        //
     }
 
     /**
@@ -47,7 +45,7 @@ class LojaController extends Controller
      */
     public function show($id)
     {
-       //
+        //
     }
 
     /**
@@ -58,7 +56,7 @@ class LojaController extends Controller
      */
     public function edit($id)
     {
-        return view('configuracoesLoja');
+        //
     }
 
     /**
@@ -70,9 +68,7 @@ class LojaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $loja->fill($request->all());
-        $loja->save();
-        return redirect('/loja/{id}');
+        //
     }
 
     /**
@@ -83,9 +79,6 @@ class LojaController extends Controller
      */
     public function destroy($id)
     {
-        $loja = App/Loja::find($id);
-        $loja->delete();
-
-        return back();
+        //
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class FavoritoController extends Controller
 {
-    function show () {
+    function index() {
         return view('favoritos');
     }
 }

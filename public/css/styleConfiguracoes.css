@@ -1,0 +1,61 @@
+.titulo {
+    height: 50px;
+    background-color: #54775e;
+}
+.titulo h5 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagina {
+    display: flex;
+    margin-top: 50px;
+}
+
+aside {
+    width: 40%;
+}
+
+.conta-menu {
+    color: black;
+    line-height: 2;
+}
+
+.conta-menu:hover, .conta-menu-active {
+    font-weight: 700;
+    color: #699f8d;
+    text-decoration: none;
+}
+
+main {
+    width: 60%;
+}
+
+.loja {
+    color: #54775e;
+}
+
+.loja:hover, .material-icons:hover {
+    text-decoration: none;
+    color: #699f8d;
+}
+
+.btn-produto {
+    display: flex;
+	justify-content: space-between;
+}
+
+.btn-produto .btn {
+    background-color: #54775e;
+}
+
+.btn-produto>a {
+    align-self: center;
+    color: black;
+}
+

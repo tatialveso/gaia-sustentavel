@@ -1,0 +1,30 @@
+.pagina {
+    display: flex;
+    margin-top: 50px;
+}
+
+aside {
+    width: 30%;
+}
+
+main {
+    width: 70%;
+}
+
+.btn-produto {
+    display: flex;
+	justify-content: space-between;
+}
+
+.btn-produto .btn {
+    background-color: #54775e;
+}
+
+.btn-produto>a {
+    align-self: center;
+    color: black;
+}
+
+.btn-produto>a:hover {
+    color: #8fccb8;
+}

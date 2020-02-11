@@ -4,26 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ContatoController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
+class UsuarioController extends Controller {
+    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('contato');
+    public function create() {
+        return view('cadastro');
     }
 
     /**
@@ -32,22 +21,10 @@ class ContatoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $contato = Contato::create($request->all());
+    public function store(Request $request) {
+        $usuario = Usuario::create($request->all());
 
-        return redirect('/contato');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect('/perfil/{id}');
     }
 
     /**
@@ -56,9 +33,8 @@ class ContatoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Request $request, $id) {
+        return view('configuracoes');
     }
 
     /**
@@ -68,9 +44,10 @@ class ContatoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $usuario->fill($request->all());
+        $usuario->save();
+        return redirect('/configuracoes/{id}');
     }
 
     /**
@@ -79,8 +56,10 @@ class ContatoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $usuario = App/Usuario::find($id);
+        $usuario->delete();
+
+        return back();
     }
 }

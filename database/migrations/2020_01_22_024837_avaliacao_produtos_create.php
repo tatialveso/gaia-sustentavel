@@ -17,7 +17,7 @@ class AvaliacaoProdutosCreate extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('descricao');
-            $table->bigIncrements('produtos_id');
+            $table->bigInteger('produtos_id');
             $table->timestamps();
         });
     }
