@@ -30,13 +30,17 @@ Route::get('/seguranca', 'SegurancaController@index');
 
 //ROTAS PARA CRUD DE LOJA
 // Cadastro de Loja
-Route::get('/cadastro', 'CadastroController@index');
+Route::get('/cadastro', 'CadastroController@create');
+Route::post('/cadastro', 'CadastroController@store');
 // Configurações de dados da Loja
-Route::get('/minha-loja', 'LojaController@edit');
+Route::get('/minha-loja/{id}', 'LojaController@edit');
+Route::patch('/minha-loja/{id}', 'LojaController@update');
+Route::delete('/delete/{id}', 'LojaController@destroy');
+
 // Vendas da Loja
-Route::get('/historico-vendas', 'CadastroController@index');
+Route::get('/historico-vendas', 'CadastroController@index'); //Editar
 // Incluir produtos da Loja
-Route::get('/incluir-produto', 'ConfiguracoesLojaController@index');
+Route::get('/incluir-produto', 'ConfiguracoesLojaController@index'); //Editar
 
 
 // ROTAS PARA CRUD DE PRODUTO
