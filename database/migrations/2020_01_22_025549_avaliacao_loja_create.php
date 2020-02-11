@@ -17,7 +17,7 @@ class AvaliacaoLojaCreate extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('descricao');
-            $table->bigIncrements('loja_id');
+            $table->integer('loja_id');
             $table->timestamps();
         });
     }

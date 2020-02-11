@@ -15,7 +15,7 @@ class CreateRastreamentosTable extends Migration
     {
         Schema::create('rastreamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('home');
+            $table->string('nome');
             $table->timestamps();
         });
     }

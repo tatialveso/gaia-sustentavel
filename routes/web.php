@@ -31,7 +31,8 @@ Route::get('/seguranca', 'SegurancaController@index');
 
 
 // Incluir produto
-Route::get('/incluir-produto','IncluirController@index');
+
+Route::get('/incluir-produto','IncluirController@create');
 // Página do produto
 Route::get('/produto/{id}', 'ProdutoController@index');
 // Catálogo de higiene pessoal
