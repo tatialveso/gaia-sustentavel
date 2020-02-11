@@ -21,9 +21,9 @@ Route::get('/como-funciona', function () {
 
 Route::get('/cadastro', 'UsuarioController@create');
 Route::post('/cadastro', 'UsuarioController@store');
-Route::get('/configuracoes', 'UsuarioController@edit');
-Route::put('/configuracoes', 'UsuarioController@update');
-Route::delete('/conta/delete', 'UsuarioController@destroy');
+Route::get('/configuracoes/{id}', 'UsuarioController@edit');
+Route::put('/configuracoes/{id}', 'UsuarioController@update');
+Route::delete('/conta/delete/{id}', 'UsuarioController@destroy');
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index');
