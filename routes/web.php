@@ -30,7 +30,6 @@ Route::get('/seguranca', 'SegurancaController@index');
 
 
 
-// ROTAS PARA CRUD DE LOJA
 // Incluir produto
 Route::get('/incluir-produto','IncluirController@index');
 // Página do produto
