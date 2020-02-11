@@ -30,11 +30,11 @@ Route::get('/seguranca', 'SegurancaController@index');
 
 //ROTAS PARA CRUD DE LOJA
 // Cadastro de Loja
-Route::get('/cadastro', 'CadastroController@index');
+Route::get('/cadastro', 'LojaController@index');
 // Configurações de dados da Loja
 Route::get('/minha-loja', 'LojaController@edit');
 // Vendas da Loja
-Route::get('/historico-vendas', 'CadastroController@index');
+// Route::get('/historico-vendas', 'CadastroController@index');
 // Incluir produtos da Loja
 Route::get('/incluir-produto', 'ConfiguracoesLojaController@index');
 
@@ -87,5 +87,6 @@ Route::get('/checkout', 'CheckoutController@index');
 // Resumo do pedido
 Route::get('/resumo-pedido', 'ResumoController@index');
 
+Route::auth();
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
