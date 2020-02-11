@@ -17,9 +17,8 @@ class CreatePedidosTable extends Migration
             $table->bigIncrements('id');
             $table->date('Data');
             $table->decimal('Valor', 5,2);
-            $table->foreign('pagamento_id')->references('id')->on('pagamento');
-            $table->foreign('pagamento_id')->references('id')->on('rastreamneto');
-            $table->foreign('pagamento_id')->references('id')->on('pagamento');
+            $table->bigInteger('pagamento_id')->unsigned();
+            $table->bigInteger('rastreamento_id')->unsigned();
             $table->timestamps();
         });
     }

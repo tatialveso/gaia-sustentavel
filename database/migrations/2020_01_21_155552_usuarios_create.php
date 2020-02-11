@@ -21,7 +21,7 @@ class UsuariosCreate extends Migration
             $table->date('data_nascimento');
             $table->string('cpf', 11);
             $table->string('endereco');
-            $table->number('numero');
+            $table->integer('numero');
             $table->string('complemento');
             $table->string('cidade');
             $table->bigInteger('uf_id');
