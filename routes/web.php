@@ -52,7 +52,7 @@ Route::get('/higiene-pessoal', 'PessoalController@index');
 Route::get('/casa-ambiente', 'CasaController@index');
 
 // Avaliacao produto
-Route::post('/avaliacaoProduto','ProdutoController@store');
+Route::post('/avaliacao-produto','ProdutoController@store');
 
 // Página inicial
 Route::get('/', 'HomeController@index');
