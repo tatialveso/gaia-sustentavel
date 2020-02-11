@@ -107,6 +107,7 @@
                 <!-- formulário que quando o botão acima for clicado ele aparecerá embaixo -->
                 <form action ="/avaliacao-produto" method="POST" id="form-produto" >
                     <div class="form-group">
+                    @csrf
                         <label>Título</label>
                         <input type="text" class="form-control">
                     </div>
