@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFaleconoscosTable extends Migration
+class CreateFaleconoscoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateFaleconoscosTable extends Migration
      */
     public function up()
     {
-        Schema::create('faleconosco', function (Blueprint $table) {
+        Schema::create('contact-us', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome',60);
+            $table->string('name',60);
             $table->text('email');
-            $table->text('mensagem',);
+            $table->text('message',);
         });
     }
 

@@ -14,9 +14,9 @@ class ForeingkeysCreate extends Migration
     public function up()
     {
         
-        Schema::table('pedidos', function (Blueprint $table) {
-            $table->foreign('pagamento_id')->references('id')->on('pagamentos');
-            $table->foreign('rastreamento_id')->references('id')->on('rastreamentos');
+        Schema::table('requests', function (Blueprint $table) {
+            $table->foreign('payment_id')->references('id')->on('requests');
+            $table->foreign('tracking_id')->references('id')->on('trackings');
         });
     }
 

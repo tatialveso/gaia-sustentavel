@@ -13,7 +13,7 @@ class CreatePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('request', function (Blueprint $table) {
+        Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
             $table->decimal('value', 5,2);
