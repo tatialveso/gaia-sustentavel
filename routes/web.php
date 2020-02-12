@@ -54,9 +54,6 @@ Route::get('/casa-ambiente', 'CasaController@index');
 // Avaliacao produto
 Route::post('/avaliacaoProduto','ProdutoController@store');
 
-// Página inicial
-Route::get('/', 'HomeController@index');
-
 // Página inicial logado
 Route::get('/perfil/{id}', 'PerfilController@index');
 
@@ -87,6 +84,8 @@ Route::get('/checkout', 'CheckoutController@index');
 // Resumo do pedido
 Route::get('/resumo-pedido', 'ResumoController@index');
 
+
+Route::get('/', 'HomeController@index');
+
 Route::auth();
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
