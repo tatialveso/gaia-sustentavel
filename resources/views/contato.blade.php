@@ -7,6 +7,15 @@
 {{-- nome da página --}}
 <title>Contate a Gaia</title>
 
+@section('contato-assets')
+    <style>
+        .imagem img {
+            object-fit: cover;
+            height: 400px;
+        }    
+    </style>
+@endsection
+
 @section('contato')
     {{-- imagem de destaque da página --}}
     <div class="imagem">
@@ -20,39 +29,36 @@
     </div>
     {{-- conteúdo da página --}}
     <div class="container mt-5">
-        <form>
+        <form action="/contato" method="POST">
+            @csrf
             <h1 class="text-center mb-5">Fale com a Gaia</h1>
             <div class="form-group row">
-                <div class="col">
-                    <label>Primeiro nome</label>
-                    <input type="text" class="form-control" placeholder="Insira seu primeiro nome" required>
+                <div class="col-6">
+                    <label>Nome completo</label>
+                    <input type="text" class="form-control" placeholder="Insira seu primeiro nome">
                 </div>
-                <div class="col">
-                    <label>Sobrenome</label>
-                    <input type="text" class="form-control" placeholder="Insira seu sobrenome" required>
+                <div class="col-6">
+                    <label for="">Endereço de e-mail</label>
+                    <input type="email" class="form-control" placeholder="nome@exemplo.com">
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Endereço de e-mail</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com"
-                    required>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Assunto</label>
-                <select class="form-control" id="exampleFormControlSelect1" required>
+                <label for="">Assunto</label>
+                <select class="form-control">
                     <option selected disabled>Selecione um assunto</option>
-                    <option>Devolução ou troca</option>
-                    <option>Problema com o frete</option>
                     <option>Reportar abuso</option>
+                    <option>Dúvidas sobre a Gaia</option>
+                    <option>Denunciar loja</option>
                     <option>Sobre Vendas</option>
                     <option>Sobre compra</option>
                     <option>Outro</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Mensagem</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                <label for="">Mensagem</label>
+                <textarea class="form-control" rows="3"></textarea>
             </div>
+
             <button type="submit" class="btn text-light" style="background-color: #54775e;">Enviar mensagem</button>
         </form>
     </div>

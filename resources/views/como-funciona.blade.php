@@ -10,6 +10,11 @@
 {{-- separando o css particular da página --}}
 @section('como-funciona-assets')
     <style>
+        .imagem img {
+            object-fit: cover;
+            height: 400px;
+        }
+        
         .corpo-texto {
             position: relative;
         }

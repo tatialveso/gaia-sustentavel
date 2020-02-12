@@ -122,6 +122,7 @@
     </style>
     @yield('sobre-assets')
     @yield('como-funciona-assets')
+    @yield('contato-assets')
 </head>
 
 <body>
@@ -217,6 +218,9 @@
     @yield('checkout')
     @yield('incluir-produto')
     @yield('perfil')
+    @yield('minha-loja')
+    @yield('meus-produtos')
+    @yield('meu-produto-edit')
 
 
     {{-- footer da página --}}

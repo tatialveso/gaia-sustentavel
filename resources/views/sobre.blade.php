@@ -10,6 +10,11 @@
 {{-- separando o css particular da página --}}
 @section('sobre-assets') 
     <style>
+        .imagem img {
+            object-fit: cover;
+            height: 400px;
+        }
+
         .quem-gaia .card-img {
             height: 400px;
             object-fit: cover;

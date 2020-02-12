@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/', 'HomeController@index');
+
+Route::auth();
+Auth::routes();
+
 Route::get('/sobre', function () {
     return view('sobre');
 });
@@ -19,8 +24,29 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-Route::get('/cadastro', 'UsuarioController@create');
-Route::post('/cadastro', 'UsuarioController@store');
+// CRUD DO PRODUTO
+Route::get('/meus-produtos', 'ProdutoController@index');
+Route::get('/incluir-produto','ProdutoController@create');
+Route::post('/incluir-produto','ProdutoController@store');
+Route::get('/produto/{id}', 'ProdutoController@show');
+Route::get('/meus-produtos/{id}', 'ProdutoController@edit');
+Route::patch('/meus-produtos/{id}', 'ProdutoController@update');
+Route::delete('/meus-produtos/delete/{id}', 'ProdutoController@destroy');
+
+// CRUD DE CONTATOS
+Route::get('/contato', 'ContatoController@create');
+Route::post('/contato', 'ContatoController@store');
+
+
+
+
+
+Route::get('/cadastro', function () {
+    return view('cadastro');
+});
+
+Route::get('/cadastro-usuario', 'UsuarioController@create');
+Route::post('/cadastro-usuario', 'UsuarioController@store');
 Route::get('/configuracoes/{id}', 'UsuarioController@edit');
 Route::put('/configuracoes/{id}', 'UsuarioController@update');
 Route::delete('/delete/{id}', 'UsuarioController@destroy');
@@ -28,54 +54,40 @@ Route::delete('/delete/{id}', 'UsuarioController@destroy');
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index');
 
-//ROTAS PARA CRUD DE LOJA
-// Cadastro de Loja
-Route::get('/cadastro', 'CadastroController@create');
-Route::post('/cadastro', 'CadastroController@store');
 
-// Configurações de dados da Loja
+
+
+
+// Route::get('/cadastro', 'CadastroController@create');
+// Route::post('/cadastro', 'CadastroController@store');
+Route::get('/loja/{id}', 'LojaController@show');
 Route::get('/minha-loja/{id}', 'LojaController@edit');
 Route::patch('/minha-loja/{id}', 'LojaController@update');
 Route::delete('/delete/{id}', 'LojaController@destroy');
 
-// Vendas da Loja
-Route::get('/historico-vendas', 'CadastroController@index'); //Editar
-// Incluir produtos da Loja
-Route::get('/incluir-produto', 'ConfiguracoesLojaController@index'); //Editar
+
+
+
 
 // Avaliacao loja
-Route::post('/avaliacao-loja','LojaController@store');
+Route::get('/loja/{id}','AvaliacaoLojaController@create');
+Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
-// ROTAS PARA CRUD DE PRODUTO
 
-// Incluir produto
 
-Route::get('/incluir-produto','IncluirController@create');
-Route::post('/incluir-produto','IncluirController@store');
-// Página do produto
-Route::get('/produto/{id}', 'ProdutoController@index');
+
 // Catálogo de higiene pessoal
 Route::get('/higiene-pessoal', 'PessoalController@index');
 // Catálogo de casa e ambiente
 Route::get('/casa-ambiente', 'CasaController@index');
 
 // Avaliacao produto
-Route::post('/avaliacao-produto','ProdutoController@store');
-
-// Página inicial
-Route::get('/', 'HomeController@index');
+Route::post('/avaliacaoProduto','ProdutoController@store');
 
 // Página inicial logado
 Route::get('/perfil/{id}', 'PerfilController@index');
 
-// Página da loja
-Route::get('/loja/{id}', 'LojaController@index');
 
-// Contato
-Route::get('/contato', 'ContatoController@index');
-
-// Login do usuário
-Route::get('/login', 'LoginController@index');
 
 // Favoritos
 Route::get('/favoritos', 'FavoritoController@index');
@@ -95,6 +107,6 @@ Route::get('/checkout', 'CheckoutController@index');
 // Resumo do pedido
 Route::get('/resumo-pedido', 'ResumoController@index');
 
-// Fale Conosco
-Route::get('/fale-conosco', 'ContatoController@create');
-Route::post('/fale-conosco', 'ContatoController@store');
+
+
+

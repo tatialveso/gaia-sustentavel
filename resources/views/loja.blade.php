@@ -113,11 +113,11 @@
         </div>
 
         {{-- lógica: quando o botão acima for clicado o formulário seguinte irá aparecer --}}
-        <form action ="/avaliacao-loja" method="POST" id="form-loja">
+        <form action ="/loja/{id}" method="POST" id="form-loja">
             <div class="form-group">
             @csrf
                 <label>Título da avaliação</label>
-                <input type="text" class="form-control">
+                <input type="text" name="titulo" class="form-control">
             </div>
             <div class="form-group">
                 {{-- lógica: o usuário ir clicando no tanto de estrelas que ele quiser
@@ -132,7 +132,7 @@
             </div>
             <div class="form-group">
                 <label>Avaliação</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" name="description" rows="3"></textarea>
             </div>
             <div class="btn-produto">
                 <button type="submit" class="btn text-light">Enviar avaliação</button>
