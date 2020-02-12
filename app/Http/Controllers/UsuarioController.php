@@ -12,7 +12,7 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('cadastro-usuario');
+        
     }
 
     /**
@@ -22,9 +22,7 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $usuario = Usuario::create($request->all());
-
-        return redirect('/perfil/{id}');
+        
     }
 
     /**
@@ -34,7 +32,7 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id) {
-        return view('configuracoes');
+        
     }
 
     /**
@@ -45,9 +43,7 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $usuario->fill($request->all());
-        $usuario->save();
-        return redirect('/configuracoes/{id}');
+        
     }
 
     /**
@@ -57,9 +53,6 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $usuario = App/Usuario::find($id);
-        $usuario->delete();
-
-        return back();
+        
     }
 }

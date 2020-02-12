@@ -24,32 +24,36 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-// CRUD DO PRODUTO
+Route::get('/cadastro', function () {
+    return view('cadastro');
+});
+
+Route::get('/configuracoes/{id}', 'UsuarioController@edit');
+Route::put('/configuracoes/{id}', 'UsuarioController@update');
+Route::delete('/delete/{id}', 'UsuarioController@destroy');
+
+
+
+
+
+
+
 Route::get('/meus-produtos', 'ProdutoController@index');
 Route::get('/incluir-produto','ProdutoController@create');
-Route::post('/incluir-produto','ProdutoController@store');
-Route::get('/produto/{id}', 'ProdutoController@show');
-Route::get('/meus-produtos/{id}', 'ProdutoController@edit');
-Route::patch('/meus-produtos/{id}', 'ProdutoController@update');
-Route::delete('/meus-produtos/delete/{id}', 'ProdutoController@destroy');
 
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
+Route::post('/incluir-produto','ProdutoController@store');
+Route::get('/produto/{id}', 'ProdutoController@show');
 
 
 
 
-Route::get('/cadastro', function () {
-    return view('cadastro');
-});
 
-Route::get('/cadastro-usuario', 'UsuarioController@create');
-Route::post('/cadastro-usuario', 'UsuarioController@store');
-Route::get('/configuracoes/{id}', 'UsuarioController@edit');
-Route::put('/configuracoes/{id}', 'UsuarioController@update');
-Route::delete('/delete/{id}', 'UsuarioController@destroy');
+
+
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index');
