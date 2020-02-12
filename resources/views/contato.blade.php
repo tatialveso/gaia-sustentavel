@@ -7,6 +7,15 @@
 {{-- nome da página --}}
 <title>Contate a Gaia</title>
 
+@section('contato-assets')
+    <style>
+        .imagem img {
+            object-fit: cover;
+            height: 400px;
+        }    
+    </style>
+@endsection
+
 @section('contato')
     {{-- imagem de destaque da página --}}
     <div class="imagem">

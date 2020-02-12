@@ -122,6 +122,7 @@
     </style>
     @yield('sobre-assets')
     @yield('como-funciona-assets')
+    @yield('contato-assets')
 </head>
 
 <body>

@@ -55,19 +55,23 @@ Route::delete('/delete/{id}', 'UsuarioController@destroy');
 Route::get('/seguranca', 'SegurancaController@index');
 
 
+
+
+
 // Route::get('/cadastro', 'CadastroController@create');
 // Route::post('/cadastro', 'CadastroController@store');
+Route::get('/loja/{id}', 'LojaController@show');
 Route::get('/minha-loja/{id}', 'LojaController@edit');
 Route::patch('/minha-loja/{id}', 'LojaController@update');
 Route::delete('/delete/{id}', 'LojaController@destroy');
 
-// Vendas da Loja
-Route::get('/historico-vendas', 'CadastroController@index'); //Editar
+
+
+
 
 // Avaliacao loja
 Route::get('/loja/{id}','AvaliacaoLojaController@create');
 Route::post('/avaliacao-loja','AvaliacaoLojaController@store');
-
 
 
 
@@ -83,8 +87,6 @@ Route::post('/avaliacaoProduto','ProdutoController@store');
 // Página inicial logado
 Route::get('/perfil/{id}', 'PerfilController@index');
 
-// Página da loja
-Route::get('/loja/{id}', 'LojaController@index');
 
 
 // Favoritos
