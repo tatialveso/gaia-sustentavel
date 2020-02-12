@@ -13,8 +13,12 @@ class IncluirController extends Controller
 
     public function store(Request $request)
     {        
-        $produto = Produto::create($request->all());
+        $data = $request->all();
         
+        $produto = Produto::make($data);
+        $produto->store_id = 1; //TODO pegar usuario da sessão.
+        $produto->save();
+
         return redirect('/');
     }
 }

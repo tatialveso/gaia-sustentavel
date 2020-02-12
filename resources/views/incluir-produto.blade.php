@@ -89,14 +89,15 @@
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
-                    <select class="form-control">
-                        <option>Higiene Pessoal</option>
-                        <option>Casa e ambiente</option>
+                    <select type="text" name="category_id"class="form-control">
+                    @foreach($categories as $category)
+                        <option value='{{ $category->id}}'>{{ $category->name }}</option>
+                    @endforeach
                     </select>
                 </div>
                 <div class="col-6 form-group">
                     <label><b>Subcategoria</b></label>
-                    <select class="form-control">
+                    <select type="text" name="subcategory_id" class="form-control">
                         <option>Higiene Pessoal</option>
                         <option>Casa e ambiente</option>
                     </select>

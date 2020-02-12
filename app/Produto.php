@@ -6,25 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-    protected $fillable = ['name', 'price', 'description', 'quantity'];
+    protected $table="products";
+    protected $fillable = ['name', 'price', 'description', 'quantity', 'category_id', 'subcategory_id'];
 
     public function avaliacaoProduto () {
-        return $this->hasMany('app\AvaliacaoProduto', 'avaliacao_produto_id', 'id');
+        return $this->hasMany('app\AvaliacaoProduto', 'evaluation_product_id', 'id');
     }
 
     public function pedido () {
-        return $this->hasMany('app\Pedido', 'pedido_id', 'id');
+        return $this->hasMany('app\Pedido', 'product_id', 'id');
     }
 
     public function subcategoria () {
-        return $this->belongsTo('app\Subcategoria', 'subcategoria_id', 'id');
+        return $this->belongsTo('app\Subcategoria', 'subcategory_id', 'id');
     }
 
     public function categoria () {
-        return $this->belongsTo('app\Categoria', 'categoria_id', 'id');
+        return $this->belongsTo('app\Categoria', 'category_id', 'id');
     }
 
     public function Loja () {
-        return $this->belongsTo('app\Loja', 'loja_id', 'id');
+        return $this->belongsTo('app\Loja', 'store_id', 'id');
     }
 }
