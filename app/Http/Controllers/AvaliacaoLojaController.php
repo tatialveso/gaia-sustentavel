@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class AvaliacaoLojaController extends Controller
 {
+    // protected $request;
+
+    // public function __construct(Request $request){
+    //     dd($request);
+    //     $this->request = $request;
+    // }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,9 +31,13 @@ class AvaliacaoLojaController extends Controller
      */
     public function store(Request $request)
     {
-        $avaliacaoLoja = AvaliacaoLoja::create($request->all());
 
-    return redirect('/loja/{id}');
+        dd($request->all());
+
+    //     $avaliacaoLoja = AvaliacaoLoja::create($request->all());
+
+    // return redirect('/loja/{id}');
     }
+
 
 }

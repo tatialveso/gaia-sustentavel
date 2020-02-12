@@ -71,7 +71,7 @@ Route::delete('/delete/{id}', 'LojaController@destroy');
 
 // Avaliacao loja
 Route::get('/loja/{id}','AvaliacaoLojaController@create');
-Route::post('/avaliacao-loja','AvaliacaoLojaController@store');
+Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
 
 
