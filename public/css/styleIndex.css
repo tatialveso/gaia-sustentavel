@@ -1,5 +1,3 @@
-/* imagem principal da página */
-
 header>img {
     padding: 0;
     margin: 0;
@@ -15,8 +13,6 @@ header>img {
     height: 200px;
 }
 
-/* faixa verde com título */
-
 .titulo {
     height: 50px;
     background-color: #54775e;
@@ -30,8 +26,6 @@ header>img {
     justify-content: center;
     align-items: center;
 }
-
-/* produtos */
 
 .btn-produto {
     display: flex;
@@ -55,9 +49,9 @@ button a:hover {
     text-decoration: none;
 }
 
-
-
-
+.btn-produto .btn-link:hover {
+    text-decoration: none;
+}
 
 /* header responsivo */
 
