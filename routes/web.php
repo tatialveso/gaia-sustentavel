@@ -24,6 +24,23 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
+// CRUD DO PRODUTO
+Route::get('/meus-produtos', 'ProdutoController@index');
+Route::get('/incluir-produto','ProdutoController@create');
+Route::post('/incluir-produto','ProdutoController@store');
+Route::get('/produto/{id}', 'ProdutoController@show');
+Route::get('/meus-produtos/{id}', 'ProdutoController@edit');
+Route::patch('/meus-produtos/{id}', 'ProdutoController@update');
+Route::delete('/meus-produtos/delete/{id}', 'ProdutoController@destroy');
+
+// CRUD DE CONTATOS
+Route::get('/contato', 'ContatoController@create');
+Route::post('/contato', 'ContatoController@store');
+
+
+
+
+
 Route::get('/cadastro', function () {
     return view('cadastro');
 });
@@ -53,13 +70,6 @@ Route::post('/avaliacao-loja','AvaliacaoLojaController@store');
 
 
 
-Route::get('/meus-produtos', 'ProdutoController@index');
-Route::get('/incluir-produto','ProdutoController@create');
-Route::post('/incluir-produto','ProdutoController@store');
-Route::get('/produto/{id}', 'ProdutoController@show');
-Route::get('/meus-produtos/{id}', 'ProdutoController@edit');
-Route::patch('/meus-produtos/{id}', 'ProdutoController@update');
-Route::delete('/meus-produtos/delete/{id}', 'ProdutoController@destroy');
 
 
 // Catálogo de higiene pessoal
@@ -76,8 +86,6 @@ Route::get('/perfil/{id}', 'PerfilController@index');
 // Página da loja
 Route::get('/loja/{id}', 'LojaController@index');
 
-// Contato
-Route::get('/contato', 'ContatoController@index');
 
 // Favoritos
 Route::get('/favoritos', 'FavoritoController@index');
@@ -97,8 +105,6 @@ Route::get('/checkout', 'CheckoutController@index');
 // Resumo do pedido
 Route::get('/resumo-pedido', 'ResumoController@index');
 
-// Fale Conosco
-Route::get('/fale-conosco', 'ContatoController@create');
-Route::post('/fale-conosco', 'ContatoController@store');
+
 
 
