@@ -6,9 +6,9 @@
 
 <title>Minhas configurações</title>
 
-@section('configuracoes')
+@section('minha-loja')
     <div class="titulo">
-        <h5>Minhas configurações</h5>
+        <h5>Minha loja</h5>
     </div>
 
     <div class="pagina container">

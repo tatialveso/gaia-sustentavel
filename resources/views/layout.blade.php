@@ -217,6 +217,9 @@
     @yield('checkout')
     @yield('incluir-produto')
     @yield('perfil')
+    @yield('minha-loja')
+    @yield('meus-produtos')
+    @yield('meu-produto-edit')
 
 
     {{-- footer da página --}}

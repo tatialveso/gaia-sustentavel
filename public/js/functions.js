@@ -11,9 +11,14 @@ $('#avaliar-produto').click(function() {
 // no clique em "cliente" ir para a próxima página (de cadastro do usuário)
 $('#cliente').click(function(){
     window.location.href='/register';
- })
+})
 
 // no clique em "vendedor" ir para a próxima página (de cadastro com duas etapas)
 $('#vendedor').click(function(){
     window.location.href='/';
- })
+})
+
+// ao clicar aparece o campo para preencher o valor do frete
+$('#frete').click(function() {
+    $('#frete-valor').show();
+});

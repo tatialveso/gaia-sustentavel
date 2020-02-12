@@ -58,7 +58,7 @@ class LojaController extends Controller
      */
     public function edit($id)
     {
-        return view('configuracoesLoja');
+        return view('minha-loja');
     }
 
     /**

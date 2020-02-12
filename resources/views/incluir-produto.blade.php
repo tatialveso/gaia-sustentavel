@@ -42,14 +42,15 @@
     </header>
 
     <div class="titulo">
-        <h5>Passo 1: Fotos do produto</h5>
+        <h5>Incluir novo produto</h5>
     </div>
 
     {{-- campo para adicionar fotos --}}
     <div class="container">
-        <div class="jumbotron mt-5">
-            <div class="row">
-                <div class="col-md-6">
+        <form action="/incluir-produto" method="POST">
+            @csrf
+            <div class="row mt-4">
+                <div class="col-6">
                     <h5>Especificações</h5>
                     <ul>
                         <li><b>Tamanho:</b> mínimo de 580 pixels e máximo de 9000 pixels. Recomendamos 1000 pixels;</li>
@@ -57,35 +58,16 @@
                         <li><b>Peso:</b> as fotos poderão ter no máximo 10MB.</li>
                     </ul>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <img src="/img/paginas/incluir-produto.png" class="card-img-top img-incluir" alt="">
-                        <div class="card-body">
-                            <p class="text-center"><b>Capriche! As fotos são a primeira impressão que o cliente terá
-                                    sobre seu produto!</b>
-                            </p>
-                            <form>
-                                <div class="form-group">
-                                    <input type="file" class="form-control-file">
-                                </div>
-                            </form>
-                        </div>
+                
+                <div class="col-6 align-middle">
+                    <label for=""><b>Foto do produto</b></label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Escolher foto</label>
                     </div>
                 </div>
-
-                
-
             </div>
-        </div>
-    </div>
 
-    <div class="titulo">
-        <h5>Passo 2: Informações do Produto</h5>
-    </div>
-    
-    <div class="container">
-        <form action=" /incluir-produto" method="POST" class="mt-4">
-        @csrf
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
@@ -105,27 +87,40 @@
             <div class="form-row">
                 <div class="col-8 form-group">
                     <label><b>Nome do produto</b></label>
-                    <input type="text" name="name" value="{{ old('name', isset($produto) ? $produto->name : '') }}" class="form-control" placeholder="Título do Produto">
+                    <input type="text" name="name" class="form-control" placeholder="Título do Produto">
                 </div>
                 <div class="col-4 form-group">
                     <label><b>Preço</b></label>
-                    <input type="number" name="price" @if(isset($produto)) value="{{ $produto->price }}" @endif class="form-control" placeholder="Preço do produto">
+                    <input type="number" name="price" class="form-control" placeholder="Preço do produto">
                 </div>
             </div>
             <div class="form-group">
                 <label><b>Descrição do produto</b></label>
-                <textarea class="form-control" name="description" @if(isset($produto)) value="{{ $produto->description }}" @endif placeholder="Escreva aqui as características do seu produto"></textarea>
+                <textarea class="form-control" name="description" placeholder="Escreva aqui as características do seu produto"></textarea>
             </div>
-            
-            <div class="form-row">
-                <div class="col-3 form-group">
-                    <label><b>Estoque</b></label>
-                    <input type="number" name="quantity" @if(isset($produto)) value="{{ $produto->quantity }}" @endif class="form-control" placeholder="Quantidade em estoque">
-                </div>
-                
+            <div class="form-group">
+                <label><b>Composição do produto</b></label>
+                <textarea class="form-control" name="composition" placeholder="Escreva aqui os ingredientes do seu produto"></textarea>
+            </div>
+            <label for=""><b>Frete</b></label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="" value="">
+                <label class="form-check-label" for="">
+                  Frete grátis para todo o território
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="" value="" id="frete">
+                <label class="form-check-label" for="">
+                  Frete fixo para todo o território
+                </label>
+            </div>
+            <div class="form-group col-3"  id="frete-valor" style="display:none;">
+                <label for=""><b>Valor do frete</b></label>
+                <input type="number" class="form-control" placeholder="Insira o valor do frete">
+            </div>
     
-            <button type="submit" class=" mt-4 mb-5 btn text-light">Cadastrar novo produto</button>
-
+            <button type="submit" class="mt-4 mb-5 btn text-light">Cadastrar novo produto</button>
         </form>
     </div>
 
