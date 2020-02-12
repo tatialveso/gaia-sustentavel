@@ -7,3 +7,13 @@ $('#avaliar-loja').click(function() {
 $('#avaliar-produto').click(function() {
     $('#form-produto').show();
 });
+
+// no clique em "cliente" ir para a próxima página (de cadastro do usuário)
+$('#cliente').click(function(){
+    window.location.href='/register';
+ })
+
+// no clique em "vendedor" ir para a próxima página (de cadastro com duas etapas)
+$('#vendedor').click(function(){
+    window.location.href='/';
+ })

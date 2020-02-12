@@ -19,8 +19,12 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-Route::get('/cadastro', 'UsuarioController@create');
-Route::post('/cadastro', 'UsuarioController@store');
+Route::get('/cadastro', function () {
+    return view('cadastro');
+});
+
+Route::get('/cadastro-usuario', 'UsuarioController@create');
+Route::post('/cadastro-usuario', 'UsuarioController@store');
 Route::get('/configuracoes/{id}', 'UsuarioController@edit');
 Route::put('/configuracoes/{id}', 'UsuarioController@update');
 Route::delete('/delete/{id}', 'UsuarioController@destroy');
@@ -30,7 +34,7 @@ Route::get('/seguranca', 'SegurancaController@index');
 
 //ROTAS PARA CRUD DE LOJA
 // Cadastro de Loja
-Route::get('/cadastro', 'LojaController@index');
+// Route::get('/cadastro', 'LojaController@index');
 // Configurações de dados da Loja
 Route::get('/minha-loja', 'LojaController@edit');
 // Vendas da Loja
@@ -62,9 +66,6 @@ Route::get('/loja/{id}', 'LojaController@index');
 
 // Contato
 Route::get('/contato', 'ContatoController@index');
-
-// Login do usuário
-Route::get('/login', 'LoginController@index');
 
 // Favoritos
 Route::get('/favoritos', 'FavoritoController@index');

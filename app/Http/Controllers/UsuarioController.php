@@ -12,7 +12,7 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('cadastro');
+        return view('cadastro-usuario');
     }
 
     /**
