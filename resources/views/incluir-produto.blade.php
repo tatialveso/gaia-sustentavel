@@ -84,7 +84,8 @@
     </div>
     
     <div class="container">
-        <form action="" class="mt-4">
+        <form action=" /incluir-produto" method="POST" class="mt-4">
+        @csrf
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
@@ -104,84 +105,27 @@
             <div class="form-row">
                 <div class="col-8 form-group">
                     <label><b>Nome do produto</b></label>
-                    <input type="text" class="form-control" placeholder="Título do Produto">
+                    <input type="text" name="name" value="{{ old('name', isset($produto) ? $produto->name : '') }}" class="form-control" placeholder="Título do Produto">
                 </div>
                 <div class="col-4 form-group">
                     <label><b>Preço</b></label>
-                    <input type="number" class="form-control" placeholder="Preço do produto">
+                    <input type="number" name="price" @if(isset($produto)) value="{{ $produto->price }}" @endif class="form-control" placeholder="Preço do produto">
                 </div>
             </div>
             <div class="form-group">
                 <label><b>Descrição do produto</b></label>
-                <textarea class="form-control" placeholder="Escreva aqui as características do seu produto"></textarea>
+                <textarea class="form-control" name="description" @if(isset($produto)) value="{{ $produto->description }}" @endif placeholder="Escreva aqui as características do seu produto"></textarea>
             </div>
-            <div class="form-group">
-                <label><b>Composição do produto</b></label>
-                <textarea class="form-control" placeholder="Escreva aqui a composição do seu produto"></textarea>
-            </div>
-            <div class="form-row">
-                <div class="col-3 form-group">
-                    <label><b>Largura do produto</b></label>
-                    <input type="number" class="form-control" placeholder="Em centímetros">
-                </div>
-                <div class="col-3 form-group">
-                    <label><b>Altura do produto</b></label>
-                    <input type="number" class="form-control" placeholder="Em centímetros">
-                </div>
-                <div class="col-3 form-group">
-                    <label><b>Comprimento do produto</b></label>
-                    <input type="number" class="form-control" placeholder="Em centímetros">
-                </div>
-                <div class="col-3 form-group">
-                    <label><b>Peso do produto</b></label>
-                    <input type="number" class="form-control" placeholder="Em gramas">
-                </div>
-            </div>
+            
             <div class="form-row">
                 <div class="col-3 form-group">
                     <label><b>Estoque</b></label>
-                    <input type="number" class="form-control" placeholder="Quantidade em estoque">
+                    <input type="number" name="quantity" @if(isset($produto)) value="{{ $produto->quantity }}" @endif class="form-control" placeholder="Quantidade em estoque">
                 </div>
-                <div class="col-4 form-group">
-                    <label><b>O seu produto é certificado?</b></label>
-                    <select name="" id="" class="form-control">
-                        <option value="">Selecione uma resposta</option>
-                        <option value="">Sim</option>
-                        <option value="">Não</option>
-                    </select>
-                </div>
-                <div class="col-5 form-group">
-                    <label><b>Que tipo de certificação?</b></label>
-                    <input type="text" class="form-control" placeholder="Descreva a sua certificação">
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="titulo mt-3">
-        <h5>Passo 3: Opções de Frete</h5>
-    </div>
-    
-    <div class="container">
-        <form action="" class="mt-3">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" value="">
-                <label class="form-check-label">Frete a pagar</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" value="">
-                <label class="form-check-label">Frete Grátis para todos os estados</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" value="">
-                <label class="form-check-label">Frete Grátis por estados selecionados</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" value="">
-                <label class="form-check-label">Frete Grátis acima de um valor mínimo</label>
-            </div>
+                
     
             <button type="submit" class=" mt-4 mb-5 btn text-light">Cadastrar novo produto</button>
+
         </form>
     </div>
 

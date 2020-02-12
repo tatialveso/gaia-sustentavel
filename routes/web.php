@@ -34,20 +34,28 @@ Route::get('/seguranca', 'SegurancaController@index');
 
 //ROTAS PARA CRUD DE LOJA
 // Cadastro de Loja
-// Route::get('/cadastro', 'LojaController@index');
-// Configurações de dados da Loja
-Route::get('/minha-loja', 'LojaController@edit');
-// Vendas da Loja
-// Route::get('/historico-vendas', 'CadastroController@index');
-// Incluir produtos da Loja
-Route::get('/incluir-produto', 'ConfiguracoesLojaController@index');
+Route::get('/cadastro', 'CadastroController@create');
+Route::post('/cadastro', 'CadastroController@store');
 
+// Configurações de dados da Loja
+Route::get('/minha-loja/{id}', 'LojaController@edit');
+Route::patch('/minha-loja/{id}', 'LojaController@update');
+Route::delete('/delete/{id}', 'LojaController@destroy');
+
+// Vendas da Loja
+Route::get('/historico-vendas', 'CadastroController@index'); //Editar
+// Incluir produtos da Loja
+Route::get('/incluir-produto', 'ConfiguracoesLojaController@index'); //Editar
+
+// Avaliacao loja
+Route::post('/avaliacao-loja','LojaController@store');
 
 // ROTAS PARA CRUD DE PRODUTO
 
 // Incluir produto
 
 Route::get('/incluir-produto','IncluirController@create');
+Route::post('/incluir-produto','IncluirController@store');
 // Página do produto
 Route::get('/produto/{id}', 'ProdutoController@index');
 // Catálogo de higiene pessoal
@@ -90,3 +98,7 @@ Route::get('/', 'HomeController@index');
 
 Route::auth();
 Auth::routes();
+
+// Fale Conosco
+Route::get('/fale-conosco', 'ContatoController@create');
+Route::post('/fale-conosco', 'ContatoController@store');
