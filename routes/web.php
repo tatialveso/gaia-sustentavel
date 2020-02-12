@@ -48,7 +48,8 @@ Route::get('/historico-vendas', 'CadastroController@index'); //Editar
 Route::get('/incluir-produto', 'ConfiguracoesLojaController@index'); //Editar
 
 // Avaliacao loja
-Route::post('/avaliacao-loja','LojaController@store');
+Route::get('/loja/{id}','AvaliacaoLojaController@create');
+Route::post('/avaliacao-loja','AvaliacaoLojaController@store');
 
 // ROTAS PARA CRUD DE PRODUTO
 
