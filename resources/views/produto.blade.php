@@ -109,7 +109,7 @@
                     <div class="form-group">
                     @csrf
                         <label>Título</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="name" class="form-control">
                     </div>
                     <div class="form-group">
                         <ul class="avaliacao list-inline list-unstyled my-1">
@@ -122,7 +122,7 @@
                     </div>
                     <div class="form-group">
                         <label>Avaliação</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" name="description" rows="3"></textarea>
                     </div>
                     <div class="btn-produto">
                         <button type="submit" class="btn text-light">Enviar avaliação</button>

@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AvaliacaoLoja extends Model
 {
-    protected $fillable = ['_token'];
+    protected $table = "evaluations_stores";
+    protected $fillable = ['name', 'description'];
 
     public function loja () {
-        return $this->belongsTo('app\Loja', 'loja_id', 'id');
+        return $this->belongsTo('app\Loja', 'store_id', 'id');
     }
 }
