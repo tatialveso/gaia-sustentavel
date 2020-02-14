@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->integer('number');
             $table->string('complement');
+            $table->string('neighbourhood');
             $table->string('city');
             $table->bigInteger('uf_id');
             $table->string('cep', 8);
