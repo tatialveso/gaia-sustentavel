@@ -77,6 +77,9 @@ Route::delete('/delete/{id}', 'LojaController@destroy');
 Route::get('/loja/{id}','AvaliacaoLojaController@create');
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
+// Avaliacao produto
+Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
+Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 
 
@@ -85,8 +88,7 @@ Route::get('/higiene-pessoal', 'PessoalController@index');
 // Catálogo de casa e ambiente
 Route::get('/casa-ambiente', 'CasaController@index');
 
-// Avaliacao produto
-Route::post('/avaliacaoProduto','ProdutoController@store');
+
 
 // Página inicial logado
 Route::get('/perfil/{id}', 'PerfilController@index');
