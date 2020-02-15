@@ -117,7 +117,7 @@
             <div class="form-group">
             @csrf
                 <label>Título da avaliação</label>
-                <input type="text" name="titulo" class="form-control">
+                <input type="text" name="name" class="form-control">
             </div>
             <div class="form-group">
                 {{-- lógica: o usuário ir clicando no tanto de estrelas que ele quiser
