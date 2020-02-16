@@ -16,7 +16,7 @@ class IncluirController extends Controller
         $data = $request->all();
         
         $produto = Produto::make($data);
-        $produto->store_id = 1; //TODO pegar usuario da sessão.
+        $produto->store_id = 1; //TODO pegar user da sessão.
         $produto->save();
 
         return redirect('/');

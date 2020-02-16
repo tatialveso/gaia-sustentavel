@@ -28,10 +28,10 @@ Route::get('/cadastro', function () {
     return view('cadastro');
 });
 
-Route::get('/configuracoes', 'UsuarioController@index')->middleware('auth');
-Route::get('/configuracoes/{id}', 'UsuarioController@edit')->middleware('auth');
-Route::put('/configuracoes/{id}', 'UsuarioController@update')->middleware('auth');
-Route::delete('/configuracoes', 'UsuarioController@destroy')->middleware('auth');
+Route::get('/configuracoes', 'UserController@index')->middleware('auth');
+Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
+Route::post('/configuracoes/{id}', 'UserController@update')->middleware('auth');
+Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
