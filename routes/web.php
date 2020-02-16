@@ -53,15 +53,15 @@ Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 Route::get('/loja/{id}', 'LojaController@show');
 Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
 Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
-Route::delete('/delete/{id}', 'LojaController@destroy')->middleware('auth');
+Route::delete('/minha-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 // Avaliacao loja
-Route::get('/loja/{id}','AvaliacaoLojaController@create');
-Route::post('/loja/{id}','AvaliacaoLojaController@store')->middleware('auth');
+Route::get('/avaliacao-loja/{id}','AvaliacaoLojaController@create');
+Route::post('/avaliacao-loja/{id}','AvaliacaoLojaController@store')->middleware('auth');
 
 // Avaliacao produto
-Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/produto/{id}','AvaliacaoProdutoController@store')->middleware('auth');
+Route::get('/avaliacao-produto/{id}', 'AvaliacaoProdutoController@create');
+Route::post('/avaliacao-produto/{id}','AvaliacaoProdutoController@store')->middleware('auth');
 
 // Catálogo de higiene pessoal
 Route::get('/higiene-pessoal', 'PessoalController@index');
