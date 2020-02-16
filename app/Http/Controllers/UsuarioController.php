@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller {
+
+    function index() {
+        return view('configuracoes');
+    }
     
     /**
      * Show the form for creating a new resource.
