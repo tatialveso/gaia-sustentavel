@@ -18,6 +18,9 @@ class CategoriasCreate extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        DB::insert('insert into categories (name) values (?)', ['Higiene Pessoal']);
+        DB::insert('insert into categories (name) values (?)', ['Casa e Ambiente']);
     }
 
     /**
@@ -27,6 +30,6 @@ class CategoriasCreate extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias');
+        Schema::dropIfExists('categories');
     }
 }

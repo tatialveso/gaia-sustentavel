@@ -39,14 +39,23 @@ Route::delete('/delete/{id}', 'UsuarioController@destroy');
 
 
 Route::get('/meus-produtos', 'ProdutoController@index');
-Route::get('/incluir-produto','ProdutoController@create');
+//Route::get('/incluir-produto','ProdutoController@create');
 
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
-Route::post('/incluir-produto','ProdutoController@store');
+//Route::post('/incluir-produto','ProdutoController@store');
 Route::get('/produto/{id}', 'ProdutoController@show');
+
+// CRUD DE PRODUTOS
+
+Route::get('/incluir-produto','IncluirController@create');
+Route::post('/incluir-produto','IncluirController@store');
+Route::get('/incluir-produto/{id}','IncluirController@show');
+Route::get('/incluir-produto/{id}/edit','IncluirController@edit');
+Route::patch('/incluir-produto/(id}','IncluirController@update');
+Route::delete('/incluir-produto/{id}','IncluirController@destroy');
 
 
 
