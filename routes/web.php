@@ -54,8 +54,8 @@ Route::get('/produto/{id}', 'ProdutoController@show');
 
 Route::get('/incluir-produto','IncluirController@create');
 Route::post('/incluir-produto','IncluirController@store');
-Route::get('/meus-produtos','IncluirController@show');
-Route::get('/incluir-produto/{id}/edit','IncluirController@edit');
+Route::get('/meus-produtos/{id}','IncluirController@show');
+Route::get('/meu-produto/{id}/edit','IncluirController@edit');
 Route::patch('/incluir-produto/(id}','IncluirController@update');
 Route::delete('/incluir-produto/{id}','IncluirController@destroy');
 

@@ -26,15 +26,15 @@
                 </div>
                 <div class="form-group">
                     <label for="" class="mt-3"><b>Nome do produto</b></label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="{{$product["name"]}}">
                 </div>
                 <div class="form-group">
                     <label for=""><b>Preço</b></label>
-                    <input type="number" class="form-control">
+                    <input type="number" class="form-control" value="{{$product["price"]}}">
                 </div>
                 <div class="form-group">
                     <label><b>Descrição do produto</b></label>
-                    <textarea class="form-control" name="description" value=""></textarea>
+                    <textarea class="form-control" name="description" value="{{$product["description"]}}"></textarea>
                 </div>
                 <div class="form-group">
                     <label><b>Composição do produto</b></label>

@@ -38,11 +38,14 @@ class IncluirController extends Controller
     }
 
     public function show($id) {
-        return redirect('/');
+        $products = \App\Produto::all();
+        return view('meus-produtos',compact('products'));
     }
 
     public function edit($id) {
-        return view('form', ['inclluir-produto' => $produto]);
+        $products = \App\Produto::all();
+        return view('meu-produto-edit',compact('products'));
+
 
     }    
     public function update(Request $request, Produto $produto)
@@ -50,11 +53,11 @@ class IncluirController extends Controller
             $produto->fill($request->all());
             $produto->save();
     
-            return redirect('/');
+            return redirect('/meus-produtos/{id}');
         }        
 
     public function destroy($id) {
         $produto->delete();
-        return redirect ('incluir-produto');
+        return redirect ('/meus-produtos/{id}');
     }
 }
