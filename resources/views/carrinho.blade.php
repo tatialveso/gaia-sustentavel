@@ -60,7 +60,7 @@
                     <p class="lead"><b>Total da compra:</b> </p>
                     <div class="row">
                         <div class="col-6 mt-4">
-                            <button type="button" class="btn" style="background-color: #54775e;"><a class="text-light" href="#">Continuar comprando</a></button>
+                            <button type="button" class="btn" style="background-color: #54775e;"><a class="text-light" href="{{ url('/') }}">Continuar comprando</a></button>
                         </div>
                         <div class="col-6 mt-4">
                             <button type="button" class="btn" style="background-color: #54775e;"><a class="text-light" href="/checkout">Finalizar compra</a></button>
