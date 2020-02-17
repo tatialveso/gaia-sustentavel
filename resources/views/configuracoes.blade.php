@@ -16,10 +16,12 @@
 
         <main>
             <form action="" method="POST">
+                @csrf
+                @method('PUT')
                 <h1 class="mb-3">Dados pessoais</h1>
                 <div class="form-group">
                     <label for="name"><b>Nome completo</b></label>
-                    <input type="text" class="form-control" name="name" id="name">
+                    <input type="text" class="form-control" name="name" id="name"  value="{{$user->name}}">
                 </div>
                 <div class="form-group">
                     <label for=""><b>Data de nascimento</b></label>
@@ -50,7 +52,7 @@
                     </div>
                     <div class="col-4 form-group">
                         <label><b>Bairro</b></label>
-                        <input type="text" class="form-control" name="complemento" placeholder="">
+                        <input type="text" class="form-control" name="bairro" placeholder="">
                     </div>
                 </div>
                 <div class="form-row">
@@ -62,33 +64,9 @@
                         <label><b>Estado</b></label>
                         <select class="form-control" name="uf_id">
                             <option disabled selected>Selecione um UF</option>
-                            <option>AC</option>
-                            <option>AL</option>
-                            <option>AM</option>
-                            <option>AP</option>
-                            <option>BA</option>
-                            <option>CE</option>
-                            <option>DF</option>
-                            <option>ES</option>
-                            <option>GO</option>
-                            <option>MA</option>
-                            <option>MG</option>
-                            <option>MS</option>
-                            <option>MT</option>
-                            <option>PA</option>
-                            <option>PB</option>
-                            <option>PE</option>
-                            <option>PI</option>
-                            <option>PR</option>
-                            <option>RJ</option>
-                            <option>RN</option>
-                            <option>RO</option>
-                            <option>RR</option>
-                            <option>RS</option>
-                            <option>SC</option>
-                            <option>SE</option>
-                            <option>SP</option>
-                            <option>TO</option>
+                            @foreach($ufs as $uf)
+                                <option value='{{$uf->id}}'>{{$uf->state}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-3 form-group">
