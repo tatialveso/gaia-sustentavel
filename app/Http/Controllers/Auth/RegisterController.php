@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string'],
             'number' => ['required', 'numeric'],
             'complement' => ['string'],
-            'uf_id' => ['required'],
+            'ufs_id' => ['required'],
             'neighbourhood' => ['string', 'required'],
             'city' => ['required', 'string'],
             'cep' => ['required', 'max:8', 'numeric'],
@@ -71,8 +71,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+
+    protected function create(array $data) {
+        $ufs = \App\UF::all();
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -82,7 +84,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'number' => $data['number'],
             'complement' => $data['complement'],
-            'uf_id' => $data['uf_id'],
+            'ufs_id' => $data['ufs_id'],
             'neighbourhood' => $data['neighbourhood'],
             'city' => $data['city'],
             'cep' => $data['cep'],

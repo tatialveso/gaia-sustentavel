@@ -28,10 +28,12 @@ Route::get('/cadastro', function () {
     return view('cadastro');
 });
 
-Route::get('/configuracoes/{id}', 'UsuarioController@edit');
-Route::put('/configuracoes/{id}', 'UsuarioController@update');
-Route::delete('/delete/{id}', 'UsuarioController@destroy');
+Route::get('/configuracoes', 'UserController@index')->middleware('auth');
+Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
+Route::post('/configuracoes/{id}', 'UserController@update')->middleware('auth');
+Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
 
+Route::get('/logout', 'Auth\LoginController@logout');
 
 
 
@@ -52,7 +54,7 @@ Route::get('/produto/{id}', 'ProdutoController@show');
 
 Route::get('/incluir-produto','IncluirController@create');
 Route::post('/incluir-produto','IncluirController@store');
-Route::get('/incluir-produto/{id}','IncluirController@show');
+Route::get('/meus-produtos','IncluirController@show');
 Route::get('/incluir-produto/{id}/edit','IncluirController@edit');
 Route::patch('/incluir-produto/(id}','IncluirController@update');
 Route::delete('/incluir-produto/{id}','IncluirController@destroy');
@@ -65,63 +67,45 @@ Route::delete('/incluir-produto/{id}','IncluirController@destroy');
 
 
 // Segurança de dados do usuário
-Route::get('/seguranca', 'SegurancaController@index');
-
-
-
-
+Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // Route::get('/cadastro', 'CadastroController@create');
 // Route::post('/cadastro', 'CadastroController@store');
-Route::get('/loja/{id}', 'LojaController@show');
-Route::get('/minha-loja/{id}', 'LojaController@edit');
-Route::patch('/minha-loja/{id}', 'LojaController@update');
-Route::delete('/delete/{id}', 'LojaController@destroy');
-
-
-
-
+Route::get('/loja/{id}', 'LojaController@index');
+Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
+Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
+Route::delete('/minha-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 // Avaliacao loja
-Route::get('/loja/{id}','AvaliacaoLojaController@create');
-Route::post('/loja/{id}','AvaliacaoLojaController@store');
+Route::get('/avaliacao-loja/{id}','AvaliacaoLojaController@create');
+Route::post('/avaliacao-loja/{id}','AvaliacaoLojaController@store');
 
 // Avaliacao produto
-Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/produto/{id}','AvaliacaoProdutoController@store');
-
-
+Route::get('/avaliacao-produto/{id}', 'AvaliacaoProdutoController@create');
+Route::post('/avaliacao-produto/{id}','AvaliacaoProdutoController@store');
 
 // Catálogo de higiene pessoal
 Route::get('/higiene-pessoal', 'PessoalController@index');
 // Catálogo de casa e ambiente
 Route::get('/casa-ambiente', 'CasaController@index');
 
-
-
 // Página inicial logado
-Route::get('/perfil/{id}', 'PerfilController@index');
-
-
+Route::get('/perfil/{id}', 'PerfilController@index')->middleware('auth');
 
 // Favoritos
-Route::get('/favoritos', 'FavoritoController@index');
+Route::get('/favoritos', 'FavoritoController@index')->middleware('auth');
 
 // Histórico de vendas
-Route::get('/historico-vendas', 'VendaController@index');
+Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
 
 // Histórico de compras
-Route::get('/historico-compras', 'CompraController@index');
+Route::get('/historico-compras', 'CompraController@index')->middleware('auth');
 
 // Carrinho de compras
 Route::get('/carrinho', 'CarrinhoController@index');
 
 // Checkout de compras
-Route::get('/checkout', 'CheckoutController@index');
+Route::get('/checkout', 'CheckoutController@index')->middleware('auth');
 
 // Resumo do pedido
-Route::get('/resumo-pedido', 'ResumoController@index');
-
-
-
-
+Route::get('/resumo-pedido', 'ResumoController@index')->middleware('auth');

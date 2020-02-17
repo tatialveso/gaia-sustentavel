@@ -17,18 +17,18 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('cpf', 11)->nullable();
+            $table->string('address')->nullable();
+            $table->integer('number')->nullable();
+            $table->string('complement')->nullable();
+            $table->string('neighbourhood')->nullable();
+            $table->string('city')->nullable();
+            $table->bigInteger('uf_id')->nullable();
+            $table->string('cep', 8)->nullable();
             $table->rememberToken();
-            $table->date('date_of_birth');
-            $table->string('cpf', 11);
-            $table->string('address');
-            $table->integer('number');
-            $table->string('complement');
-            $table->string('neighbourhood');
-            $table->string('city');
-            $table->bigInteger('uf_id');
-            $table->string('cep', 8);
             $table->timestamps();
         });
     }
