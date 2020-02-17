@@ -42,8 +42,8 @@ Route::get('/incluir-produto','ProdutoController@create')->middleware('auth');
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
-Route::post('/incluir-produto','ProdutoController@store')->middleware('auth');
-Route::get('/produto/{id}', 'ProdutoController@show')->middleware('auth');
+Route::post('/incluir-produto','ProdutoController@store');
+Route::get('/produto/{id}', 'ProdutoController@index');
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
