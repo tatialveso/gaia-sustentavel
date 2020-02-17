@@ -48,7 +48,7 @@ Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
 //Route::post('/incluir-produto','ProdutoController@store');
-Route::get('/produto/{id}', 'ProdutoController@show');
+Route::get('/produto/{id}', 'ProdutoController@index');
 
 // CRUD DE PRODUTOS
 
