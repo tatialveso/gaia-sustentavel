@@ -53,8 +53,7 @@
                 <label for="password-confirm"><b>Confirme sua senha</b></label>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
             </div>
-            <!-- 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="date_of_birth"><b>Data de nascimento</b></label>
                 <input id="date_of_birth" type="date" class="form-control @error('password') is-invalid @enderror" name="date_of_birth" required>
                 @error('password')
@@ -110,7 +109,7 @@
             </div>
             <div class="form-group">
                 <label for="ufs_id"><b>UF</b></label>
-                <select name="ufs_id" id="">
+                <select class="form-control" name="ufs_id" id="">
                     <option selected disabled>Selecione uma opção</option>
                     @foreach ($ufs as $uf)
                         <option value="{{ $uf['id'] }}">{{ $uf['state'] }}</option>
@@ -130,7 +129,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-            </div> -->
+            </div> --}}
             <div class="form-group mb-0">
                 <div class="btn-produto d-flex justify-content-around">
                     <button type="submit" class="btn text-light">

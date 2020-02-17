@@ -135,7 +135,7 @@
             <li><a href="/carrinho"><i class="material-icons">
                         shopping_basket
                     </i></a></li>
-            <li><a href="/configuracoes"><i class="material-icons">
+            <li><a href="/login"><i class="material-icons">
                         person
                     </i></a></li>
         </ul>
