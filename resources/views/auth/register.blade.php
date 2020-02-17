@@ -108,11 +108,13 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="uf_id"><b>UF</b></label>
-                <select name="" id="">
-                    <option value=""></option>
+                <label for="ufs_id"><b>UF</b></label>
+                <select name="ufs_id" id="">
+                    <option selected disabled>Selecione uma opção</option>
+                    @foreach ($ufs as $uf)
+                        <option value="{{ $uf['id'] }}">{{ $uf['state'] }}</option>
+                    @endforeach
                 </select>
-                <input id="uf_id" type="number" class="form-control @error('password') is-invalid @enderror" name="uf_id" required>
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

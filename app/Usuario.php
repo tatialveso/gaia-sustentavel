@@ -15,4 +15,8 @@ class Usuario extends Model
     public function pedido () {
         return $this->HasMany('app\Pedido', 'pedido_id', 'id');
     }
+
+    public function uf() {
+        return $this->belongsTo('app\UF', 'uf_id', 'id');
+    }
 }
