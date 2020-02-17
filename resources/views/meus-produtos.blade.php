@@ -17,11 +17,12 @@
         <main>
             <h1>Meus produtos</h1>
             <div class="row">
+            @foreach ($products as $product)
                 <div class="col-6">
                     <div class="card">
                         <img src="#" class="card-img-top" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><a class="text-dark text-decoration-none">Nome do produto</a></h5>
+                            <h5 class="card-title"><a class="text-dark text-decoration-none">{{$product["name"]}}</a></h5>
                             <div class="btn-produto">
                                 <a href="/meus-produtos/{id}" class="btn text-light">Editar</a>
                                 <a href="/meus-produtos/delete/{id}" class="btn text-light" style="background-color: #8b0000;">Excluir</a>
@@ -29,6 +30,7 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </main>
     </div>

@@ -34,6 +34,12 @@
             background-color: #54775e;
         }
     </style>
+
+<!-- @php
+  $category = [(object)['1' => 'Higiene Pessoal', '2' => 'Casa e Ambiente']];
+  $subcategory = [(object)['1' => 'Higiene Pessoal', '2' => 'Casa e Ambiente']];
+@endphp -->
+
     <title>Incluir novo produto</title>
 </head>
 <body>
@@ -71,17 +77,18 @@
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
-                    <select type="text" name="category_id"class="form-control">
+                    <select type="text" name="category"class="form-control">
                     @foreach($categories as $category)
-                        <option value='{{ $category->id}}'>{{ $category->name }}</option>
+                        <option value='{{ $category->id }}'>{{ $category->name }}</option>
                     @endforeach
                     </select>
                 </div>
                 <div class="col-6 form-group">
                     <label><b>Subcategoria</b></label>
-                    <select type="text" name="subcategory_id" class="form-control">
-                        <option>Higiene Pessoal</option>
-                        <option>Casa e ambiente</option>
+                    <select type="text" name="subcategory" class="form-control">
+                    @foreach($subcategories as $subcategory)
+                        <option value='{{ $subcategory-id }}'>{{ $subcategory->name }}</option>
+                    @endforeach    
                     </select>
                 </div>
             </div>
@@ -122,6 +129,7 @@
             </div>
     
             <button type="submit" class="mt-4 mb-5 btn text-light">Cadastrar novo produto</button>
+
         </form>
     </div>
 

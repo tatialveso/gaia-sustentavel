@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Produto extends Model
 {
     protected $table="products";
-    protected $fillable = ['name', 'price', 'description', 'quantity', 'category_id', 'subcategory_id'];
+    protected $fillable = ['name', 'price', 'description', 'category_id', 'subcategory_id'];
+
+
 
     public function avaliacaoProduto () {
         return $this->hasMany('app\AvaliacaoProduto', 'evaluation_product_id', 'id');

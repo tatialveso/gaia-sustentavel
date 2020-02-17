@@ -28,39 +28,61 @@ Route::get('/cadastro', function () {
     return view('cadastro');
 });
 
-Route::get('/configuracoes/{id}', 'UserController@edit');
-Route::post('/configuracoes/{id}', 'UserController@update');
-Route::delete('/configuracoes', 'UserController@destroy');
+Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
+//Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
+Route::put('/configuracoes', 'UserController@update')->middleware('auth');
+Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/meus-produtos', 'ProdutoController@index')->middleware('auth');
-Route::get('/incluir-produto','ProdutoController@create')->middleware('auth');
+
+
+
+
+
+Route::get('/meus-produtos', 'ProdutoController@index');
+//Route::get('/incluir-produto','ProdutoController@create');
 
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
-Route::post('/incluir-produto','ProdutoController@store')->middleware('auth');
-Route::get('/produto/{id}', 'ProdutoController@show')->middleware('auth');
+//Route::post('/incluir-produto','ProdutoController@store');
+Route::get('/produto/{id}', 'ProdutoController@show');
+
+// CRUD DE PRODUTOS
+
+Route::get('/incluir-produto','IncluirController@create');
+Route::post('/incluir-produto','IncluirController@store');
+Route::get('/meus-produtos/{id}','IncluirController@show');
+Route::get('/meu-produto/{id}/edit','IncluirController@edit');
+Route::patch('/incluir-produto/(id}','IncluirController@update');
+Route::delete('/incluir-produto/{id}','IncluirController@destroy');
+
+
+
+
+
+
+
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // Route::get('/cadastro', 'CadastroController@create');
 // Route::post('/cadastro', 'CadastroController@store');
-Route::get('/loja/{id}', 'LojaController@show');
+Route::get('/loja/{id}', 'LojaController@index');
 Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
 Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
 Route::delete('/minha-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 // Avaliacao loja
 Route::get('/avaliacao-loja/{id}','AvaliacaoLojaController@create');
-Route::post('/avaliacao-loja/{id}','AvaliacaoLojaController@store')->middleware('auth');
+Route::post('/avaliacao-loja/{id}','AvaliacaoLojaController@store');
 
 // Avaliacao produto
 Route::get('/avaliacao-produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/avaliacao-produto/{id}','AvaliacaoProdutoController@store')->middleware('auth');
+Route::post('/avaliacao-produto/{id}','AvaliacaoProdutoController@store');
 
 // Catálogo de higiene pessoal
 Route::get('/higiene-pessoal', 'PessoalController@index');

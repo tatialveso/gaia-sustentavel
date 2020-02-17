@@ -19,6 +19,15 @@ class SubcategoriasCreate extends Migration
             $table->integer('category_id');
             $table->timestamps();
         });
+
+        DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Cabelo', 1]);
+        DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Rosto', 1]);
+        DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Cosméticos', 1]);
+        DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Corpo e Banho', 1]);
+        DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Itens Pessoais', 1]);
+        DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Limpeza Doméstica', 2]);
+        DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Aromatizador', 2]);
+
     }
 
     /**
@@ -28,6 +37,6 @@ class SubcategoriasCreate extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subcategorias');
+        Schema::dropIfExists('subcategories');
     }
 }
