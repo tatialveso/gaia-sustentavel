@@ -10,4 +10,7 @@
         <li><a class="conta-menu" href="/historico-vendas">Minhas vendas</a></li>
         <li><a class="conta-menu" href="/incluir-produto">Incluir produtos</a></li>
     </ul>
+    <a href="{{route('logout')}}" class="btn btn-success">Seja um vendedor!</a>
+    <br><br>
+    <a href="{{route('logout')}}" class="btn btn-danger">Sair</a>
 </aside>

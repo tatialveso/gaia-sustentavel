@@ -16,8 +16,8 @@ class Pedido extends Model
         return $this->hasOne('app\Rastreamento', 'rastreamento_id', 'id');
     }
 
-    public function usuario () {
-        return $this->belongsTo('app\Usuario', 'usuario_id', 'id');
+    public function user () {
+        return $this->belongsTo('app\User', 'user_id', 'id');
     }
 
     public function produto () {
