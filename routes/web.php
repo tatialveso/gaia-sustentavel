@@ -50,7 +50,7 @@ Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // Route::get('/cadastro', 'CadastroController@create');
 // Route::post('/cadastro', 'CadastroController@store');
-Route::get('/loja/{id}', 'LojaController@show');
+Route::get('/loja/{id}', 'LojaController@index');
 Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
 Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
 Route::delete('/minha-loja/{id}', 'LojaController@destroy')->middleware('auth');
