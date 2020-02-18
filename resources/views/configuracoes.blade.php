@@ -25,53 +25,60 @@
                 </div>
                 <div class="form-group">
                     <label for=""><b>Data de nascimento</b></label>
-                    <input type="date" class="form-control" name="data_nascimento">
+                    <input type="date" class="form-control" name="data_nascimento" value="{{$user->date_of_birth}}">
                 </div>
                 <div class="form-group">
                     <label for="cpf"><b>CPF</b></label>
-                    <input type="text" name="cpf" class="form-control" id="cpf">
+                    <input type="text" name="cpf" class="form-control" id="cpf" value="{{$user->cpf}}">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="phone"><b>Telefone</b></label>
                     <input type="text" name="phone" class="form-control" id="phone">
-                </div>
+                </div> -->
 
                 <h1 class="mb-3">Endereço</h1>
                 <div class="form-group">
                     <label><b>Endereço</b></label>
-                    <input type="text" class="form-control" name="endereco" placeholder="">
+                    <input type="text" class="form-control" name="endereco" placeholder="" value="{{$user->address}}">
                 </div>
                 <div class="form-row">
                     <div class="col-4 form-group">
                         <label><b>Número</b></label>
-                        <input type="text" class="form-control" name="numero" placeholder="">
+                        <input type="text" class="form-control" name="numero" placeholder="" value="{{$user->number}}">
                     </div>
                     <div class="col-4 form-group">
                         <label><b>Complemento</b></label>
-                        <input type="text" class="form-control" name="complemento" placeholder="">
+                        <input type="text" class="form-control" name="complemento" placeholder="" value="{{$user->complement}}">
                     </div>
                     <div class="col-4 form-group">
                         <label><b>Bairro</b></label>
-                        <input type="text" class="form-control" name="bairro" placeholder="">
+                        <input type="text" class="form-control" name="bairro" placeholder="" value="{{$user->neighbourhood}}">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-6 form-group">
                         <label><b>Cidade</b></label>
-                        <input type="text" class="form-control" name="cidade" placeholder="">
+                        <input type="text" class="form-control" name="cidade" placeholder="" value="{{$user->city}}">
                     </div>
                     <div class="col-3 form-group">
                         <label><b>Estado</b></label>
                         <select class="form-control" name="uf_id">
-                            <option disabled selected>Selecione um UF</option>
+
+                            @if (isset($userStoredUF))
+                                <option value='{{$userStoredUF->id}}' selected>{{$userStoredUF->state}}</option>
+                            @else
+                                <option disabled selected>Selecione um UF</option>
+                            @endif
+
                             @foreach($ufs as $uf)
                                 <option value='{{$uf->id}}'>{{$uf->state}}</option>
                             @endforeach
+
                         </select>
                     </div>
                     <div class="col-3 form-group">
                         <label><b>CEP</b></label>
-                        <input type="text" class="form-control" name="cep" placeholder="">
+                        <input type="text" class="form-control" name="cep" placeholder="" value="{{$user->cep}}">
                     </div>
                 </div>
                 
