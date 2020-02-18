@@ -24,9 +24,6 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-Route::get('/cadastro', function () {
-    return view('cadastro');
-});
 
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
 //Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
