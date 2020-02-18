@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
+    protected $table = "requests";
     protected $fillable = [];
 
     // public function pagamento () {
