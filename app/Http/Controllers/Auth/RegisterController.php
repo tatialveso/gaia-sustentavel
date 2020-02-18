@@ -53,15 +53,15 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'date_of_birth' => ['required', 'date'],
-            'cpf' => ['required', 'numeric', 'max:11'],
-            'address' => ['required', 'string'],
-            'number' => ['required', 'numeric'],
-            'complement' => ['string'],
-            'ufs_id' => ['required'],
-            'neighbourhood' => ['string', 'required'],
-            'city' => ['required', 'string'],
-            'cep' => ['required', 'max:8', 'numeric'],
+            // 'date_of_birth' => ['required', 'date'],
+            // 'cpf' => ['required', 'numeric', 'max:11'],
+            // 'address' => ['required', 'string'],
+            // 'number' => ['required', 'numeric'],
+            // 'complement' => ['string'],
+            // 'ufs_id' => ['required'],
+            // 'neighbourhood' => ['string', 'required'],
+            // 'city' => ['required', 'string'],
+            // 'cep' => ['required', 'max:8', 'numeric'],
         ]);
     }
 
@@ -73,21 +73,25 @@ class RegisterController extends Controller
      */
 
     protected function create(array $data) {
-        $ufs = \App\UF::all();
-        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'date_of_birth' => $data['date_of_birth'],
-            'cpf' => $data['cpf'],
-            'address' => $data['address'],
-            'number' => $data['number'],
-            'complement' => $data['complement'],
-            'ufs_id' => $data['ufs_id'],
-            'neighbourhood' => $data['neighbourhood'],
-            'city' => $data['city'],
-            'cep' => $data['cep'],
+            // 'date_of_birth' => $data['date_of_birth'],
+            // 'cpf' => $data['cpf'],
+            // 'address' => $data['address'],
+            // 'number' => $data['number'],
+            // 'complement' => $data['complement'],
+            // 'ufs_id' => $data['ufs_id'],
+            // 'neighbourhood' => $data['neighbourhood'],
+            // 'city' => $data['city'],
+            // 'cep' => $data['cep'],
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $ufs = \App\UF::all();
+        return view('auth.register', compact('ufs'));
     }
 }
