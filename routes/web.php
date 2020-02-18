@@ -101,6 +101,8 @@ Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
 // Histórico de compras
 Route::get('/historico-compras', 'CompraController@index')->middleware('auth');
 
+
+
 // Carrinho de compras
 Route::get('/carrinho', 'CarrinhoController@index');
 
