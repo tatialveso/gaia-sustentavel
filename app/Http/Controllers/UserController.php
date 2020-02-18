@@ -19,9 +19,24 @@ class UserController extends Controller {
     function index() {
         $user = Auth::user();
         $ufs = UF::all();
+
+        // pegar UF do User (temos somente o uf_id vindo do Auth::user())
+        foreach ($ufs as $key=>$uf) {
+            if ($uf['id'] == $user['uf_id']) {
+                $userStoredUF = $uf;
+                $ufIndex = $key;
+            }
+        }
+
+        // remover item encontrado da lista (para iterarmos sem repetir o encontrado)
+        if (isset ($ufIndex)) {
+            unset($ufs[$ufIndex]);
+        }
+
         return view( 'configuracoes', [
             'user' => $user,
-            'ufs' => $ufs
+            'ufs' => $ufs,
+            'userStoredUF' => isset($userStoredUF) ? $userStoredUF : null,
         ] );
     }
     
