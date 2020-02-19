@@ -35,8 +35,8 @@ class AvaliacaoProdutoController extends Controller
     {
 
         // dd($request->all());
-        // $avaliacaoProduto = AvaliacaoProduto::create($request->all());
-        dd($avaliacaoProduto);
+        $avaliacaoProduto = AvaliacaoProduto::create($request->all());
+        // dd($avaliacaoProduto);
 
     return redirect('/produto/{id}');
     }

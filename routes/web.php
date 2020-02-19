@@ -76,7 +76,8 @@ Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 
 // Avaliacao loja
-Route::get('/loja/{id}','AvaliacaoLojaController@create');
+Route::get('loja/{id}', 'AvaliacaoLojaController@show');
+// Route::get('/loja/{id}','AvaliacaoLojaController@create');
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
 // Avaliacao produto
