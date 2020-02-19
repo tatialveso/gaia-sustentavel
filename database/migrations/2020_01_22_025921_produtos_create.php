@@ -21,6 +21,7 @@ class ProdutosCreate extends Migration
             $table->integer('store_id');
             $table->integer('category_id');
             $table->integer('subcategory_id');
+            $table->string('img_product');
             $table->timestamps();
         });
     }
