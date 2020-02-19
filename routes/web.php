@@ -105,6 +105,11 @@ Route::get('/historico-compras', 'CompraController@index')->middleware('auth');
 
 // Carrinho de compras
 Route::get('/carrinho', 'CarrinhoController@index');
+Route::get('/carrinho/adicionar', function() {
+    return redirect()->route('index'); //Verificar: vai direcionar para a página de busca de produtos?
+}); // essa rota não permite q o usuário digite esta url e prossiga sem estar logado.
+Route::post('/carrinho/adicionar', 'CarrinhoController@add'); // acrescentar o name da rota q despois será incluida na blade
+
 
 // Checkout de compras
 Route::get('/checkout', 'CheckoutController@index')->middleware('auth');

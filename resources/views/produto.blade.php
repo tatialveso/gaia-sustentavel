@@ -11,12 +11,12 @@
         <div class="row mt-5">
             <div class="col-6 mt-3">
                 {{-- imagem do produto --}}
-                <img src="#" width="500px" alt="">
+                <img src= "{{$product->imagem}}" width="500px" alt="">  <!-- verificar onde será armazenada a img. -->
             </div>
             {{-- informações --}}
             <div class="informacoes col-6">
-                <h4 class="my-5 text-center">(Nome do produto)</h4>
-                <h6 class="mb-3"><a href="/loja/{id}">(nome da loja)</a></h6>
+                <h4 class="my-5 text-center">{{$product->name}}</h4> <!-- nome do produto -->
+                <h6 class="mb-3"><a href="/loja/{id}">{{$product->store_id}}</a></h6> <!-- Loja -->
 
                 {{-- estrelas de avaliação --}}
                 <ul class="list-inline list-unstyled my-3">
@@ -42,13 +42,13 @@
                     </li>
                 </ul>
 
-                <h4 class="mt-5 mb-3">R$</h4>
+                <h4 class="mt-5 mb-3">R$ {{number_format($product->price, 2, ',', '.')}}</h4> <!-- preço -->
 
                 {{-- fav e quantidade --}}
                 <div class="dados d-flex justify-content-between mt-1">
                     <form action="" class="form-inline">
                         <div class="form-group">
-                            <h6>Quantidade:</h6>
+                            <h6>Quantidade:</h6>  <!-- ver como setar a quantidade --> 
                             <input type="number" min="1" class="form-control ml-1">
                         </div>
                     </form>
@@ -58,13 +58,13 @@
                 {{-- form frete --}}
                 <form class="form-inline mt-3">
                     <div class="form-group">
-                        <h6>Calcule frete:</h6>
+                        <h6>Calcule frete:</h6> <!-- Ver como será feito o frete -->
                         <input type="text" class="form-control ml-1" placeholder="Insira o CEP">
                     </div>
                     <button class="btn ml-2 text-light" type="submit" style="background-color: #54775e;">OK</button>
                 </form>
 
-                <div class="btn-produto d-flex justify-content-end">
+                <div class="btn-produto d-flex justify-content-end">  <!-- Acrescentar a função do botão  -->
                     <button class="btn my-5" type="submit"><a class="text-light" href="cesta-compras.html">Adicionar no carrinho</a></button>
                 </div>
             </div>
@@ -74,9 +74,9 @@
             {{-- descrição do produto --}}
             <div class="col-lg-6">
                 <h4 class="text-center">Descrição do produto</h4>
-                <p class="mt-3 text-justify">{descrição do produto}</p>
+                <p class="mt-3 text-justify">{{$product->description}}</p>
 
-                <h6>Ingredientes</h6>
+                <h6>Ingredientes</h6>    <!-- precisa criar um textarea no form de produto para inserir isso.  --> 
                 <p class="text-justify"><b>Composição: </b>(Composição)</p>
                 
                 <h6>Características</h6>
