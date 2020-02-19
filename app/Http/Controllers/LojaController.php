@@ -11,9 +11,8 @@ class LojaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('loja');
+    public function index() {
+        // 
     }
 
     /**
@@ -21,9 +20,10 @@ class LojaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('/cadastro');
+    public function create() {
+        $categories = \App\Categoria::all();
+
+        return view('cadastro-loja', compact('categories'));
     }
 
     /**
@@ -32,11 +32,25 @@ class LojaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $loja = Loja::create($request->all());
+    public function store(Request $request) {
+        $dados = $request->all();
 
-        return redirect('/loja/{id}');
+        if($file = $request->file('image')) {
+            $name = $file->getClientOriginalName();
+            if($file->move('img/lojas', $name)) {
+                $loja = new \App\Loja();
+                $loja->name_store = $dados['name_store'];
+                $loja->location = $dados['location'];
+                $loja->category_id = $dados['category_id'];
+                $loja->description = $dados['description'];
+                $loja->criacao = $dados['criacao'];
+                $loja->image = $name;
+        
+                $loja->save();
+
+                return redirect('minha-loja/{id}');
+            };
+        };
     }
 
     /**
@@ -45,9 +59,9 @@ class LojaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-       //
+    public function show($id) {
+        $loja = \App\Loja::find($id);
+        return view('loja', compact('loja'));
     }
 
     /**
@@ -56,9 +70,11 @@ class LojaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        return view('minha-loja');
+    public function edit($id) {
+        $loja = \App\Loja::find($id);
+        $categories = \App\Categoria::all();
+
+        return view('minha-loja', compact('loja', 'categories'));
     }
 
     /**
@@ -68,11 +84,19 @@ class LojaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $loja->fill($request->all());
+    public function update(Request $request, $id) {
+        $dados = $request->all();
+
+        $loja = \App\Loja::find($id);
+        $loja->name_store = $dados['name_store'];
+        $loja->location = $dados['location'];
+        $loja->category_id = $dados['category_id'];
+        $loja->description = $dados['description'];
+        $loja->criacao = $dados['criacao'];
+
         $loja->save();
-        return redirect('/loja/{id}');
+
+        return redirect('meus-produtos');
     }
 
     /**
@@ -81,9 +105,8 @@ class LojaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $loja = App/Loja::find($id);
+    public function destroy($id) {
+        $loja = \App\Loja::find($id);
         $loja->delete();
 
         return back();
