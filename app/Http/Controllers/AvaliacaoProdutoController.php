@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\AvaliacaoProduto;
 use Illuminate\Http\Request;
 
 class AvaliacaoProdutoController extends Controller
 {   
-
 
     // protected $request;
 
@@ -25,9 +25,6 @@ class AvaliacaoProdutoController extends Controller
         return view('produto');
     }
 
-
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -36,7 +33,9 @@ class AvaliacaoProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $avaliacaoProduto = AvaliacaoProduto::create($request->all());
+
+        // dd($request->all());
+        // $avaliacaoProduto = AvaliacaoProduto::create($request->all());
         dd($avaliacaoProduto);
 
     return redirect('/produto/{id}');

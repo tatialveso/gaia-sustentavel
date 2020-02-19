@@ -76,12 +76,12 @@ Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth'
 
 
 // Avaliacao loja
-Route::get('/avaliacao-loja/{id}','AvaliacaoLojaController@create');
-Route::post('/avaliacao-loja/{id}','AvaliacaoLojaController@store');
+Route::get('/loja/{id}','AvaliacaoLojaController@create');
+Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
 // Avaliacao produto
-Route::get('/avaliacao-produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/avaliacao-produto/{id}','AvaliacaoProdutoController@store');
+Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
+Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // Catálogo de higiene pessoal
 Route::get('/higiene-pessoal', 'PessoalController@index');
