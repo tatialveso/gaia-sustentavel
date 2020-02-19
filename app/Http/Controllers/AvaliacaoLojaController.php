@@ -33,9 +33,8 @@ class AvaliacaoLojaController extends Controller
     public function store(Request $request)
     {
 
-        dd($request->all());
-
-        // $avaliacaoLoja = AvaliacaoLoja::create($request->all());
+        // dd($request->all());
+        $avaliacaoLoja = AvaliacaoLoja::create($request->all());
 
     return redirect('/loja/{id}');
     }
