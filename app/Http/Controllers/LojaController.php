@@ -15,28 +15,29 @@ class LojaController extends Controller
 
     public function store(Request $request) {
         $dados = $request->all();
+        
+        $loja = new \App\Loja();
+        $loja->name_store = $dados['name_store'];
+        $loja->location = $dados['location'];
+        $loja->category_id = $dados['category_id'];
+        $loja->description = $dados['description'];
+        $loja->criacao = $dados['criacao'];
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
             if($file->move('img/lojas', $name)) {
-                $loja = new \App\Loja();
-                $loja->name_store = $dados['name_store'];
-                $loja->location = $dados['location'];
-                $loja->category_id = $dados['category_id'];
-                $loja->description = $dados['description'];
-                $loja->criacao = $dados['criacao'];
                 $loja->image = $name;
         
-                $loja->save();
-
-                return redirect('minha-loja/{id}');
             };
         };
+        
+        $loja->save();
+    
+        return redirect('minha-loja/{id}');
     }
 
     public function show($id) {
         $loja = \App\Loja::find($id);
-        // $produto = \App\Produto::all(); = aparecer produtos só daquela loja
         return view('loja', compact('loja'));
     }
 
@@ -49,7 +50,7 @@ class LojaController extends Controller
 
     public function update(Request $request, $id) {
         $dados = $request->all();
-
+        
         $loja = \App\Loja::find($id);
         $loja->name_store = $dados['name_store'];
         $loja->location = $dados['location'];
@@ -57,6 +58,13 @@ class LojaController extends Controller
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
 
+        if($file = $request->file('image')) {
+            $name = $file->getClientOriginalName();
+            if($file->move('img/lojas', $name)) {
+                $loja->image = $name;
+    
+            };
+        };
         $loja->save();
 
         return redirect('meus-produtos');

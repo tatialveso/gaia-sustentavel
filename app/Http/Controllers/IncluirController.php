@@ -12,9 +12,10 @@ use Illuminate\Http\Request;
 class IncluirController extends Controller
 
 {
-    public function index()
-    {
-        return view('incluir-produto');
+    public function index() {
+        $products = \App\Produto::all();
+
+        return view('meus-produtos', compact('products'));
     }
 
     function create() {
@@ -24,40 +25,39 @@ class IncluirController extends Controller
         return view('incluir-produto', compact('categories', 'subcategories'));
     }
 
-    public function store(Request $request)
-    {        
+    public function store(Request $request) {        
         $data = $request->all();
         
         $produto = Produto::make($data);
         $produto->store_id = 1; //TODO pegar user da sessão.
         $produto->save();
-
-        dd($data);
         
         return redirect('/');
     }
 
     public function show($id) {
-        $products = \App\Produto::all();
-        return view('meus-produtos',compact('products'));
+        $product = \App\Produto::find($id);
+        return view('produto',compact('product'));
     }
 
     public function edit($id) {
-        $products = \App\Produto::all();
-        return view('meu-produto-edit',compact('products'));
+        $products = \App\Produto::find($id);
+        $categories = \App\Categoria::all();
+        $subcategories = \App\Subcategoria::all();
+
+        return view('meu-produto-edit',compact('products', 'categories', 'subcategories'));
 
 
     }    
-    public function update(Request $request, Produto $produto)
-        {
+    public function update(Request $request, Produto $produto) {
             $produto->fill($request->all());
             $produto->save();
     
-            return redirect('/meus-produtos/{id}');
+            return redirect('/meus-produtos');
         }        
 
     public function destroy($id) {
         $produto->delete();
-        return redirect ('/meus-produtos/{id}');
+        return redirect ('/meus-produtos');
     }
 }

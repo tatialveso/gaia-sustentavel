@@ -34,12 +34,6 @@
             background-color: #54775e;
         }
     </style>
-
-<!-- @php
-  $category = [(object)['1' => 'Higiene Pessoal', '2' => 'Casa e Ambiente']];
-  $subcategory = [(object)['1' => 'Higiene Pessoal', '2' => 'Casa e Ambiente']];
-@endphp -->
-
     <title>Incluir novo produto</title>
 </head>
 <body>
@@ -68,7 +62,7 @@
                 <div class="col-6 align-middle">
                     <label for=""><b>Foto do produto</b></label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" name="img_product" class="custom-file-input" id="customFile">
                         <label class="custom-file-label" for="customFile">Escolher foto</label>
                     </div>
                 </div>

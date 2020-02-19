@@ -16,21 +16,21 @@
 
         <main>
             <h1>Editar produto</h1>
-            <form action="/meus-produtos/{id}" method="POST">
+                <form action="/meus-produtos/{{$product['id']}}" method="POST">
                 @csrf
                 @method('PATCH')
                 <label for=""><b>Foto do produto</b></label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile">
+                    <input type="file" name="img_product" class="custom-file-input" id="customFile">
                     <label class="custom-file-label" for="customFile">Escolher foto</label>
                 </div>
                 <div class="form-group">
                     <label for="" class="mt-3"><b>Nome do produto</b></label>
-                    <input type="text" class="form-control" value="{{$product["name"]}}">
+                    <input type="text" name="name" class="form-control" value="{{$product["name"]}}">
                 </div>
                 <div class="form-group">
                     <label for=""><b>Preço</b></label>
-                    <input type="number" class="form-control" value="{{$product["price"]}}">
+                    <input type="number" name="price" class="form-control" value="{{$product["price"]}}">
                 </div>
                 <div class="form-group">
                     <label><b>Descrição do produto</b></label>
@@ -65,7 +65,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class=" mt-4 mb-5 btn text-light" style="background-color: #54775e;">Atualizar produto</button>
+                <button type="submit" class="mt-4 mb-5 btn text-light" style="background-color: #54775e;">Atualizar produto</button>
             </form>
         </main>
     </div>

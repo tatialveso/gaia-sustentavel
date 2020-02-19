@@ -40,22 +40,29 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/meus-produtos', 'ProdutoController@index');
 //Route::get('/incluir-produto','ProdutoController@create');
 
+//Route::post('/incluir-produto','ProdutoController@store');
+Route::get('/produto/{id}', 'ProdutoController@index');
+
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
-//Route::post('/incluir-produto','ProdutoController@store');
-Route::get('/produto/{id}', 'ProdutoController@index');
-
 // CRUD DE PRODUTOS
+Route::get('/meus-produtos','IncluirController@index')->middleware('auth');
+Route::get('/incluir-produto','IncluirController@create')->middleware('auth');
+Route::post('/incluir-produto','IncluirController@store')->middleware('auth');
+Route::get('/produto/{id}', 'IncluirController@show');
+Route::get('/meu-produto/{id}','IncluirController@edit')->middleware('auth');
+Route::patch('/meu-produto/{id}','IncluirController@update')->middleware('auth');
+Route::delete('/deletar-produto/{id}','IncluirController@destroy')->middleware('auth');
 
-Route::get('/incluir-produto','IncluirController@create');
-Route::post('/incluir-produto','IncluirController@store');
-Route::get('/meus-produtos/{id}','IncluirController@show');
-Route::get('/meu-produto/{id}/edit','IncluirController@edit');
-Route::patch('/incluir-produto/(id}','IncluirController@update');
-Route::delete('/incluir-produto/{id}','IncluirController@destroy');
-
+// CRUD LOJA
+Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
+Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
+Route::get('loja/{id}', 'LojaController@show');
+Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
+Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
+Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 
 
@@ -66,13 +73,6 @@ Route::delete('/incluir-produto/{id}','IncluirController@destroy');
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
-// CRUD LOJA
-Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
-Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
-Route::get('loja/{id}', 'LojaController@show');
-Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
-Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
-Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 
 // Avaliacao loja
