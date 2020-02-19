@@ -10,7 +10,10 @@
         <li><a class="conta-menu" href="/historico-vendas">Minhas vendas</a></li>
         <li><a class="conta-menu" href="/incluir-produto">Incluir produtos</a></li>
     </ul>
-    <a href="{{route('logout')}}" class="btn btn-success">Seja um vendedor!</a>
+    <a href="/criar-loja" class="btn btn-success">Seja um vendedor!</a>
     <br><br>
     <a href="{{route('logout')}}" class="btn btn-danger">Sair</a>
 </aside>
+
+{{-- é assim que deve ficar o href da MINHA LOJA, porém o blade não reconhece o $loja: --}}
+{{-- <li><a class="conta-menu" href="/minha-loja/{{$loja['id']}}">Minha Loja</a></li> --}}
