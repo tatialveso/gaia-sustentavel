@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SegurancaController extends Controller
 {
     function index(Request $request) {
-        // $user = auth()->user();
-        // var_dump($user);
-        return view('seguranca');
+        return view('seguranca', [
+            'user' => Auth::user(),
+        ]);
     }
 }

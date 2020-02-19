@@ -37,15 +37,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function loja () {
+    public function loja() {
         return $this->HasOne('app\Loja', 'loja_id', 'id');
     }
 
-    public function pedido () {
+    public function pedido() {
         return $this->HasMany('app\Pedido', 'pedido_id', 'id');
     }
 
     public function uf() {
         return $this->belongsTo('app\UF', 'ufs_id', 'id');
+    }
+
+    public function isSeller() {
+        return $this['loja_id'] != null;
     }
 }
