@@ -6,32 +6,13 @@ use Illuminate\Http\Request;
 
 class LojaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index() {
-        // 
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create() {
         $categories = \App\Categoria::all();
 
         return view('cadastro-loja', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request) {
         $dados = $request->all();
 
@@ -53,23 +34,12 @@ class LojaController extends Controller
         };
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id) {
         $loja = \App\Loja::find($id);
+        // $produto = \App\Produto::all(); = aparecer produtos só daquela loja
         return view('loja', compact('loja'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id) {
         $loja = \App\Loja::find($id);
         $categories = \App\Categoria::all();
@@ -77,13 +47,6 @@ class LojaController extends Controller
         return view('minha-loja', compact('loja', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id) {
         $dados = $request->all();
 
@@ -99,12 +62,6 @@ class LojaController extends Controller
         return redirect('meus-produtos');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id) {
         $loja = \App\Loja::find($id);
         $loja->delete();
