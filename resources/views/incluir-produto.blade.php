@@ -87,7 +87,7 @@
                     <label><b>Subcategoria</b></label>
                     <select type="text" name="subcategory" class="form-control">
                     @foreach($subcategories as $subcategory)
-                        <option value='{{ $subcategory-id }}'>{{ $subcategory->name }}</option>
+                        <option value='{{ $subcategory->id }}'>{{ $subcategory->name }}</option>
                     @endforeach    
                     </select>
                 </div>
