@@ -20,9 +20,9 @@ class AvaliacaoLojaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        return view('loja');
-    }
+    // public function create() {
+    //     return view('loja');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -39,5 +39,11 @@ class AvaliacaoLojaController extends Controller
     return redirect('/loja/{id}');
     }
 
+
+    public function show($id) {
+        $loja = \App\Loja::find($id);
+        // $produto = \App\Produto::all(); = aparecer produtos só daquela loja
+        return view('loja', compact('loja'));
+    }
 
 }
