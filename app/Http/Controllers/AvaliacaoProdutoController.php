@@ -31,12 +31,14 @@ class AvaliacaoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $product_id)
     {
 
-        // dd($request->all());
-        $avaliacaoProduto = AvaliacaoProduto::create($request->all());
+        $avaliacaoProduto = AvaliacaoProduto::make($request->all());
+        $avaliacaoLoja->product_id = $product_id;
+        $avaliacaoLoja->save();
         // dd($avaliacaoProduto);
+        // dd($request->all());
 
     return redirect('/produto/{id}');
     }
