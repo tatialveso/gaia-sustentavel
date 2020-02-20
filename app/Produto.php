@@ -13,22 +13,22 @@ class Produto extends Model
 
 
     public function avaliacaoProduto () {
-        return $this->hasMany('app\AvaliacaoProduto', 'evaluation_product_id', 'id');
+        return $this->hasMany('\App\AvaliacaoProduto', 'evaluation_product_id', 'id');
     }
 
     public function pedido () {
-        return $this->hasMany('app\Pedido', 'product_id', 'id');
+        return $this->hasMany('\App\Pedido', 'product_id', 'id');
     }
 
     public function subcategoria () {
-        return $this->belongsTo('app\Subcategoria', 'subcategory_id', 'id');
+        return $this->belongsTo('\App\Subcategoria', 'subcategory_id', 'id');
     }
 
     public function categoria () {
-        return $this->belongsTo('app\Categoria', 'category_id', 'id');
+        return $this->belongsTo('\App\Categoria', 'category_id', 'id');
     }
 
     public function Loja () {
-        return $this->belongsTo('app\Loja', 'store_id', 'id');
+        return $this->belongsTo('\App\Loja', 'store_id', 'id');
     }
 }

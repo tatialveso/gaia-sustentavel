@@ -23,13 +23,19 @@
                         <img src="{{$product['img_product']}}" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title"><a class="text-dark text-decoration-none">{{$product["name"]}}</a></h5>
-                            <div class="btn-produto">
-                                <a href="/meus-produtos/{{$product['id']}}" class="btn text-light">Editar</a>
-                                <form action="/deletar-produto/{{ $product['id']}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-danger" value="Excluir produto">
-                                </form>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="btn-produto">
+                                        <a href="/meu-produto/{{$product['id']}}" class="btn text-light">Editar</a>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <form action="/deletar-produto/{{ $product['id']}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-danger" value="Excluir produto">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

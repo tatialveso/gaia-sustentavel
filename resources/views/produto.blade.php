@@ -11,12 +11,12 @@
         <div class="row mt-5">
             <div class="col-6 mt-3">
                 {{-- imagem do produto --}}
-                <img src="img/produtos/{{$products['img_product']}}" width="500px" alt="">
+                <img src="img/produtos/{{$product['img_product']}}" width="500px" alt="">
             </div>
             {{-- informações --}}
             <div class="informacoes col-6">
                 <h4 class="my-5 text-center">{{$product['name']}}</h4>
-                <h6 class="mb-3"><a href="/loja/{id}">(nome da loja)</a></h6>
+                <h6 class="mb-3"><a href="/loja/{{ $product['store_id'] }}">{{ $product->loja->name_store }}</a></h6>
 
                 {{-- estrelas de avaliação --}}
                 <ul class="list-inline list-unstyled my-3">
@@ -74,15 +74,10 @@
             {{-- descrição do produto --}}
             <div class="col-lg-6">
                 <h4 class="text-center">Descrição do produto</h4>
-                <p class="mt-3 text-justify">{{$product['description']}}</p>
+                <p class="mt-3 text-justify">{{ $product['description'] }}</p>
 
-                <h6>Ingredientes</h6>
-                <p class="text-justify"><b>Composição: </b>{{$product['composition']}}</p>
-                
-                <h6>Características</h6>
-                <ul>
-                    <li>(Filtro de características</li>
-                </ul>
+                <h4 class="text-center">Composição do produto</h4>
+                <p class="text-justify">{{ $product['composition'] }}</p>
             </div>
 
             {{-- avaliações --}}

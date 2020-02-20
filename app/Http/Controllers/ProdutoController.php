@@ -77,7 +77,7 @@ class ProdutoController extends Controller
         };
         $products->save();
 
-        return redirect('meus-produtos');
+        return redirect('/meus-produtos');
     }     
 
     public function destroy($id) {
