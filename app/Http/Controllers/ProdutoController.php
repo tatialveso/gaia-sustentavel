@@ -12,15 +12,14 @@ class ProdutoController extends Controller
         return view('meus-produtos', compact('products'));
     }
 
-    function create() {
+    public function create() {
         $categories = \App\Categoria::all();
         $subcategories = \App\Subcategoria::all();
-        $loja = \App\Loja::find($id);
         
         return view('incluir-produto', compact('categories', 'subcategories'));
     }
 
-    public function store(Request $request) {        
+    public function store(Request $request, $store_id) {        
         $dados = $request->all();
 
         $products = new \App\Produto();
@@ -30,7 +29,7 @@ class ProdutoController extends Controller
         $products->composition = $dados['composition'];
         $products->category_id = $dados['category_id'];
         $products->subcategory_id = $dados['subcategory_id'];
-        $products->store_id = $dados['store_id'];
+        $products->store_id = $store_id;
         
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();

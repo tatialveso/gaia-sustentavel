@@ -67,10 +67,7 @@
                     </div>
                 </div>
             </div>
-
-            <div>
-                <input type="hidden" name="store_id" value="{{$loja['id']}}">
-            </div>
+            
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
