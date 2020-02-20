@@ -30,13 +30,15 @@ class AvaliacaoLojaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $store_id)
     {
+        // $dados = $request->all();
+        
+        $avaliacaoLoja = AvaliacaoLoja::make($request->all());
+        $avaliacaoLoja->store_id = $store_id;
+        $avaliacaoLoja->save();
 
-        // dd($request->all());
-        $avaliacaoLoja = AvaliacaoLoja::create($request->all());
-
-    return redirect('/loja/{id}');
+        return redirect('/loja/{id}');
     }
 
 

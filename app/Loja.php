@@ -14,7 +14,7 @@ class Loja extends Model
     }
 
     public function avaliacaoLoja () {
-        return $this->hasMany('app\AvaliacaoLoja', 'avaliacao_loja_id', 'id');
+        return $this->hasMany('app\AvaliacaoLoja', 'evaluations_stores_id', 'id');
     }
 
     public function produto () {

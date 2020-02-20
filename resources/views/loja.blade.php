@@ -113,7 +113,7 @@
         </div>
 
         {{-- lógica: quando o botão acima for clicado o formulário seguinte irá aparecer --}}
-        <form action ="/loja/{id}" method="POST" id="form-loja">
+        <form action ="/loja/{{ $loja['id'] }}" method="POST" id="form-loja">
             <div class="form-group">
             @csrf
                 <label>Título da avaliação</label>
