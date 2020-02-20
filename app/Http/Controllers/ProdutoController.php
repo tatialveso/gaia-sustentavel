@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Produto;
 
 class ProdutoController extends Controller
 {
@@ -19,7 +20,7 @@ class ProdutoController extends Controller
         return view('incluir-produto', compact('categories', 'subcategories'));
     }
 
-    public function store(Request $request, $store_id) {        
+    public function store(Request $request) {        
         $dados = $request->all();
 
         $products = new \App\Produto();
@@ -29,7 +30,6 @@ class ProdutoController extends Controller
         $products->composition = $dados['composition'];
         $products->category_id = $dados['category_id'];
         $products->subcategory_id = $dados['subcategory_id'];
-        $products->store_id = $store_id;
         
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
@@ -57,7 +57,7 @@ class ProdutoController extends Controller
 
 
     }    
-    public function update(Request $request, Produto $produto) {
+    public function update(Request $request, $id) {
         $dados = $request->all();
         
         $products = \App\Produto::find($id);
@@ -65,8 +65,6 @@ class ProdutoController extends Controller
         $products->price = $dados['price'];
         $products->description = $dados['description'];
         $products->composition = $dados['composition'];
-        $products->category_id = $dados['category_id'];
-        $products->subcategory_id = $dados['subcategory_id'];
 
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
