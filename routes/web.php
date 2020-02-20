@@ -24,7 +24,6 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
 //Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
 Route::put('/configuracoes', 'UserController@update')->middleware('auth');
@@ -32,29 +31,18 @@ Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
-
-
-
-
-
-Route::get('/meus-produtos', 'ProdutoController@index');
-//Route::get('/incluir-produto','ProdutoController@create');
-
-//Route::post('/incluir-produto','ProdutoController@store');
-Route::get('/produto/{id}', 'ProdutoController@index');
-
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
 // CRUD DE PRODUTOS
-Route::get('/meus-produtos','IncluirController@index')->middleware('auth');
-Route::get('/incluir-produto','IncluirController@create')->middleware('auth');
-Route::post('/incluir-produto','IncluirController@store')->middleware('auth');
-Route::get('/produto/{id}', 'IncluirController@show');
-Route::get('/meu-produto/{id}','IncluirController@edit')->middleware('auth');
-Route::patch('/meu-produto/{id}','IncluirController@update')->middleware('auth');
-Route::delete('/deletar-produto/{id}','IncluirController@destroy')->middleware('auth');
+Route::get('/meus-produtos','ProdutoController@index')->middleware('auth');
+Route::get('/incluir-produto','ProdutoController@create')->middleware('auth');
+Route::post('/incluir-produto','ProdutoController@store')->middleware('auth');
+Route::get('/produto/{id}', 'ProdutoController@show');
+Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
+Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
+Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
 
 // CRUD LOJA
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');

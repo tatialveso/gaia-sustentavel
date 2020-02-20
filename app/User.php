@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function loja() {
-        return $this->HasOne('app\Loja', 'loja_id', 'id');
+        return $this->HasOne('app\Loja', 'loja_id');
     }
 
     public function pedido() {

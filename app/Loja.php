@@ -18,6 +18,6 @@ class Loja extends Model
     }
 
     public function produto () {
-        return $this->hasMany('app\Produto', 'produto_id', 'id');
+        return $this->hasMany('app\Produto', 'products_id', 'id');
     }
 }

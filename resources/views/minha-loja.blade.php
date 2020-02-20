@@ -15,7 +15,7 @@
         @include('aside-conta')
 
         <main>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("PATCH")
                 <h1 class="mb-3">Informações da loja</h1>

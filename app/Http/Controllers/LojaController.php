@@ -27,7 +27,6 @@ class LojaController extends Controller
             $name = $file->getClientOriginalName();
             if($file->move('img/lojas', $name)) {
                 $loja->image = $name;
-        
             };
         };
         
@@ -62,7 +61,7 @@ class LojaController extends Controller
             $name = $file->getClientOriginalName();
             if($file->move('img/lojas', $name)) {
                 $loja->image = $name;
-    
+                
             };
         };
         $loja->save();

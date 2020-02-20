@@ -47,7 +47,7 @@
 
     {{-- campo para adicionar fotos --}}
     <div class="container">
-        <form action="/incluir-produto" method="POST">
+        <form action="/incluir-produto" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mt-4">
                 <div class="col-6">
@@ -68,10 +68,14 @@
                 </div>
             </div>
 
+            <div>
+                <input type="hidden" name="store_id" value="{{$loja['id']}}">
+            </div>
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
-                    <select type="text" name="category"class="form-control">
+                    <select type="text" name="category_id" class="form-control">
+                        <option selected disabled>Selecione uma categoria</option>
                     @foreach($categories as $category)
                         <option value='{{ $category->id }}'>{{ $category->name }}</option>
                     @endforeach
@@ -79,7 +83,8 @@
                 </div>
                 <div class="col-6 form-group">
                     <label><b>Subcategoria</b></label>
-                    <select type="text" name="subcategory" class="form-control">
+                    <select type="text" name="subcategory_id" class="form-control">
+                        <option selected disabled>Selecione uma subcategoria</option>
                     @foreach($subcategories as $subcategory)
                         <option value='{{ $subcategory->id }}'>{{ $subcategory->name }}</option>
                     @endforeach    
