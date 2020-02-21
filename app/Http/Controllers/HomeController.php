@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Produto;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
     public function index() // Mostra apenas os produtos ativos na página inicial/index.
     {
         $registros = Produto::where([
-            'ativo' => 'S'
+            'active' => 'S'
         ])->get();
         return view('index', compact('registros'));
     }

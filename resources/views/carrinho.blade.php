@@ -12,10 +12,6 @@
         <h5>Cesta de Compras</h5>
     </div>
 
-
-
-
-
     <!-- Para verificar se existe alguma mensagem do flash() --> 
 
     @if(Session::has('mensagem-sucesso'))
