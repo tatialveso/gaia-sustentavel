@@ -16,7 +16,7 @@ class ProdutosCreate extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->decimal('price');
+            $table->decimal('price', 4, 2);
             $table->string('description');
             $table->string('composition');
             $table->bigInteger('store_id');
