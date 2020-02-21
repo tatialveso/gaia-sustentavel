@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class LojaController extends Controller
 {
@@ -14,14 +16,27 @@ class LojaController extends Controller
     }
 
     public function store(Request $request) {
+        $this->validate($request, [
+            'name_store' => 'required|string',
+            'location' => 'required|string',
+            'category_id' => 'required',
+            'description' => 'required|string',
+            'criacao' => 'required',
+            'image' => 'required',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+        ]);
+
         $dados = $request->all();
-        
+        $session_id = Auth::user()->id;
+
         $loja = new \App\Loja();
         $loja->name_store = $dados['name_store'];
         $loja->location = $dados['location'];
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
+        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
@@ -30,6 +45,7 @@ class LojaController extends Controller
             };
         };
         
+        // dd($session_id);
         $loja->save();
     
         return redirect('minha-loja/{id}');
@@ -48,7 +64,19 @@ class LojaController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $this->validate($request, [
+            'name_store' => 'required|string',
+            'location' => 'required|string',
+            'category_id' => 'required',
+            'description' => 'required|string',
+            'criacao' => 'required|numeric',
+            'image' => 'required',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+        ]);
+
         $dados = $request->all();
+        $session_id = Auth::user()->id;
         
         $loja = \App\Loja::find($id);
         $loja->name_store = $dados['name_store'];
@@ -56,6 +84,7 @@ class LojaController extends Controller
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
+        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
