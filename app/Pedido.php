@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
-    protected $fillable = [
+    protected $table = "requests";
+    protected $fillable = [  //Campos obrigatórios no pedido.
         'user_id',
         'status'
     ];
@@ -27,10 +28,15 @@ class Pedido extends Model
         return $this->hasMany('App\Produto')
         ->select( \DB::raw('produto_id,sum (discount) as discounts, sum(price) as prices, count(1) as qtd') )
         ->groupBy('produto_id')
-        ->orderBy('produto_id', 'discount');
+        ->orderBy('produto_id', 'desc');
     }
 
-    public static function consultaId() {
+    public function pedido_produtos_itens()
+    {
+        return $this->hasMany('App\PedidoProduto');
+    }
+
+    public static function consultaId($where) {
         $pedido = self::where($where)->first(['id']);
         return !empty($pedido->id)? $pedido->id : null;
     } 

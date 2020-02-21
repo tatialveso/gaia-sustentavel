@@ -19,7 +19,8 @@ class LojasCreate extends Migration
             $table->string('location');
             $table->bigInteger('category_id');
             $table->string('description');
-            $table->year('criacao');
+            $table->date('criacao');
+            $table->string('image');
             $table->timestamps();
         });
     }

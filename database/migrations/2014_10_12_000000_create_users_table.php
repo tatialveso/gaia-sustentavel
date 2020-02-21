@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->bigInteger('uf_id')->nullable();
             $table->string('cep', 8)->nullable();
+            $table->bigInteger('loja_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

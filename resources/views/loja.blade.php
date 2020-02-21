@@ -14,10 +14,10 @@
             <div class="perfil col-6">
                 {{-- foto de perfil --}}
                 <div class="d-flex justify-content-around mt-4">
-                    <img src="/img/lojas/" alt="">
+                    <img src="/img/lojas/{{ $loja['image']}}" alt="">
                 </div>
                 {{-- nome da loja --}}
-                <h4 class="mt-3 text-center">(Nome da loja)</h4>
+                <h4 class="mt-3 text-center">{{ $loja['name_store']}}</h4>
                 {{-- botão de seguir --}}
                 <div class="mt-3 d-flex justify-content-center">
                     <button class="btn text-light">Seguir</button>
@@ -27,11 +27,11 @@
             <div class="col-6 mt-5">
                 <h5>Biografia</h5>
                 {{-- descrição da loja --}}
-                <p></p>
+                <p>{{ $loja['description']}}</p>
                 {{-- data de criação da loja --}}
-                <p><b>Criado em</b> </p>
+                <p><b>Criado em </b>{{ $loja['criacao']}}</p>
                 {{-- localização da loja --}}
-                <p><b>Localizado em</b> </p>
+                <p><b>Localizado em </b>{{ $loja['location']}}</p>
                 {{-- avaliação da loja --}}
                 <ul class="list-inline list-unstyled mt-4">
                     <li class="list-inline-item"><i class="material-icons">
@@ -60,7 +60,7 @@
     </div>
 
     <div class="titulo mt-5">
-        <h5 class="text-center">Produtos de (nome da loja)</h5>
+        <h5 class="text-center">Produtos de {{ $loja['name_store']}}</h5>
     </div>
     {{-- produtos na página da loja --}}
     <div class="container mt-3">
@@ -88,7 +88,7 @@
     </div>
 
     <div class="titulo mt-5">
-        <h5 class="text-center">Avaliações de (nome da loja)</h5>
+        <h5 class="text-center">Avaliações de {{ $loja['name_store']}}</h5>
     </div>
 
     <div class="container">
@@ -109,19 +109,17 @@
         </div>
         {{-- botão para avaliar a loja --}}
         <div class="btn-produto d-flex justify-content-around">
-            <button type="button" class="btn text-light my-5" id="avaliar-loja">Avaliar a (nome da loja)</button>
+            <button type="button" class="btn text-light my-5" id="avaliar-loja">Avaliar a {{ $loja['name_store']}}</button>
         </div>
 
         {{-- lógica: quando o botão acima for clicado o formulário seguinte irá aparecer --}}
-        <form action ="/loja/{id}" method="POST" id="form-loja">
+        <form action ="/loja/{{ $loja['id'] }}" method="POST" id="form-loja">
             <div class="form-group">
             @csrf
                 <label>Título da avaliação</label>
                 <input type="text" name="name" class="form-control">
             </div>
             <div class="form-group">
-                {{-- lógica: o usuário ir clicando no tanto de estrelas que ele quiser
-                    e enviar como nome. estrelas vazias quando clicadas ficam cheias --}}
                 <ul class="avaliacao list-inline my-1">
                     <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
                     <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>

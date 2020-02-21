@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/produto/{id}', 'HomeController@produto'); // Busca pelo produto direto da index.
 
 Route::auth();
 Auth::routes();
@@ -24,10 +25,6 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-Route::get('/cadastro', function () {
-    return view('cadastro');
-});
-
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
 //Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
 Route::put('/configuracoes', 'UserController@update')->middleware('auth');
@@ -35,54 +32,38 @@ Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
-
-
-
-
-
-Route::get('/meus-produtos', 'ProdutoController@index');
-//Route::get('/incluir-produto','ProdutoController@create');
-
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
-//Route::post('/incluir-produto','ProdutoController@store');
-Route::get('/produto/{id}', 'ProdutoController@index');
-
 // CRUD DE PRODUTOS
+Route::get('/meus-produtos','ProdutoController@index')->middleware('auth');
+Route::get('/incluir-produto','ProdutoController@create')->middleware('auth');
+Route::post('/incluir-produto','ProdutoController@store')->middleware('auth');
+Route::get('/produto/{id}', 'ProdutoController@show');
+Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
+Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
+Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
 
-Route::get('/incluir-produto','IncluirController@create');
-Route::post('/incluir-produto','IncluirController@store');
-Route::get('/meus-produtos/{id}','IncluirController@show');
-Route::get('/meu-produto/{id}/edit','IncluirController@edit');
-Route::patch('/incluir-produto/(id}','IncluirController@update');
-Route::delete('/incluir-produto/{id}','IncluirController@destroy');
-
-
-
-
-
-
-
+// CRUD LOJA
+Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
+Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
+Route::get('loja/{id}', 'LojaController@show');
+Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
+Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
+Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
-// Route::get('/cadastro', 'CadastroController@create');
-// Route::post('/cadastro', 'CadastroController@store');
-Route::get('/loja/{id}', 'LojaController@index');
-Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
-Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
-Route::delete('/minha-loja/{id}', 'LojaController@destroy')->middleware('auth');
-
 // Avaliacao loja
-Route::get('/avaliacao-loja/{id}','AvaliacaoLojaController@create');
-Route::post('/avaliacao-loja/{id}','AvaliacaoLojaController@store');
+Route::get('loja/{id}', 'AvaliacaoLojaController@show');
+// Route::get('/loja/{id}','AvaliacaoLojaController@create');
+Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
 // Avaliacao produto
-Route::get('/avaliacao-produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/avaliacao-produto/{id}','AvaliacaoProdutoController@store');
+Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
+Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // Catálogo de higiene pessoal
 Route::get('/higiene-pessoal', 'PessoalController@index');
@@ -108,7 +89,10 @@ Route::get('/carrinho', 'CarrinhoController@index');
 Route::get('/carrinho/adicionar', function() {
     return redirect()->route('index'); //Verificar: vai direcionar para a página de busca de produtos?
 }); // essa rota não permite q o usuário digite esta url e prossiga sem estar logado.
-Route::post('/carrinho/adicionar', 'CarrinhoController@add'); // acrescentar o name da rota q despois será incluida na blade
+Route::post('/carrinho/adicionar', 'CarrinhoController@add');
+Route::post('/carrinho/remover', 'CarrinhoController@delete');
+Route::post('/carrinho/concluir', 'CarrinhoController@');  // completar
+Route::post('/carrinho/compras', 'CarrinhoController@');   // completar
 
 
 // Checkout de compras

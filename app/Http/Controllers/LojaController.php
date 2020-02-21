@@ -6,84 +6,71 @@ use Illuminate\Http\Request;
 
 class LojaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('loja');
+
+    public function create() {
+        $categories = \App\Categoria::all();
+
+        return view('cadastro-loja', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('/cadastro');
-    }
+    public function store(Request $request) {
+        $dados = $request->all();
+        
+        $loja = new \App\Loja();
+        $loja->name_store = $dados['name_store'];
+        $loja->location = $dados['location'];
+        $loja->category_id = $dados['category_id'];
+        $loja->description = $dados['description'];
+        $loja->criacao = $dados['criacao'];
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $loja = Loja::create($request->all());
-
-        return redirect('/loja/{id}');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-       //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('minha-loja');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $loja->fill($request->all());
+        if($file = $request->file('image')) {
+            $name = $file->getClientOriginalName();
+            if($file->move('img/lojas', $name)) {
+                $loja->image = $name;
+            };
+        };
+        
         $loja->save();
-        return redirect('/loja/{id}');
+    
+        return redirect('minha-loja/{id}');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $loja = App/Loja::find($id);
+    public function show($id) {
+        $loja = \App\Loja::find($id);
+        return view('loja', compact('loja'));
+    }
+
+    public function edit($id) {
+        $loja = \App\Loja::find($id);
+        $categories = \App\Categoria::all();
+
+        return view('minha-loja', compact('loja', 'categories'));
+    }
+
+    public function update(Request $request, $id) {
+        $dados = $request->all();
+        
+        $loja = \App\Loja::find($id);
+        $loja->name_store = $dados['name_store'];
+        $loja->location = $dados['location'];
+        $loja->category_id = $dados['category_id'];
+        $loja->description = $dados['description'];
+        $loja->criacao = $dados['criacao'];
+
+        if($file = $request->file('image')) {
+            $name = $file->getClientOriginalName();
+            if($file->move('img/lojas', $name)) {
+                $loja->image = $name;
+                
+            };
+        };
+        $loja->save();
+
+        return redirect('meus-produtos');
+    }
+
+    public function destroy($id) {
+        $loja = \App\Loja::find($id);
         $loja->delete();
 
         return back();

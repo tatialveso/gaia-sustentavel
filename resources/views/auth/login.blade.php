@@ -69,6 +69,6 @@
         </form>
     </div>
     <div class="d-flex justify-content-center mt-3">
-        <h6>Ainda não é cadastrado? <a class="text-dark" style="text-decoration:none" href="/cadastro">Faça seu cadastro.</a></h6>
+        <h6>Ainda não é cadastrado? <a class="text-dark" style="text-decoration:none" href="/register">Faça seu cadastro.</a></h6>
     </div>
 </div>

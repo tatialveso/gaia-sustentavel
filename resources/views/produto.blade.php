@@ -11,12 +11,12 @@
         <div class="row mt-5">
             <div class="col-6 mt-3">
                 {{-- imagem do produto --}}
-                <img src= "{{$product->imagem}}" width="500px" alt="">  <!-- verificar onde será armazenada a img. -->
+                <img src="img/produtos/{{$product['img_product']}}" width="500px" alt="">
             </div>
             {{-- informações --}}
             <div class="informacoes col-6">
-                <h4 class="my-5 text-center">{{$product->name}}</h4> <!-- nome do produto -->
-                <h6 class="mb-3"><a href="/loja/{id}">{{$product->store_id}}</a></h6> <!-- Loja -->
+                <h4 class="my-5 text-center">{{$product['name']}}</h4>
+                <h6 class="mb-3"><a href="/loja/{{ $product['store_id'] }}">{{ $product->loja->name_store }}</a></h6>
 
                 {{-- estrelas de avaliação --}}
                 <ul class="list-inline list-unstyled my-3">
@@ -42,7 +42,7 @@
                     </li>
                 </ul>
 
-                <h4 class="mt-5 mb-3">R$ {{number_format($product->price, 2, ',', '.')}}</h4> <!-- preço -->
+                <h4 class="mt-5 mb-3">R$ {{$product['price']}}</h4>
 
                 {{-- fav e quantidade --}}
                 <div class="dados d-flex justify-content-between mt-1">
@@ -64,9 +64,20 @@
                     <button class="btn ml-2 text-light" type="submit" style="background-color: #54775e;">OK</button>
                 </form>
 
-                <div class="btn-produto d-flex justify-content-end">  <!-- Acrescentar a função do botão  -->
+
+
+
+<!-- Lógica para inserir o produto no carrinho -->
+
+        <form method="POST" actions="{{route('/carrinho/adicionar')}}">
+        {{ csrf_field() }}
+            <input type="hidden" name="id" value="$registro_id}}">
+        
+                <div class="btn-produto d-flex justify-content-end"> 
                     <button class="btn my-5" type="submit"><a class="text-light" href="cesta-compras.html">Adicionar no carrinho</a></button>
                 </div>
+                
+        </form>
             </div>
         </div>
 
@@ -74,15 +85,10 @@
             {{-- descrição do produto --}}
             <div class="col-lg-6">
                 <h4 class="text-center">Descrição do produto</h4>
-                <p class="mt-3 text-justify">{{$product->description}}</p>
+                <p class="mt-3 text-justify">{{ $product['description'] }}</p>
 
-                <h6>Ingredientes</h6>    <!-- precisa criar um textarea no form de produto para inserir isso.  --> 
-                <p class="text-justify"><b>Composição: </b>(Composição)</p>
-                
-                <h6>Características</h6>
-                <ul>
-                    <li>(Filtro de características</li>
-                </ul>
+                <h4 class="text-center">Composição do produto</h4>
+                <p class="text-justify">{{ $product['composition'] }}</p>
             </div>
 
             {{-- avaliações --}}
@@ -105,7 +111,7 @@
                 </div>
 
                 <!-- formulário que quando o botão acima for clicado ele aparecerá embaixo -->
-                <form action ="/avaliacao-produto" method="POST" id="form-produto">
+                <form action ="/produto/{id}" method="POST" id="form-produto">
                     <div class="form-group">
                     @csrf
                         <label>Título</label>

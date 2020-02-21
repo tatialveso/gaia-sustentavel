@@ -11,6 +11,25 @@
     <div class="titulo">
         <h5>Cesta de Compras</h5>
     </div>
+
+
+
+
+
+    <!-- Para verificar se existe alguma mensagem do flash() --> 
+
+    @if(Session::has('mensagem-sucesso'))
+        <div class=""> <!--Formatar a mensagem de sucesso--> 
+            <strong> {{Session::get('mensagem-sucesso')}}</strong>
+        </div>
+    @endif
+    @if(Session::has('mensagem-falha'))
+        <div class=""> <!--Formatar a mensagem de falha--> 
+            <strong> {{Session::get('mensagem-falha')}}</strong>
+        </div>
+    @endif
+
+
     <!-- forelse: para verificar se o carrinho não está vazio, se não estiver segue o código a seguir. -->
 
     @forelse($pedidos as $pedido)
@@ -24,21 +43,32 @@
 
         <div class="row border border-success mt-5" style="height: 200px;">
             <div class="col-3 mt-5">
-                <img src="{{$pedido_produto->produto->imagem}}" class="img-thumbnail w-25" alt=""> <!-- Ver como serão inseridas as imagens dos produtos!!-->
+                <img src="{{$pedido_produto->produto->imagem}}" class="img-thumbnail w-25" alt=""> 
             </div>
             <div class="col-5 mt-5">
-                <h5>{{$pedido_produto->product->name}}</h5>   <!-- Verificar se esses nomes fazem referência ao campos das tabelas-->
+                <h5>{{$pedido_produto->product->name}}</h5>   
                 <p><a href="#">{{$pedido_produto->store->name}}</a></p> <!-- Nome da loja -->
             </div>
             <div class="col-2 mt-5">
                 <h6>Unidades</h6> <!-- Ver como será feito a definição das quantidades -->
-                <select class="form-control-sm">
+                    <a href="#" onclick="carrinhoRemoverProduto( {{$pedido->id}}, {{$pedido_produto->produto_id}},1)">
+                        <i class="material-icons small">remove_cicle_outline</i>
+                    </a>
+                    <span class="" {{$pedido_produto->qtd}} </spam>
+                    <a href="#" onclick="carrinhoAdicionarProduto( {{$pedido->id}}, {{$pedido_produto->produto_id}},1)">
+                        <i class="material-icons small">add_cicle_outline</i>
+                    </a>
+                    <i class="material-icons small">add_cicle_outline</i>
+            </div>  
+            <a href="#" onclick="carrinhoAdicionarProduto( {{$pedido->id}}, {{$pedido_produto->produto_id}},1)" class="tooltipped" data-position="right" data-tooltipe="Retirar produto do carrinho"> Retirar produto</a>
+                       
+                <!-- <select class="form-control-sm">
                     <option selected value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                </select>
+                </select> -->
             </div>
             <div class="col-2 mt-5">
                 <h6>Valor<h6> 
@@ -46,6 +76,7 @@
                 <h6>Descontos</h6>
                 <p>R${{number_format($pedido_produto->product->discount, 2, ',', '.')}}</p> <!-- desconto -->
             </div>
+            
         </div>
     </div>
 
@@ -96,6 +127,25 @@
             </div>
         </div>
     </div>
+
+
+    <form id="form-remover-produto" method="POST" action="{{route('carrinho/remover') }}">
+        {{csrf_field()}}
+        {{method-field('DELETE')}}
+        <input type="hidden" name="pedido_id">
+        <input type="hidden" name="produto_id">
+        <input type="hidden" name="item">
+    </form>
+    <form id="form-adicionarr-produto" method="POST" action="{{route('carrinho/adicionar') }}">
+        {{csrf_field()}}
+        {{method-field('DELETE')}}
+        <input type="hidden" name="id">
+    </form>
+
+    @push('scripts')
+        <script type="text/javascript" src="/js/carrinho.js"></script>
+    @endpush
+
 @endsection
 
     

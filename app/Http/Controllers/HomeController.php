@@ -21,8 +21,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index() // Mostra apenas os produtos ativos na página inicial/index.
     {
-        return view('index');
+        $registros = Produto::where([
+            'ativo' => 'S'
+        ])->get();
+        return view('index', compact('registros'));
+    }
+
+    public function produto($id=null) //Mostra o produto direto da index
+    {
+        if(!empty($id)) {
+            $registro = Produto::where([
+                'id'=> $id,
+                'active'=> 'S'
+            ])->first();
+        }
+        if(!empty($registro)) {
+            return view('produto', compact($registro));
+        }
+
+        return redirect()->route('/');
     }
 }

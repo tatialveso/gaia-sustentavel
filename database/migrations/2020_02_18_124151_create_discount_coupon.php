@@ -13,13 +13,16 @@ class CreateDiscountCoupon extends Migration
      */
     public function up()
     {
-        Schema::create('discount_coupon', function (Blueprint $table) {
+        Schema::create('discounts_coupon', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->decimal('discount', 6, 2);
-            $table->enum('type_discount', ['valor', 'qtd'])->default(0);
+            $table->decimal('limit', 6, 2)->default(0);  
+            $table->enum('type_limit', ['price', 'qtd'])->default('qtd');
             $table->dateTime('validade');
             $table->enum('active', ['S', 'N'])->default('S');
+            $table->string('localizador')->unique();  
+            $table->enum('type_discount', ['price', 'porc'])->default('porc');  
             $table->timestamps();
         });
     }

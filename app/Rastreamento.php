@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rastreamento extends Model
 {
+    protected $table = "trackings";
     protected $fillable = [];
 
     public function pedido () {

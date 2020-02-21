@@ -18,9 +18,12 @@ class ProdutosCreate extends Migration
             $table->string('name');
             $table->decimal('price');
             $table->string('description');
+            $table->string('composition');
             $table->integer('store_id');
             $table->integer('category_id');
             $table->integer('subcategory_id');
+            $table->string('img_product');
+            $table->enum('active', ['S', 'N'])->default('S');
             $table->timestamps();
         });
     }

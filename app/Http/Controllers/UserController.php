@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\UF;
 
 
@@ -40,17 +40,17 @@ class UserController extends Controller {
         ] );
     }
     
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request) {
-        $user = Auth::user();
-        //dd($user);
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit(Request $request) {
+    //     $user = Auth::user();
+    //     dd($user);
 
         
-    }
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -60,15 +60,40 @@ class UserController extends Controller {
      */
     public function update(Request $request) {
         //inserir validaçoes
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'data_nascimento' => 'required|date',
+            'cpf' => 'required|string|min:11|max:11',
+            'endereco' => 'required|string',
+            'numero' => 'required|numeric',
+            'uf_id' => 'required',
+            'bairro' => 'string|required',
+            'cidade' => 'required|string',
+            'cep' => 'required|max:8|string',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+            'min' => 'O número mínimo de caracteres é :min',
+            'max' => 'O número máximo de caracteres é :max',
+        ]);
         
         $data = $request->only([
-            'name', 'data_nascimento', 'cpf', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'uf_id', 'cep'
+            'name',
+            'data_nascimento',
+            'cpf',
+            'endereco',
+            'numero',
+            'complemento',
+            'uf_id',
+            'bairro',
+            'cidade',
+            'cep',
         ]);
 
         $this->updateUser($data , Auth::user()->id);
 
+        return redirect()->route('configuracoes.index')
+        ->with('success','Dados atualizados com sucesso.');
 
-        return redirect()->route('configuracoes.index');
     }
 
     /**

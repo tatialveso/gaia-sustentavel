@@ -20,9 +20,9 @@ class AvaliacaoLojaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        return view('loja');
-    }
+    // public function create() {
+    //     return view('loja');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -30,15 +30,22 @@ class AvaliacaoLojaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $store_id)
     {
+        // $dados = $request->all();
+        
+        $avaliacaoLoja = AvaliacaoLoja::make($request->all());
+        $avaliacaoLoja->store_id = $store_id;
+        $avaliacaoLoja->save();
 
-        // dd($request->all());
-
-        $avaliacaoLoja = AvaliacaoLoja::create($request->all());
-
-    return redirect('/loja/{id}');
+        return redirect('/loja/{id}');
     }
 
+
+    public function show($id) {
+        $loja = \App\Loja::find($id);
+        // $produto = \App\Produto::all(); = aparecer produtos só daquela loja
+        return view('loja', compact('loja'));
+    }
 
 }

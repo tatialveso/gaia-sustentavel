@@ -34,12 +34,6 @@
             background-color: #54775e;
         }
     </style>
-
-<!-- @php
-  $category = [(object)['1' => 'Higiene Pessoal', '2' => 'Casa e Ambiente']];
-  $subcategory = [(object)['1' => 'Higiene Pessoal', '2' => 'Casa e Ambiente']];
-@endphp -->
-
     <title>Incluir novo produto</title>
 </head>
 <body>
@@ -53,7 +47,7 @@
 
     {{-- campo para adicionar fotos --}}
     <div class="container">
-        <form action="/incluir-produto" method="POST">
+        <form action="/incluir-produto" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mt-4">
                 <div class="col-6">
@@ -68,16 +62,17 @@
                 <div class="col-6 align-middle">
                     <label for=""><b>Foto do produto</b></label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" name="img_product" class="custom-file-input" id="customFile">
                         <label class="custom-file-label" for="customFile">Escolher foto</label>
                     </div>
                 </div>
             </div>
-
+            
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
-                    <select type="text" name="category"class="form-control">
+                    <select type="text" name="category_id" class="form-control">
+                        <option selected disabled>Selecione uma categoria</option>
                     @foreach($categories as $category)
                         <option value='{{ $category->id }}'>{{ $category->name }}</option>
                     @endforeach
@@ -85,9 +80,10 @@
                 </div>
                 <div class="col-6 form-group">
                     <label><b>Subcategoria</b></label>
-                    <select type="text" name="subcategory" class="form-control">
+                    <select type="text" name="subcategory_id" class="form-control">
+                        <option selected disabled>Selecione uma subcategoria</option>
                     @foreach($subcategories as $subcategory)
-                        <option value='{{ $subcategory-id }}'>{{ $subcategory->name }}</option>
+                        <option value='{{ $subcategory->id }}'>{{ $subcategory->name }}</option>
                     @endforeach    
                     </select>
                 </div>
