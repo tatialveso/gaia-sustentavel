@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Produto;
 
 class ProdutoController extends Controller
@@ -30,6 +31,7 @@ class ProdutoController extends Controller
         $products->composition = $dados['composition'];
         $products->category_id = $dados['category_id'];
         $products->subcategory_id = $dados['subcategory_id'];
+        $products->store_id = $loja;
         
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
@@ -37,7 +39,7 @@ class ProdutoController extends Controller
                 $loja->image = $name;
             };
         };
-
+        
         $products->save();
 
         return redirect('/meus-produtos');
