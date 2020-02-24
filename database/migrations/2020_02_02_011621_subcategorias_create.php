@@ -17,7 +17,6 @@ class SubcategoriasCreate extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('category_id');
-            $table->timestamps();
         });
 
         DB::insert('insert into subcategories (name,category_id) values (?, ?)', ['Cabelo', 1]);

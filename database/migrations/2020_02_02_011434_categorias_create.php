@@ -16,7 +16,6 @@ class CategoriasCreate extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->timestamps();
         });
 
         DB::insert('insert into categories (name) values (?)', ['Higiene Pessoal']);
