@@ -33,7 +33,7 @@
                     <div class="invalid-feedback">{{$errors->first('location')}}</div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label><b>Data de criação</b></label>
+                    <label><b>Data em que a loja foi fundada</b></label>
                     <input type="date" class="form-control @error('criacao') is-invalid @enderror" name="criacao" value="{{ $loja['criacao']}}">
                     <div class="invalid-feedback">{{$errors->first('criacao')}}</div>
                 </div>

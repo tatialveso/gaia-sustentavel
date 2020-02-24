@@ -49,7 +49,7 @@ Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
 Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
 Route::get('loja/{id}', 'LojaController@show');
-Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
+Route::get('/minha-loja/{id}', [ 'uses' => 'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
 Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
