@@ -36,7 +36,7 @@ class ProdutoController extends Controller
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
             if($file->move('img/produtos', $name)) {
-                $loja->image = $name;
+                $products->image = $name;
             };
         };
         
@@ -47,7 +47,9 @@ class ProdutoController extends Controller
 
     public function show($id) {
         $product = \App\Produto::find($id);
-        return view('produto',compact('product'));
+        $relacionados = Produto::where("category_id", "{{$product['category_id']}}")->get(); //pegar produtos com o mesmo category_id que o produto mostrado
+        
+        return view('produto',compact('product', 'relacionados'));
     }
 
     public function edit($id) {

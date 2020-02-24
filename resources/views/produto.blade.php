@@ -4,7 +4,7 @@
 {{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLoja.css') }}">
 
-<title>(nome do produto)</title>
+<title>{{$product['name']}}</title>
 
 @section('produto')
     <div class="container">
@@ -69,8 +69,8 @@
 
 <!-- Lógica para inserir o produto no carrinho -->
 
-        <form method="POST" actions="{{route('/carrinho/adicionar')}}">
-        {{ csrf_field() }}
+        <form method="POST" actions="/carrinho/adicionar">
+            @csrf
             <input type="hidden" name="id" value="$registro_id}}">
         
                 <div class="btn-produto d-flex justify-content-end"> 
@@ -146,21 +146,23 @@
     {{-- produtos relacionados --}}
     <div class="container mt-3">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{id}"> </a></h5>
-                        <p class="card-text"> </p>
-                        <div class="btn-produto">
-                            <a href="/produto/{id}" class="btn text-light">Comprar</a>
-                            <a href=""><i class="material-icons">
-                                    favorite_border
-                                </i></a>
+            @foreach ($relacionados as $relacionado)
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="/img/produtos/{{$relacionado['img_product']}}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$relacionado['id']}}">{{$relacionado['name']}}</a></h5>
+                            <p class="card-text">R$ {{$relacionado['price']}}</p>
+                            <div class="btn-produto">
+                                <a href="/produto/{{$relacionado['id']}}" class="btn text-light">Comprar</a>
+                                <a href=""><i class="material-icons">
+                                        favorite_border
+                                    </i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
