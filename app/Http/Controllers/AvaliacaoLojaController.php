@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AvaliacaoLoja;
 use Illuminate\Http\Request;
+use App\Produto;
 
 class AvaliacaoLojaController extends Controller
 {
@@ -30,22 +31,23 @@ class AvaliacaoLojaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $store_id)
-    {
+    public function store(Request $request, $store_id) {
         // $dados = $request->all();
         
         $avaliacaoLoja = AvaliacaoLoja::make($request->all());
         $avaliacaoLoja->store_id = $store_id;
         $avaliacaoLoja->save();
 
-        return redirect('/loja/{id}');
+        return back(); // ele apenas atualiza a página quando o formulário é enviado
     }
 
 
     public function show($id) {
         $loja = \App\Loja::find($id);
-        // $produto = \App\Produto::all(); = aparecer produtos só daquela loja
-        return view('loja', compact('loja'));
+        $ratings = AvaliacaoLoja::where('store_id', $id)->get(); 
+        $products = Produto::where('store_id', $id)->get(); 
+        
+        return view('loja', compact('loja', 'products', 'ratings'));
     }
 
 }

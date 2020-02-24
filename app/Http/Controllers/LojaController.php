@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use App\Produto;
+use App\AvaliacaoLoja;
 
 class LojaController extends Controller
 {
@@ -45,15 +46,17 @@ class LojaController extends Controller
             };
         };
         
-        // dd($session_id);
         $loja->save();
     
-        return redirect('minha-loja/{id}');
+        return redirect()->route('minha-loja.edit', ['id' => ':id']);
     }
 
     public function show($id) {
         $loja = \App\Loja::find($id);
-        return view('loja', compact('loja'));
+        $ratings = AvaliacaoLoja::where('store_id', $id)->get(); 
+        $products = Produto::where("store_id", $id)->get(); 
+        
+        return view('loja', compact('loja', 'products', 'ratings'));
     }
 
     public function edit($id) {
@@ -69,7 +72,7 @@ class LojaController extends Controller
             'location' => 'required|string',
             'category_id' => 'required',
             'description' => 'required|string',
-            'criacao' => 'required|numeric',
+            'criacao' => 'required',
             'image' => 'required',
         ], [
             'required' => 'Esse campo é obrigatório',
