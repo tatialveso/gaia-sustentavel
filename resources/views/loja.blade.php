@@ -9,19 +9,16 @@
 
 @section('loja')
     <div class="container">
-        {{-- perfil da loja com informações da mesma --}}
         <div class="row">
             <div class="perfil col-6">
-                {{-- foto de perfil --}}
                 <div class="d-flex justify-content-around mt-4">
                     <img src="/img/lojas/{{ $loja['image']}}" alt="">
                 </div>
-                {{-- nome da loja --}}
                 <h4 class="mt-3 text-center">{{ $loja['name_store']}}</h4>
                 {{-- botão de seguir --}}
-                <div class="mt-3 d-flex justify-content-center">
+                {{-- <div class="mt-3 d-flex justify-content-center">
                     <button class="btn text-light">Seguir</button>
-                </div>
+                </div> --}}
             </div>
 
             <div class="col-6 mt-5">
@@ -33,7 +30,8 @@
                 {{-- localização da loja --}}
                 <p><b>Localizado em </b>{{ $loja['location']}}</p>
                 {{-- avaliação da loja --}}
-                <ul class="list-inline list-unstyled mt-4">
+                <p><b>Avaliação</b></p>
+                {{-- <ul class="list-inline list-unstyled mt-4">
                     <li class="list-inline-item"><i class="material-icons">
                             star
                         </i>
@@ -54,7 +52,7 @@
                             star_border
                         </i>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </div>
@@ -62,28 +60,26 @@
     <div class="titulo mt-5">
         <h5 class="text-center">Produtos de {{ $loja['name_store']}}</h5>
     </div>
-    {{-- produtos na página da loja --}}
+    
     <div class="container mt-3">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
-                    {{-- imagem do produto --}}
-                    <img src="/img/produtos/" class="card-img-top" alt="">
-                    <div class="card-body">
-                        {{-- nome do produto --}}
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="#"></a></h5>
-                        {{-- preço do produto --}}
-                        <p class="card-text"></p>
-                        {{-- botões do card --}}
-                        <div class="btn-produto d-flex justify-content-between">
-                            <a href="#" class="btn text-light">Comprar</a>
-                            <a href="#"><i class="align-middle material-icons">
-                                    favorite_border
-                            </i></a>
+            @foreach ($products as $produto)
+                <div class="col-lg-4 mt-3">
+                    <div class="card">
+                        <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$produto['id']}}">{{$produto['name']}}</a></h5>
+                            <p class="card-text">R$ {{$produto['price']}}</p>
+                            <div class="btn-produto d-flex justify-content-between">
+                                <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
+                                <a href="#"><i class="align-middle material-icons">
+                                        favorite_border
+                                </i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
@@ -92,45 +88,38 @@
     </div>
 
     <div class="container">
-        {{-- avaliação de cada usuário --}}
-        <div class="mt-3">
-            {{-- estrelas --}}
-            <ul class="list-inline list-unstyled my-1">
-                <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-            </ul>
-            {{-- título da avaliação --}}
-            <p><b></b></p>
-            {{-- texto de avaliação --}}
-            <p class="text-justify"></p>
-        </div>
-        {{-- botão para avaliar a loja --}}
+        @foreach ($ratings as $rating)
+            <div class="mt-3">
+                {{-- <ul class="list-inline list-unstyled my-1">
+                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
+                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
+                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
+                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
+                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
+                </ul> --}}
+                <p><b>{{$rating['name']}}</b></p>
+                <p class="text-justify">{{$rating['description']}}</p>
+            </div>
+        @endforeach
+        
         <div class="btn-produto d-flex justify-content-around">
             <button type="button" class="btn text-light my-5" id="avaliar-loja">Avaliar a {{ $loja['name_store']}}</button>
         </div>
 
-        {{-- lógica: quando o botão acima for clicado o formulário seguinte irá aparecer --}}
         <form action ="/loja/{{ $loja['id'] }}" method="POST" id="form-loja">
             <div class="form-group">
             @csrf
-                <label>Título da avaliação</label>
-                <input type="text" name="name" class="form-control">
+                <label><b>Título da avaliação</b></label>
+                <input type="text" name="name" class="form-control" placeholder="Escreva um título para a sua avaliação">
             </div>
+            {{-- ao invés de usar estrelas, usamos números
             <div class="form-group">
-                <ul class="avaliacao list-inline my-1">
-                    <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                    <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                    <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                    <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                    <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                </ul>
-            </div>
+                <label><b>Nota para a loja</b></label>
+                <input type="number" name="rating" min=0 max=10 class="form-control" placeholder="De 0 a 10, qual nota você dá para a loja?">
+            </div> --}}
             <div class="form-group">
-                <label>Avaliação</label>
-                <textarea class="form-control" name="description" rows="3"></textarea>
+                <label><b>Avaliação</b></label>
+                <textarea class="form-control" name="description" rows="3" placeholder="Escreva com detalhes a sua experiência com a loja"></textarea>
             </div>
             <div class="btn-produto">
                 <button type="submit" class="btn text-light">Enviar avaliação</button>
