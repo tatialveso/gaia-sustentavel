@@ -50,14 +50,5 @@
         </div>
     </div>
 
-    {{-- filtro para certificações --}}
-    <div class="certificado mb-3">
-        <h6>Certificação</h6>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" value="">
-            <label class="form-check-label" for="defaultCheck2">Apenas produtos com certificação</label>
-        </div>
-    </div>
-
     <button class="btn text-light btn-sm" style="background-color: #54775e;" type="submit">Filtrar</button>
 </aside>

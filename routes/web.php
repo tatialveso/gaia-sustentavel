@@ -67,6 +67,7 @@ Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
+Route::get('/higiene-pessoal/cabelos', 'PessoalController@cabeloIndex');
 Route::get('/casa-ambiente', 'CasaController@index');
 
 // Página inicial logado

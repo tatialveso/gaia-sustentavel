@@ -173,11 +173,11 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="/higiene-pessoal">Todos os produtos de Higiene Pessoal</a>
-                    <a class="dropdown-item" href="#">Cabelo</a>
-                    <a class="dropdown-item" href="#">Rosto</a>
-                    <a class="dropdown-item" href="#">Cosméticos</a>
-                    <a class="dropdown-item" href="#">Corpo e Banho</a>
-                    <a class="dropdown-item" href="#">Itens Pessoais</a>
+                    <a class="dropdown-item" href="/higiene-pessoal/cabelos">Cabelo</a>
+                    <a class="dropdown-item" href="/higiene-pessoal/rosto">Rosto</a>
+                    <a class="dropdown-item" href="/higiene-pessoal/cosmeticos">Cosméticos</a>
+                    <a class="dropdown-item" href="/higiene-pessoal/corpo-banho">Corpo e Banho</a>
+                    <a class="dropdown-item" href="/higiene-pessoal/itens-pessoais">Itens Pessoais</a>
                 </div>
             </div>
 
@@ -188,8 +188,8 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="/casa-ambiente">Todos os produtos de Casa e Ambiente</a>
-                    <a class="dropdown-item" href="#">Limpeza doméstica</a>
-                    <a class="dropdown-item" href="#">Aromatizador</a>
+                    <a class="dropdown-item" href="/casa-ambiente/limpeza">Limpeza doméstica</a>
+                    <a class="dropdown-item" href="/casa-ambiente/aromatizador">Aromatizador</a>
                 </div>
             </div>
 
