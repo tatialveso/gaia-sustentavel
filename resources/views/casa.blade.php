@@ -14,15 +14,15 @@
 
         <main>
             <div class="row">
-                {{-- card do produto --}}
+                @foreach ($produtos as $produto)
                 <div class="col-4">
                     <div class="card">
-                        <img src="#" class="card-img-top" alt="">
+                        <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{id}">Nome do produto</a></h5>
-                            <p class="card-text">preço do produto</p>
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$produto['id']}}">{{$produto['name']}}</a></h5>
+                            <p class="card-text">{{$produto['price']}}</p>
                             <div class="btn-produto">
-                                <a href="/produto/{id}" class="btn text-light">Comprar</a>
+                                <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
                                 <a href=""><i class="material-icons">
                                         favorite_border
                                 </i></a>
@@ -30,6 +30,7 @@
                         </div>
                     </div>
                 </div>
+            @endforeach
             </div>
         </main>
     </div>

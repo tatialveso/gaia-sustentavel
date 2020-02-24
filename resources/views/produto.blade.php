@@ -112,18 +112,18 @@
 
                 <!-- formulário que quando o botão acima for clicado ele aparecerá embaixo -->
                 <form action ="/produto/{id}" method="POST" id="form-produto">
-                    <div class="form-group">
                     @csrf
-                        <label>Título</label>
+                    <div class="form-group">
+                        <label>Título da avaliação</label>
                         <input type="text" name="name" class="form-control">
                     </div>
                     <div class="form-group">
                         <ul class="avaliacao list-inline list-unstyled my-1">
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
                         </ul>
                     </div>
                     <div class="form-group">

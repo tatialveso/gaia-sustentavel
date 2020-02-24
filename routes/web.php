@@ -49,25 +49,24 @@ Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
 Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
 Route::get('loja/{id}', 'LojaController@show');
-Route::get('/minha-loja/{id}', [ 'uses' => 'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
+Route::get('/minha-loja/{id}', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
 Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
-// Avaliacao loja
+// CRUD DA AVALIAÇÃO DA LOJA
 Route::get('loja/{id}', 'AvaliacaoLojaController@show');
 // Route::get('/loja/{id}','AvaliacaoLojaController@create');
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
-// Avaliacao produto
+// Avaliação dos produtos
 Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
 Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
-// Catálogo de higiene pessoal
+// CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
-// Catálogo de casa e ambiente
 Route::get('/casa-ambiente', 'CasaController@index');
 
 // Página inicial logado
