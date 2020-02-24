@@ -71,7 +71,7 @@ Route::get('/higiene-pessoal', 'PessoalController@index');
 Route::get('/casa-ambiente', 'CasaController@index');
 
 // Página inicial logado
-Route::get('/perfil/{id}', 'PerfilController@index')->middleware('auth');
+Route::get('/perfil/{id}', 'PerfilController@show')->middleware('auth');
 
 // Favoritos
 Route::get('/favoritos', 'FavoritoController@index')->middleware('auth');
