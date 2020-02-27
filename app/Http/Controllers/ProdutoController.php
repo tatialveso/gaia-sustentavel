@@ -90,6 +90,6 @@ class ProdutoController extends Controller
         $products = \App\Produto::find($id);
         $products->delete();
 
-        return redirect('/configuracoes');
+        return back();
     }
 }

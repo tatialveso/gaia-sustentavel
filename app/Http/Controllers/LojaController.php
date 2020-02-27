@@ -101,6 +101,6 @@ class LojaController extends Controller
         $loja = \App\Loja::find($id);
         $loja->delete();
 
-        return back();
+        return redirect('configuracoes');
     }
 }
