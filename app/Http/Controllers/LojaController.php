@@ -29,7 +29,6 @@ class LojaController extends Controller
         ]);
 
         $dados = $request->all();
-        $session_id = Auth::user()->id;
 
         $loja = new \App\Loja();
         $loja->name_store = $dados['name_store'];
@@ -37,7 +36,6 @@ class LojaController extends Controller
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
-        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
@@ -79,7 +77,6 @@ class LojaController extends Controller
         ]);
 
         $dados = $request->all();
-        $session_id = Auth::user()->id;
         
         $loja = \App\Loja::find($id);
         $loja->name_store = $dados['name_store'];
@@ -87,7 +84,6 @@ class LojaController extends Controller
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
-        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();

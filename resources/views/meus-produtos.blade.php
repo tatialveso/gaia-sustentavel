@@ -18,7 +18,7 @@
             <h1>Meus produtos</h1>
             <div class="row">
             @foreach ($products as $product)
-                <div class="col-6">
+                <div class="col-6 mb-3">
                     <div class="card">
                         <img src="{{$product['img_product']}}" class="card-img-top" alt="">
                         <div class="card-body">
