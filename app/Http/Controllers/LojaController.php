@@ -48,7 +48,7 @@ class LojaController extends Controller
         
         $loja->save();
     
-        return redirect()->route('minha-loja.edit', ['id' => ':id']);
+        return redirect('meus-produtos');
     }
 
     public function show($id) {

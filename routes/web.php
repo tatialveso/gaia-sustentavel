@@ -68,7 +68,13 @@ Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
 Route::get('/higiene-pessoal/cabelos', 'PessoalController@cabeloIndex');
+Route::get('/higiene-pessoal/rosto', 'PessoalController@rostoIndex');
+Route::get('/higiene-pessoal/cosmeticos', 'PessoalController@cosmeticosIndex');
+Route::get('/higiene-pessoal/corpo-banho', 'PessoalController@banhoIndex');
+Route::get('/higiene-pessoal/itens-pessoais', 'PessoalController@pessoalIndex');
 Route::get('/casa-ambiente', 'CasaController@index');
+Route::get('/casa-ambiente/limpeza', 'CasaController@limpezaIndex');
+Route::get('/casa-ambiente/aromatizador', 'CasaController@aromatizadorIndex');
 
 // Página inicial logado
 Route::get('/perfil/{id}', 'PerfilController@show')->middleware('auth');

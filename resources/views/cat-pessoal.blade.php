@@ -12,15 +12,15 @@
         
         <main>
             <div class="row">
-                @foreach ($cabelos as $cabelo)
+                @foreach ($pessoais as $pessoal)
                     <div class="col-4 mb-3">
                         <div class="card">
-                            <img src="/img/produtos/{{$cabelo['img_product']}}" class="card-img-top" alt="">
+                            <img src="/img/produtos/{{$pessoal['img_product']}}" class="card-img-top" alt="">
                             <div class="card-body">
-                                <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$cabelo['id']}}">{{$cabelo['name']}}</a></h5>
-                                <p class="card-text">{{$cabelo['price']}}</p>
-                                <div class="btn-cabelo">
-                                    <a href="/produto/{{$cabelo['id']}}" class="btn text-light">Comprar</a>
+                                <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$pessoal['id']}}">{{$pessoal['name']}}</a></h5>
+                                <p class="card-text">{{$pessoal['price']}}</p>
+                                <div class="btn-pessoal">
+                                    <a href="/produto/{{$pessoal['id']}}" class="btn text-light">Comprar</a>
                                     <a href=""><i class="material-icons">
                                             favorite_border
                                     </i></a>
