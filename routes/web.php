@@ -49,29 +49,35 @@ Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
 Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
 Route::get('loja/{id}', 'LojaController@show');
-Route::get('/minha-loja/{id}', 'LojaController@edit')->middleware('auth');
+Route::get('/minha-loja/{id}', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
 Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
-// Avaliacao loja
-//Route::get('loja/{id}', 'AvaliacaoLojaController@show');
+// CRUD DA AVALIAÇÃO DA LOJA
+Route::get('loja/{id}', 'AvaliacaoLojaController@show');
 // Route::get('/loja/{id}','AvaliacaoLojaController@create');
 //Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
-// Avaliacao produto
-//Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-//Route::post('/produto/{id}','AvaliacaoProdutoController@store');
+// Avaliação dos produtos
+Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
+Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
-// Catálogo de higiene pessoal
+// CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
-// Catálogo de casa e ambiente
+Route::get('/higiene-pessoal/cabelos', 'PessoalController@cabeloIndex');
+Route::get('/higiene-pessoal/rosto', 'PessoalController@rostoIndex');
+Route::get('/higiene-pessoal/cosmeticos', 'PessoalController@cosmeticosIndex');
+Route::get('/higiene-pessoal/corpo-banho', 'PessoalController@banhoIndex');
+Route::get('/higiene-pessoal/itens-pessoais', 'PessoalController@pessoalIndex');
 Route::get('/casa-ambiente', 'CasaController@index');
+Route::get('/casa-ambiente/limpeza', 'CasaController@limpezaIndex');
+Route::get('/casa-ambiente/aromatizador', 'CasaController@aromatizadorIndex');
 
 // Página inicial logado
-Route::get('/perfil/{id}', 'PerfilController@index')->middleware('auth');
+Route::get('/perfil/{id}', 'PerfilController@show')->middleware('auth');
 
 // Favoritos
 Route::get('/favoritos', 'FavoritoController@index')->middleware('auth');

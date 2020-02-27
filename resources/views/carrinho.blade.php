@@ -29,14 +29,10 @@
     <!-- forelse: para verificar se o carrinho não está vazio, se não estiver segue o código a seguir. -->
 
     @forelse($pedidos as $pedido)
+        @foreach($pedido->pedido_produtos as $pedido_produto)
     {{-- lista de produtos --}}
     <div class="container">
-
-
     <!-- Para exibir todos os produtos selecionados: -->
-
-        @foreach($pedido->pedido_produtos as $pedido_produto)
-
         <div class="row border border-success mt-5" style="height: 200px;">
             <div class="col-3 mt-5">
                 <img src="{{$pedido_produto->produto->imagem}}" class="img-thumbnail w-25" alt=""> 
@@ -74,8 +70,7 @@
                 <p>R${{number_format($pedido_produto->product->discount, 2, ',', '.')}}</p> <!-- desconto -->
             </div>
         </div>
-        @endforeach
-        
+        @endforeach        
          <!-- Se o carrinho estiver vazio, cai aqui -->
     @empty
          <h5>Não há nenhum pedido no carrinho</h5>
@@ -97,7 +92,7 @@
 
 
             <!-- Resumo do pedido -->
-            <div class="p-5 col-6">
+            {{-- <div class="p-5 col-6">
                 <div class="text-right">
                     <h3>Resumo do pedido {{$pedido->id}}</h3>
             
@@ -138,13 +133,13 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
     <form id="form-remover-produto" method="POST" action="{{route('carrinho.remover') }}">
         {{csrf_field()}}
-        {{method-field('DELETE')}}
+        @method('DELETE')
         <input type="hidden" name="pedido_id">
         <input type="hidden" name="produto_id">
         <input type="hidden" name="item">

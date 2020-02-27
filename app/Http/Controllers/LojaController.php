@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use App\Produto;
+use App\AvaliacaoLoja;
 
 class LojaController extends Controller
 {
@@ -28,7 +29,6 @@ class LojaController extends Controller
         ]);
 
         $dados = $request->all();
-        $session_id = Auth::user()->id;
 
         $loja = new \App\Loja();
         $loja->name_store = $dados['name_store'];
@@ -36,7 +36,6 @@ class LojaController extends Controller
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
-        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
@@ -45,15 +44,17 @@ class LojaController extends Controller
             };
         };
         
-        // dd($session_id);
         $loja->save();
     
-        return redirect('minha-loja/{id}');
+        return redirect('meus-produtos');
     }
 
     public function show($id) {
         $loja = \App\Loja::find($id);
-        return view('loja', compact('loja'));
+        $ratings = AvaliacaoLoja::where('store_id', $id)->get(); 
+        $products = Produto::where("store_id", $id)->get(); 
+        
+        return view('loja', compact('loja', 'products', 'ratings'));
     }
 
     public function edit($id) {
@@ -69,14 +70,13 @@ class LojaController extends Controller
             'location' => 'required|string',
             'category_id' => 'required',
             'description' => 'required|string',
-            'criacao' => 'required|numeric',
+            'criacao' => 'required',
             'image' => 'required',
         ], [
             'required' => 'Esse campo é obrigatório',
         ]);
 
         $dados = $request->all();
-        $session_id = Auth::user()->id;
         
         $loja = \App\Loja::find($id);
         $loja->name_store = $dados['name_store'];
@@ -84,7 +84,6 @@ class LojaController extends Controller
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
-        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
@@ -102,6 +101,6 @@ class LojaController extends Controller
         $loja = \App\Loja::find($id);
         $loja->delete();
 
-        return back();
+        return redirect('configuracoes');
     }
 }

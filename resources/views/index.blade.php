@@ -61,21 +61,23 @@
     </div>
     <div class="container mt-3">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{id}"> </a></h5>
-                        <p class="card-text"> </p>
-                        <div class="btn-produto">
-                            <a href="/produto/{id}" class="btn text-light">Comprar</a>
-                            <a href=""><i class="material-icons">
-                                    favorite_border
-                                </i></a>
+            @foreach ($registros as $registro)
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="/img/produtos/{{$registro['img_product']}}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$registro['id']}}">{{$registro['name']}}</a></h5>
+                            <p class="card-text">R$ {{$registro['price']}}</p>
+                            <div class="btn-produto">
+                                <a href="/produto/{{$registro['id']}}" class="btn text-light">Comprar</a>
+                                <a href=""><i class="material-icons">
+                                        favorite_border
+                                    </i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
@@ -84,21 +86,23 @@
     </div>
     <div class="container mt-3">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="#"> </a></h5>
-                        <p class="card-text"> </p>
-                        <div class="btn-produto">
-                            <a href="#" class="btn text-light">Comprar</a>
-                            <a href=""><i class="material-icons">
-                                    favorite_border
-                                </i></a>
+            @foreach ($produtos as $produto)
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$produto['id']}}">{{$produto['name']}}</a></h5>
+                            <p class="card-text">R$ {{$produto['price']}}</p>
+                            <div class="btn-produto">
+                                <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
+                                <a href=""><i class="material-icons">
+                                        favorite_border
+                                    </i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

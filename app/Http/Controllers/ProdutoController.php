@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Produto;
+use App\Loja;
 
 class ProdutoController extends Controller
 {
     public function index() {
-        $products = \App\Produto::all();
+        $loja = Auth::user()->loja_id;
+        $products = Produto::where('store_id', $loja)->get();
 
-        return view('meus-produtos', compact('products'));
+        return view('meus-produtos', compact('products', 'loja'));
     }
 
     public function create() {
@@ -23,6 +25,7 @@ class ProdutoController extends Controller
 
     public function store(Request $request) {        
         $dados = $request->all();
+        $loja = Auth::user()->loja_id;
 
         $products = new \App\Produto();
         $products->name = $dados['name'];
@@ -36,7 +39,7 @@ class ProdutoController extends Controller
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
             if($file->move('img/produtos', $name)) {
-                $loja->image = $name;
+                $products->img_product = $name;
             };
         };
         
@@ -47,7 +50,10 @@ class ProdutoController extends Controller
 
     public function show($id) {
         $product = \App\Produto::find($id);
-        return view('produto',compact('product'));
+        $category =  \App\Produto::find($id)->category_id;
+        $relacionados = Produto::where('category_id', $category)->get();
+
+        return view('produto',compact('product', 'relacionados'));
     }
 
     public function edit($id) {
@@ -71,7 +77,7 @@ class ProdutoController extends Controller
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
             if($file->move('img/produtos', $name)) {
-                $products->image = $name;
+                $products->img_product = $name;
                 
             };
         };

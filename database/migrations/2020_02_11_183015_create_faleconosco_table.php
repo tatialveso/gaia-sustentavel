@@ -13,11 +13,13 @@ class CreateFaleconoscoTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact-us', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name',60);
-            $table->text('email');
-            $table->text('message');
+        Schema::create('contact', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('email');
+            $table->bigInteger('topic_id');
+            $table->string('message');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateFaleconoscoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faleconosco');
+        Schema::dropIfExists('contact');
     }
 }

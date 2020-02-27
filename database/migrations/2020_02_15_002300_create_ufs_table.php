@@ -16,7 +16,6 @@ class CreateUfsTable extends Migration
         Schema::create('ufs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('state');
-            $table->timestamps();
         });
 
         DB::insert('insert into ufs (state) values (?)', ['AC']);

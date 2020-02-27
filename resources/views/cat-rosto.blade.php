@@ -8,19 +8,19 @@
 
 @section ('higiene')
     <div class="pagina container">
-        @include('aside-catalogo')
+        {{-- @include('aside-catalogo') --}}
         
         <main>
             <div class="row">
-                @foreach ($produtos as $produto)
+                @foreach ($rostos as $rosto)
                     <div class="col-4 mb-3">
                         <div class="card">
-                            <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
+                            <img src="/img/produtos/{{$rosto['img_product']}}" class="card-img-top" alt="">
                             <div class="card-body">
-                                <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$produto['id']}}">{{$produto['name']}}</a></h5>
-                                <p class="card-text">{{$produto['price']}}</p>
-                                <div class="btn-produto">
-                                    <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
+                                <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$rosto['id']}}">{{$rosto['name']}}</a></h5>
+                                <p class="card-text">{{$rosto['price']}}</p>
+                                <div class="btn-rosto">
+                                    <a href="/produto/{{$rosto['id']}}" class="btn text-light">Comprar</a>
                                     <a href=""><i class="material-icons">
                                             favorite_border
                                     </i></a>

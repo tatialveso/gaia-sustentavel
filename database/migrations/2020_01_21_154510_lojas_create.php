@@ -21,7 +21,6 @@ class LojasCreate extends Migration
             $table->string('description');
             $table->date('criacao');
             $table->string('image');
-            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

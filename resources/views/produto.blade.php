@@ -4,7 +4,7 @@
 {{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLoja.css') }}">
 
-<title>(nome do produto)</title>
+<title>{{$product['name']}}</title>
 
 @section('produto')
     <div class="container">
@@ -112,18 +112,18 @@
 
                 <!-- formulário que quando o botão acima for clicado ele aparecerá embaixo -->
                 <form action ="/produto/{id}" method="POST" id="form-produto">
-                    <div class="form-group">
                     @csrf
-                        <label>Título</label>
+                    <div class="form-group">
+                        <label>Título da avaliação</label>
                         <input type="text" name="name" class="form-control">
                     </div>
                     <div class="form-group">
                         <ul class="avaliacao list-inline list-unstyled my-1">
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
-                            <li class="list-inline-item"><a href=""><i class="material-icons">star_border</i></a></li>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
                         </ul>
                     </div>
                     <div class="form-group">
@@ -146,21 +146,23 @@
     {{-- produtos relacionados --}}
     <div class="container mt-3">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{id}"> </a></h5>
-                        <p class="card-text"> </p>
-                        <div class="btn-produto">
-                            <a href="/produto/{id}" class="btn text-light">Comprar</a>
-                            <a href=""><i class="material-icons">
-                                    favorite_border
-                                </i></a>
+            @foreach ($relacionados as $relacionado)
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="/img/produtos/{{$relacionado['img_product']}}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$relacionado['id']}}">{{$relacionado['name']}}</a></h5>
+                            <p class="card-text">R$ {{$relacionado['price']}}</p>
+                            <div class="btn-produto">
+                                <a href="/produto/{{$relacionado['id']}}" class="btn text-light">Comprar</a>
+                                <a href=""><i class="material-icons">
+                                        favorite_border
+                                    </i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

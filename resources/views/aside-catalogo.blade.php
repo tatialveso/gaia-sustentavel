@@ -21,41 +21,32 @@
     </div>
 
     {{-- filtro de subcategorias --}}
-    <div class="subcategoria mb-3">
+    {{-- <div class="subcategoria mb-3">
         <h6>Subcategorias</h6>
         <div class="form-check">
             <input class="form-check-input" type="radio" value="">
             <label class="form-check-label"></label>
         </div>
-    </div>
+    </div> --}}
 
     {{-- filtro de preço --}}
     <div class="preco mb-3">
         <h6>Faixa de preço</h6>
         <div class="form-check">
-            <input class="form-check-input" type="radio" value="">
-            <label class="form-check-label">até R$ 49.00</label>
+            <input class="form-check-input" name="cat-preco" type="radio" value="1">
+            <label class="form-check-label">até R$ 20.00</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" value="">
-            <label class="form-check-label" for="defaultCheck2">R$ 50.00 - R$ 89.00</label>
+            <input class="form-check-input" name="cat-preco" type="radio" value="2">
+            <label class="form-check-label" for="defaultCheck2">R$ 20.00 - R$ 50.00</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" value="">
-            <label class="form-check-label" for="defaultCheck2">R$ 90.00 - R$ 149.00</label>
+            <input class="form-check-input" name="cat-preco" type="radio" value="3">
+            <label class="form-check-label" for="defaultCheck2">R$ 50.00 - R$ 90.00</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" value="">
-            <label class="form-check-label" for="defaultCheck2">Acima de R$ 150,00</label>
-        </div>
-    </div>
-
-    {{-- filtro para certificações --}}
-    <div class="certificado mb-3">
-        <h6>Certificação</h6>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" value="">
-            <label class="form-check-label" for="defaultCheck2">Apenas produtos com certificação</label>
+            <input class="form-check-input" name="cat-preco" type="radio" value="4">
+            <label class="form-check-label" for="defaultCheck2">Acima de R$ 90,00</label>
         </div>
     </div>
 

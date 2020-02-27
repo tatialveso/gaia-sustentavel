@@ -16,6 +16,7 @@ class AvaliacaoLojaCreate extends Migration
         Schema::create('evaluations_stores', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('rate');
             $table->string('description');
             $table->integer('store_id');
             $table->timestamps();
@@ -29,6 +30,6 @@ class AvaliacaoLojaCreate extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('evaluations_stores');
     }
 }
