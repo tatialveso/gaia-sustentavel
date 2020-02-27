@@ -25,10 +25,14 @@ class Pedido extends Model
     }
 
     public function pedido_produtos () {
-        return $this->hasMany('App\Produto')
+        return $this->hasMany('App\PedidoProduto')
         ->select( \DB::raw('produto_id,sum (discount) as discounts, sum(price) as prices, count(1) as qtd') )
         ->groupBy('produto_id')
         ->orderBy('produto_id', 'desc');
+    }
+
+    public function pedido_produto_itens () {
+        return $this->hasMany('App\PedidoProduto');
     }
 
     public function pedido_produtos_itens()

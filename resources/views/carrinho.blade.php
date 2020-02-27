@@ -45,19 +45,20 @@
                 <h5>{{$pedido_produto->product->name}}</h5>   
                 <p><a href="#">{{$pedido_produto->store->name}}</a></p> <!-- Nome da loja -->
             </div>
+
+
             <div class="col-2 mt-5">
-                <h6>Unidades</h6> <!-- Ver como será feito a definição das quantidades -->
+                <h6>Unidades</h6>
                     <a href="#" onclick="carrinhoRemoverProduto( {{$pedido->id}}, {{$pedido_produto->produto_id}},1)">
-                        <i class="material-icons small">remove_cicle_outline</i>
+                        <i class="material-icons small">remove_cicle_outline</i>  <!-- Remove 1 item -->
                     </a>
-                    <span class="" {{$pedido_produto->qtd}} </spam>
-                    <a href="#" onclick="carrinhoAdicionarProduto( {{$pedido->id}}, {{$pedido_produto->produto_id}},1)">
-                        <i class="material-icons small">add_cicle_outline</i>
+                    <span class=""> {{$pedido_produto->qtd}} </spam>
+                    <a href="#" onclick="carrinhoAdicionarProduto( {{$pedido_produto->produto_id}})">
+                        <i class="material-icons small">add_cicle_outline</i> <!-- Adiciona 1 item --> 
                     </a>
-                    <i class="material-icons small">add_cicle_outline</i>
             </div>  
-            <a href="#" onclick="carrinhoAdicionarProduto( {{$pedido->id}}, {{$pedido_produto->produto_id}},1)" class="tooltipped" data-position="right" data-tooltipe="Retirar produto do carrinho"> Retirar produto</a>
-                       
+            <a href="#" onclick="carrinhoAdicionarProduto( {{$pedido->id}}, {{$pedido_produto->produto_id}},0)"> Retirar produto</a>
+             <!-- Remove todos os item daquele produto. -->           
                 <!-- <select class="form-control-sm">
                     <option selected value="1">1</option>
                     <option value="2">2</option>
@@ -72,14 +73,14 @@
                 <h6>Descontos</h6>
                 <p>R${{number_format($pedido_produto->product->discount, 2, ',', '.')}}</p> <!-- desconto -->
             </div>
-            
         </div>
-    </div>
-
-    <!-- Se o carrinho estiver vazio, cai aqui -->
+        @endforeach
+        
+         <!-- Se o carrinho estiver vazio, cai aqui -->
     @empty
-    <h5>Não há nenhum pedido no carrinho</h5>
+         <h5>Não há nenhum pedido no carrinho</h5>
     @endforelse
+    </div>
 
     {{-- Frete e valor --}}
     <div class="container">
@@ -98,43 +99,58 @@
             <!-- Resumo do pedido -->
             <div class="p-5 col-6">
                 <div class="text-right">
-                    <h3>Resumo do pedido {{pedido->id}}</h3>
-                    <!-- calcula o total do pedido sem o frete -->
+                    <h3>Resumo do pedido {{$pedido->id}}</h3>
+            
                         @php
-                            $total_pedido=0;
-                            $total_produto=$pedido_produtos->prices - $pedido_produto->discounts;
-                            $total_pedido+= $total_produto; <!-- Não está incluido o frete -->
+                            $total_pedido = 0;
+                            $total_produto = $pedido_produto->prices - $pedido_produto->discounts;
+                            $total_pedido += $total_produto;
                         @endphp
 
-                    <p class="lead"><b>Subtotal: R${{number_format($total_produto, 2, ',', '.')}}</b> R$</p>
+                    <p class="lead"><b>Subtotal: R${{number_format($total_produto, 2, ',', '.')}}</b> </p>
                     <p class="lead"><b>Frete:</b> R$</p><!--Definir!!-->
                     <p class="lead"><b>Prazo de entrega:</b> </p>   <!--Definir!!-->
                     <hr class="my-4">
                     <p class="lead"><b>Total da compra: R${{number_format($total_pedido, 2, ',', '.')}}</b> </p>
                     <div class="row">
-                        <div class="col-6 mt-4"> <!-- Completar a url da página de busca de produto e confirmar o checkout -->
-                            <button type="button" class="btn" style="background-color: #54775e;"><a class="text-light" href="{{ url('/') }}">Continuar comprando</a></button>
-                        </div>
                         <div class="col-6 mt-4">
-                            <button type="button" class="btn" style="background-color: #54775e;"><a class="text-light" href="/checkout">Finalizar compra</a></button>
+                            <button type="button" class="btn" style="background-color: #54775e"><a class="text-light" href="{{ url('/') }}">Continuar comprando</a></button>
                         </div>
+
+
+                    <!-- Cupom de desconto --> 
+
+                    <form method = "POST" action = "{{ route('carrinho.desconto')}}">
+                        {{csrf_field() }}
+                        <input type = "hidden" name = "pedido_id" value = "{{$pedido->id}}">
+                        <strong>Cupom de desconto: </strong>
+                        <input type = "text" name = "cupom">
+                        <button class="btn" style="background-color: #54775e"> Validar</button>
+                    </form>
+
+                        <!-- Método de concluir compra -->
+                        <form method="POST" action="{{route('carrinho.concluir') }}">
+                            {{csrf_field()}}
+                            <input type="hidden" name="request_id" value="{{ $pedido->id}}">
+                            <div class="col-6 mt-4">
+                                <button type="button" class="btn" style="background-color: #54775e;"><a class="text-light" href="/checkout">Finalizar compra</a></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <form id="form-remover-produto" method="POST" action="{{route('carrinho/remover') }}">
+    <form id="form-remover-produto" method="POST" action="{{route('carrinho.remover') }}">
         {{csrf_field()}}
         {{method-field('DELETE')}}
         <input type="hidden" name="pedido_id">
         <input type="hidden" name="produto_id">
         <input type="hidden" name="item">
     </form>
-    <form id="form-adicionarr-produto" method="POST" action="{{route('carrinho/adicionar') }}">
+    <form id="form-adicionarr-produto" method="POST" action="{{route('carrinho.adicionar') }}">
         {{csrf_field()}}
-        {{method-field('DELETE')}}
         <input type="hidden" name="id">
     </form>
 

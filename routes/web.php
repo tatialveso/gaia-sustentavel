@@ -57,13 +57,13 @@ Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth'
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // Avaliacao loja
-Route::get('loja/{id}', 'AvaliacaoLojaController@show');
+//Route::get('loja/{id}', 'AvaliacaoLojaController@show');
 // Route::get('/loja/{id}','AvaliacaoLojaController@create');
-Route::post('/loja/{id}','AvaliacaoLojaController@store');
+//Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
 // Avaliacao produto
-Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/produto/{id}','AvaliacaoProdutoController@store');
+//Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
+//Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // Catálogo de higiene pessoal
 Route::get('/higiene-pessoal', 'PessoalController@index');
@@ -82,17 +82,17 @@ Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
 // Histórico de compras
 Route::get('/historico-compras', 'CompraController@index')->middleware('auth');
 
-
-
 // Carrinho de compras
-Route::get('/carrinho', 'CarrinhoController@index');
+Route::get('/carrinho', 'CarrinhoController@index')->name('carrinho.index');
 Route::get('/carrinho/adicionar', function() {
-    return redirect()->route('index'); //Verificar: vai direcionar para a página de busca de produtos?
+    return redirect()->route('carrinho.index'); //Verificar: vai direcionar para a página de busca de produtos?
 }); // essa rota não permite q o usuário digite esta url e prossiga sem estar logado.
-Route::post('/carrinho/adicionar', 'CarrinhoController@add');
-Route::post('/carrinho/remover', 'CarrinhoController@delete');
-Route::post('/carrinho/concluir', 'CarrinhoController@');  // completar
-Route::post('/carrinho/compras', 'CarrinhoController@');   // completar
+Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adicionar');
+Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover');
+Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir');
+Route::get ('/carrinho/compras', 'CarrinhoController@purchase')->name('carrinho.compras');
+Route::post ('/carrinho/cancelar', 'CarrinhoController@cancel')->name('carrinho.cancelar');
+Route::post ('/carrinho/desconto', 'CarrinhoController@discount')->name('carrinho.desconto');
 
 
 // Checkout de compras

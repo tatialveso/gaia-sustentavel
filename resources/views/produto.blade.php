@@ -16,7 +16,7 @@
             {{-- informações --}}
             <div class="informacoes col-6">
                 <h4 class="my-5 text-center">{{$product['name']}}</h4>
-                <h6 class="mb-3"><a href="/loja/{{ $product['store_id'] }}">{{ $product->loja->name_store }}</a></h6>
+                <h6 class="mb-3"><a href="/loja/{{ $product['store_id'] }}">{{ $product->store->name_store }}</a></h6>
 
                 {{-- estrelas de avaliação --}}
                 <ul class="list-inline list-unstyled my-3">
@@ -69,9 +69,9 @@
 
 <!-- Lógica para inserir o produto no carrinho -->
 
-        <form method="POST" actions="{{route('/carrinho/adicionar')}}">
+        <form method="POST" action="{{route('carrinho.adicionar')}}">
         {{ csrf_field() }}
-            <input type="hidden" name="id" value="$registro_id}}">
+            <input type="hidden" name="id" value="{{$registro_id}}">
         
                 <div class="btn-produto d-flex justify-content-end"> 
                     <button class="btn my-5" type="submit"><a class="text-light" href="cesta-compras.html">Adicionar no carrinho</a></button>
