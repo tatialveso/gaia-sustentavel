@@ -25,10 +25,10 @@ class PessoalController extends Controller
         return view('cat-rosto', compact('rostos'));
     }
 
-    public function cosmeticoIndex() {
+    public function cosmeticosIndex() {
         $cosmeticos = Produto::where('subcategory_id', 3)->get();
 
-        return view('cat-cosmetico', compact('cosmeticos'));
+        return view('cat-cosmeticos', compact('cosmeticos'));
     }
 
     public function banhoIndex() {
