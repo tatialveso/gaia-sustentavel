@@ -31,4 +31,8 @@ class Produto extends Model
     public function loja () {
         return $this->belongsTo('\App\Loja', 'store_id', 'id');
     }
+
+    public function store () {
+        return $this->belongsTo('\App\Loja', 'store_id', 'id');
+    }
 }

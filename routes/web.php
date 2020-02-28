@@ -58,12 +58,12 @@ Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // CRUD DA AVALIAÇÃO DA LOJA
 Route::get('loja/{id}', 'AvaliacaoLojaController@show');
-// Route::get('/loja/{id}','AvaliacaoLojaController@create');
-//Route::post('/loja/{id}','AvaliacaoLojaController@store');
+Route::get('/loja/{id}','AvaliacaoLojaController@create');
+Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
 // Avaliação dos produtos
-Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/produto/{id}','AvaliacaoProdutoController@store');
+// Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
+// Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
@@ -86,7 +86,8 @@ Route::get('/favoritos', 'FavoritoController@index')->middleware('auth');
 Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
 
 // Histórico de compras
-Route::get('/historico-compras', 'CompraController@index')->middleware('auth');
+Route::get('/historico-compras', 'CompraController@index')->name('historico-compras');
+Route::post ('/historico-compras/cancelar', 'CompraController@cancel')->name('compras.cancelar');
 
 // Carrinho de compras
 Route::get('/carrinho', 'CarrinhoController@index')->name('carrinho.index');
@@ -96,8 +97,6 @@ Route::get('/carrinho/adicionar', function() {
 Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adicionar');
 Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover');
 Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir');
-Route::get ('/carrinho/compras', 'CarrinhoController@purchase')->name('carrinho.compras');
-Route::post ('/carrinho/cancelar', 'CarrinhoController@cancel')->name('carrinho.cancelar');
 Route::post ('/carrinho/desconto', 'CarrinhoController@discount')->name('carrinho.desconto');
 
 

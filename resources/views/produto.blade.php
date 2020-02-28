@@ -7,7 +7,8 @@
 <title>{{$product['name']}}</title>
 
 @section('produto')
-    <div class="container">
+
+    <form class="container" method="POST" action="{{route('carrinho.adicionar')}}">
         <div class="row mt-5">
             <div class="col-6 mt-3">
                 {{-- imagem do produto --}}
@@ -49,7 +50,7 @@
                     <form action="" class="form-inline">
                         <div class="form-group">
                             <h6>Quantidade:</h6>  <!-- ver como setar a quantidade --> 
-                            <input type="number" min="1" class="form-control ml-1">
+                            <input type="number" min="1" name="quantity" class="form-control ml-1">
                         </div>
                     </form>
                     <a class="ml-5 align-middle" href="#"><i class="material-icons">favorite_border</i></a>
@@ -69,15 +70,16 @@
 
 <!-- Lógica para inserir o produto no carrinho -->
 
-        <form method="POST" action="{{route('carrinho.adicionar')}}">
+        <div>
         {{ csrf_field() }}
-            <input type="hidden" name="id" value="{{$registro_id}}">
+            <input type="hidden" name="id" value="{{$product['id'] }}">
         
                 <div class="btn-produto d-flex justify-content-end"> 
-                    <button class="btn my-5" type="submit"><a class="text-light" href="cesta-compras.html">Adicionar no carrinho</a></button>
+                    <button class="btn my-5 text-light" type="submit">
+                    Adicionar no carrinho</button>
                 </div>
                 
-        </form>
+        </div>
             </div>
         </div>
 
@@ -137,7 +139,7 @@
 
             </div>
         </div>
-    </div>
+    </form>
 
     <div class="titulo mt-5">
         <h5 class="text-center">Produtos relacionados</h5>

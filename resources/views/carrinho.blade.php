@@ -35,11 +35,11 @@
     <!-- Para exibir todos os produtos selecionados: -->
         <div class="row border border-success mt-5" style="height: 200px;">
             <div class="col-3 mt-5">
-                <img src="{{$pedido_produto->produto->imagem}}" class="img-thumbnail w-25" alt=""> 
+                <img src="/img/produtos/{{$pedido_produto->produto['img_product']}}" class="img-thumbnail w-25" alt=""> 
             </div>
             <div class="col-5 mt-5">
-                <h5>{{$pedido_produto->product->name}}</h5>   
-                <p><a href="#">{{$pedido_produto->store->name}}</a></p> <!-- Nome da loja -->
+                <h5>{{$pedido_produto->product['name']}}</h5>   
+                <p><a href="#">{{$pedido_produto->store['name']}}</a></p> <!-- Nome da loja -->
             </div>
 
 
@@ -65,9 +65,9 @@
             </div>
             <div class="col-2 mt-5">
                 <h6>Valor<h6> 
-                <p>R${{number_format($pedido_produto->product->price, 2, ',', '.')}}</p>   <!-- Valor do produto -->
+                <p>R${{number_format($pedido_produto->product['price'], 2, ',', '.')}}</p>   <!-- Valor do produto -->
                 <h6>Descontos</h6>
-                <p>R${{number_format($pedido_produto->product->discount, 2, ',', '.')}}</p> <!-- desconto -->
+                <p>R${{number_format($pedido_produto->product['discount'], 2, ',', '.')}}</p> <!-- desconto -->
             </div>
         </div>
         @endforeach        
@@ -140,11 +140,11 @@
     <form id="form-remover-produto" method="POST" action="{{route('carrinho.remover') }}">
         {{csrf_field()}}
         @method('DELETE')
-        <input type="hidden" name="pedido_id">
-        <input type="hidden" name="produto_id">
+        <input type="hidden" name="request_id">
+        <input type="hidden" name="product_id">
         <input type="hidden" name="item">
     </form>
-    <form id="form-adicionarr-produto" method="POST" action="{{route('carrinho.adicionar') }}">
+    <form id="form-adicionar-produto" method="POST" action="{{route('carrinho.adicionar') }}">
         {{csrf_field()}}
         <input type="hidden" name="id">
     </form>

@@ -9,6 +9,7 @@ class Pedido extends Model
     protected $table = "requests";
     protected $fillable = [  //Campos obrigatórios no pedido.
         'user_id',
+        'price',
         'status'
     ];
 
@@ -25,10 +26,7 @@ class Pedido extends Model
     }
 
     public function pedido_produtos () {
-        return $this->hasMany('App\PedidoProduto')
-        ->select( \DB::raw('produto_id,sum (discount) as discounts, sum(price) as prices, count(1) as qtd') )
-        ->groupBy('produto_id')
-        ->orderBy('produto_id', 'desc');
+        return $this->hasMany('App\PedidoProduto', 'request_id', 'id');
     }
 
     public function pedido_produto_itens () {
