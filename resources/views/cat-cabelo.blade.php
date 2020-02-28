@@ -19,7 +19,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$cabelo['id']}}">{{$cabelo['name']}}</a></h5>
                                 <p class="card-text">{{$cabelo['price']}}</p>
-                                <div class="btn-cabelo">
+                                <div class="btn-produto">
                                     <a href="/produto/{{$cabelo['id']}}" class="btn text-light">Comprar</a>
                                     <a href=""><i class="material-icons">
                                             favorite_border

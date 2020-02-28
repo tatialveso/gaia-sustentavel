@@ -19,7 +19,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$aromatizado['id']}}">{{$aromatizado['name']}}</a></h5>
                                 <p class="card-text">{{$aromatizado['price']}}</p>
-                                <div class="btn-aromatizado">
+                                <div class="btn-produto">
                                     <a href="/produto/{{$aromatizado['id']}}" class="btn text-light">Comprar</a>
                                     <a href=""><i class="material-icons">
                                             favorite_border
