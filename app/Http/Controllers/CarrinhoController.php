@@ -31,7 +31,7 @@ class CarrinhoController extends Controller
 
         $produto = Produto::find($idProduto);
 
-        if(empty($produto)) {
+        if(empty($produto->id)) {
             $request->session()->flash('mensagem falha','Produto não encontrado na nossa loja');
             return redirect()->route('carrinho.index');  // inserir a rota da página de busca de produto.
         }
@@ -41,7 +41,10 @@ class CarrinhoController extends Controller
         //Tentar trazer o pedido
         //Caso não exista, crie um novo pedido e adicione o preço dele, somando os itens
         //Caso ele exista, você vai adicionar o produto, 
-        $idPedido = Pedido::consultaId([  // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerao um novo.
+
+
+
+        $idPedido = Pedido::consultaId([  // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerado um novo.
             'user_id' => $idUsuario,
             'status' => 'RE'    //produto reservado
         ]);
@@ -65,12 +68,11 @@ class CarrinhoController extends Controller
         $request->session()->flash('mensagem sucesso', 'Produto adicionado ao carrinho com sucesso!');
         return redirect()->route('carrinho.index');   // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerao um novo.
     }
-
         function delete(Request $request) {
 
             $idPedido = $request->input('request_id');
             $idProduto = $request->input('product_id');
-            $remove_apenas_item = (boolean)$req->input('item'); // true se remove só um item e false para todos os produtos.
+            $remove_apenas_item = (boolean)$request->input('item'); // true se remove só um item e false para todos os produtos.
             $idUsuário = Auth::id();
 
             $idPedido = Pedido::consultaId([  // Verifica se o pedido é do usuário logado e se está em status adequado.
@@ -119,7 +121,7 @@ class CarrinhoController extends Controller
             $idPedido = $request->input('request_id');
             $idUsuário = Auth::id();
 
-            $check_pedido = PedidoProduto::where([    // Verifica se há algum outro produto vinculado a este pedido.
+            $check_pedido = PedidoProduto::where([ 
                 'id' => $idPedido,
                 'user_id' => $idUsuario,
                 'status' => 'RE'
@@ -130,7 +132,7 @@ class CarrinhoController extends Controller
                 return redirect()->route('carrinho.index');
             } 
 
-            $check_produto = PedidoProduto::where([
+            $check_produtos = PedidoProduto::where([
                 'request_id' => $idPedido
                 ])->exists();
 
@@ -197,6 +199,7 @@ class CarrinhoController extends Controller
                    case 'porc':
                     $valor_desconto = ($pedido_produto->price = $$cupom->discount) /100;
                    break;
+
                    default:
                     $valor_desconto = $cupom->discount;
                    break;
