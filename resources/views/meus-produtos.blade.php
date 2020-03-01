@@ -20,9 +20,9 @@
             @foreach ($products as $product)
                 <div class="col-6 mb-3">
                     <div class="card">
-                        <img src="img/produtos/{{$product['img_product']}}" class="card-img-top" alt="">
+                        <img src="/img/produtos/{{$product['img_product']}}" class="card-img-top" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><a class="text-dark text-decoration-none">{{$product["name"]}}</a></h5>
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$product['id']}}">{{$product["name"]}}</a></h5>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="btn-produto">
