@@ -17,6 +17,7 @@ Route::get('/produto/{id}', 'HomeController@produto'); // Busca pelo produto dir
 Route::auth();
 Auth::routes();
 
+// PÁGINAS INSTITUCIONAIS
 Route::get('/sobre', function () {
     return view('sobre');
 });
@@ -25,11 +26,11 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
+// CRUD DE USUÁRIOS
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
 //Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
 Route::put('/configuracoes', 'UserController@update')->middleware('auth');
 Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
-
 Route::get('/logout', 'Auth\LoginController@logout');
 
 // CRUD DE CONTATOS
@@ -44,6 +45,8 @@ Route::get('/produto/{id}', 'ProdutoController@show');
 Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
 Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
+// Segurança de dados do usuário
+Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // CRUD LOJA
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
@@ -53,13 +56,10 @@ Route::get('/minha-loja/{id}', ['uses'=>'LojaController@edit', 'as'=>'minha-loja
 Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
 
-// Segurança de dados do usuário
-Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
-
 // CRUD DA AVALIAÇÃO DA LOJA
-Route::get('loja/{id}', 'AvaliacaoLojaController@show');
 Route::get('/loja/{id}','AvaliacaoLojaController@create');
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
+Route::get('loja/{id}', 'AvaliacaoLojaController@show');
 
 // Avaliação dos produtos
 // Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
@@ -75,12 +75,6 @@ Route::get('/higiene-pessoal/itens-pessoais', 'PessoalController@pessoalIndex');
 Route::get('/casa-ambiente', 'CasaController@index');
 Route::get('/casa-ambiente/limpeza', 'CasaController@limpezaIndex');
 Route::get('/casa-ambiente/aromatizador', 'CasaController@aromatizadorIndex');
-
-// Página inicial logado
-Route::get('/perfil/{id}', 'PerfilController@show')->middleware('auth');
-
-// Favoritos
-Route::get('/favoritos', 'FavoritoController@index')->middleware('auth');
 
 // Histórico de vendas
 Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
