@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use App\Produto;
 use App\Loja;
-<<<<<<< HEAD
-use App\AvaliacaoProduto;
-=======
-use Illuminate\Support\Facades\Input;
->>>>>>> b19d2f2e8c5544146e5661cbec22865a33db6d37
+use App\AvalicaoProduto;
 
 class ProdutoController extends Controller
 {
@@ -72,8 +69,9 @@ class ProdutoController extends Controller
         $product = \App\Produto::find($id);
         $category =  \App\Produto::find($id)->category_id;
         $relacionados = Produto::where('category_id', $category)->get();
+        $ratings = AvaliacaoProduto::where('product_id', $id)->get();
 
-        return view('produto', compact('product', 'relacionados'));
+        return view('produto', compact('product', 'relacionados', 'ratings'));
     }
 
     public function edit($id) {
