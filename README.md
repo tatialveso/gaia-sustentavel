@@ -10,26 +10,24 @@ A Gaia é uma plataforma em que os usuários encontraram produtos de higiene pes
 
 ## Tecnologias
 
-O projeto é escrito com Laravel e a base de dados MySQL.
+O projeto é escrito com Laravel, JavaScript, JQuery e a base de dados MySQL.
 
 ## Funcionalidades
 
 ### Cadastro de usuários
-Para melhor experiência no site, todos os usuários deverão realizar o cadastro para ter acesso aos recursos disponíveis.
-### Cadastro de loja
-Os usuários cadastrados como **vendedor** poderão criar uma **loja** em que será disponibilizado seus produtos. O usuário também poderá administrar seu estoque e acompanhar a entrega de pedidos.
+Para melhor experiência no site, todos os usuários deverão realizar o cadastro para ter acesso aos recursos disponíveis e realizar compras no site.
+### Criação de loja
+Os usuários cadastrados poderão criar uma **loja** em que será disponibilizado seus produtos. O usuário também poderá administrar seu estoque e acompanhar a entrega de pedidos.
 ### Catálogo de produtos
-Listagem separada dos produtos em duas categorias: **Higiene pessoal** e **Casa e ambiente**. Os produtos poderão ser filtrados de acordo com o preço, componentes e localização.
+Listagem separada dos produtos em duas categorias: **Higiene pessoal** e **Casa e ambiente**. Os produtos poderão ser filtrados de acordo com a subcategoria dos produtos. Os clientes poderão entrar na página de cada produto e deixar sua avaliação de acordo com a sua experiência com o produto.
 ### Carrinho de compra
 O usuário poderá comprar produtos de uma mesma loja na plataforma e será acompanhado durante todo o processo pelo carrinho de compra e checkout.
 ### Perfil da loja
-Todas as lojas terão uma página personalizada com seus produtos à venda, onde o usuário poderá seguir a loja e saber mais sobre a origem da loja, seus produtos e o produtor.
-### Favoritos
-Todos os usuários poderão *favoritar* produtos que possuem interesse e *desfavoritar* aqueles que não tem mais. Todos os produtos *favoritados* ficarão disponíveis em uma página separada.
+Todas as lojas terão um perfil, que ficará disponível para o cliente acompanhar novos produtos cadastrados e avaliar a loja de acordo com a sua experiência na mesma.
 ### Configurações
-O usuário poderá editar seus dados de contato, de segurança e de pagamento em uma página de configurações em seu menu.
+O usuário poderá editar seus dados de contato e de segurança em uma página de configurações em seu menu.
 ### Contato
-O usuário poderá entrar em contato com a plataforma para enviar sugestões, dúvidas e denunciar produtos e lojas que não estão seguindo  política do site.
+O usuário poderá entrar em contato com a plataforma para enviar sugestões, dúvidas e denunciar produtos e lojas que não estão seguindo a política do site.
 
 ## Status
 

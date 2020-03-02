@@ -17,12 +17,18 @@
         <main>
             <h1>Meus produtos</h1>
             <div class="row">
+            @if (sizeof($products) == 0)
+                <div class="col-6 mt-5 loja-vazia">
+                    Ops! Parece que sua loja está vazia :(<br>
+                    Que tal <a href="incluir-produto">incluir um produto</a>?
+                </div>
+            @endif
             @foreach ($products as $product)
-                <div class="col-6">
+                <div class="col-6 mb-3">
                     <div class="card">
-                        <img src="{{$product['img_product']}}" class="card-img-top" alt="">
+                        <img src="/img/produtos/{{$product['img_product']}}" class="card-img-top" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><a class="text-dark text-decoration-none">{{$product["name"]}}</a></h5>
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$product['id']}}">{{$product["name"]}}</a></h5>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="btn-produto">

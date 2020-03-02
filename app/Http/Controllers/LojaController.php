@@ -11,8 +11,12 @@ class LojaController extends Controller
 {
 
     public function create() {
-        $categories = \App\Categoria::all();
+        $loja = Auth::user()->loja;
+        if ($loja != null) {
+            return redirect('minha-loja');
+        }
 
+        $categories = \App\Categoria::all();
         return view('cadastro-loja', compact('categories'));
     }
 
@@ -29,7 +33,6 @@ class LojaController extends Controller
         ]);
 
         $dados = $request->all();
-        $session_id = Auth::user()->id;
 
         $loja = new \App\Loja();
         $loja->name_store = $dados['name_store'];
@@ -37,7 +40,6 @@ class LojaController extends Controller
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
-        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
@@ -46,9 +48,11 @@ class LojaController extends Controller
             };
         };
         
+        $user = Auth::user();
+        $loja->user()->associate($user);
         $loja->save();
     
-        return redirect()->route('minha-loja.edit', ['id' => ':id']);
+        return redirect('meus-produtos');
     }
 
     public function show($id) {
@@ -59,14 +63,15 @@ class LojaController extends Controller
         return view('loja', compact('loja', 'products', 'ratings'));
     }
 
-    public function edit($id) {
-        $loja = \App\Loja::find($id);
+    public function edit() {
+        $user = Auth::user();
+        $loja = $user->loja;
         $categories = \App\Categoria::all();
 
-        return view('minha-loja', compact('loja', 'categories'));
+        return view('minha-loja', compact('user', 'loja', 'categories'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request) {
         $this->validate($request, [
             'name_store' => 'required|string',
             'location' => 'required|string',
@@ -79,15 +84,15 @@ class LojaController extends Controller
         ]);
 
         $dados = $request->all();
-        $session_id = Auth::user()->id;
         
-        $loja = \App\Loja::find($id);
+        $user = Auth::user();
+        $loja = $user->loja;
+
         $loja->name_store = $dados['name_store'];
         $loja->location = $dados['location'];
         $loja->category_id = $dados['category_id'];
         $loja->description = $dados['description'];
         $loja->criacao = $dados['criacao'];
-        $loja->user_id = $session_id;
 
         if($file = $request->file('image')) {
             $name = $file->getClientOriginalName();
@@ -98,13 +103,14 @@ class LojaController extends Controller
         };
         $loja->save();
 
-        return redirect('meus-produtos');
+        return redirect('minha-loja')->with('success','Dados atualizados com sucesso.');
     }
 
-    public function destroy($id) {
-        $loja = \App\Loja::find($id);
+    public function destroy() {
+        $user = Auth::user();
+        $loja = $user->loja;
         $loja->delete();
 
-        return back();
+        return redirect('configuracoes');
     }
 }

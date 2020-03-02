@@ -11,9 +11,11 @@ use Illuminate\Support\Facades\Input;
 class ProdutoController extends Controller
 {
     public function index() {
-        $products = Produto::where('store_id', '')->get();
+        $user = Auth::user();
+        $loja = $user->loja->id;
+        $products = Produto::where('store_id', $loja)->get();
 
-        return view('meus-produtos', compact('products'));
+        return view('meus-produtos', compact('products', 'loja', 'user'));
     }
 
     public function create() {
@@ -23,8 +25,23 @@ class ProdutoController extends Controller
         return view('incluir-produto', compact('categories', 'subcategories'));
     }
 
-    public function store(Request $request) {        
+    public function store(Request $request) {   
+        $this->validate($request, [
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'composition' => 'required|string',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'img_product' => 'required|image',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem',
+            'numeric' => 'O campo deve ser preenchido com números apenas',
+        ]);
+
         $dados = $request->all();
+        $loja = Auth::user()->loja->id;
 
         $products = new \App\Produto();
         $products->name = $dados['name'];
@@ -49,8 +66,9 @@ class ProdutoController extends Controller
 
     public function show($id) {
         $product = \App\Produto::find($id);
-        $relacionados = Produto::where('category_id', '')->get(); //pegar produtos com o mesmo category_id que o produto mostrado
-        
+        $category =  \App\Produto::find($id)->category_id;
+        $relacionados = Produto::where('category_id', $category)->get();
+
         return view('produto',compact('product', 'relacionados'));
     }
 
@@ -64,6 +82,18 @@ class ProdutoController extends Controller
 
     }    
     public function update(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'composition' => 'required|string',
+            'img_product' => 'required|image',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem',
+            'numeric' => 'O campo deve ser preenchido com números apenas',
+        ]);
+
         $dados = $request->all();
         
         $products = \App\Produto::find($id);
@@ -71,6 +101,7 @@ class ProdutoController extends Controller
         $products->price = $dados['price'];
         $products->description = $dados['description'];
         $products->composition = $dados['composition'];
+        $products->active = $dados['active'];
 
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
@@ -79,6 +110,7 @@ class ProdutoController extends Controller
                 
             };
         };
+        
         $products->save();
 
         return redirect('/meus-produtos');
@@ -97,8 +129,11 @@ class ProdutoController extends Controller
             return view('busca');
         }
 
-        $products = Produto::where('name', 'like', '%'.$request->post('busca').'%')->orWhere('category_id', 'like', '%'.$request->post('busca').'%')->get();
-        return view('busca', $products);
+        $produtos = Produto::where('name', 'like', '%'.$request->post('busca').'%')
+        ->orWhere('description', 'like', '%'.$request->post('busca').'%')
+        ->orWhere('composition', 'like', '%'.$request->post('busca').'%')->get();
+        $lojas = Loja::where('name_store', 'like', '%'.$request->post('busca').'%')->get();
+        return view('busca', compact('produtos','lojas'));
 
 
         // $buscar = $request->post('busca');

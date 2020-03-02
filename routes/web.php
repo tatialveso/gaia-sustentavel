@@ -17,6 +17,7 @@ Route::get('/produto/{id}', 'HomeController@produto'); // Busca pelo produto dir
 Route::auth();
 Auth::routes();
 
+// PÁGINAS INSTITUCIONAIS
 Route::get('/sobre', function () {
     return view('sobre');
 });
@@ -25,11 +26,11 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
+// CRUD DE USUÁRIOS
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
 //Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
 Route::put('/configuracoes', 'UserController@update')->middleware('auth');
 Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
-
 Route::get('/logout', 'Auth\LoginController@logout');
 
 // CRUD DE CONTATOS
@@ -46,56 +47,53 @@ Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth')
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
 Route::get('/busca', 'ProdutoController@search');
 Route::post('/busca', 'ProdutoController@search');
+// Segurança de dados do usuário
+Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // CRUD LOJA
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
 Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
 Route::get('loja/{id}', 'LojaController@show');
-Route::get('/minha-loja/{id}', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
-Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
-Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
-
-// Segurança de dados do usuário
-Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
+Route::get('/minha-loja', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
+Route::patch('/minha-loja', 'LojaController@update')->middleware('auth');
+Route::delete('/deletar-loja', 'LojaController@destroy')->middleware('auth');
 
 // CRUD DA AVALIAÇÃO DA LOJA
-Route::get('loja/{id}', 'AvaliacaoLojaController@show');
-// Route::get('/loja/{id}','AvaliacaoLojaController@create');
+Route::get('/loja/{id}','AvaliacaoLojaController@create');
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
+Route::get('loja/{id}', 'AvaliacaoLojaController@show');
 
 // Avaliação dos produtos
-Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-Route::post('/produto/{id}','AvaliacaoProdutoController@store');
+// Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
+// Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
 Route::get('/higiene-pessoal/cabelos', 'PessoalController@cabeloIndex');
+Route::get('/higiene-pessoal/rosto', 'PessoalController@rostoIndex');
+Route::get('/higiene-pessoal/cosmeticos', 'PessoalController@cosmeticosIndex');
+Route::get('/higiene-pessoal/corpo-banho', 'PessoalController@banhoIndex');
+Route::get('/higiene-pessoal/itens-pessoais', 'PessoalController@pessoalIndex');
 Route::get('/casa-ambiente', 'CasaController@index');
-
-// Página inicial logado
-Route::get('/perfil/{id}', 'PerfilController@show')->middleware('auth');
-
-// Favoritos
-Route::get('/favoritos', 'FavoritoController@index')->middleware('auth');
+Route::get('/casa-ambiente/limpeza', 'CasaController@limpezaIndex');
+Route::get('/casa-ambiente/aromatizador', 'CasaController@aromatizadorIndex');
 
 // Histórico de vendas
 Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
 
 // Histórico de compras
-Route::get('/historico-compras', 'CompraController@index')->middleware('auth');
-
-
+Route::get('/historico-compras', 'CompraController@index')->name('historico-compras');
+Route::post ('/historico-compras/cancelar', 'CompraController@cancel')->name('compras.cancelar');
 
 // Carrinho de compras
-Route::get('/carrinho', 'CarrinhoController@index');
+Route::get('/carrinho', 'CarrinhoController@index')->name('carrinho.index');
 Route::get('/carrinho/adicionar', function() {
-    return redirect()->route('index'); //Verificar: vai direcionar para a página de busca de produtos?
+    return redirect()->route('carrinho.index'); //Verificar: vai direcionar para a página de busca de produtos?
 }); // essa rota não permite q o usuário digite esta url e prossiga sem estar logado.
-Route::post('/carrinho/adicionar', 'CarrinhoController@add');
-Route::post('/carrinho/remover', 'CarrinhoController@delete');
-Route::post('/carrinho/concluir', 'CarrinhoController@');  // completar
-Route::post('/carrinho/compras', 'CarrinhoController@');   // completar
-
+Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adicionar');
+Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover');
+Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir');
+Route::post ('/carrinho/desconto', 'CarrinhoController@discount')->name('carrinho.desconto');
 
 // Checkout de compras
 Route::get('/checkout', 'CheckoutController@index')->middleware('auth');

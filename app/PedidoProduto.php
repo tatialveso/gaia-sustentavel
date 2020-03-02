@@ -8,14 +8,13 @@ class PedidoProduto extends Model
 {
 
     protected $fillable = [
-            'pedido_id',
-            'produto_id',
-            'valor',
-            'status' => 'RE'
+            'request_id',
+            'product_id',
+            'quantity'
     ]; 
     
     Public function produto()
     {
-        return $this->belongsTo('App\Produto','produto_id','id');
+        return $this->belongsTo('App\Produto','product_id','id');
     }
 }

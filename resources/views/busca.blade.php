@@ -25,7 +25,7 @@
 
         <div class="container mt-3">
         <div class="row">
-            @foreach {{$products as $produto}}
+            @foreach($produtos as $produto)
                 <div class="col-lg-4 mt-3">
                     <div class="card">
                         <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
@@ -41,6 +41,27 @@
                         </div>
                     </div>
                 </div>
+
+            @endforeach
+
+                <div class="container mt-3">
+        <div class="row">
+            @foreach($lojas as $loja)
+                <div class="col-lg-4 mt-3">
+                    <div class="card">
+                        <img src="/img/lojas/{{$loja['image']}}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/lojas/{{$loja['id']}}">{{$loja['name_store']}}</a></h5>
+                            <div class="btn-loja d-flex justify-content-between">
+                                <a href="#"><i class="align-middle material-icons">
+                                        favorite_border
+                                </i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             @endforeach
         </div>
     </div>

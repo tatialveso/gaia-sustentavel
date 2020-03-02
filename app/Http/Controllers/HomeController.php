@@ -24,11 +24,11 @@ class HomeController extends Controller
      */
     public function index() // Mostra apenas os produtos ativos na página inicial/index.
     {
-        $produtos = Produto::latest()->get(); //mostra os últimos produtos adicionados na base de dados na parte de "Novidades"
-
+        $produtos = Produto::latest()->take(6)->get(); //mostra os últimos produtos adicionados na base de dados na parte de "Novidades"
+        
         $registros = Produto::where([
             'active' => 'S'
-        ])->get();
+        ])->take(3)->get();
         return view('index', compact('registros', 'produtos'));
     }
 

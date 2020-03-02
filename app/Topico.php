@@ -9,6 +9,6 @@ class Topico extends Model
     protected $table = "topics";
 
     public function contato() {
-        return $this->hasMany('app\Contato');
+        return $this->hasMany('App\Contato');
     }
 }

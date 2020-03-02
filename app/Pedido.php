@@ -7,28 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $table = "requests";
-    protected $fillable = [  //Campos obrigatórios no pedido.
-        'user_id',
-        'status'
-    ];
+    protected $fillable = ['user_id', 'price', 'status'];
 
     public function pagamento () {
-        return $this->belongsTo('app\Pagamento', 'pagamento_id', 'id');
+        return $this->belongsTo('App\Pagamento', 'pagamento_id', 'id');
     }
 
     public function rastreamento () {
-        return $this->hasOne('app\Rastreamento', 'rastreamento_id', 'id');
+        return $this->hasOne('App\Rastreamento', 'rastreamento_id', 'id');
     }
 
     public function user () { 
-        return $this->belongsTo('app\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function pedido_produtos () {
-        return $this->hasMany('App\Produto')
-        ->select( \DB::raw('produto_id,sum (discount) as discounts, sum(price) as prices, count(1) as qtd') )
-        ->groupBy('produto_id')
-        ->orderBy('produto_id', 'desc');
+        return $this->hasMany('App\PedidoProduto', 'request_id', 'id');
+    }
+
+    public function pedido_produto_itens () {
+        return $this->hasMany('App\PedidoProduto');
     }
 
     public function pedido_produtos_itens()

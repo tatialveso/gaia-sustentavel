@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLoja.css') }}">
     
 {{-- nome da página --}}
-<title>(nome da loja)</title>
+<title>{{ $loja['name_store']}}</title>
 
 @section('loja')
     <div class="container">
@@ -31,28 +31,6 @@
                 <p><b>Localizado em </b>{{ $loja['location']}}</p>
                 {{-- avaliação da loja --}}
                 <p><b>Avaliação</b></p>
-                {{-- <ul class="list-inline list-unstyled mt-4">
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star_border
-                        </i>
-                    </li>
-                </ul> --}}
             </div>
         </div>
     </div>
@@ -72,9 +50,6 @@
                             <p class="card-text">R$ {{$produto['price']}}</p>
                             <div class="btn-produto d-flex justify-content-between">
                                 <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
-                                <a href="#"><i class="align-middle material-icons">
-                                        favorite_border
-                                </i></a>
                             </div>
                         </div>
                     </div>
@@ -90,14 +65,8 @@
     <div class="container">
         @foreach ($ratings as $rating)
             <div class="mt-3">
-                {{-- <ul class="list-inline list-unstyled my-1">
-                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                    <li class="list-inline-item"><i class="material-icons">star</i></a></li>
-                </ul> --}}
                 <p><b>{{$rating['name']}}</b></p>
+                <p><b>{{$rating['rate']}}/10</b></p>
                 <p class="text-justify">{{$rating['description']}}</p>
             </div>
         @endforeach
@@ -107,16 +76,17 @@
         </div>
 
         <form action ="/loja/{{ $loja['id'] }}" method="POST" id="form-loja">
-            <div class="form-group">
             @csrf
-                <label><b>Título da avaliação</b></label>
-                <input type="text" name="name" class="form-control" placeholder="Escreva um título para a sua avaliação">
+            <div class="form-row">
+                <div class="col-6 form-group">
+                    <label><b>Título da avaliação</b></label>
+                    <input type="text" name="name" class="form-control" placeholder="Escreva um título para a sua avaliação">
+                </div>
+                <div class="col-6 form-group">
+                    <label><b>Nota da {{ $loja['name_store']}}</b></label>
+                    <input type="number" name="rate" min=0 max=10 class="form-control" placeholder="De 0 a 10, qual nota você dá para a loja?">
+                </div>
             </div>
-            {{-- ao invés de usar estrelas, usamos números
-            <div class="form-group">
-                <label><b>Nota para a loja</b></label>
-                <input type="number" name="rating" min=0 max=10 class="form-control" placeholder="De 0 a 10, qual nota você dá para a loja?">
-            </div> --}}
             <div class="form-group">
                 <label><b>Avaliação</b></label>
                 <textarea class="form-control" name="description" rows="3" placeholder="Escreva com detalhes a sua experiência com a loja"></textarea>
