@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Produto;
 use App\Loja;
+use Illuminate\Support\Facades\Input;
 
 class ProdutoController extends Controller
 {
@@ -88,5 +89,20 @@ class ProdutoController extends Controller
         $products->delete();
 
         return back();
+    }
+
+    public function search(Request $request) {
+        
+        if($request->post('busca')==false) {
+            return view('busca');
+        }
+
+        $products = Produto::where('name', 'like', '%'.$request->post('busca').'%')->orWhere('category_id', 'like', '%'.$request->post('busca').'%')->get();
+        return view('busca', $products);
+
+
+        // $buscar = $request->post('busca');
+        // $products = Products::table('products')->where('name', 'LIKE', '%' . $buscar . '%')->paginate(10);
+        // return view('index', ['products' => $products]);
     }
 }
