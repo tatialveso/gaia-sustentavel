@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Loja extends Model
 {
     protected $table = "stores";
-    protected $fillable = ['name_store', 'location', 'category_id', 'description', 'criacao', 'image'];
+    protected $fillable = ['name_store', 'location', 'category_id', 'description', 'criacao', 'image', 'user_id'];
 
-    public function user () {
-        return $this->belongsTo('app\User', 'user_id', 'id');
+    public function user() {
+        return $this->belongsTo('App\User');
     }
 
-    public function avaliacaoLoja () {
-        return $this->hasMany('app\AvaliacaoLoja', 'evaluations_stores_id', 'id');
+    public function avaliacaoLoja() {
+        return $this->hasMany('App\AvaliacaoLoja', 'evaluations_stores_id', 'id');
     }
 
-    public function produto () {
-        return $this->hasMany('app\Produto', 'products_id', 'id');
+    public function produto() {
+        return $this->hasMany('App\Produto', 'products_id', 'id');
     }
 }

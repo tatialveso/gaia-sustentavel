@@ -10,10 +10,11 @@ use App\Loja;
 class ProdutoController extends Controller
 {
     public function index() {
-        $loja = Auth::user()->loja_id;
+        $user = Auth::user();
+        $loja = $user->loja->id;
         $products = Produto::where('store_id', $loja)->get();
 
-        return view('meus-produtos', compact('products', 'loja'));
+        return view('meus-produtos', compact('products', 'loja', 'user'));
     }
 
     public function create() {
@@ -25,7 +26,7 @@ class ProdutoController extends Controller
 
     public function store(Request $request) {        
         $dados = $request->all();
-        $loja = Auth::user()->loja_id;
+        $loja = Auth::user()->loja->id;
 
         $products = new \App\Produto();
         $products->name = $dados['name'];

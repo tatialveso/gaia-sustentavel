@@ -44,6 +44,8 @@ class LojaController extends Controller
             };
         };
         
+        $user = Auth::user();
+        $loja->user()->associate($user);
         $loja->save();
     
         return redirect('meus-produtos');

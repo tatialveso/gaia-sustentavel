@@ -12,8 +12,10 @@
         <li><a class="conta-menu" href="/incluir-produto">Incluir produtos</a></li>
         @endif
     </ul>
-    <a href="/criar-loja" class="btn btn-success">Seja um vendedor!</a>
-    <br><br>
+    @if (isset($user) && !$user->isSeller())
+        <a href="/criar-loja" class="btn btn-success">Seja um vendedor!</a>
+        <br><br>
+    @endif
     <a href="{{route('logout')}}" class="btn btn-danger">Sair</a>
 </aside>
 
