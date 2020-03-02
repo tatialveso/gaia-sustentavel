@@ -11,8 +11,12 @@ class LojaController extends Controller
 {
 
     public function create() {
-        $categories = \App\Categoria::all();
+        $loja = Auth::user()->loja;
+        if ($loja != null) {
+            return redirect('minha-loja');
+        }
 
+        $categories = \App\Categoria::all();
         return view('cadastro-loja', compact('categories'));
     }
 

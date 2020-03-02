@@ -3,7 +3,6 @@
     <ul>
         <li><a class="conta-menu" href="/configuracoes">Meus dados</a></li>
         <li><a class="conta-menu" href="/seguranca">Segurança</a></li>
-        <li><a class="conta-menu" href="/favoritos">Favoritos</a></li>
         <li><a class="conta-menu" href="/historico-compras">Minhas compras</a></li>
         @if (isset($user) && $user->isSeller())
             <li><a class="conta-menu" href="/minha-loja">Minha Loja</a></li>
