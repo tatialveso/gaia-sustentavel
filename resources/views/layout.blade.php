@@ -147,8 +147,8 @@
                 {!! csrf_field() !!}    
                 <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="Digite a sua busca..." aria-label="Search">
                 <button class="btn p-0" type="submit">
-                    <i class="material-icons align-middle">
-                        Buscar
+                    <i class="material-icons">
+                        search
                     </i>
                 </button>
             </form>
