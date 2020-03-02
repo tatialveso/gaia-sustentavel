@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Produto;
 use App\Loja;
+use App\AvaliacaoProduto;
 
 class ProdutoController extends Controller
 {
@@ -67,8 +68,8 @@ class ProdutoController extends Controller
         $product = \App\Produto::find($id);
         $category =  \App\Produto::find($id)->category_id;
         $relacionados = Produto::where('category_id', $category)->get();
-
-        return view('produto',compact('product', 'relacionados'));
+        $ratings = AvaliacaoProduto::where('product_id', $id)->get();
+        return view('produto',compact('product', 'relacionados', 'ratings'));
     }
 
     public function edit($id) {

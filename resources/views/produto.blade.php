@@ -57,19 +57,23 @@
                 <p class="text-justify">{{ $product['composition'] }}</p>
             </div>
 
+
             <div class="col-lg-6">
                 <h4 class="text-center">Avaliações de clientes</h4>
-                <div class="mt-3">
-                    <p><b>(título da avaliação)</b></p>
-                    <p><b>(nota da avaliação)</b></p>
-                    <p class="text-justify">(avaliação)</p>
-                </div>
+               @foreach ($ratings as $rating)
+            <div class="mt-3">
+                <p><b>{{$rating['name']}}</b></p>
+                <p><b>{{$rating['rate']}}/10</b></p>
+                <p class="text-justify">{{$rating['description']}}</p>
+            </div>
+        @endforeach
+                
                 
                 <div class="btn-produto d-flex justify-content-around">
                     <button type="button" class="btn text-light my-5" id="avaliar-produto">Avaliar o produto</button>
                 </div>
 
-                <form action ="/produto/{id}" method="POST" id="form-produto">
+                <form action ="/produto/{{ $product['id'] }}" method="POST" id="form-produto">
                     @csrf
                     <div class="form-group">
                         <label><b>Título da avaliação</b></label>

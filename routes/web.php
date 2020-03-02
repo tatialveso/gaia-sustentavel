@@ -56,14 +56,11 @@ Route::get('/minha-loja', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit
 Route::patch('/minha-loja', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja', 'LojaController@destroy')->middleware('auth');
 
-// CRUD DA AVALIAÇÃO DA LOJA
-Route::get('/loja/{id}','AvaliacaoLojaController@create');
+// Avaliação loja
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
-Route::get('loja/{id}', 'AvaliacaoLojaController@show');
 
-// Avaliação dos produtos
-// Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-// Route::post('/produto/{id}','AvaliacaoProdutoController@store');
+// Avaliação produto
+Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
