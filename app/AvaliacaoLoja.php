@@ -10,6 +10,6 @@ class AvaliacaoLoja extends Model
     protected $fillable = ['name', 'rate', 'description'];
 
     public function loja () {
-        return $this->belongsTo('app\Loja', 'store_id', 'id');
+        return $this->belongsTo('App\Loja', 'store_id', 'id');
     }
 }

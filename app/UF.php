@@ -10,6 +10,6 @@ class UF extends Model
     protected $table = 'ufs';
 
     public function user() {
-        return $this->hasMany('app\User', 'user_id', 'id');
+        return $this->hasMany('App\User', 'user_id', 'id');
     }
 }

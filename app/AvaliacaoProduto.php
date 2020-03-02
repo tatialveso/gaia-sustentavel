@@ -10,6 +10,6 @@ class AvaliacaoProduto extends Model
     protected $fillable = ['name', 'description'];
 
     public function produto () {
-        return $this->belongsTo('app\Produto', 'product_id', 'id');
+        return $this->belongsTo('App\Produto', 'product_id', 'id');
     }
 }

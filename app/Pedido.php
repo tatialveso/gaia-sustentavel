@@ -14,15 +14,15 @@ class Pedido extends Model
     ];
 
     public function pagamento () {
-        return $this->belongsTo('app\Pagamento', 'pagamento_id', 'id');
+        return $this->belongsTo('App\Pagamento', 'pagamento_id', 'id');
     }
 
     public function rastreamento () {
-        return $this->hasOne('app\Rastreamento', 'rastreamento_id', 'id');
+        return $this->hasOne('App\Rastreamento', 'rastreamento_id', 'id');
     }
 
     public function user () { 
-        return $this->belongsTo('app\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function pedido_produtos () {
