@@ -143,12 +143,12 @@
         <nav class="container navbar navbar-light">
             <a class="navbar-brand p-0 m-0" href="/"><img src="/img/logo/gaia-branco.png"
                     alt="Logo de Gaia sustentável"></a>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Digite a sua busca..."
-                    aria-label="Search">
+            <form class="form-inline" action="{!! url('busca') !!}" method="post">
+                {!! csrf_field() !!}    
+                <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="Digite a sua busca..." aria-label="Search">
                 <button class="btn p-0" type="submit">
                     <i class="material-icons align-middle">
-                        search
+                        Buscar
                     </i>
                 </button>
             </form>
@@ -214,6 +214,7 @@
     @yield('minha-loja')
     @yield('meus-produtos')
     @yield('meu-produto-edit')
+    @yield('busca')
 
 
     {{-- footer da página --}}
