@@ -103,7 +103,7 @@ class LojaController extends Controller
         };
         $loja->save();
 
-        return redirect('minha-loja');
+        return redirect('minha-loja')->with('success','Dados atualizados com sucesso.');
     }
 
     public function destroy() {
