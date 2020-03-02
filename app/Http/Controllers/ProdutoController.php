@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Produto;
 use App\Loja;
+<<<<<<< HEAD
 use App\AvaliacaoProduto;
+=======
+use Illuminate\Support\Facades\Input;
+>>>>>>> b19d2f2e8c5544146e5661cbec22865a33db6d37
 
 class ProdutoController extends Controller
 {
@@ -68,8 +72,8 @@ class ProdutoController extends Controller
         $product = \App\Produto::find($id);
         $category =  \App\Produto::find($id)->category_id;
         $relacionados = Produto::where('category_id', $category)->get();
-        $ratings = AvaliacaoProduto::where('product_id', $id)->get();
-        return view('produto',compact('product', 'relacionados', 'ratings'));
+
+        return view('produto', compact('product', 'relacionados'));
     }
 
     public function edit($id) {
@@ -121,5 +125,23 @@ class ProdutoController extends Controller
         $products->delete();
 
         return back();
+    }
+
+    public function search(Request $request) {
+        
+        if($request->post('busca')==false) {
+            return view('busca');
+        }
+
+        $produtos = Produto::where('name', 'like', '%'.$request->post('busca').'%')
+        ->orWhere('description', 'like', '%'.$request->post('busca').'%')
+        ->orWhere('composition', 'like', '%'.$request->post('busca').'%')->get();
+        $lojas = Loja::where('name_store', 'like', '%'.$request->post('busca').'%')->get();
+        return view('busca', compact('produtos','lojas'));
+
+
+        // $buscar = $request->post('busca');
+        // $products = Products::table('products')->where('name', 'LIKE', '%' . $buscar . '%')->paginate(10);
+        // return view('index', ['products' => $products]);
     }
 }

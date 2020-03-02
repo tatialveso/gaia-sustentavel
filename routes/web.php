@@ -45,6 +45,8 @@ Route::get('/produto/{id}', 'ProdutoController@show');
 Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
 Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
+Route::get('/busca', 'ProdutoController@search');
+Route::post('/busca', 'ProdutoController@search');
 // Segurança de dados do usuário
 Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
@@ -89,7 +91,6 @@ Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adi
 Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover');
 Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir');
 Route::post ('/carrinho/desconto', 'CarrinhoController@discount')->name('carrinho.desconto');
-
 
 // Checkout de compras
 Route::get('/checkout', 'CheckoutController@index')->middleware('auth');
