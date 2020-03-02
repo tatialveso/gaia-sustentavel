@@ -15,6 +15,10 @@
         @include('aside-conta')
 
         <main>
+            @if (session('success'))
+                <div class="alert alert-success">{{session('success')}}</div>
+            @endif
+            
             <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("PATCH")

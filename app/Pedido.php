@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $table = "requests";
-    protected $fillable = [  //Campos obrigatórios no pedido.
-        'user_id',
-        'price',
-        'status'
-    ];
+    protected $fillable = ['user_id', 'price', 'status'];
 
     public function pagamento () {
         return $this->belongsTo('App\Pagamento', 'pagamento_id', 'id');
