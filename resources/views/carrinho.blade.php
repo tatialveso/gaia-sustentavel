@@ -12,26 +12,26 @@
         <h5>Cesta de Compras</h5>
     </div>
 
-    <!-- Para verificar se existe alguma mensagem do flash() --> 
-
-    @if(Session::has('mensagem-sucesso'))
-        <div class= "alert alert-secondary" role="alert"> 
-            <strong> {{Session::get('mensagem-sucesso')}}</strong>
-        </div>
-    @endif
-    @if(Session::has('mensagem-falha'))
-        <div class= "alert alert-danger" role="alert">
-            <strong> {{Session::get('mensagem-falha')}}</strong>
-        </div>
-    @endif
-
-
+    
+    
     <!-- forelse: para verificar se o carrinho não está vazio, se não estiver segue o código a seguir. -->
-
+    
     @forelse($pedidos as $pedido)
     
     {{-- lista de produtos --}}
     <div class="container">
+        <!-- Para verificar se existe alguma mensagem do flash() --> 
+    
+        @if(Session::has('mensagem-sucesso'))
+            <div class= "alert alert-secondary mt-3" role="alert"> 
+                <strong> {{Session::get('mensagem-sucesso')}}</strong>
+            </div>
+        @endif
+        @if(Session::has('mensagem-falha'))
+            <div class= "alert alert-danger mt-3" role="alert">
+                <strong> {{Session::get('mensagem-falha')}}</strong>
+            </div>
+        @endif
         
         @foreach($pedido->pedido_produtos as $pedido_produto) {{--Lista os produtos do pedido--}}
             <div class="row border border-success mt-5" style="height: 200px;">

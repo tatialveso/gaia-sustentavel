@@ -68,7 +68,7 @@ class ProdutoController extends Controller
         $category =  \App\Produto::find($id)->category_id;
         $relacionados = Produto::where('category_id', $category)->get();
 
-        return view('produto',compact('product', 'relacionados'));
+        return view('produto', compact('product', 'relacionados'));
     }
 
     public function edit($id) {
