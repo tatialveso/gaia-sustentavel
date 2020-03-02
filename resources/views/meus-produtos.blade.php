@@ -17,6 +17,12 @@
         <main>
             <h1>Meus produtos</h1>
             <div class="row">
+            @if (sizeof($products) == 0)
+                <div class="col-6 mt-5 loja-vazia">
+                    Ops! Parece que sua loja está vazia :(<br>
+                    Que tal <a href="incluir-produto">incluir um produto</a>?
+                </div>
+            @endif
             @foreach ($products as $product)
                 <div class="col-6 mb-3">
                     <div class="card">
