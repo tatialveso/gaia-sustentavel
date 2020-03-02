@@ -56,7 +56,7 @@
     </div>
 
     {{-- conteúdo da página --}}
-    <div class="titulo mt-5">
+    {{-- <div class="titulo mt-5">
         <h5>Mais vendidos</h5>
     </div>
     <div class="container mt-3">
@@ -76,7 +76,7 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
 
     <div class="titulo mt-5">
         <h5>Novidades</h5>
