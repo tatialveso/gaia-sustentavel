@@ -129,9 +129,6 @@
     {{-- menu de topo --}}
     <div class="container top-menu font-weight-bold mt-1">
         <ul>
-            <li><a href="/favoritos"><i class="material-icons">
-                        favorite
-                    </i></a></li>
             <li><a href="{{route('carrinho.index')}}"><i class="material-icons">
                         shopping_basket
                     </i></a></li>
@@ -192,10 +189,6 @@
                     <a class="dropdown-item" href="/casa-ambiente/aromatizador">Aromatizador</a>
                 </div>
             </div>
-
-            <button class="btn" type="button">
-                Ofertas
-            </button>
         </ul>
     </nav>
 

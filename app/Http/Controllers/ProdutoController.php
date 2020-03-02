@@ -24,7 +24,21 @@ class ProdutoController extends Controller
         return view('incluir-produto', compact('categories', 'subcategories'));
     }
 
-    public function store(Request $request) {        
+    public function store(Request $request) {   
+        $this->validate($request, [
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'composition' => 'required|string',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'img_product' => 'required|image',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem',
+            'numeric' => 'O campo deve ser preenchido com números apenas',
+        ]);
+
         $dados = $request->all();
         $loja = Auth::user()->loja->id;
 
@@ -67,6 +81,18 @@ class ProdutoController extends Controller
 
     }    
     public function update(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'composition' => 'required|string',
+            'img_product' => 'required|image',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem',
+            'numeric' => 'O campo deve ser preenchido com números apenas',
+        ]);
+
         $dados = $request->all();
         
         $products = \App\Produto::find($id);
@@ -74,6 +100,7 @@ class ProdutoController extends Controller
         $products->price = $dados['price'];
         $products->description = $dados['description'];
         $products->composition = $dados['composition'];
+        $products->active = $dados['active'];
 
         if($file = $request->file('img_product')) {
             $name = $file->getClientOriginalName();
@@ -82,6 +109,7 @@ class ProdutoController extends Controller
                 
             };
         };
+        
         $products->save();
 
         return redirect('/meus-produtos');

@@ -30,29 +30,7 @@
                 {{-- localização da loja --}}
                 <p><b>Localizado em </b>{{ $loja['location']}}</p>
                 {{-- avaliação da loja --}}
-                {{-- <p><b>Avaliação</b></p>
-                <ul class="list-inline list-unstyled mt-4">
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star_border
-                        </i>
-                    </li>
-                </ul> --}}
+                <p><b>Avaliação</b></p>
             </div>
         </div>
     </div>
@@ -72,9 +50,6 @@
                             <p class="card-text">R$ {{$produto['price']}}</p>
                             <div class="btn-produto d-flex justify-content-between">
                                 <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
-                                <a href="#"><i class="align-middle material-icons">
-                                        favorite_border
-                                </i></a>
                             </div>
                         </div>
                     </div>

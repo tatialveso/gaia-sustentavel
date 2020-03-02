@@ -70,9 +70,6 @@
                             <p class="card-text">R$ {{$registro['price']}}</p>
                             <div class="btn-produto">
                                 <a href="/produto/{{$registro['id']}}" class="btn text-light">Comprar</a>
-                                <a href=""><i class="material-icons">
-                                        favorite_border
-                                    </i></a>
                             </div>
                         </div>
                     </div>
@@ -95,9 +92,6 @@
                             <p class="card-text">R$ {{$produto['price']}}</p>
                             <div class="btn-produto">
                                 <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
-                                <a href=""><i class="material-icons">
-                                        favorite_border
-                                    </i></a>
                             </div>
                         </div>
                     </div>

@@ -21,9 +21,9 @@ class AvaliacaoLojaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create() {
-    //     return view('loja');
-    // }
+    public function create() {
+        return view('loja');
+    }
 
     /**
      * Store a newly created resource in storage.
