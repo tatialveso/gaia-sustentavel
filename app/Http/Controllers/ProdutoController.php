@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Produto;
 use App\Loja;
-use App\AvalicaoProduto;
+use App\AvaliacaoProduto;
 
 class ProdutoController extends Controller
 {
