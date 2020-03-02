@@ -50,9 +50,6 @@
                             <p class="card-text">R$ {{$produto['price']}}</p>
                             <div class="btn-produto d-flex justify-content-between">
                                 <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
-                                <a href="#"><i class="align-middle material-icons">
-                                        favorite_border
-                                </i></a>
                             </div>
                         </div>
                     </div>

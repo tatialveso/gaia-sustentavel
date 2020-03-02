@@ -10,7 +10,7 @@
     <div class="pagina container">
         {{-- @include('aside-catalogo') --}}
         
-        <main>
+        {{-- <main> --}}
             <div class="row">
                 @foreach ($cabelos as $cabelo)
                     <div class="col-4 mb-3">
@@ -21,16 +21,13 @@
                                 <p class="card-text">{{$cabelo['price']}}</p>
                                 <div class="btn-produto">
                                     <a href="/produto/{{$cabelo['id']}}" class="btn text-light">Comprar</a>
-                                    <a href=""><i class="material-icons">
-                                            favorite_border
-                                    </i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-        </main>
+        {{-- </main> --}}
     </div>
 
 @endsection    
