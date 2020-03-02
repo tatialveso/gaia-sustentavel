@@ -18,7 +18,7 @@
                             <img src="/img/produtos/{{$rosto['img_product']}}" class="card-img-top" alt="">
                             <div class="card-body">
                                 <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$rosto['id']}}">{{$rosto['name']}}</a></h5>
-                                <p class="card-text">{{$rosto['price']}}</p>
+                                <p class="card-text">R$  {{$rosto['price']}}</p>
                                 <div class="btn-produto">
                                     <a href="/produto/{{$rosto['id']}}" class="btn text-light">Comprar</a>
                                 </div>

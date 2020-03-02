@@ -20,7 +20,7 @@
                         <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title"><a class="text-dark text-decoration-none" href="/produto/{{$produto['id']}}">{{$produto['name']}}</a></h5>
-                            <p class="card-text">{{$produto['price']}}</p>
+                            <p class="card-text">R$ {{$produto['price']}}</p>
                             <div class="btn-produto">
                                 <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
                             </div>
