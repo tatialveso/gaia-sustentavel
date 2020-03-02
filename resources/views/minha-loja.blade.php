@@ -66,7 +66,7 @@
             </form>
 
             <div class="d-flex justify-content-end">
-                <form action="/deletar-loja/{{ $loja['id']}}" method="POST">
+                <form action="/deletar-loja" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="submit" class="btn btn-danger" value="Excluir loja">
