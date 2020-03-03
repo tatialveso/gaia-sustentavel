@@ -114,7 +114,10 @@
                         <input type="number" class="form-control" name="">
                     </div>
 
-                    <button type="submit" class="btn text-light" style="background-color: #54775e;">Finalizar a compra</button>
+                    <form action="/carrinho/concluir" method="POST">
+                        @csrf
+                        <button type="submit" class="btn text-light" style="background-color: #54775e;">Finalizar a compra</button>
+                    </form>
                 </form>
             </div>
         </div>
