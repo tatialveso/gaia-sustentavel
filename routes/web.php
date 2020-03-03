@@ -17,6 +17,7 @@ Route::get('/produto/{id}', 'HomeController@produto'); // Busca pelo produto dir
 Route::auth();
 Auth::routes();
 
+// PÁGINAS INSTITUCIONAIS
 Route::get('/sobre', function () {
     return view('sobre');
 });
@@ -25,12 +26,13 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
+// CRUD DE USUÁRIOS
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
-//Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
 Route::put('/configuracoes', 'UserController@update')->middleware('auth');
 Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
-
 Route::get('/logout', 'Auth\LoginController@logout');
+// Segurança de dados do usuário
+Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
@@ -45,25 +47,28 @@ Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
 Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
 
+// SISTEMA DE BUSCA
+Route::get('/busca', 'ProdutoController@search');
+Route::post('/busca', 'ProdutoController@search');
+
+// Segurança de dados do usuário
+Route::get('/seguranca', 'SegurancaController@index')->name('seguranca.index')->middleware('auth');
+Route::post('/seguranca/atualizar-senha', 'SegurancaController@updatePassword')->middleware('auth');
+Route::post('/seguranca/atualizar-email', 'SegurancaController@updateEmail')->middleware('auth');
+
 // CRUD LOJA
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
 Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
 Route::get('loja/{id}', 'LojaController@show');
-Route::get('/minha-loja/{id}', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
-Route::patch('/minha-loja/{id}', 'LojaController@update')->middleware('auth');
-Route::delete('/deletar-loja/{id}', 'LojaController@destroy')->middleware('auth');
+Route::get('/minha-loja', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
+Route::patch('/minha-loja', 'LojaController@update')->middleware('auth');
+Route::delete('/deletar-loja', 'LojaController@destroy')->middleware('auth');
 
-// Segurança de dados do usuário
-Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
-
-// CRUD DA AVALIAÇÃO DA LOJA
-Route::get('loja/{id}', 'AvaliacaoLojaController@show');
-Route::get('/loja/{id}','AvaliacaoLojaController@create');
+// AVALIAÇÃO DE LOJA
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
-// Avaliação dos produtos
-// Route::get('/produto/{id}', 'AvaliacaoProdutoController@create');
-// Route::post('/produto/{id}','AvaliacaoProdutoController@store');
+// AVALIAÇÃO DE PRODUTO
+Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
@@ -76,11 +81,10 @@ Route::get('/casa-ambiente', 'CasaController@index');
 Route::get('/casa-ambiente/limpeza', 'CasaController@limpezaIndex');
 Route::get('/casa-ambiente/aromatizador', 'CasaController@aromatizadorIndex');
 
-// Página inicial logado
-Route::get('/perfil/{id}', 'PerfilController@show')->middleware('auth');
 
-// Favoritos
-Route::get('/favoritos', 'FavoritoController@index')->middleware('auth');
+
+
+
 
 // Histórico de vendas
 Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
@@ -98,7 +102,6 @@ Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adi
 Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover');
 Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir');
 Route::post ('/carrinho/desconto', 'CarrinhoController@discount')->name('carrinho.desconto');
-
 
 // Checkout de compras
 Route::get('/checkout', 'CheckoutController@index')->middleware('auth');

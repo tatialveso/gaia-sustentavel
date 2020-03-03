@@ -10,6 +10,6 @@ class Contato extends Model
     protected $fillable = ['name', 'email', 'topic_id', 'message'];
  
     public function topico() {
-        return $this->belongsTo('app\Topico', 'topic_id', 'id');
+        return $this->belongsTo('App\Topico', 'topic_id', 'id');
     }
 }

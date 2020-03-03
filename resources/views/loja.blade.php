@@ -1,10 +1,7 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLoja.css') }}">
-    
-{{-- nome da página --}}
+
 <title>{{ $loja['name_store']}}</title>
 
 @section('loja')
@@ -15,44 +12,14 @@
                     <img src="/img/lojas/{{ $loja['image']}}" alt="">
                 </div>
                 <h4 class="mt-3 text-center">{{ $loja['name_store']}}</h4>
-                {{-- botão de seguir --}}
-                {{-- <div class="mt-3 d-flex justify-content-center">
-                    <button class="btn text-light">Seguir</button>
-                </div> --}}
             </div>
 
             <div class="col-6 mt-5">
                 <h5>Biografia</h5>
-                {{-- descrição da loja --}}
                 <p>{{ $loja['description']}}</p>
-                {{-- data de criação da loja --}}
                 <p><b>Criado em </b>{{ $loja['criacao']}}</p>
-                {{-- localização da loja --}}
                 <p><b>Localizado em </b>{{ $loja['location']}}</p>
-                {{-- avaliação da loja --}}
-                {{-- <p><b>Avaliação</b></p>
-                <ul class="list-inline list-unstyled mt-4">
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star
-                        </i>
-                    </li>
-                    <li class="list-inline-item"><i class="material-icons">
-                            star_border
-                        </i>
-                    </li>
-                </ul> --}}
+                <p><b>Avaliação</b></p>
             </div>
         </div>
     </div>
@@ -72,9 +39,6 @@
                             <p class="card-text">R$ {{$produto['price']}}</p>
                             <div class="btn-produto d-flex justify-content-between">
                                 <a href="/produto/{{$produto['id']}}" class="btn text-light">Comprar</a>
-                                <a href="#"><i class="align-middle material-icons">
-                                        favorite_border
-                                </i></a>
                             </div>
                         </div>
                     </div>

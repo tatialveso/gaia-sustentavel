@@ -1,14 +1,9 @@
-{{-- chamada do bootstrap --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-{{-- chamada do css --}}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleIndex.css') }}">
     
-{{-- nome da página --}}
 <title>Gaia sustentável: Cadastro</title>
 
 <div class="container">
-    {{-- logo --}}
     <div class="d-flex justify-content-center">
         <header>
             <a href="/"><img src="/img/logo/gaia-branco.png" alt="Gaia Sustentável"></a>
@@ -64,6 +59,5 @@
         <div class="btn-produto d-flex justify-content-around">
             <button type="submit" class="btn text-light">Criar loja</button>
         </div>
-
     </form>
 </div>

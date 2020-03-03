@@ -45,7 +45,6 @@
         <h5>Incluir novo produto</h5>
     </div>
 
-    {{-- campo para adicionar fotos --}}
     <div class="container">
         <form action="/incluir-produto" method="POST" enctype="multipart/form-data">
             @csrf
@@ -62,8 +61,9 @@
                 <div class="col-6 align-middle">
                     <label for=""><b>Foto do produto</b></label>
                     <div class="custom-file">
-                        <input type="file" name="img_product" class="custom-file-input" id="customFile">
+                        <input type="file" name="img_product" class="custom-file-input @error('img_product') is-invalid @enderror" id="customFile">
                         <label class="custom-file-label" for="customFile">Escolher foto</label>
+                        <div class="invalid-feedback">{{$errors->first('img_product')}}</div>    
                     </div>
                 </div>
             </div>
@@ -71,57 +71,46 @@
             <div class="form-row">
                 <div class="col-6 form-group">
                     <label><b>Categoria</b></label>
-                    <select type="text" name="category_id" class="form-control">
+                    <select type="text" name="category_id" class="form-control @error('category_id') is-invalid @enderror">
                         <option selected disabled>Selecione uma categoria</option>
-                    @foreach($categories as $category)
-                        <option value='{{ $category->id }}'>{{ $category->name }}</option>
-                    @endforeach
+                        @foreach($categories as $category)
+                            <option value='{{ $category->id }}'>{{ $category->name }}</option>
+                        @endforeach
                     </select>
+                    <div class="invalid-feedback">{{$errors->first('category_id')}}</div>    
                 </div>
                 <div class="col-6 form-group">
                     <label><b>Subcategoria</b></label>
-                    <select type="text" name="subcategory_id" class="form-control">
+                    <select type="text" name="subcategory_id" class="form-control @error('subcategory_id') is-invalid @enderror">
                         <option selected disabled>Selecione uma subcategoria</option>
-                    @foreach($subcategories as $subcategory)
-                        <option value='{{ $subcategory->id }}'>{{ $subcategory->name }}</option>
-                    @endforeach    
+                        @foreach($subcategories as $subcategory)
+                            <option value='{{ $subcategory->id }}'>{{ $subcategory->name }}</option>
+                        @endforeach    
                     </select>
+                    <div class="invalid-feedback">{{$errors->first('subcategory_id')}}</div>    
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-8 form-group">
                     <label><b>Nome do produto</b></label>
-                    <input type="text" name="name" class="form-control" placeholder="Título do Produto">
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Título do Produto">
+                    <div class="invalid-feedback">{{$errors->first('name')}}</div>
                 </div>
                 <div class="col-4 form-group">
                     <label><b>Preço</b></label>
-                    <input type="number" name="price" class="form-control" placeholder="Preço do produto">
+                    <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" placeholder="Preço do produto">
+                    <div class="invalid-feedback">{{$errors->first('price')}}</div>
                 </div>
             </div>
             <div class="form-group">
                 <label><b>Descrição do produto</b></label>
-                <textarea class="form-control" name="description" placeholder="Escreva aqui as características do seu produto"></textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Escreva aqui as características do seu produto"></textarea>
+                <div class="invalid-feedback">{{$errors->first('description')}}</div>
             </div>
             <div class="form-group">
                 <label><b>Composição do produto</b></label>
-                <textarea class="form-control" name="composition" placeholder="Escreva aqui os ingredientes do seu produto"></textarea>
-            </div>
-            <label for=""><b>Frete</b></label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="" value="">
-                <label class="form-check-label" for="">
-                  Frete grátis para todo o território
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="" value="" id="frete">
-                <label class="form-check-label" for="">
-                  Frete fixo para todo o território
-                </label>
-            </div>
-            <div class="form-group col-3"  id="frete-valor" style="display:none;">
-                <label for=""><b>Valor do frete</b></label>
-                <input type="number" class="form-control" placeholder="Insira o valor do frete">
+                <textarea class="form-control @error('composition') is-invalid @enderror" name="composition" placeholder="Escreva aqui os ingredientes do seu produto"></textarea>
+                <div class="invalid-feedback">{{$errors->first('composition')}}</div>
             </div>
     
             <button type="submit" class="mt-4 mb-5 btn text-light">Cadastrar novo produto</button>

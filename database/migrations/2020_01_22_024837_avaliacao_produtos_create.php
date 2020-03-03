@@ -16,6 +16,7 @@ class AvaliacaoProdutosCreate extends Migration
         Schema::create('evaluations_products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('rate');
             $table->string('description');
             $table->bigInteger('product_id');
             $table->timestamps();

@@ -38,18 +38,18 @@ class User extends Authenticatable
     ];
 
     public function loja() {
-        return $this->HasOne('app\Loja', 'loja_id');
+        return $this->HasOne('App\Loja');
     }
 
     public function pedido() {
-        return $this->HasMany('app\Pedido', 'pedido_id', 'id');
+        return $this->HasMany('App\Pedido', 'pedido_id', 'id');
     }
 
     public function uf() {
-        return $this->belongsTo('app\UF', 'ufs_id', 'id');
+        return $this->belongsTo('App\UF', 'ufs_id', 'id');
     }
 
     public function isSeller() {
-        return $this['loja_id'] != null;
+        return $this->loja != null;
     }
 }
