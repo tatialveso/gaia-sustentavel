@@ -1,13 +1,9 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/StylesIndex.css') }}">
 
-{{-- nome da página --}}
 <title>Sobre a Gaia sustentável</title>
 
-{{-- separando o css particular da página --}}
 @section('sobre-assets') 
     <style>
         .imagem img {
@@ -22,8 +18,7 @@
     </style>
 @endsection
 
-@section('sobre')
-    {{-- imagem de destaque da página --}}
+@section('institucionais')
     <div class="imagem">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -33,7 +28,7 @@
             </div>
         </div>
     </div>
-    {{-- conteúdo da página --}}
+    
     <div class="container mt-5 quem-gaia">
         <h1 class="text-center">Quem é a Gaia</h1>
         <div class="card border-0 mb-3 mt-5">
@@ -49,7 +44,8 @@
                 é essencial
                 mudarmos os nossos hábitos para que possamos ter um mundo habitável no futuro, tanto para
                 nós quanto para futuras gerações, e a mudança começa agora.<br><br>
-                <b>Se junte à Gaia e seja a mudança que você quer ver no mundo.</b></p>
+                <b>Se junte à Gaia e seja a mudança que você quer ver no mundo.</b>
+            </p>
         </div>
     </div> 
 @endsection

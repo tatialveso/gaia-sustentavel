@@ -1,10 +1,8 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleConfiguracoes.css')}}">
 
-<title>Minhas configurações</title>
+<title>Configurações</title>
 
 @section('configuracoes')
     <div class="titulo">
@@ -38,10 +36,6 @@
                     <input type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror" id="cpf" value="{{$user->cpf}}">
                     <div class="invalid-feedback">{{$errors->first('cpf')}}</div>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="phone"><b>Telefone</b></label>
-                    <input type="text" name="phone" class="form-control @error('name') is-invalid @enderror" id="phone">
-                </div> -->
 
                 <h1 class="mb-3">Endereço</h1>
                 <div class="form-group">

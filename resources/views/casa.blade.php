@@ -1,20 +1,13 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleCatalogo.css') }}">
 
-{{-- nome da página --}}
 <title>Casa e ambiente</title>
 
-@section('casa')
+@section('catalogo')
     <div class="pagina container">
-        {{-- chamada para os filtros --}}
-        {{-- @include('aside-catalogo') --}}
-
-        {{-- <main> --}}
-            <div class="row">
-                @foreach ($produtos as $produto)
+        <div class="row">
+            @foreach ($produtos as $produto)
                 <div class="col-4 mb-3">
                     <div class="card">
                         <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
@@ -28,7 +21,6 @@
                     </div>
                 </div>
             @endforeach
-            </div>
-        {{-- </main> --}}
+        </div>
     </div>
 @endsection

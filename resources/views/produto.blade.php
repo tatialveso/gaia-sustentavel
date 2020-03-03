@@ -1,7 +1,5 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLoja.css') }}">
 
 <title>{{$product['name']}}</title>
@@ -20,23 +18,14 @@
                     <h6 class="mb-3"><a href="/loja/{{ $product['store_id'] }}">{{ $product->store->name_store }}</a></h6>
                     <h4 class="mt-5 mb-3">R$ {{$product['price']}}</h4>
 
-                    {{-- fav e quantidade --}}
                     <div class="dados d-flex justify-content-between mt-1">
                         <form action="" class="form-inline">
                             <div class="form-group">
-                                <h6>Quantidade:</h6>  <!-- ver como setar a quantidade --> 
-                                <input type="number" min="1" name="quantity" class="form-control ml-1">
+                                <h6>Quantidade:</h6>
+                                <input type="number" min=1 max=5 name="quantity" class="form-control ml-1">
                             </div>
                         </form>
                     </div>
-
-                    {{-- <form class="form-inline mt-3">
-                        <div class="form-group">
-                            <h6>Calcule frete:</h6> <!-- Ver como será feito o frete -->
-                            <input type="text" class="form-control ml-1" placeholder="Insira o CEP">
-                        </div>
-                        <button class="btn ml-2 text-light" type="submit" style="background-color: #54775e;">OK</button>
-                    </form> --}}
                     
                     <input type="hidden" name="id" value="{{$product['id'] }}">
         
@@ -60,14 +49,13 @@
 
             <div class="col-lg-6">
                 <h4 class="text-center">Avaliações de clientes</h4>
-               @foreach ($ratings as $rating)
-            <div class="mt-3">
-                <p><b>{{$rating['name']}}</b></p>
-                <p><b>{{$rating['rate']}}/10</b></p>
-                <p class="text-justify">{{$rating['description']}}</p>
-            </div>
-        @endforeach
-                
+                @foreach ($ratings as $rating)
+                    <div class="mt-3">
+                        <p><b>{{$rating['name']}}</b></p>
+                        <p><b>{{$rating['rate']}}/10</b></p>
+                        <p class="text-justify">{{$rating['description']}}</p>
+                    </div>
+                @endforeach
                 
                 <div class="btn-produto d-flex justify-content-around">
                     <button type="button" class="btn text-light my-5" id="avaliar-produto">Avaliar o produto</button>
@@ -117,5 +105,4 @@
             @endforeach
         </div>
     </div>
-
 @endsection

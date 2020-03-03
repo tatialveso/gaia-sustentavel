@@ -28,10 +28,11 @@ Route::get('/como-funciona', function () {
 
 // CRUD DE USUÁRIOS
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
-//Route::get('/configuracoes/{id}', 'UserController@edit')->middleware('auth');
 Route::put('/configuracoes', 'UserController@update')->middleware('auth');
 Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout');
+// Segurança de dados do usuário
+Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
 // CRUD DE CONTATOS
 Route::get('/contato', 'ContatoController@create');
@@ -45,6 +46,8 @@ Route::get('/produto/{id}', 'ProdutoController@show');
 Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
 Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
+
+// SISTEMA DE BUSCA
 Route::get('/busca', 'ProdutoController@search');
 Route::post('/busca', 'ProdutoController@search');
 
@@ -61,10 +64,10 @@ Route::get('/minha-loja', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit
 Route::patch('/minha-loja', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja', 'LojaController@destroy')->middleware('auth');
 
-// Avaliação loja
+// AVALIAÇÃO DE LOJA
 Route::post('/loja/{id}','AvaliacaoLojaController@store');
 
-// Avaliação produto
+// AVALIAÇÃO DE PRODUTO
 Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // CATÁLOGO DOS PRODUTOS
@@ -77,6 +80,11 @@ Route::get('/higiene-pessoal/itens-pessoais', 'PessoalController@pessoalIndex');
 Route::get('/casa-ambiente', 'CasaController@index');
 Route::get('/casa-ambiente/limpeza', 'CasaController@limpezaIndex');
 Route::get('/casa-ambiente/aromatizador', 'CasaController@aromatizadorIndex');
+
+
+
+
+
 
 // Histórico de vendas
 Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
