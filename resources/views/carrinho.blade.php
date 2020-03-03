@@ -12,8 +12,25 @@
         <h5>Cesta de Compras</h5>
     </div>
 
+<<<<<<< HEAD
+    <!-- Para verificar se existe alguma mensagem do flash() --> 
+
+    @if(Session::has('mensagem-sucesso'))
+        <div class= "alert alert-secondary" role="alert"> 
+            <strong> {{Session::get('mensagem-sucesso')}}</strong>
+        </div>
+    @endif
+    @if(Session::has('mensagem-falha'))
+        <div class= "alert alert-danger" role = "alert">
+            <strong> {{Session::get('mensagem-falha')}}</strong>
+        </div>
+    @endif
+
+
+=======
     
     
+>>>>>>> c2259bc163b26ac41e1770b51e10fdca477276c8
     <!-- forelse: para verificar se o carrinho não está vazio, se não estiver segue o código a seguir. -->
     
     @forelse($pedidos as $pedido)
