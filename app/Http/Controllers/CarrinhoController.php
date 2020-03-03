@@ -18,33 +18,34 @@ class CarrinhoController extends Controller
     }
     
     function index() {
-        $pedidos = Pedido::where([
-            'status' => 'RE',
-            'user_id' => Auth::id()
-        ])->get();
-        $request_id = 
-        $pedido_produtos = PedidoProduto::where('request_id', 1)->get(); // PROCURAR COMO DEIXAR DINAMICO
+        $carrinho = session()->get('carrinho', ["itens" => [], "total"]);
+        
+        // $pedidos = Pedido::where([
+        //     'status' => 'RE',
+        //     'user_id' => Auth::id()
+        // ])->get();
+        // $request_id = 
+        // $pedido_produtos = PedidoProduto::where('request_id', 1)->get(); // PROCURAR COMO DEIXAR DINAMICO
 
-        // dd($request_id);
-        return view('carrinho', compact('pedidos', 'pedido_produtos'));
+        
+        return view('carrinho', compact('carrinho'));
     }
 
     function add(Request $request) {
-        $produto_id = $request->input('produto_id');
-        $produto = Produto::find($produto_id);
+        $produto_id = $request->input('id');
+        $produto = Produto::findOrFail($produto_id);
         $quantidade = $request->input('quantidade', 1);
         
         $carrinho = session()->get('carrinho', ['itens' => [], 'total' => 0]);
         
-        if (isset($carrinho['itens'][$produto->id])) {
-            $carrinho['itens'][$produto->id]['quantidade'] += $quantidade;
+        if (isset($carrinho['itens'][$produto['id']])) {
+            $carrinho['itens'][$produto['id']]['quantidade'] += $quantidade;
         } else {
-            $carrinho['itens'][$produto->id] = [
+            $carrinho['itens'][$produto['id']] = [
                 'quantidade' => $quantidade,
                 'produto' => $produto
             ];
         }
-
         session()->put('carrinho', $carrinho);
 
         // $idProduto = $request->input('id');
