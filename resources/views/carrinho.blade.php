@@ -33,14 +33,14 @@
             </div>
         @endif
         
-        @foreach($pedido->pedido_produtos as $pedido_produto) {{--Lista os produtos do pedido--}}
+        @foreach($pedido_produtos as $pedido_produto) {{--Lista os produtos do pedido--}}
             <div class="row border border-success mt-5" style="height: 200px;">
                 <div class="col-3 mt-5">
-                    <img src="/img/produtos/{{$pedido_produto->product['img_product']}}" class="img-thumbnail w-25" alt=""> 
+                    <img src="/img/produtos/{{$pedido_produto->produto->img_product}}" class="img-thumbnail w-25" alt=""> 
                 </div>
                 <div class="col-3 mt-5">
-                    <h5>{{$pedido_produto->product['name']}}</h5>   
-                    <p><a href="#">{{$pedido_produto->store['name']}}</a></p> <!-- Nome da loja -->
+                    <h5>{{$pedido_produto->produto->name}}</h5>   
+                    {{-- <p><a href="#">{{$pedido_produto->store->'name']}}</a></p> <!-- Nome da loja --> --}}
                 </div>
 
                 <div class="col-2 mt-5">
@@ -58,7 +58,7 @@
 
                 <div class="col-2 mt-5">
                     <h6>Valor<h6> 
-                    <p>R$ {{$pedido_produto->product['price']}}</p>
+                    <p>R$ {{$pedido_produto->produto->price}}</p>
                 </div>
 
                 <div class="col-2 mt-5">

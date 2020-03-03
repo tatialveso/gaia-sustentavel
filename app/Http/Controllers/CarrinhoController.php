@@ -22,8 +22,11 @@ class CarrinhoController extends Controller
             'status' => 'RE',
             'user_id' => Auth::id()
         ])->get();
-        
-        return view('carrinho', compact('pedidos'));
+        $request_id = 
+        $pedido_produtos = PedidoProduto::where('request_id', 1)->get(); // PROCURAR COMO DEIXAR DINAMICO
+
+        // dd($request_id);
+        return view('carrinho', compact('pedidos', 'pedido_produtos'));
     }
 
     function add(Request $request) {
