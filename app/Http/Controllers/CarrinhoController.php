@@ -17,16 +17,36 @@ class CarrinhoController extends Controller
         $this->middleware('auth');
     }
     
-    public function index() {
-        $pedidos = Pedido::where([
-            'status' => 'RE',
-            'user_id' => Auth::id()
-        ])->get();
-        $request_id = 
-        $pedido_produtos = PedidoProduto::where('request_id', 1)->get(); // PROCURAR COMO DEIXAR DINAMICO
+    public function add(Request $request) {
+        $produto_id = $request->input('id');
+        $produto = Produto::find($produto_id);
+        $quantidade = $request->input('quantity');
+            
+        $carrinho = session()->get('carrinho', ['itens' => [], 'total' => 0]);
+        
+        if (isset($carrinho['itens'][$produto['id']])) {
+            $carrinho['itens'][$produto['id']]['quantidade'] += $quantidade;
+        } else {
+            $carrinho['itens'][$produto['id']] = [
+                'quantidade' => $quantidade,
+                'produto' => $produto
+            ];
+        }
 
-        // dd($request_id);
-        return view('carrinho', compact('pedidos', 'pedido_produtos'));
+        $pedido = session()->put('carrinho', $carrinho);
+        // dd($carrinho); 
+    }
+
+    public function index() {
+        $pedido = session()->all();
+        // $pedidos = Pedido::where([
+        //     'status' => 'RE',
+        //     'user_id' => Auth::id()
+        // ])->get();
+        // $request_id = 
+        // $pedido_produtos = PedidoProduto::where('request_id', 1)->get(); // PROCURAR COMO DEIXAR DINAMICO
+
+        return view('carrinho', compact('carrinho','pedidos', 'pedido_produtos'));
     }
 
     public function update (Request $request, $id) {
@@ -36,24 +56,6 @@ class CarrinhoController extends Controller
         $produto->quantity = $dados['quantity'];
         $produto->save();
     }
-
-    function add(Request $request) {
-        $produto_id = $request->input('produto_id');
-        $produto = Produto::find($produto_id);
-        $quantidade = $request->input('quantidade', 1);
-        
-        $carrinho = session()->get('carrinho', ['itens' => [], 'total' => 0]);
-        
-        if (isset($carrinho['itens'][$produto->id])) {
-            $carrinho['itens'][$produto->id]['quantidade'] += $quantidade;
-        } else {
-            $carrinho['itens'][$produto->id] = [
-                'quantidade' => $quantidade,
-                'produto' => $produto
-            ];
-        }
-
-        session()->put('carrinho', $carrinho);
 
         // $idProduto = $request->input('id');
 
@@ -96,14 +98,13 @@ class CarrinhoController extends Controller
         // //dd($pedidos);
 
 
-        $request->session()->flash('mensagem sucesso', 'Produto adicionado ao carrinho com sucesso!');
-        return redirect()->route('carrinho.index');   // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerao um novo.
+        // $request->session()->flash('mensagem sucesso', 'Produto adicionado ao carrinho com sucesso!');
+        // return redirect()->route('carrinho.index');   // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerao um novo.
     
-    }
 
     function delete(Request $request) {
 
-        
+
 
         $idPedido = $request->input('request_id');
         $idProduto = $request->input('product_id');
