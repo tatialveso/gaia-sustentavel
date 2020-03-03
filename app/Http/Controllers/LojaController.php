@@ -27,9 +27,11 @@ class LojaController extends Controller
             'category_id' => 'required',
             'description' => 'required|string',
             'criacao' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|dimensions:ratio=1:1',
         ], [
             'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem apenas',
+            'dimensions' => 'O tamanho da imagem deve ser de proporção 1:1',
         ]);
 
         $dados = $request->all();
@@ -78,9 +80,11 @@ class LojaController extends Controller
             'category_id' => 'required',
             'description' => 'required|string',
             'criacao' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|dimensions:ratio=1:1',
         ], [
             'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem apenas',
+            'dimensions' => 'O tamanho da imagem deve ser de proporção 1:1',
         ]);
 
         $dados = $request->all();

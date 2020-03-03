@@ -17,7 +17,7 @@ class CarrinhoController extends Controller
         $this->middleware('auth');
     }
     
-    function index() {
+    public function index() {
         $pedidos = Pedido::where([
             'status' => 'RE',
             'user_id' => Auth::id()
@@ -27,6 +27,14 @@ class CarrinhoController extends Controller
 
         // dd($request_id);
         return view('carrinho', compact('pedidos', 'pedido_produtos'));
+    }
+
+    public function update (Request $request, $id) {
+        $dados = $request->all();
+
+        $produto = \App\PedidoProduto::find($id);
+        $produto->quantity = $dados['quantity'];
+        $produto->save();
     }
 
     function add(Request $request) {
@@ -73,6 +81,8 @@ class CarrinhoController extends Controller
     }
 
     function delete(Request $request) {
+
+        
 
         $idPedido = $request->input('request_id');
         $idProduto = $request->input('product_id');
