@@ -43,12 +43,18 @@
                         <h1 class="mb-3 mt-5">Modificar e-mail</h1>
 
                         <div class="form-group">
+                            <label for="email"><b>E-mail atual</b></label>
+                            <input type="text" name="email" class="form-control" disabled value="{{$user->email}}">
+                        </div>
+                        <div class="form-group">
                             <label for="newemail"><b>Novo endereço de e-mail</b></label>
-                            <input type="email" name="newemail" class="form-control">
+                            <input type="email" name="newemail" class="form-control @error('newemail') is-invalid @enderror">
+                            <div class="invalid-feedback">{{$errors->first('newemail')}}</div>
                         </div>
                         <div class="form-group">
                             <label for="confirmemail"><b>Confirme o endereço de e-mail</b></label>
-                            <input type="email" name="confirmemail" class="form-control">
+                            <input type="email" name="newemail_confirmation" class="form-control @error('newemail_confirmation') is-invalid @enderror">
+                            <div class="invalid-feedback">{{$errors->first('newemail_confirmation')}}</div>
                         </div>
                     </div>
 

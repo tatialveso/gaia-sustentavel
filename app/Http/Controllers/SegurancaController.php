@@ -35,4 +35,26 @@ class SegurancaController extends Controller
         return redirect()->route('seguranca.index')
         ->with('success','Senha atualizada com sucesso.');
     }
+
+    public function updateEmail(Request $request) {
+        $this->validate($request, [
+            'newemail' => 'required|max:255|confirmed',
+            'newemail_confirmation' => 'required|max:255',
+        ],[
+            'required' => 'Esse campo é obrigatório',
+            'max' => 'O número maximo de caracteres é :max',
+            'confirmed' => 'Os emails não são iguais'
+        ]);
+
+        $data = $request->only([
+            'newemail',
+        ]);
+
+        Auth::user()->update([
+            'email' => $data['newemail'],
+        ]);
+
+        return redirect()->route('seguranca.index')
+        ->with('success','Email atualizado com sucesso.');
+    }
 }
