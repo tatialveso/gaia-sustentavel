@@ -1,10 +1,7 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLoja.css') }}">
-    
-{{-- nome da página --}}
+
 <title>{{ $loja['name_store']}}</title>
 
 @section('loja')
@@ -15,21 +12,13 @@
                     <img src="/img/lojas/{{ $loja['image']}}" alt="">
                 </div>
                 <h4 class="mt-3 text-center">{{ $loja['name_store']}}</h4>
-                {{-- botão de seguir --}}
-                {{-- <div class="mt-3 d-flex justify-content-center">
-                    <button class="btn text-light">Seguir</button>
-                </div> --}}
             </div>
 
             <div class="col-6 mt-5">
                 <h5>Biografia</h5>
-                {{-- descrição da loja --}}
                 <p>{{ $loja['description']}}</p>
-                {{-- data de criação da loja --}}
                 <p><b>Criado em </b>{{ $loja['criacao']}}</p>
-                {{-- localização da loja --}}
                 <p><b>Localizado em </b>{{ $loja['location']}}</p>
-                {{-- avaliação da loja --}}
                 <p><b>Avaliação</b></p>
             </div>
         </div>

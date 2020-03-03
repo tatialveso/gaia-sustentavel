@@ -1,11 +1,8 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleCatalogo.css') }}">
 
-{{-- nome da página --}}
-<title>Buscador de Produtos</title>
+<title>Gaia sustentável</title>
 
 @section('busca')
     <div class="pagina container">
@@ -43,7 +40,5 @@
                 </div>
             @endforeach
         </div>
-
     </div>
-    
 @endsection

@@ -45,7 +45,6 @@
         <h5>Incluir novo produto</h5>
     </div>
 
-    {{-- campo para adicionar fotos --}}
     <div class="container">
         <form action="/incluir-produto" method="POST" enctype="multipart/form-data">
             @csrf
@@ -113,23 +112,6 @@
                 <textarea class="form-control @error('composition') is-invalid @enderror" name="composition" placeholder="Escreva aqui os ingredientes do seu produto"></textarea>
                 <div class="invalid-feedback">{{$errors->first('composition')}}</div>
             </div>
-            {{-- <label for=""><b>Frete</b></label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="" value="">
-                <label class="form-check-label" for="">
-                  Frete grátis para todo o território
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="" value="" id="frete">
-                <label class="form-check-label" for="">
-                  Frete fixo para todo o território
-                </label>
-            </div>
-            <div class="form-group col-3"  id="frete-valor" style="display:none;">
-                <label for=""><b>Valor do frete</b></label>
-                <input type="number" class="form-control" placeholder="Insira o valor do frete">
-            </div> --}}
     
             <button type="submit" class="mt-4 mb-5 btn text-light">Cadastrar novo produto</button>
 

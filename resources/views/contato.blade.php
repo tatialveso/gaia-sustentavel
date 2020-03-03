@@ -1,10 +1,7 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/StylesIndex.css') }}">
 
-{{-- nome da página --}}
 <title>Contate a Gaia</title>
 
 @section('contato-assets')
@@ -16,8 +13,7 @@
     </style>
 @endsection
 
-@section('contato')
-    {{-- imagem de destaque da página --}}
+@section('institucionais')
     <div class="imagem">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -27,7 +23,7 @@
             </div>
         </div>
     </div>
-    {{-- conteúdo da página --}}
+    
     <div class="container mt-5">
         <form action="/contato" method="POST">
             @csrf
