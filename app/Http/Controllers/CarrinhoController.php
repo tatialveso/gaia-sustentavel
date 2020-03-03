@@ -27,46 +27,67 @@ class CarrinhoController extends Controller
     }
 
     function add(Request $request) {
-        $idProduto = $request->input('id');
-
-        $produto = Produto::find($idProduto);
-
-        if(empty($produto->id)) {
-            $request->session()->flash('mensagem falha','Produto não encontrado na nossa loja');
-            return redirect()->route('carrinho.index');  // inserir a rota da página de busca de produto.
+        $produto_id = $request->input('produto_id');
+        $produto = Produto::find($produto_id);
+        $quantidade = $request->input('quantidade', 1);
+        
+        $carrinho = session()->get('carrinho', ['itens' => [], 'total' => 0]);
+        
+        if (isset($carrinho['itens'][$produto->id])) {
+            $carrinho['itens'][$produto->id]['quantidade'] += $quantidade;
+        } else {
+            $carrinho['itens'][$produto->id] = [
+                'quantidade' => $quantidade,
+                'produto' => $produto
+            ];
         }
 
-        $idUsuario = Auth::id();
+        session()->put('carrinho', $carrinho);
 
-        //Tentar trazer o pedido
-        //Caso não exista, crie um novo pedido e adicione o preço dele, somando os itens
-        //Caso ele exista, você vai adicionar o produto, 
+        // $idProduto = $request->input('id');
+
+        // $produto = Produto::find($idProduto);
+
+        // if(empty($produto->id)) {
+        //     $request->session()->flash('mensagem falha','Produto não encontrado na nossa loja');
+        //     return redirect()->route('carrinho.index');  // inserir a rota da página de busca de produto.
+        // }
+
+        // $idUsuario = Auth::id();
+
+        // //Tentar trazer o pedido
+        // //Caso não exista, crie um novo pedido e adicione o preço dele, somando os itens
+        // //Caso ele exista, você vai adicionar o produto, 
 
 
 
-        $idPedido = Pedido::consultaId([  // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerado um novo.
-            'user_id' => $idUsuario,
-            'status' => 'RE'    //produto reservado
-        ]);
+        // $idPedido = Pedido::consultaId([  // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerado um novo.
+        //     'user_id' => $idUsuario,
+        //     'status' => 'RE'    //produto reservado
+        // ]);
 
-        if(empty($idPedido)) {
-            $pedido_novo = Pedido::create([
-                'user_id' => $idUsuario,
-                'price' => $produto['price'],
-                'status' => 'RE'    //produto reservado
-            ]);
+        // if(empty($idPedido)) {
+        //     $pedido_novo = Pedido::create([
+        //         'user_id' => $idUsuario,
+        //         'price' => $produto['price'],
+        //         'status' => 'RE'    //produto reservado
+        //     ]);
 
-            $idPedido = $pedido_novo->id;
-        }
+        //     $idPedido = $pedido_novo->id;
+        // }
 
-        PedidoProduto::create([ 
-            'request_id' => $idPedido,
-            'product_id' => $idProduto,
-            'quantity' => $request->input('quantity')
-        ]);
+        // PedidoProduto::create([ 
+        //     'request_id' => $idPedido,
+        //     'product_id' => $idProduto,
+        //     'quantity' => $request->input('quantity')
+        // ]);
+
+        // //dd($pedidos);
+
 
         $request->session()->flash('mensagem sucesso', 'Produto adicionado ao carrinho com sucesso!');
         return redirect()->route('carrinho.index');   // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerao um novo.
+    
     }
         function delete(Request $request) {
 

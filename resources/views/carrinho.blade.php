@@ -20,7 +20,7 @@
         </div>
     @endif
     @if(Session::has('mensagem-falha'))
-        <div class= "alert alert-danger" role="alert">
+        <div class= "alert alert-danger" role = "alert">
             <strong> {{Session::get('mensagem-falha')}}</strong>
         </div>
     @endif
@@ -99,7 +99,7 @@
             <!-- Resumo do pedido -->
             <div class="p-5 col-6">
                 <div class="text-right">
-                    <h3>Resumo do pedido {{$pedido->id}}</h3>
+                    <h3>Resumo do pedido {{$pedidos->id}}</h3>
             
                         @php
                             $total_pedido = 0;
