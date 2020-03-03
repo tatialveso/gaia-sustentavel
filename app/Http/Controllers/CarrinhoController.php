@@ -8,6 +8,8 @@ use App\Pedido;
 use App\Produto;
 use App\PedidoProduto;
 use App\CupomDesconto;
+use App\User;
+use App\UF;
 use DB;
 
 class CarrinhoController extends Controller
@@ -56,6 +58,10 @@ class CarrinhoController extends Controller
             return redirect()->route('carrinho.index');
 
         dd($deletar);           
+    }
+
+    public function checkout(Request $request) {
+        $ufs = \App\UF::all();
     }
 
     public function complete(Request $request) {

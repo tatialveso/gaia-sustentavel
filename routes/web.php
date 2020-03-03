@@ -102,9 +102,9 @@ Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adi
 Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover');
 Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir');
 Route::post ('/carrinho/desconto', 'CarrinhoController@discount')->name('carrinho.desconto');
+Route::get('/checkout', 'CarrinhoController@checkout')->middleware('auth');
 
 // Checkout de compras
-Route::get('/checkout', 'CheckoutController@index')->middleware('auth');
 
 // Resumo do pedido
 Route::get('/resumo-pedido', 'ResumoController@index')->middleware('auth');
