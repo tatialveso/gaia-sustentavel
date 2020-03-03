@@ -47,8 +47,11 @@ Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth')
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
 Route::get('/busca', 'ProdutoController@search');
 Route::post('/busca', 'ProdutoController@search');
+
 // Segurança de dados do usuário
-Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
+Route::get('/seguranca', 'SegurancaController@index')->name('seguranca.index')->middleware('auth');
+Route::post('/seguranca/atualizar-senha', 'SegurancaController@updatePassword')->middleware('auth');
+Route::post('/seguranca/atualizar-email', 'SegurancaController@updateEmail')->middleware('auth');
 
 // CRUD LOJA
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');

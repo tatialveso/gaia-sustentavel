@@ -75,11 +75,12 @@ class ProdutoController extends Controller
     }
 
     public function edit($id) {
+        $user = Auth::user();
         $products = \App\Produto::find($id);
         $categories = \App\Categoria::all();
         $subcategories = \App\Subcategoria::all();
 
-        return view('meu-produto-edit',compact('products', 'categories', 'subcategories'));
+        return view('meu-produto-edit',compact('user', 'products', 'categories', 'subcategories'));
 
 
     }    
