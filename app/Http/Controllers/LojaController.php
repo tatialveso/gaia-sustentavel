@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 use App\Produto;
 use App\AvaliacaoLoja;
 
@@ -60,10 +61,12 @@ class LojaController extends Controller
     public function show($id) {
         $user = Auth::user();
         $loja = \App\Loja::find($id);
-        $ratings = AvaliacaoLoja::where('store_id', $id)->get(); 
+        $ratings = AvaliacaoLoja::where('store_id', $id)->get();
+        $ratingsAvg = collect($ratings)->avg('rate');
+        $ratingsAvg = round($ratingsAvg, 0);
         $products = Produto::where("store_id", $id)->get(); 
         
-        return view('loja', compact('loja', 'products', 'ratings', 'user'));
+        return view('loja', compact('loja', 'products', 'ratings', 'ratingsAvg', 'user'));
     }
 
     public function edit() {

@@ -19,7 +19,7 @@
                 <p>{{ $loja['description']}}</p>
                 <p><b>Criado em </b>{{ $loja['criacao']}}</p>
                 <p><b>Localizado em </b>{{ $loja['location']}}</p>
-                <p><b>Avaliação</b></p>
+                <p><b>Avaliação: </b>{{ $ratingsAvg }}/10</p>
             </div>
         </div>
     </div>
