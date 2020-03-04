@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ class Pagamento extends Model
     protected $fillable = [];
 
     public function pedido () {
-        return $this->hasMany('App\Pedido', 'pedido_id', 'id');
+        return $this->hasOne('App\Pedido', 'request_id', 'id');
 }
 
 

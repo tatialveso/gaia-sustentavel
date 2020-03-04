@@ -53,6 +53,10 @@ button a:hover {
     text-decoration: none;
 }
 
+#checkout-form-preenchido, #checkout-form-novo {
+    display:none;
+}
+
 /* header responsivo */
 
 @media (max-width: 751px) {

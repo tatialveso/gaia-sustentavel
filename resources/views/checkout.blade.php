@@ -1,10 +1,7 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleIndex.css') }}">
 
-{{-- nome da página --}}
 <title>Checkout da compra</title>
 
 @section('checkout')
@@ -17,101 +14,118 @@
             <div class="mt-5 col-6">
                 <h3 class="mb-3">Endereço de entrega</h3>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="" value="">
+                    <input class="form-check-input" type="radio" name="entrega" id="seu-endereco">
                     <label class="form-check-label">Usar endereço cadastrado</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="" value="">
+                    <input class="form-check-input" type="radio" name="entrega" id="novo-endereco">
                     <label class="form-check-label">Enviar em novo endereço</label>
                 </div>
 
-                <form class="mt-4" id="checkout-form">
+                <form action="" method="POST" class="mt-4" id="checkout-form-preenchido">
+                    @foreach ($users as $user)
                     <div class="form-group">
                         <label><b>Endereço</b></label>
-                        <input type="text" class="form-control" name="endereco" placeholder="Digite o seu endereço residencial">
+                        <input type="text" class="form-control" name="address" value="{{$user['address']}}" disabled>
                     </div>
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label><b>Número</b></label>
-                            <input type="text" class="form-control" name="numero" placeholder="Digite o número">
+                            <input type="text" class="form-control" name="number" value="{{$user['number']}}" disabled>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label><b>Complemento</b></label>
-                            <input type="text" class="form-control" name="complemento" placeholder="Ex: apto. 55">
+                            <input type="text" class="form-control" name="complement"  value="{{$user['complement']}}" disabled>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label><b>Bairro</b></label>
-                            <input type="text" class="form-control" name="bairro" placeholder="Insira o bairro">
+                            <input type="text" class="form-control" name="neighbourhood"  value="{{$user['neighbourhood']}}" disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label><b>Cidade</b></label>
-                            <input type="text" class="form-control" name="cidade" placeholder="Digite o nome da sua cidade">
+                            <input type="text" class="form-control" name="city"  value="{{$user['city']}}" disabled>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label><b>Estado</b></label>
+                            <select class="form-control" name="uf_id" disabled>
+                                <option disabled selected>Selecione um UF</option>
+                                @foreach($ufs as $uf)
+                                    <option value='{{$uf->id}}' @if($uf['id'] == $user['uf_id']) selected @endif>{{$uf['state']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label><b>CEP</b></label>
+                            <input type="text" class="form-control" name="cep"  value="{{$user['cep']}}" disabled>
+                        </div>
+                    </div> 
+                    @endforeach
+                </form>
+
+                <form action="" method="POST" class="mt-4" id="checkout-form-novo">
+                    @foreach ($users as $user)
+                    <div class="form-group">
+                        <label><b>Endereço</b></label>
+                        <input type="text" class="form-control" name="address" placeholder="Insira um endereço de entrega">
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label><b>Número</b></label>
+                            <input type="text" class="form-control" name="number" placeholder="Insira o número da residência">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label><b>Complemento</b></label>
+                            <input type="text" class="form-control" name="complement"  placeholder="Insira um complemento">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label><b>Bairro</b></label>
+                            <input type="text" class="form-control" name="neighbourhood"  placeholder="Insira o bairro">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label><b>Cidade</b></label>
+                            <input type="text" class="form-control" name="city"  placeholder="Insira a cidade de entrega">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label><b>Estado</b></label>
                             <select class="form-control" name="uf_id">
                                 <option disabled selected>Selecione um UF</option>
-                                <option>AC</option>
-                                <option>AL</option>
-                                <option>AM</option>
-                                <option>AP</option>
-                                <option>BA</option>
-                                <option>CE</option>
-                                <option>DF</option>
-                                <option>ES</option>
-                                <option>GO</option>
-                                <option>MA</option>
-                                <option>MG</option>
-                                <option>MS</option>
-                                <option>MT</option>
-                                <option>PA</option>
-                                <option>PB</option>
-                                <option>PE</option>
-                                <option>PI</option>
-                                <option>PR</option>
-                                <option>RJ</option>
-                                <option>RN</option>
-                                <option>RO</option>
-                                <option>RR</option>
-                                <option>RS</option>
-                                <option>SC</option>
-                                <option>SE</option>
-                                <option>SP</option>
-                                <option>TO</option>
+                                @foreach($ufs as $uf)
+                                    <option value='{{$uf->id}}'>{{$uf['state']}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label><b>CEP</b></label>
-                            <input type="text" class="form-control" name="cep" placeholder="CEP">
+                            <input type="text" class="form-control" name="cep"  placeholder="Insira um CEP válido">
                         </div>
-                    </div>
+                    </div> 
+                    @endforeach
                 </form>
             </div>
 
             <div class="mt-5 col-6">
-                <h3 class="mb-3">Forma de pagamento</h3>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn text-light">Boleto</button>
-                    <button type="button" class="btn text-light">Cartão de crédito</button>
-                </div>
-                <form class="mt-4">
+                <h3 class="mb-3">Informação do cartão de crédito</h3>
+                <form action="/carrinho/concluir" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label><b>Nome impresso no cartão</b></label>
-                        <input type="text" class="form-control" name="">
+                        <input type="text" class="form-control" name="card-name" placeholder="Insira o nome da mesma forma que está no cartão">
                     </div>
                     <div class="form-group">
                         <label><b>Número do cartão</b></label>
-                        <input type="text" class="form-control" name="">
+                        <input type="text" class="form-control" name="card-number" placeholder="Insira o número do cartão">
                     </div>
                     <div class="form-group">
                         <label><b>Validade do cartão</b></label>
-                        <input type="month" class="form-control" name="">
+                        <input type="month" class="form-control" name="card-validate" placeholder="Insira a data de validade do cartão">
                     </div>
                     <div class="form-group">
                         <label><b>Código de Segurança</b></label>
-                        <input type="number" class="form-control" name="">
+                        <input type="number" class="form-control" name="card-code" placeholder="Insira o código de segurança do cartão">
                     </div>
 
                     <button type="submit" class="btn text-light" style="background-color: #54775e;">Finalizar a compra</button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 use App\Produto;
 use App\AvaliacaoLoja;
 
@@ -27,9 +28,11 @@ class LojaController extends Controller
             'category_id' => 'required',
             'description' => 'required|string',
             'criacao' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|dimensions:ratio=1:1',
         ], [
             'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem apenas',
+            'dimensions' => 'O tamanho da imagem deve ser de proporção 1:1',
         ]);
 
         $dados = $request->all();
@@ -56,11 +59,14 @@ class LojaController extends Controller
     }
 
     public function show($id) {
+        $user = Auth::user();
         $loja = \App\Loja::find($id);
-        $ratings = AvaliacaoLoja::where('store_id', $id)->get(); 
+        $ratings = AvaliacaoLoja::where('store_id', $id)->get();
+        $ratingsAvg = collect($ratings)->avg('rate');
+        $ratingsAvg = round($ratingsAvg, 0);
         $products = Produto::where("store_id", $id)->get(); 
         
-        return view('loja', compact('loja', 'products', 'ratings'));
+        return view('loja', compact('loja', 'products', 'ratings', 'ratingsAvg', 'user'));
     }
 
     public function edit() {
@@ -78,9 +84,11 @@ class LojaController extends Controller
             'category_id' => 'required',
             'description' => 'required|string',
             'criacao' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|dimensions:ratio=1:1',
         ], [
             'required' => 'Esse campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem apenas',
+            'dimensions' => 'O tamanho da imagem deve ser de proporção 1:1',
         ]);
 
         $dados = $request->all();

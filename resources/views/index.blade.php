@@ -52,7 +52,7 @@
     <div class="container mt-3">
         <div class="row">
             @foreach ($produtos as $produto)
-                <div class="col-lg-4">
+                <div class="col-lg-4 mb-4">
                     <div class="card">
                         <img src="/img/produtos/{{$produto['img_product']}}" class="card-img-top" alt="">
                         <div class="card-body">

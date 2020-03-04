@@ -19,7 +19,7 @@
                 <p>{{ $loja['description']}}</p>
                 <p><b>Criado em </b>{{ $loja['criacao']}}</p>
                 <p><b>Localizado em </b>{{ $loja['location']}}</p>
-                <p><b>Avaliação</b></p>
+                <p><b>Avaliação: </b>{{ $ratingsAvg }}/10</p>
             </div>
         </div>
     </div>
@@ -60,6 +60,7 @@
             </div>
         @endforeach
         
+        @if ($user != null)
         <div class="btn-produto d-flex justify-content-around">
             <button type="button" class="btn text-light my-5" id="avaliar-loja">Avaliar a {{ $loja['name_store']}}</button>
         </div>
@@ -84,5 +85,10 @@
                 <button type="submit" class="btn text-light">Enviar avaliação</button>
             </div>
         </form>
+        @else 
+        <div class="btn-produto d-flex justify-content-around">
+            <a href="/login" class="btn text-light my-5">Avaliar a {{ $loja['name_store']}}</a>
+        </div>
+        @endif
     </div>
 @endsection

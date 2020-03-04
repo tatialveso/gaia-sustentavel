@@ -8,41 +8,21 @@ use App\Pedido;
 use App\Produto;
 use App\PedidoProduto;
 use App\CupomDesconto;
+use App\User;
+use App\UF;
 use DB;
 
 class CarrinhoController extends Controller
 {
-    function __construct() // Só para usuarios logados.
-    {
+    function __construct() {
         $this->middleware('auth');
     }
     
-    function index() {
-        $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
-        
-        // $pedidos = Pedido::where([
-        //     'status' => 'RE',
-        //     'user_id' => Auth::id()
-        // ])->get();
-        // $request_id = 
-        // $pedido_produtos = PedidoProduto::where('request_id', 1)->get(); // PROCURAR COMO DEIXAR DINAMICO
-
-        $carrinho_total = 0;
-        foreach($itens as $item) {
-            $item['total'] = ['itens']['quantidade'] * ['itens']['produto']['price'];
-            $carrinho_total += $item['total'];        
-        }
-
-        // foreach percorre todos os produtos, total = novo total = totalzao.
-
-        return view('carrinho2', compact('carrinhos'));
-    }
-
-    function add(Request $request) {
+    public function add(Request $request) {
         $produto_id = $request->input('id');
-        $produto = Produto::findOrFail($produto_id);
-        $quantidade = $request->input('quantidade', 1);
-        
+        $produto = Produto::find($produto_id);
+        $quantidade = $request->input('quantity');
+ 
         $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
         
         if (isset($carrinhos['itens'][$produto['id']])) {
@@ -55,6 +35,12 @@ class CarrinhoController extends Controller
                 ];
         }
         session()->put('carrinho', $carrinhos);
+
+        $carrinho_total = 0;
+        foreach($itens as $item) {
+            $item['total'] = ['itens']['quantidade'] * ['itens']['produto']['price'];
+            $carrinho_total += $item['total'];        
+        }
 
         // $idProduto = $request->input('id');
 
@@ -96,182 +82,73 @@ class CarrinhoController extends Controller
 
         // //dd($pedidos);
 
+    public function index() {
+        $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
 
-        $request->session()->flash('mensagem sucesso', 'Produto adicionado ao carrinho com sucesso!');
-        return redirect()->route('carrinho.index');   // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerao um novo.
-    
+        // dd($carrinhos);
+        return view('carrinho', compact('carrinhos'));
     }
 
-    function delete(Request $request) {
+    public function delete(Request $request) {
+        $produto_id = $request->input('id');
+        $produto = Produto::find($produto_id);
 
-        $idPedido = $request->input('request_id');
-        $idProduto = $request->input('product_id');
-        $remove_apenas_item = (boolean)$request->input('item'); // true se remove só um item e false para todos os produtos.
-        $idUsuario = Auth::id();
+        
+        $item = session()->pull('carrinho');
 
-        $idPedido = Pedido::consultaId([  // Verifica se o pedido é do usuário logado e se está em status adequado.
-            'id' => $idPedido,
-            'user_id' => $idUsuario,
-            'status' => 'RE' // Reservado
-        ]);
+        // $key = array_search($produto_id, $item);
 
-        if(empty($idPedido)) {
-            $request->session()->flash('mensagem-falha', 'Pedido não encontrado!');
-            return redirect()->route('carrinho.index'); 
-        }
+        // if(($key = array_search($produto_id, $item)) !== false) {
+        //     unset($item[$key]);
+        // }
+        // $teste = session()->put('itens', $item);
 
-        $where_produto = [
-            'request_id' => $idPedido,
-            'product_id' => $idProduto
-        ];
-
-        $produto = PedidoProduto::where($where_produto)->orderBy('id', 'desc')->first(); // 'desc' é do > para o <
-        if(empty($produto->id)) {
-            $request->session()->flash('mensagem-falha', 'Produto não encontrado no carrinho!');
-            return redirect()->route('carrinho.index');
-        }
-
-        if($remove_apenas_item) {
-            $where_produto['id'] = $produto->id; // Remove o último produto adicionado.
-        }
-            
-        PedidoProduto::where($where_produto)->delete(); // Remove todos os produtos.
-
-        $check_pedido = PedidoProduto::where([    // Verifica se há algum outro produto vinculado a este pedido.
-            'request_id' => $produto->request_id
-        ])->exists();
-
-        if(!$check_pedido) {   // Se o pedido estiver vazio, apaga o pedido.
-            Pedido::where([
-                'id' => $produto->request_id
-            ])->delete();
-        }
+        dd($item);           
 
         $request->session()->flash('mensagem-sucesso', 'Produto removido do carrinho com sucesso!');
             return redirect()->route('carrinho.index');
-                
+
+    }
+
+    public function checkout(Request $request) {
+        $ufs = \App\UF::all();
+        $users = Auth::user()->get();
+
+        return view('checkout', compact('ufs', 'users'));
     }
 
     public function complete(Request $request) {
+        $carrinho = session('carrinho');
+        $user = Auth::user()->id;
+        $idProduto = $carrinho['produto']['id'];
+        
+        // $novo_pedido = Pedido::create([
+        //     'user_id' => $user,
+        //     'price' => $carrinho['total'],
+        // ]);
+            
+        // $idPedido = $novo_pedido->id;
+        // $idProduto = ;
+            
+        // PedidoProduto::create([
+        //     'request_id' => $idPedido,
+        //     'product_id' => $idProduto,
+        //     'quantity' => $carrinho['itens'][]['quantidade'];
+        // ]);
+                
+        dd($idProduto);
 
-        $idPedido = $request->input('request_id');
-        $idUsuario = Auth::id();
-
-        $check_pedido = PedidoProduto::where([ 
-            'id' => $idPedido,
-            'user_id' => $idUsuario,
-            'status' => 'RE'
-        ])->exists();
-
-        if(!check_pedido) {
-            $request->session()->flash('mensagem-falha', 'Pedido não encontrado!');
-            return redirect()->route('carrinho.index');
-        } 
-
-        $check_produtos = PedidoProduto::where([
-            'request_id' => $idPedido
-        ])->exists();
-
-        if(!$check_produtos) {
-            $request->session()->flash('mensagem-falha', 'Produtos do pedido não encontrados!');
-            return redirect()->route('carrinho.index');
-        }
-
-        Pedido::where(['id' => $idPedido])->update(['status' => 'PA']);
-
-        $request->session()->flash('mensagem-sucesso', 'Compra concluída com sucesso!!');
-
-        return redirect()->route('carrinho.compras');
+        return redirect('/resumo-pedido');
     } 
 
-    // public function discount(Request $request) {
-           
-    //     $idPedido = $request->input('request_id');
-    //     $cupom-> $request->input('cupom');
-    //     $idUsuário = Auth::id();
+    public function end(Request $request) {
+        $user = Auth::user()->id;
+        $pedido = Pedido::where('user_id', $user)->latest()->take(1)->get();
 
-    //     if(empty($cupom)) {
-    //         $request->session()->flash('mensagem-falha', 'Cupom inválido!');
-    //         return redirect()->route('carrinho.index');
-    //     }
+        $produtoPedidos = PedidoProduto::where('request_id', $pedido)->get();
+        // dd($produtoPedidos);
 
-    //     $cupom = CupomDesconto::where([
-    //         'localizador' => $cupom,
-    //         'ativo' => 'S',
-    //     ])->where('validade', '>', date('Y-m-d H:i:s'))->first();
-
-    //     if(empty($cupom->id)) {
-    //         $request->session()->flash('mensagem-falha', 'Cupom de desconto não encontrado');
-    //         return redirect()->route('carrinho.index');
-    //     } 
-
-    //     $check_pedido = Pedido::where([
-    //         'id' => $idPedido,
-    //         'user_id' => $idUsuario,
-    //         'status' => 'RE'
-    //     ])->exists();
-
-    //     if(!$check_pedido) {
-    //         $request->session()->flash('mensagem-falha', 'Pedido não encontrado para validação!');
-    //         return redirect()->route('carrinho.index');
-    //     }
-
-    //     $pedido_produtos = PedidoProduto::where(['request_id' => $idPedido,])->get();
-
-    //     if(empty($pedido_produtos)) {
-    //         $request->session()->flash('mensagem-falha', 'Produtos do pedido não encontrados!');
-    //        return redirect()->route('carrinho.index');
-    //     }
-
-    //     $aplicouDesconto = false;
-    //     foreach($pedido_produtos as $pedido_produto) {
-    //         switch($cupom->type_discount) {
-    //             case 'porc':
-    //                 $valor_desconto = ($pedido_produto->price = $$cupom->discount) /100;
-    //             break;
-
-    //             default:
-    //                 $valor_desconto = $cupom->discount;
-    //             break;
-    //         }
-    //     }
-
-    //     $valor_desconto = ($valor_desconto > $pedido_produto->price) ? $pedido_produto->price : number_format($valor_desconto, 2);
-
-    //     switch ($cupom -> type_limit) {
-    //         case 'qtd':
-    //             $qtd_pedido = PedidoProduto::whereIn('status', ['PA', 'RE'])->where([
-    //             'discount_coupon_id' => $cupom->id,
-    //             ])->count();
-    //             if($qtd_pedido >= $cupom->limit) {
-    //                 break;
-    //             }
-
-    //             break;
-
-    //         default:
-    //             $valor_ckc_descontos = PedidoProduto::whereIn('status', ['PA', 'RE'])->where([
-    //                 'discount_coupon_id' -> $cupom->id
-    //             ])->sum('discount');
-
-    //             if(($valor_ckc_descontos+$valor_desconto)-> $cupom->limit) {
-    //                 break;
-    //             }
-    //             break;
-    //     }
-
-    //     $pedido_produto->discount_coupon_id = $cupom->id;
-    //     $pedido_produto->discount = $valor_desconto;
-    //     $pedido_produto->update();
-
-    //     $aplicouDesconto = true;
-
-        
-    //     if($aplicouDesconto) {
-    //         $request->session()->flash('mensagem-sucesso', 'Cupom aplicado com sucesso!');
-    //     } else {
-    //         $request->session()->flash('mensagem-falha', 'Cupom esgotado!');
-    //     }
-    //     return redirect()->route('carrinho.index');
-    // }
+        return view('resumo', compact('pedido', 'produtoPedidos'));
+    }
+    
 }

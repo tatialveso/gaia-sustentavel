@@ -34,10 +34,11 @@ class ProdutoController extends Controller
             'composition' => 'required|string',
             'category_id' => 'required',
             'subcategory_id' => 'required',
-            'img_product' => 'required|image',
+            'img_product' => 'required|image|dimensions:ratio=1:1',
         ], [
             'required' => 'Esse campo é obrigatório',
             'image' => 'O arquivo deve ser uma imagem',
+            'dimensions' => 'O tamanho da imagem deve ser de proporção 1:1',
             'numeric' => 'O campo deve ser preenchido com números apenas',
         ]);
 
@@ -66,12 +67,13 @@ class ProdutoController extends Controller
     }
 
     public function show($id) {
+        $user = Auth::user();
         $product = \App\Produto::find($id);
         $category =  \App\Produto::find($id)->category_id;
         $relacionados = Produto::where('category_id', $category)->get();
         $ratings = AvaliacaoProduto::where('product_id', $id)->get();
 
-        return view('produto', compact('product', 'relacionados', 'ratings'));
+        return view('produto', compact('product', 'relacionados', 'ratings', 'user'));
     }
 
     public function edit($id) {

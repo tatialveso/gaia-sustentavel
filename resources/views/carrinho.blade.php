@@ -1,10 +1,7 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleIndex.css') }}">
 
-{{-- nome da página --}}
 <title>Carrinho de compras</title>
 
 @section('carrinho')
@@ -32,8 +29,7 @@
     
     {{-- lista de produtos --}}
     <div class="container">
-        <!-- Para verificar se existe alguma mensagem do flash() --> 
-    
+       
         @if(Session::has('mensagem-sucesso'))
             <div class= "alert alert-secondary mt-3" role="alert"> 
                 <strong> {{Session::get('mensagem-sucesso')}}</strong>
@@ -89,45 +85,28 @@
         {{-- @endforelse --}}
     </div>
 
-    {{-- Frete e valor --}}
     <div class="container">
         <div class="row">
-            {{-- <div class="col-6 p-5">
-                <h5>Calcular Frete</h5>
-                <input type="text" class="form-control" placeholder="Ex: 12345-678" style="width:50%">
-                <div class="invalid-feedback">
-                    Please provide a valid zip.
-                </div>
-                <button type="button" class="btn mt-3 text-light" style="background-color: #54775e;">Calcular</button>
-            </div> --}}
-
-            <!-- Resumo do pedido -->
             <div class="col-6 p-5">
                 <div class="text-right">
                     <h3>Total da compra</h3>
             
-                        @php
+                        {{-- @php
                             $total_pedido = 0;
-                            $total_produto = ($pedido_produto->prices * $pedido->quantity) - $pedido_produto->discounts;
+                            $total_produto = ($carrinho->itens->produto->prices * $carrinho->itens->->quantidade) - $pedido_produto->discounts;
                             $total_pedido += $total_produto;
-                        @endphp
+                        @endphp --}}
 
                     {{-- <p class="lead"><b>Subtotal:</b> R$ {{$total_produto}}</p> --}}
                     {{-- <p class="lead"><b>Prazo de entrega:</b> </p> --}}
-                    <p class="lead"><b>R$ {{$total_pedido}}</b></p>
+                    <p class="lead"><b>R$ {{$carrinhos['total']}}</b></p>
                     <hr class="my-4">
                     <div class="row text-right">
                         <div class="col-6 mt-4">
-                            <button type="button" class="btn" style="background-color: #54775e"><a class="text-light" href="{{ url('/') }}">Continuar comprando</a></button>
+                            <button type="button" class="btn" style="background-color: #54775e"><a class="text-light" href="/">Continuar comprando</a></button>
                         </div>
-                        <div class="col-6">
-                            <form method="POST" action="/carrinho/concluir">
-                                @csrf
-                                <input type="hidden" name="request_id" value="{{ $pedido->id}}">
-                                <div class="mt-4">
-                                    <button type="submit" class="btn text-light" style="background-color: #54775e;">Finalizar compra</button>
-                                </div>
-                            </form>
+                        <div class="col-6 mt-4">
+                            <button type="button" class="btn" style="background-color: #54775e"><a class="text-light" href="/checkout">Próximo passo</a></button>
                         </div>
                     </div>
                 </div>
