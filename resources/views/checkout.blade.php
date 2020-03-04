@@ -109,7 +109,8 @@
 
             <div class="mt-5 col-6">
                 <h3 class="mb-3">Informação do cartão de crédito</h3>
-                <form class="mt-4">
+                <form action="/carrinho/concluir" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label><b>Nome impresso no cartão</b></label>
                         <input type="text" class="form-control" name="card-name" placeholder="Insira o nome da mesma forma que está no cartão">
@@ -127,9 +128,6 @@
                         <input type="number" class="form-control" name="card-code" placeholder="Insira o código de segurança do cartão">
                     </div>
 
-                </form>
-                <form action="/carrinho/concluir" method="POST">
-                    @csrf
                     <button type="submit" class="btn text-light" style="background-color: #54775e;">Finalizar a compra</button>
                 </form>
             </div>

@@ -15,7 +15,11 @@ class CreatePagamentosTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->integer('user_id');
+            $table->string('card_name');
+            $table->integer('card_number');
+            $table->string('card_validate');
+            $table->integer('card_code');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreatePagamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagamentos');
+        Schema::dropIfExists('payments');
     }
 }

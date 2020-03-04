@@ -90,8 +90,7 @@ Route::get('/casa-ambiente/aromatizador', 'CasaController@aromatizadorIndex');
 Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
 
 // Histórico de compras
-Route::get('/historico-compras', 'CompraController@index')->name('historico-compras');
-Route::post ('/historico-compras/cancelar', 'CompraController@cancel')->name('compras.cancelar');
+Route::get('/historico-compras', 'CarrinhoController@historico')->name('historico-compras');
 
 // Carrinho de compras
 Route::get('/carrinho', 'CarrinhoController@index')->name('carrinho.index')->middleware('auth');
@@ -100,4 +99,4 @@ Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adi
 Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover')->middleware('auth');
 Route::get('/checkout', 'CarrinhoController@checkout')->middleware('auth');
 Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir')->middleware('auth');
-Route::get('/resumo-pedido', 'CarrinhoController@end')->middleware('auth');
+// Route::get('/resumo-pedido', 'CarrinhoController@end')->middleware('auth');

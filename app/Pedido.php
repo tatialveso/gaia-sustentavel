@@ -10,7 +10,7 @@ class Pedido extends Model
     protected $fillable = ['user_id', 'price', 'status'];
 
     public function pagamento () {
-        return $this->belongsTo('App\Pagamento', 'pagamento_id', 'id');
+        return $this->belongsTo('App\Pagamento', 'payment_id', 'id');
     }
 
     public function rastreamento () {
