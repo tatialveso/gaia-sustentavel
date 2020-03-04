@@ -81,6 +81,7 @@ class CarrinhoController extends Controller
         ]);
 
         // //dd($pedidos);
+    }
 
     public function index() {
         $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
