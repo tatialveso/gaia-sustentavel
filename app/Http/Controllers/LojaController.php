@@ -58,11 +58,12 @@ class LojaController extends Controller
     }
 
     public function show($id) {
+        $user = Auth::user();
         $loja = \App\Loja::find($id);
         $ratings = AvaliacaoLoja::where('store_id', $id)->get(); 
         $products = Produto::where("store_id", $id)->get(); 
         
-        return view('loja', compact('loja', 'products', 'ratings'));
+        return view('loja', compact('loja', 'products', 'ratings', 'user'));
     }
 
     public function edit() {
