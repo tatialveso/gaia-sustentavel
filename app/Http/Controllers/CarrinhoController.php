@@ -62,6 +62,9 @@ class CarrinhoController extends Controller
 
     public function checkout(Request $request) {
         $ufs = \App\UF::all();
+        $users = Auth::user()->get();
+
+        return view('checkout', compact('ufs', 'users'));
     }
 
     public function complete(Request $request) {

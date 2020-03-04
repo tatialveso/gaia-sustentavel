@@ -9,6 +9,26 @@ $('#avaliar-produto').click(function() {
 });
 
 // ao clicar aparece o campo para preencher o valor do frete
-$('#frete').click(function() {
-    $('#frete-valor').show();
-});
+// $('#frete').click(function() {
+//     $('#frete-valor').show();
+// });
+
+// ao clicar em enviar por um novo endereço aparece um novo formulário
+$('#novo-endereco').click(function() {
+    $('#checkout-form-novo').show();  
+})
+
+// caso já tenha clicado no outro botão quando clicar em novo endereço o outro form sumirá
+$('#novo-endereco').click(function() {
+    $('#checkout-form-preenchido').hide();  
+})
+
+// ao clicar em enviar pelo endereço cadastrado aparece um formulário preenchido
+$('#seu-endereco').click(function() {
+    $('#checkout-form-preenchido').show();
+})
+
+// caso já tenha clicado no outro botão quando clicar em endereço cadastrado o outro form sumirá
+$('#seu-endereco').click(function() {
+    $('#checkout-form-novo').hide();  
+})

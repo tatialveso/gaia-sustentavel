@@ -94,17 +94,12 @@ Route::get('/historico-compras', 'CompraController@index')->name('historico-comp
 Route::post ('/historico-compras/cancelar', 'CompraController@cancel')->name('compras.cancelar');
 
 // Carrinho de compras
-Route::get('/carrinho', 'CarrinhoController@index')->name('carrinho.index');
-Route::get('/carrinho/adicionar', function() {
-    return redirect()->route('carrinho.index'); //Verificar: vai direcionar para a página de busca de produtos?
-}); // essa rota não permite q o usuário digite esta url e prossiga sem estar logado.
-Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adicionar');
-Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover');
-Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir');
-Route::post ('/carrinho/desconto', 'CarrinhoController@discount')->name('carrinho.desconto');
+Route::get('/carrinho', 'CarrinhoController@index')->name('carrinho.index')->middleware('auth');
+Route::get('/carrinho/adicionar', function() {return redirect()->route('carrinho.index');})->middleware('auth');
+Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adicionar')->middleware('auth');
+Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover')->middleware('auth');
 Route::get('/checkout', 'CarrinhoController@checkout')->middleware('auth');
-
-// Checkout de compras
+Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir')->middleware('auth');
 
 // Resumo do pedido
 Route::get('/resumo-pedido', 'ResumoController@index')->middleware('auth');
