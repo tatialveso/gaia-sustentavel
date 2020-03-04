@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Pedido;
 use App\Produto;
+use App\Pagamento;
 use App\PedidoProduto;
-use App\CupomDesconto;
 use App\User;
 use App\UF;
 use DB;
@@ -50,22 +50,14 @@ class CarrinhoController extends Controller
     public function delete(Request $request) {
         $produto_id = $request->input('id');
         $produto = Produto::find($produto_id);
+        $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
 
+        unset($carrinhos['itens'][$produto_id]);
         
-        $item = session()->pull('carrinho');
-
-        // $key = array_search($produto_id, $item);
-
-        // if(($key = array_search($produto_id, $item)) !== false) {
-        //     unset($item[$key]);
-        // }
-        // $teste = session()->put('itens', $item);
-
-        dd($item);           
+        session()->put('carrinho', $carrinhos);
 
         $request->session()->flash('mensagem-sucesso', 'Produto removido do carrinho com sucesso!');
-            return redirect()->route('carrinho.index');
-
+        return redirect()->route('carrinho.index');
     }
 
     public function checkout(Request $request) {
@@ -77,36 +69,40 @@ class CarrinhoController extends Controller
 
     public function complete(Request $request) {
         $carrinho = session('carrinho');
+        $produto_id = $request->input('id');
         $user = Auth::user()->id;
-        $idProduto = $carrinho['produto']['id'];
-        
-        // $novo_pedido = Pedido::create([
-        //     'user_id' => $user,
-        //     'price' => $carrinho['total'],
-        // ]);
-            
-        // $idPedido = $novo_pedido->id;
-        // $idProduto = ;
-            
-        // PedidoProduto::create([
-        //     'request_id' => $idPedido,
-        //     'product_id' => $idProduto,
-        //     'quantity' => $carrinho['itens'][]['quantidade'];
-        // ]);
-                
-        dd($idProduto);
 
-        return redirect('/resumo-pedido');
+        $dados = $request->all();
+        $pagamento = new \App\Pagamento();
+        $pagamento->user_id = $user;
+        $pagamento->card_name = $dados['card-name'];
+        $pagamento->card_number = $dados['card-number'];
+        $pagamento->card_validate = $dados['card-validate'];
+        $pagamento->card_code = $dados['card-code'];
+        $pagamento->save();
+
+        $pedido = new \App\Pedido();
+        $pedido->user_id = $user;
+        $pedido->payment_id = $pagamento->id;
+        $pedido->total = $carrinho['total'];
+        $pedido->save();
+
+        foreach ($carrinho['itens'] as $item) {
+            $produtoPedido = new \App\PedidoProduto();
+            $produtoPedido->request_id = $pedido->id;
+            $produtoPedido->product_id = $item['produto']['id'];
+            $produtoPedido->quantity = $item['quantidade'];
+            $produtoPedido->save();
+        }
+
+        return redirect('/historico-compras');
     } 
 
-    public function end(Request $request) {
-        $user = Auth::user()->id;
-        $pedido = Pedido::where('user_id', $user)->latest()->take(1)->get();
-
-        $produtoPedidos = PedidoProduto::where('request_id', $pedido)->get();
-        // dd($produtoPedidos);
-
-        return view('resumo', compact('pedido', 'produtoPedidos'));
+    public function historico(Request $request) {
+        $user = Auth::user();
+        $pedidos = $user->pedidos->produtos;
+    
+        return view('compras', compact('pedidos'));
     }
     
 }
