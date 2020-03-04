@@ -22,7 +22,7 @@ class CarrinhoController extends Controller
         $produto_id = $request->input('id');
         $produto = Produto::find($produto_id);
         $quantidade = $request->input('quantity');
-            
+ 
         $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
         
         if (isset($carrinhos['itens'][$produto['id']])) {
@@ -31,13 +31,56 @@ class CarrinhoController extends Controller
             $carrinhos['itens'][$produto['id']] = [
                 'quantidade' => $quantidade,
                 'produto' => $produto
-            ];
+
+                ];
+        }
+        session()->put('carrinho', $carrinhos);
+
+        $carrinho_total = 0;
+        foreach($itens as $item) {
+            $item['total'] = ['itens']['quantidade'] * ['itens']['produto']['price'];
+            $carrinho_total += $item['total'];        
         }
 
-        session()->put('carrinho', $carrinhos);
-        
-        $request->session()->flash('mensagem-sucesso', 'Produto adicionado do carrinho com sucesso!');
-        return redirect()->route('carrinho.index');
+        // $idProduto = $request->input('id');
+
+        // $produto = Produto::find($idProduto);
+
+        // if(empty($produto->id)) {
+        //     $request->session()->flash('mensagem falha','Produto não encontrado na nossa loja');
+        //     return redirect()->route('carrinho.index');  // inserir a rota da página de busca de produto.
+        // }
+
+        // $idUsuario = Auth::id();
+
+        // //Tentar trazer o pedido
+        // //Caso não exista, crie um novo pedido e adicione o preço dele, somando os itens
+        // //Caso ele exista, você vai adicionar o produto, 
+
+
+
+        // $idPedido = Pedido::consultaId([  // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerado um novo.
+        //     'user_id' => $idUsuario,
+        //     'status' => 'RE'    //produto reservado
+        // ]);
+
+        if(empty($idPedido)) {
+            $pedido_novo = Pedido::create([
+                'user_id' => $idUsuario,
+                'price' => $produto['price'],
+                'status' => 'RE'    //produto reservado
+            ]);
+
+            $idPedido = $pedido_novo->id;
+        }
+
+        PedidoProduto::create([ 
+            'request_id' => $idPedido,
+            'product_id' => $idProduto,
+            'quantity' => $request->input('quantity')
+        ]);
+
+        // //dd($pedidos);
     }
 
     public function index() {
