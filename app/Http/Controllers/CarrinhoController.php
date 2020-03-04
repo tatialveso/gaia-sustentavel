@@ -18,7 +18,7 @@ class CarrinhoController extends Controller
     }
     
     function index() {
-        $carrinho = session()->get('carrinho', ["itens" => [], "total"]);
+        $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
         
         // $pedidos = Pedido::where([
         //     'status' => 'RE',
@@ -27,8 +27,15 @@ class CarrinhoController extends Controller
         // $request_id = 
         // $pedido_produtos = PedidoProduto::where('request_id', 1)->get(); // PROCURAR COMO DEIXAR DINAMICO
 
-        
-        return view('carrinho', compact('carrinho'));
+        $carrinho_total = 0;
+        foreach($itens as $item) {
+            $item['total'] = ['itens']['quantidade'] * ['itens']['produto']['price'];
+            $carrinho_total += $item['total'];        
+        }
+
+        // foreach percorre todos os produtos, total = novo total = totalzao.
+
+        return view('carrinho2', compact('carrinhos'));
     }
 
     function add(Request $request) {
@@ -36,17 +43,18 @@ class CarrinhoController extends Controller
         $produto = Produto::findOrFail($produto_id);
         $quantidade = $request->input('quantidade', 1);
         
-        $carrinho = session()->get('carrinho', ['itens' => [], 'total' => 0]);
+        $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
         
-        if (isset($carrinho['itens'][$produto['id']])) {
-            $carrinho['itens'][$produto['id']]['quantidade'] += $quantidade;
+        if (isset($carrinhos['itens'][$produto['id']])) {
+            $carrinhos['itens'][$produto['id']]['quantidade'] += $quantidade;
         } else {
-            $carrinho['itens'][$produto['id']] = [
+            $carrinhos['itens'][$produto['id']] = [
                 'quantidade' => $quantidade,
                 'produto' => $produto
-            ];
+
+                ];
         }
-        session()->put('carrinho', $carrinho);
+        session()->put('carrinho', $carrinhos);
 
         // $idProduto = $request->input('id');
 
@@ -70,21 +78,21 @@ class CarrinhoController extends Controller
         //     'status' => 'RE'    //produto reservado
         // ]);
 
-        // if(empty($idPedido)) {
-        //     $pedido_novo = Pedido::create([
-        //         'user_id' => $idUsuario,
-        //         'price' => $produto['price'],
-        //         'status' => 'RE'    //produto reservado
-        //     ]);
+        if(empty($idPedido)) {
+            $pedido_novo = Pedido::create([
+                'user_id' => $idUsuario,
+                'price' => $produto['price'],
+                'status' => 'RE'    //produto reservado
+            ]);
 
-        //     $idPedido = $pedido_novo->id;
-        // }
+            $idPedido = $pedido_novo->id;
+        }
 
-        // PedidoProduto::create([ 
-        //     'request_id' => $idPedido,
-        //     'product_id' => $idProduto,
-        //     'quantity' => $request->input('quantity')
-        // ]);
+        PedidoProduto::create([ 
+            'request_id' => $idPedido,
+            'product_id' => $idProduto,
+            'quantity' => $request->input('quantity')
+        ]);
 
         // //dd($pedidos);
 

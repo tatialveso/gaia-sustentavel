@@ -28,7 +28,7 @@
 
     <!-- forelse: para verificar se o carrinho não está vazio, se não estiver segue o código a seguir. -->
     
-    @forelse($pedidos as $pedido)
+    {{-- @forelse($pedidos as $pedido) --}}
     
     {{-- lista de produtos --}}
     <div class="container">
@@ -45,19 +45,19 @@
             </div>
         @endif
         
-        @foreach($pedido_produtos as $pedido_produto) {{--Lista os produtos do pedido--}}
+        @foreach($carrinhos as $carrinho) {{--Lista os produtos do pedido--}}
             <div class="row border border-success mt-5" style="height: 200px;">
                 <div class="col-3 mt-5">
-                    <img src="/img/produtos/{{$pedido_produto->produto->img_product}}" class="img-thumbnail w-25" alt=""> 
+                    <img src="/img/produtos/{{$carrinho->itens->produto->img_product}}" class="img-thumbnail w-25" alt=""> 
                 </div>
                 <div class="col-3 mt-5">
-                    <h5>{{$pedido_produto->produto->name}}</h5>   
+                    <h5>{{$carrinho->itens->produto->name}}</h5>   
                     {{-- <p><a href="#">{{$pedido_produto->store->'name']}}</a></p> <!-- Nome da loja --> --}}
                 </div>
 
                 <div class="col-2 mt-5">
                     <h6>Unidades</h6>
-                    <input type="number" class="form-control col-5" min=1 max=5 name="quantity" value="{{$pedido_produto->quantity}}">
+                    <input type="number" class="form-control col-5" min=1 max=5 name="quantity" value="{{$carrinho->itens->quantidade}}">
                     
                     {{-- <a href="#" onclick="carrinhoRemoverProduto( {{$pedido->id}}, {{$pedido_produto->product_id}},1)">
                         <i class="material-icons small">remove_cicle_outline</i>  <!-- Remove 1 item -->
@@ -70,23 +70,23 @@
 
                 <div class="col-2 mt-5">
                     <h6>Valor<h6> 
-                    <p>R$ {{$pedido_produto->produto->price}}</p>
+                    <p>R$ {{$carrinho->itens->produto->price}}</p>
                 </div>
 
                 <div class="col-2 mt-5">
                     <form action="/carrinho/remover" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="carrinhoRemoverProduto( {{$pedido->id}}, {{$pedido_produto->product_id}},0)">Retirar produto</button>
+                        <button type="submit" class="btn btn-danger" onclick="carrinhoRemoverProduto( {{$carrinho->itens->id}}, {{$carrinho->itens->product_id}},0)">Retirar produto</button>
                     </form>
                 </div>
             </div>
-        @endforeach        
+        {{-- @endforeach         --}}
         
         {{-- Se o carrinho estiver vazio, cai aqui --}}
         @empty
             <h5>Não há nenhum pedido no carrinho</h5>
-        @endforelse
+        {{-- @endforelse --}}
     </div>
 
     {{-- Frete e valor --}}

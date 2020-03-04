@@ -1,0 +1,515 @@
+[33mcommit e0c881a2d1021067c6ed53cb1865dd4d4d33d8b5[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Tue Mar 3 16:00:03 2020 -0300
+
+    Alteração no .env e .env.example
+
+[33mcommit 1f3e2b6650c3fab641dee7411232ce6c1b0cc755[m
+Merge: e4f078b c2259bc
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Tue Mar 3 15:08:14 2020 -0300
+
+    Remoção de título
+
+[33mcommit e4f078bd613d47357a7d1ab8428db3bdef205eb7[m
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Tue Mar 3 15:05:32 2020 -0300
+
+    Carrinho parcial - usando session
+
+[33mcommit c2259bc163b26ac41e1770b51e10fdca477276c8[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Tue Mar 3 14:09:27 2020 -0300
+
+    Carrinho parcial
+
+[33mcommit 73fd463129440e5fed090399e2296f481a9be831[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Mon Mar 2 23:22:52 2020 -0300
+
+    mensagem de erro do login
+
+[33mcommit 1481d272c2aafb586bf2b5158019fe6deb653b0d[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Mon Mar 2 23:13:03 2020 -0300
+
+    cadastrar novo email
+
+[33mcommit f132b4085303b7b85a3a7d19e0b98ce985dc477c[m
+Merge: 7737b0a 108a4a8
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Mon Mar 2 22:46:34 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit 7737b0a38fe937223ba193d955ecddc2ee60e82f[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Mon Mar 2 22:43:03 2020 -0300
+
+    aside na edicao do produto|cadastrar nova senha
+
+[33mcommit 108a4a8071a6ad7f344d9ae32032ce63d00f9523[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 21:39:14 2020 -0300
+
+    Organização nas blades
+
+[33mcommit 4c0dcdc42dcb7bb3e5d034cb897d9cb40b242349[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 20:25:12 2020 -0300
+
+    Organização para o funcionamento do sistema de busca
+
+[33mcommit 9c9f2cf8339067f559e67a21b044871440a693f4[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Mon Mar 2 17:41:21 2020 -0300
+
+    Arruma nome do App que estava errado
+
+[33mcommit c08033c369f0a25dbfc6ef9b41f98af4156e07fc[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Mon Mar 2 17:36:29 2020 -0300
+
+    Adiciona ratings no show do crud de produto
+
+[33mcommit 5eb48527ef874a52e24901a9430d5589ff28945f[m
+Merge: 5e55972 b19d2f2
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Mon Mar 2 17:33:02 2020 -0300
+
+    Resolvendo conflitos
+
+[33mcommit 5e55972da007e698e7b3ebfb3c0b312baea373ab[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Mon Mar 2 17:27:19 2020 -0300
+
+    Finaliza as avaliações de loja e produto
+
+[33mcommit b19d2f2e8c5544146e5661cbec22865a33db6d37[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 17:05:22 2020 -0300
+
+    Alteração no ícone de busca
+
+[33mcommit 50d8c98e7b4d3d5d73772d1956216c124f2ccff5[m
+Merge: a2d83df 3ff3b1f
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 16:52:47 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit a2d83dfe2f2d142d8f63f19a84310ee9c164646b[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 16:52:43 2020 -0300
+
+    Carrinho
+
+[33mcommit 3ff3b1fe4cb45d44aba9640653838213aeaf2ed1[m
+Merge: c514b00 3ea20f6
+Author: EloirMagalhaes <eloir.neto@hotmail.com>
+Date:   Mon Mar 2 16:51:47 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit c514b004171c3b6428a9d708f73c16082c294b18[m
+Merge: 54d893c 1b3f725
+Author: EloirMagalhaes <eloir.neto@hotmail.com>
+Date:   Mon Mar 2 16:51:12 2020 -0300
+
+    Sistema de Buscas
+
+[33mcommit 3ea20f6502be7293db427b210fbdb7b8026f3054[m
+Merge: 1ea64af a1c3937
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 16:10:03 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit 1ea64af2dd3ba1d24e3903f9f65a0f293c919af1[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 16:09:29 2020 -0300
+
+    Mudança no número de dígitos do preço
+
+[33mcommit a1c3937377d99c03c11dea172d9920c44264cf7d[m
+Merge: d2492fe 1b3f725
+Author: orsolon <56239735+orsolon@users.noreply.github.com>
+Date:   Mon Mar 2 15:58:14 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit 54d893c6165913b39fbdd5a8d5008e102c0517ca[m
+Author: EloirMagalhaes <eloir.neto@hotmail.com>
+Date:   Mon Mar 2 15:49:53 2020 -0300
+
+    Sistema de Busca
+
+[33mcommit 1b3f725efce42dd54786823b37eec0e615db6c3b[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 15:44:21 2020 -0300
+
+    Mudanças nos comandos do carrinho.blade
+
+[33mcommit 2512c9789fe23da80f59b149b4c9af073bdbe00d[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 15:42:30 2020 -0300
+
+    Mudanças nos comandos do carrinho.blade
+
+[33mcommit d2492fe3d773ccaf78a79446670880f07c5051a5[m
+Author: orsolon <56239735+orsolon@users.noreply.github.com>
+Date:   Mon Mar 2 15:33:46 2020 -0300
+
+    acrescimo R$ na pagina de categorias
+
+[33mcommit 8132bcc6ec35f5c55da292b5d6145e046888e2b1[m
+Author: orsolon <56239735+orsolon@users.noreply.github.com>
+Date:   Mon Mar 2 15:29:15 2020 -0300
+
+    acrescimo R$ nos Cards
+
+[33mcommit 104de2d870f99ff1c484cdee995a14fc02fbf8a6[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 14:50:29 2020 -0300
+
+    Confirmação de atualização de dados loja
+
+[33mcommit 2c2c4aeca6a64d775f57156c35dfb93ca19e0d84[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 11:12:34 2020 -0300
+
+    Organização dos comandos para a página inicial
+
+[33mcommit afae2f5c4932c8306d8b32e4c6bb612fb43fb56c[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 10:40:46 2020 -0300
+
+    README.md
+
+[33mcommit 960671e553177d07407c66fa456ad50aec5638f8[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Mar 2 10:24:08 2020 -0300
+
+    Alteração na action para deletar loja
+
+[33mcommit 04c692478014d9d966b5ae16bc9da110d8131248[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Sun Mar 1 21:52:02 2020 -0300
+
+    Adiciona mensagem de loja vazia
+
+[33mcommit 3521012b6e7ac58d1b20de668e72e9e4171d347c[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Sun Mar 1 21:39:29 2020 -0300
+
+    Remover favoritos do aside e redirect na criacao de loja ja existente
+
+[33mcommit 18df0eb51c6805e07d3bde9f7dbddfe1ccafa766[m
+Merge: f886e1d 35d3527
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Sun Mar 1 21:31:17 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit f886e1ddbea69ab63a46052c8dac2072dba8c6ac[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Sun Mar 1 21:31:10 2020 -0300
+
+    Fix minha loja
+
+[33mcommit 0a3b0f24e4927b6087fd5780ca20ef09eb80a361[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Sun Mar 1 21:19:34 2020 -0300
+
+    Corrigir bug nos relacionamentos
+
+[33mcommit c099284ac04c76ebba977911d7ea68bb2c7f2cd2[m
+Author: Caroline Stelitano <carolinestelitano@gmail.com>
+Date:   Sun Mar 1 21:18:21 2020 -0300
+
+    Corrigir relacionamentos de usuario com loja
+
+[33mcommit 35d35271a50bb9d540100240312729055244c96e[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Sun Mar 1 21:06:33 2020 -0300
+
+    Alterações nos comandos
+
+[33mcommit 98ccc974898a2be821755fa0548a824919b529c0[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Sun Mar 1 20:43:00 2020 -0300
+
+    Alterações nos comandos
+
+[33mcommit 598743be906fc15237e1d3a210228faf6663c603[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Sun Mar 1 20:41:00 2020 -0300
+
+    Criação das validações no produto
+
+[33mcommit 73ae38397154a44c2f11c18db2615d46ab5616b5[m
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Fri Feb 28 21:31:23 2020 -0300
+
+    Carrinho de compras parcial
+
+[33mcommit 5635d5c48abaf3b34e6b10bdaa61c6cb7500242a[m
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Fri Feb 28 15:49:51 2020 -0300
+
+    Carrinho e histórico de compras parcial
+
+[33mcommit fd6627b090f09e2b61016211e3422d4865a78561[m
+Merge: b27f01b c9c3516
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Fri Feb 28 14:10:33 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit c9c35165e89ea9a8955644aac7be1535bc7e9f94[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Fri Feb 28 13:48:10 2020 -0300
+
+    Inclui foto de uma loja
+
+[33mcommit ef28a5e1b65a7db15927c796fe14313b236241b9[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Fri Feb 28 13:32:08 2020 -0300
+
+    Organização do catálogo
+
+[33mcommit b27f01bae14ef8d19b82845cba9a80c23f817174[m
+Merge: f706561 cc2f4a5
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Thu Feb 27 15:23:09 2020 -0300
+
+    merge
+
+[33mcommit f7065616dcd455e88ddd6dec5c447f09e552074e[m[33m ([m[1;32mtemp[m[33m)[m
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Thu Feb 27 14:46:08 2020 -0300
+
+    temporario
+
+[33mcommit cc2f4a5b56b81ef39ca43a63b779f695c8840a20[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Thu Feb 27 13:35:06 2020 -0300
+
+    Organização no redirecionamento dos controllers
+
+[33mcommit 5d99e69d3f92e6f9d2488982830f1c8c3de05c52[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Thu Feb 27 13:19:58 2020 -0300
+
+    Organização dos comandos de produtos relacionados e salvar loja_id no produto
+
+[33mcommit 212648df2ec3c80fab66f1aa4be96d38bdf8cc25[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Thu Feb 27 12:37:13 2020 -0300
+
+    Mudança da forma de avaliação da loja
+
+[33mcommit 86223da6d20e7d40a430745a04ae23e206fd8d8f[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Thu Feb 27 12:00:15 2020 -0300
+
+    Criação das páginas de subcategorias
+
+[33mcommit 955e75189c1b2227b55eceedfea05c71a0306f24[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 20:49:51 2020 -0300
+
+    Alteração nos comandos
+
+[33mcommit 95df5b36dc9351d3fd2224ca4bd2aad034715903[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 20:48:01 2020 -0300
+
+    Alterações no catálogo
+
+[33mcommit 27794d00ef6cce641e2fd7f9f70b964a2e2f31f1[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 19:14:04 2020 -0300
+
+    Organização dos comandos de CONTATOS
+
+[33mcommit 27a4c8b9363fca4647fc84a85c4ebaf26611e622[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 18:16:14 2020 -0300
+
+    Alterações com os comandos de Produto e organização do catálogo
+
+[33mcommit a4a4f3a9c06a8cf54834c46d269e78d3bbb66894[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 17:30:17 2020 -0300
+
+    Alterações para caminho de comandos
+
+[33mcommit 280a81f0564d938909272a3395387ce3c42a9c6a[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 17:28:09 2020 -0300
+
+    Alterações para caminho de comandos
+
+[33mcommit 1dcca1576d8966fcb3c8111ca8a0026144d54d9f[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 16:43:21 2020 -0300
+
+    Alterações para chamar a base de dados e filtros da página
+
+[33mcommit 9989328e9de86d445f61449f8c3d7cb293642328[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 14:29:45 2020 -0300
+
+    Criação dos comandos para a parte dos produtos relacionados
+
+[33mcommit d11ea8dd9d9d3fe586429543c8c84fa26945533b[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 13:56:01 2020 -0300
+
+    Alteração no código para chamar informações da base de dados
+
+[33mcommit 90888e2f36df06e4a71f90d409296e4834477861[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 13:55:31 2020 -0300
+
+    Mostrar os produtos novos na página inicial
+
+[33mcommit 2177861eed1d8243d2de4b2b64afdd4be5599a72[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 13:54:25 2020 -0300
+
+    Mostrar produtos novos na página inicial
+
+[33mcommit 11e0e9ebf5f3c05f435476a0990aa23436ab7e3c[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 13:53:31 2020 -0300
+
+    Mudando a ação da rota de página inicial logado
+
+[33mcommit 534d4ea24e2b1e68044216618a2a929323b5bd9d[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Mon Feb 24 12:32:19 2020 -0300
+
+    Criação do foreach para os produtos na index
+
+[33mcommit 7be2152105e880948436791c8a3bb64c61b3cfa4[m
+Merge: 81c3b1f 64db6ac
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Fri Feb 21 15:21:08 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit 81c3b1f19a623be841b23542b9f926f6a6135425[m
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Fri Feb 21 15:20:39 2020 -0300
+
+    Carrinho de compras parcial
+
+[33mcommit 64db6ac3de0fc11a36846a56c6cd7d56b9fe5d07[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Fri Feb 21 14:42:35 2020 -0300
+
+    Alteração no campo de preço
+
+[33mcommit 65603e7b3af3eb6f82860b5285064259198b97e3[m
+Merge: d5fb7cc b60fd96
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Fri Feb 21 12:09:31 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit d5fb7ccbcc22fd9e30d678937061a998e33b5e28[m
+Merge: 8623474 a722a90
+Author: Angela Tsurumaki <angelamutsumi@gmail.com>
+Date:   Fri Feb 21 12:09:16 2020 -0300
+
+    Carrinho de compras parcial
+
+[33mcommit b60fd964e5f641dc0d0af01c3c3e8f3ba4b5332e[m[33m ([m[1;31morigin/carrinho[m[33m)[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Thu Feb 20 23:43:21 2020 -0300
+
+    Organização do CRUD de Produtos
+
+[33mcommit 3cc10340fff5f4c391a1b76bfe93c8d0ee91be9a[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Thu Feb 20 23:06:52 2020 -0300
+
+    Modificações nos comandos de Loja
+
+[33mcommit a722a907c3de04f4d3371459c926a8e550731cab[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Thu Feb 20 00:15:37 2020 -0300
+
+    Atualização no CRUD de Produto
+
+[33mcommit 83b2b326f362000b41df0e6a882c0854ef8d5672[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Wed Feb 19 23:56:48 2020 -0300
+
+    Alterações para CRUD Produto
+
+[33mcommit 1331d6d42435cff86c1b2b3d6ce0d03191de8141[m
+Merge: c459303 88c5f21
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Wed Feb 19 23:15:53 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit c4593034d20ca84ad6511f0ce9097879f91581ce[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Wed Feb 19 23:14:40 2020 -0300
+
+    Alterações para o CRUD de produto
+
+[33mcommit 88c5f219d3b4dbed99bfa3bbe6154a2c4b11e758[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Wed Feb 19 23:13:08 2020 -0300
+
+    Arruma store de avalicaoProdutoController para pegar o id de outra tabela
+
+[33mcommit 7652113f614c040588186d4a0cdd10dff395e119[m
+Merge: 66bed9f 891ab83
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Wed Feb 19 22:52:57 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit 66bed9f1a0899022a6fa277af17541422a4712ab[m
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Wed Feb 19 22:52:42 2020 -0300
+
+    Alterações para CRUD de Produtos
+
+[33mcommit 891ab83de0ee6fdf802f3aeab0be7aa03f7ca874[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Wed Feb 19 22:28:45 2020 -0300
+
+    Arruma store de avalicaoLojaController para pegar o id de outra tabela
+
+[33mcommit 7989a3d63a012c9b2dfe4d92c7544e9c7cb743c3[m
+Merge: 591b33d 1758a52
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Wed Feb 19 20:23:00 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit 1758a520f8b7fcd1b19a774f6c8f2a6b0c9d4253[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Wed Feb 19 17:09:33 2020 -0300
+
+    Alteração na action do blade do produto
+
+[33mcommit 591b33d6fd545ea680d41168bd6cfbdc4d23a10e[m
+Merge: d9ffe60 67371ea
+Author: tatialveso <tatiialveso@gmail.com>
+Date:   Wed Feb 19 17:04:03 2020 -0300
+
+    Merge branch 'master' of https://github.com/tatialveso/gaia-sustentavel-laravel
+
+[33mcommit 67371ea4aaf28d10bd4b72780a300f2c49cad6b9[m
+Author: Mariana Oliveira <olvr.mariana@gmail.com>
+Date:   Wed Feb 19 17:03:07 2020 -0300
+
+    Mudança na rota de Avaliação Loja
