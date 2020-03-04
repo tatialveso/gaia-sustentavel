@@ -100,6 +100,4 @@ Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adi
 Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover')->middleware('auth');
 Route::get('/checkout', 'CarrinhoController@checkout')->middleware('auth');
 Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir')->middleware('auth');
-
-// Resumo do pedido
-Route::get('/resumo-pedido', 'ResumoController@index')->middleware('auth');
+Route::get('/resumo-pedido', 'CarrinhoController@end')->middleware('auth');

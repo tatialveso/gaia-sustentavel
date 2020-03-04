@@ -45,6 +45,7 @@
                     <form action="/carrinho/remover" method="POST">
                         @csrf
                         @method('DELETE')
+                        <input type="hidden" name="id" value="{{$carrinho['produto']['id'] }}">
                         <button type="submit" class="btn btn-danger">Retirar produto</button>
                     </form>
                 </div>
