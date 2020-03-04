@@ -67,12 +67,13 @@ class ProdutoController extends Controller
     }
 
     public function show($id) {
+        $user = Auth::user();
         $product = \App\Produto::find($id);
         $category =  \App\Produto::find($id)->category_id;
         $relacionados = Produto::where('category_id', $category)->get();
         $ratings = AvaliacaoProduto::where('product_id', $id)->get();
 
-        return view('produto', compact('product', 'relacionados', 'ratings'));
+        return view('produto', compact('product', 'relacionados', 'ratings', 'user'));
     }
 
     public function edit($id) {

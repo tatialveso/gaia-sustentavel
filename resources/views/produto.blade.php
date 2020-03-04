@@ -56,7 +56,7 @@
                         <p class="text-justify">{{$rating['description']}}</p>
                     </div>
                 @endforeach
-                
+                @if ($user != null)
                 <div class="btn-produto d-flex justify-content-around">
                     <button type="button" class="btn text-light my-5" id="avaliar-produto">Avaliar o produto</button>
                 </div>
@@ -81,6 +81,11 @@
                 </form>
             </div>
         </div>
+        @else 
+        <div class="btn-produto d-flex justify-content-around">
+            <a href="/login" class="btn text-light my-5">Avaliar o {{ $product['name']}}</a>
+        </div>
+        @endif
     </div>
 
     <div class="titulo mt-5">
