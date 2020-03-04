@@ -14,8 +14,7 @@ use DB;
 
 class CarrinhoController extends Controller
 {
-    function __construct() // Só para usuarios logados.
-    {
+    function __construct() {
         $this->middleware('auth');
     }
     
@@ -48,16 +47,25 @@ class CarrinhoController extends Controller
         return view('carrinho', compact('carrinhos'));
     }
 
-    function delete(Request $request) {
-        // PROCURAR UNSET
+    public function delete(Request $request) {
         $produto_id = $request->input('id');
         $produto = Produto::find($produto_id);
-        $deletar = $request->session()->forget(['quantidade', 'produto']);
+
+        
+        $item = session()->pull('carrinho');
+
+        // $key = array_search($produto_id, $item);
+
+        // if(($key = array_search($produto_id, $item)) !== false) {
+        //     unset($item[$key]);
+        // }
+        // $teste = session()->put('itens', $item);
+
+        dd($item);           
 
         $request->session()->flash('mensagem-sucesso', 'Produto removido do carrinho com sucesso!');
             return redirect()->route('carrinho.index');
 
-        dd($deletar);           
     }
 
     public function checkout(Request $request) {
@@ -68,10 +76,37 @@ class CarrinhoController extends Controller
     }
 
     public function complete(Request $request) {
+        $carrinho = session('carrinho');
+        $user = Auth::user()->id;
+        $idProduto = $carrinho['produto']['id'];
         
+        // $novo_pedido = Pedido::create([
+        //     'user_id' => $user,
+        //     'price' => $carrinho['total'],
+        // ]);
+            
+        // $idPedido = $novo_pedido->id;
+        // $idProduto = ;
+            
+        // PedidoProduto::create([
+        //     'request_id' => $idPedido,
+        //     'product_id' => $idProduto,
+        //     'quantity' => $carrinho['itens'][]['quantidade'];
+        // ]);
+                
+        dd($idProduto);
 
-        return redirect()->route('carrinho.compras');
+        return redirect('/resumo-pedido');
     } 
 
+    public function end(Request $request) {
+        $user = Auth::user()->id;
+        $pedido = Pedido::where('user_id', $user)->latest()->take(1)->get();
+
+        $produtoPedidos = PedidoProduto::where('request_id', $pedido)->get();
+        // dd($produtoPedidos);
+
+        return view('resumo', compact('pedido', 'produtoPedidos'));
+    }
     
 }
