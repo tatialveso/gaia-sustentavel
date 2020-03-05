@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleConfiguracoes.css')}}">
 
-<title>Histórico de compras</title>
+<title>Gaia sustentável</title>
 
 @section('compras')
     <div class="titulo">

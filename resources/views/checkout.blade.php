@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleIndex.css') }}">
 
-<title>Checkout da compra</title>
+<title>Gaia sustentável</title>
 
 @section('checkout')
     <div class="titulo">

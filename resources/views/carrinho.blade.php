@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleIndex.css') }}">
 
-<title>Carrinho de compras</title>
+<title>Gaia sustentável</title>
 
 @section('carrinho')
     <div class="titulo">
