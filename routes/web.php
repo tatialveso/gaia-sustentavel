@@ -65,10 +65,13 @@ Route::patch('/minha-loja', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja', 'LojaController@destroy')->middleware('auth');
 
 // AVALIAÇÃO DE LOJA
-Route::post('/loja/{id}','AvaliacaoLojaController@store');
+Route::post('/loja/{id}','AvaliacaoLojaController@store')->name('loja');
+Route::get('/aval-blocked','AvaliacaoLojaController@avalBlocked')->middleware('auth');
 
 // AVALIAÇÃO DE PRODUTO
-Route::post('/produto/{id}','AvaliacaoProdutoController@store');
+Route::post('/produto/{id}','AvaliacaoProdutoController@store')->name('produto');
+//Route::post('/produto/{id}','AvaliacaoProdutoController@store'); outra forma de escrever junto com avaliacaoProdutoControler
+Route::get('/avaliacao-blocked','AvaliacaoProdutoController@avaliacaoBlocked')->middleware('auth');
 
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');

@@ -87,7 +87,7 @@
         </form>
         @else 
         <div class="btn-produto d-flex justify-content-around">
-            <a href="/login" class="btn text-light my-5">Avaliar a {{ $loja['name_store']}}</a>
+            <a href="/aval-blocked?id={{$loja['id']}}" class="btn text-light my-5">Avaliar {{ $loja['name_store']}}</a>
         </div>
         @endif
     </div>

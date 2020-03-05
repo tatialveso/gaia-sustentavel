@@ -83,7 +83,7 @@
         </div>
         @else 
         <div class="btn-produto d-flex justify-content-around">
-            <a href="/login" class="btn text-light my-5">Avaliar o {{ $product['name']}}</a>
+            <a href="/avaliacao-blocked?id={{$product['id']}}" class="btn text-light my-5">Avaliar {{ $product['name']}}</a>
         </div>
         @endif
     </div>
