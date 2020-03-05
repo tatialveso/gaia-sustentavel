@@ -79,13 +79,13 @@
                         <button type="submit" class="btn text-light">Enviar avaliação</button>
                     </div>
                 </form>
+                @else
+                <div class="btn-produto d-flex justify-content-around">
+                    <a href="/avaliacao-blocked?id={{$product['id']}}" class="btn text-light my-5">Avaliar {{ $product['name']}}</a>
+                </div>
+                @endif
             </div>
         </div>
-        @else 
-        <div class="btn-produto d-flex justify-content-around">
-            <a href="/avaliacao-blocked?id={{$product['id']}}" class="btn text-light my-5">Avaliar {{ $product['name']}}</a>
-        </div>
-        @endif
     </div>
 
     <div class="titulo mt-5">
