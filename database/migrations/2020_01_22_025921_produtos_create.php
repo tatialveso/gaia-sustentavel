@@ -19,11 +19,14 @@ class ProdutosCreate extends Migration
             $table->decimal('price', 6, 2);
             $table->string('description');
             $table->string('composition');
-            $table->bigInteger('store_id');
-            $table->bigInteger('category_id');
-            $table->bigInteger('subcategory_id');
+            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('subcategory_id');
             $table->string('img_product');
             $table->enum('active', ['S', 'N'])->default('S');
+
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
