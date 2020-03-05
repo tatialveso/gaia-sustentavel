@@ -7,24 +7,8 @@ use App\Produto;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index() // Mostra apenas os produtos ativos na página inicial/index.
-    {
-        $produtos = Produto::latest()->take(6)->get(); //mostra os últimos produtos adicionados na base de dados na parte de "Novidades"
+    public function index() {
+        $produtos = Produto::latest()->take(6)->get();
         
         $registros = Produto::where([
             'active' => 'S'
@@ -32,8 +16,7 @@ class HomeController extends Controller
         return view('index', compact('registros', 'produtos'));
     }
 
-    public function produto($id=null) //Mostra o produto direto da index
-    {
+    public function produto($id=null) {
         if(!empty($id)) {
             $registro = Produto::where([
                 'id'=> $id,

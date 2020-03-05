@@ -9,17 +9,12 @@ use App\Produto;
 class AvaliacaoLojaController extends Controller
 {
 
-    public function store(Request $request, $store_id) 
-    {
-        // $dados = $request->all();
-        
+    public function store(Request $request, $store_id) {
         $avaliacaoLoja = AvaliacaoLoja::make($request->all());
         $avaliacaoLoja->store_id = $store_id;
         $avaliacaoLoja->save();
 
-        return back(); // ele apenas atualiza a página quando o formulário é enviado
+        return back();
     }
-
-
 
 }

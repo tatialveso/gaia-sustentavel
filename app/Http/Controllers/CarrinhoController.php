@@ -34,6 +34,7 @@ class CarrinhoController extends Controller
 
                 ];
         }
+
         session()->put('carrinho', $carrinhos);
         
         $request->session()->flash('mensagem-sucesso', 'Produto adicionado do carrinho com sucesso!');
