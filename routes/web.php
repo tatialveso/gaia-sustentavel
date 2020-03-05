@@ -54,7 +54,6 @@ Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
 Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
 
-
 // LOJA
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
 Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
