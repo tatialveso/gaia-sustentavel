@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/produto/{id}', 'HomeController@produto'); // Busca pelo produto direto da index.
+Route::get('/produto/{id}', 'HomeController@produto');
 
 Route::auth();
 Auth::routes();
@@ -26,19 +26,26 @@ Route::get('/como-funciona', function () {
     return view('como-funciona');
 });
 
-// CRUD DE USUÁRIOS
+// USUÁRIOS
 Route::get('/configuracoes', 'UserController@index')->name('configuracoes.index')->middleware('auth');
 Route::put('/configuracoes', 'UserController@update')->middleware('auth');
 Route::delete('/configuracoes', 'UserController@destroy')->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout');
-// Segurança de dados do usuário
-Route::get('/seguranca', 'SegurancaController@index')->middleware('auth');
 
-// CRUD DE CONTATOS
+// SEGURANÇA DE DADOS
+Route::get('/seguranca', 'SegurancaController@index')->name('seguranca.index')->middleware('auth');
+Route::post('/seguranca/atualizar-senha', 'SegurancaController@updatePassword')->middleware('auth');
+Route::post('/seguranca/atualizar-email', 'SegurancaController@updateEmail')->middleware('auth');
+
+// FALE CONOSCO
 Route::get('/contato', 'ContatoController@create');
 Route::post('/contato', 'ContatoController@store');
 
-// CRUD DE PRODUTOS
+// SISTEMA DE BUSCA
+Route::get('/busca', 'ProdutoController@search');
+Route::post('/busca', 'ProdutoController@search');
+
+// PRODUTOS
 Route::get('/meus-produtos','ProdutoController@index')->middleware('auth');
 Route::get('/incluir-produto','ProdutoController@create')->middleware('auth');
 Route::post('/incluir-produto','ProdutoController@store')->middleware('auth');
@@ -47,28 +54,14 @@ Route::get('/meu-produto/{id}','ProdutoController@edit')->middleware('auth');
 Route::patch('/meu-produto/{id}','ProdutoController@update')->middleware('auth');
 Route::delete('/deletar-produto/{id}','ProdutoController@destroy')->middleware('auth');
 
-// SISTEMA DE BUSCA
-Route::get('/busca', 'ProdutoController@search');
-Route::post('/busca', 'ProdutoController@search');
 
-// Segurança de dados do usuário
-Route::get('/seguranca', 'SegurancaController@index')->name('seguranca.index')->middleware('auth');
-Route::post('/seguranca/atualizar-senha', 'SegurancaController@updatePassword')->middleware('auth');
-Route::post('/seguranca/atualizar-email', 'SegurancaController@updateEmail')->middleware('auth');
-
-// CRUD LOJA
+// LOJA
 Route::get('/criar-loja', 'LojaController@create')->middleware('auth');
 Route::post('/criar-loja', 'LojaController@store')->middleware('auth');
 Route::get('loja/{id}', 'LojaController@show');
 Route::get('/minha-loja', ['uses'=>'LojaController@edit', 'as'=>'minha-loja.edit'], 'LojaController@edit')->middleware('auth');
 Route::patch('/minha-loja', 'LojaController@update')->middleware('auth');
 Route::delete('/deletar-loja', 'LojaController@destroy')->middleware('auth');
-
-// AVALIAÇÃO DE LOJA
-Route::post('/loja/{id}','AvaliacaoLojaController@store');
-
-// AVALIAÇÃO DE PRODUTO
-Route::post('/produto/{id}','AvaliacaoProdutoController@store');
 
 // CATÁLOGO DOS PRODUTOS
 Route::get('/higiene-pessoal', 'PessoalController@index');
@@ -88,7 +81,10 @@ Route::post('/carrinho/adicionar', 'CarrinhoController@add')->name('carrinho.adi
 Route::delete('/carrinho/remover', 'CarrinhoController@delete')->name('carrinho.remover')->middleware('auth');
 Route::get('/checkout', 'CarrinhoController@checkout')->middleware('auth');
 Route::post('/carrinho/concluir', 'CarrinhoController@complete')->name('carrinho.concluir')->middleware('auth');
-Route::get('/historico-compras', 'CarrinhoController@historico')->name('historico-compras');
+Route::get('/historico-compras', 'CarrinhoController@historico')->name('historico-compras')->middleware('auth');
 
-// Histórico de vendas
-// Route::get('/historico-vendas', 'VendaController@index')->middleware('auth');
+// AVALIAÇÃO DE LOJA
+Route::post('/loja/{id}','AvaliacaoLojaController@store');
+
+// AVALIAÇÃO DE PRODUTO
+Route::post('/produto/{id}','AvaliacaoProdutoController@store');

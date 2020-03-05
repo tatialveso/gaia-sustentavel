@@ -35,59 +35,21 @@ class CarrinhoController extends Controller
                 ];
         }
         session()->put('carrinho', $carrinhos);
-
-        $carrinho_total = 0;
-        foreach($itens as $item) {
-            $item['total'] = ['itens']['quantidade'] * ['itens']['produto']['price'];
-            $carrinho_total += $item['total'];        
-        }
-
-        // $idProduto = $request->input('id');
-
-        // $produto = Produto::find($idProduto);
-
-        // if(empty($produto->id)) {
-        //     $request->session()->flash('mensagem falha','Produto não encontrado na nossa loja');
-        //     return redirect()->route('carrinho.index');  // inserir a rota da página de busca de produto.
-        // }
-
-        // $idUsuario = Auth::id();
-
-        // //Tentar trazer o pedido
-        // //Caso não exista, crie um novo pedido e adicione o preço dele, somando os itens
-        // //Caso ele exista, você vai adicionar o produto, 
-
-
-
-        // $idPedido = Pedido::consultaId([  // Para verificar se o usuário possui um pedido em aberto, se sim ele é reutilizado. Se não, é gerado um novo.
-        //     'user_id' => $idUsuario,
-        //     'status' => 'RE'    //produto reservado
-        // ]);
-
-        if(empty($idPedido)) {
-            $pedido_novo = Pedido::create([
-                'user_id' => $idUsuario,
-                'price' => $produto['price'],
-                'status' => 'RE'    //produto reservado
-            ]);
-
-            $idPedido = $pedido_novo->id;
-        }
-
-        PedidoProduto::create([ 
-            'request_id' => $idPedido,
-            'product_id' => $idProduto,
-            'quantity' => $request->input('quantity')
-        ]);
-
-        // //dd($pedidos);
+        
+        $request->session()->flash('mensagem-sucesso', 'Produto adicionado do carrinho com sucesso!');
+        return redirect()->route('carrinho.index');
     }
-
+    
     public function index() {
         $carrinhos = session()->get('carrinho', ['itens' => [], 'total' => 0]);
 
-        // dd($carrinhos);
-        return view('carrinho', compact('carrinhos'));
+        $carrinho_total = 0;
+        foreach($carrinhos['itens'] as $item) {
+            $item['total'] = $item['quantidade'] * $item['produto']['price'];
+            $carrinho_total += $item['total'];        
+        }
+
+        return view('carrinho', compact('carrinhos', 'carrinho_total'));
     }
 
     public function delete(Request $request) {
@@ -115,6 +77,15 @@ class CarrinhoController extends Controller
         $produto_id = $request->input('id');
         $user = Auth::user()->id;
 
+        $this->validate($request, [
+            'card-name' => 'required|string',
+            'card-number' => 'required|numeric',
+            'card-validate' => 'required',
+            'card-code' => 'required|numeric',
+        ], [
+            'required' => 'Esse campo é obrigatório',
+            'numeric' => 'Deve ser inserido apenas números',
+        ]);
         $dados = $request->all();
         $pagamento = new \App\Pagamento();
         $pagamento->user_id = $user;
@@ -138,12 +109,13 @@ class CarrinhoController extends Controller
             $produtoPedido->save();
         }
 
+        $request->session()->flash('mensagem-sucesso', 'Seu pedido foi feito com sucesso!');
         return redirect('/historico-compras');
     } 
 
     public function historico(Request $request) {
         $user = Auth::user();
-        $pedidos = $user->pedidos->produtos;
+        $pedidos = $user->pedidos;
     
         return view('compras', compact('pedidos'));
     }
