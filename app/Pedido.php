@@ -10,7 +10,7 @@ class Pedido extends Model
     protected $fillable = ['user_id', 'price', 'status'];
 
     public function pagamento () {
-        return $this->belongsTo('App\Pagamento', 'pagamento_id', 'id');
+        return $this->belongsTo('App\Pagamento', 'payment_id', 'id');
     }
 
     public function rastreamento () {
@@ -32,6 +32,10 @@ class Pedido extends Model
     public function pedido_produtos_itens()
     {
         return $this->hasMany('App\PedidoProduto');
+    }
+
+    public function produtos() {
+        return $this->belongsToMany('App\Produto', 'pedido_produtos','request_id', 'product_id');
     }
 
     public static function consultaId($where) {

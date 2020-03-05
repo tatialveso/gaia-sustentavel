@@ -16,7 +16,7 @@ class ForeingkeysCreate extends Migration
         
         Schema::table('requests', function (Blueprint $table) {
             $table->foreign('payment_id')->references('id')->on('requests');
-            $table->foreign('tracking_id')->references('id')->on('trackings');
+            
         });
     }
 

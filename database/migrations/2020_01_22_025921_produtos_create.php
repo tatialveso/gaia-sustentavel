@@ -38,6 +38,6 @@ class ProdutosCreate extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 }

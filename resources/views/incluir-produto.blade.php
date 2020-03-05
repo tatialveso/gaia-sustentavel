@@ -34,7 +34,7 @@
             background-color: #54775e;
         }
     </style>
-    <title>Incluir novo produto</title>
+    <title>Gaia sustentável</title>
 </head>
 <body>
     <header class="d-flex justify-content-center">
@@ -52,9 +52,8 @@
                 <div class="col-6">
                     <h5>Especificações</h5>
                     <ul>
-                        <li><b>Tamanho:</b> mínimo de 580 pixels e máximo de 9000 pixels. Recomendamos 1000 pixels;</li>
-                        <li><b>Formato:</b> só serão aceitados arquivos com extensão .jpg e .jpeg;</li>
-                        <li><b>Peso:</b> as fotos poderão ter no máximo 10MB.</li>
+                        <li><b>Tamanho:</b> a imagem do seu produto deve ter proporção 1:1;</li>
+                        <li><b>Formato:</b> só serão aceitados arquivos com extensão de imagem.</li>
                     </ul>
                 </div>
                 

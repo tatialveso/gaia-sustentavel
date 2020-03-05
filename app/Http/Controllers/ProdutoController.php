@@ -138,11 +138,7 @@ class ProdutoController extends Controller
         ->orWhere('description', 'like', '%'.$request->post('busca').'%')
         ->orWhere('composition', 'like', '%'.$request->post('busca').'%')->get();
         $lojas = Loja::where('name_store', 'like', '%'.$request->post('busca').'%')->get();
+        
         return view('busca', compact('produtos','lojas'));
-
-
-        // $buscar = $request->post('busca');
-        // $products = Products::table('products')->where('name', 'LIKE', '%' . $buscar . '%')->paginate(10);
-        // return view('index', ['products' => $products]);
     }
 }

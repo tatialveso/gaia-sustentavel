@@ -8,11 +8,6 @@ $('#avaliar-produto').click(function() {
     $('#form-produto').show();
 });
 
-// ao clicar aparece o campo para preencher o valor do frete
-// $('#frete').click(function() {
-//     $('#frete-valor').show();
-// });
-
 // ao clicar em enviar por um novo endereço aparece um novo formulário
 $('#novo-endereco').click(function() {
     $('#checkout-form-novo').show();  

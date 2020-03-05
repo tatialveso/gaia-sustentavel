@@ -1,8 +1,8 @@
-{{-- chamada do layout --}}
 @extends('layout')
 
-{{-- chamada do css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleConfiguracoes.css')}}">
+
+<title>Configurações</title>
 
 @section('seguranca')
     <div class="titulo">

@@ -20,7 +20,6 @@ class UserController extends Controller {
         $user = Auth::user();
         $ufs = UF::all();
 
-        // pegar UF do User (temos somente o uf_id vindo do Auth::user())
         foreach ($ufs as $key=>$uf) {
             if ($uf['id'] == $user['uf_id']) {
                 $userStoredUF = $uf;
@@ -28,7 +27,6 @@ class UserController extends Controller {
             }
         }
 
-        // remover item encontrado da lista (para iterarmos sem repetir o encontrado)
         if (isset ($ufIndex)) {
             unset($ufs[$ufIndex]);
         }
@@ -40,26 +38,7 @@ class UserController extends Controller {
         ] );
     }
     
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit(Request $request) {
-    //     $user = Auth::user();
-    //     dd($user);
-
-        
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request) {
-        //inserir validaçoes
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'data_nascimento' => 'required|date',
@@ -96,12 +75,6 @@ class UserController extends Controller {
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id) {
         $user = \App\User::find($id);
         $user->delete();
@@ -115,7 +88,6 @@ class UserController extends Controller {
             'name' => $data['name'],
             'cpf' => $data['cpf'],
             'date_of_birth' => $data['data_nascimento'],
-            //'phone' => $data['phone'],
             'address' => $data['endereco'],
             'number' => $data['numero'],
             'complement' => $data['complemento'],

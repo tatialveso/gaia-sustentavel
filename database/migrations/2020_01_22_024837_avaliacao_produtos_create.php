@@ -30,6 +30,6 @@ class AvaliacaoProdutosCreate extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('evaluations_products');
     }
 }

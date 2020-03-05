@@ -15,14 +15,10 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('date');
-            $table->decimal('price', 6,2);
-            $table->bigInteger('payment_id')->unsigned();
-            $table->bigInteger('tracking_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->enum('status', ['RE', 'PA', 'CA']);
+            $table->bigInteger('payment_id')->unsigned();
+            $table->decimal('total');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -33,6 +29,6 @@ class CreatePedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('requests');
     }
 }

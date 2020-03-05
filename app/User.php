@@ -42,7 +42,11 @@ class User extends Authenticatable
     }
 
     public function pedido() {
-        return $this->HasMany('App\Pedido', 'pedido_id', 'id');
+        return $this->HasMany('App\Pedido');
+    }
+
+    public function pedidos() {
+        return $this->HasMany('App\Pedido');
     }
 
     public function uf() {

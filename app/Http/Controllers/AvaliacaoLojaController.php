@@ -6,24 +6,20 @@ use App\AvaliacaoLoja;
 use Illuminate\Http\Request;
 use App\Produto;
 
-class AvaliacaoLojaController extends Controller
-{
+class AvaliacaoLojaController extends Controller {
+
     public function avalBlocked(Request $request) {
         //dd($request->all());
         $id = $request->get('id');
         return redirect()->route('loja', ['id' => $id]);
     }
-    public function store(Request $request, $store_id) 
-    {
-        // $dados = $request->all();
-        
+
+    public function store(Request $request, $store_id) {
         $avaliacaoLoja = AvaliacaoLoja::make($request->all());
         $avaliacaoLoja->store_id = $store_id;
         $avaliacaoLoja->save();
 
-        return back(); // ele apenas atualiza a página quando o formulário é enviado
+        return back();
     }
-
-
 
 }

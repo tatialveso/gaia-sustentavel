@@ -22,10 +22,8 @@ class LojasCreate extends Migration
             $table->date('criacao');
             $table->string('image');
             $table->unsignedBigInteger('user_id');
-
             $table->foreign('user_id')->references('id')->on('users');
             $table->index('user_id');
-
             $table->timestamps();
         });
     }
@@ -37,6 +35,6 @@ class LojasCreate extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('stores');
     }
 }

@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/styleIndex.css') }}">
 
-<title>Checkout da compra</title>
+<title>Gaia sustentável</title>
 
 @section('checkout')
     <div class="titulo">
@@ -109,27 +109,29 @@
 
             <div class="mt-5 col-6">
                 <h3 class="mb-3">Informação do cartão de crédito</h3>
-                <form class="mt-4">
+                <form action="/carrinho/concluir" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label><b>Nome impresso no cartão</b></label>
-                        <input type="text" class="form-control" name="card-name" placeholder="Insira o nome da mesma forma que está no cartão">
+                        <input type="text" class="form-control @error('card-name') is-invalid @enderror" name="card-name" placeholder="Insira o nome da mesma forma que está no cartão">
+                        <div class="invalid-feedback">{{$errors->first('card-name')}}</div>
                     </div>
                     <div class="form-group">
                         <label><b>Número do cartão</b></label>
-                        <input type="text" class="form-control" name="card-number" placeholder="Insira o número do cartão">
+                        <input type="text" class="form-control @error('card-number') is-invalid @enderror" name="card-number" placeholder="Insira o número do cartão">
+                        <div class="invalid-feedback">{{$errors->first('card-number')}}</div>
                     </div>
                     <div class="form-group">
                         <label><b>Validade do cartão</b></label>
-                        <input type="month" class="form-control" name="card-validate" placeholder="Insira a data de validade do cartão">
+                        <input type="month" class="form-control @error('card-validate') is-invalid @enderror" name="card-validate" placeholder="Insira a data de validade do cartão">
+                        <div class="invalid-feedback">{{$errors->first('card-validate')}}</div>
                     </div>
                     <div class="form-group">
                         <label><b>Código de Segurança</b></label>
-                        <input type="number" class="form-control" name="card-code" placeholder="Insira o código de segurança do cartão">
+                        <input type="number" class="form-control @error('card-code') is-invalid @enderror" name="card-code" placeholder="Insira o código de segurança do cartão">
+                        <div class="invalid-feedback">{{$errors->first('card-code')}}</div>
                     </div>
 
-                </form>
-                <form action="/carrinho/concluir" method="POST">
-                    @csrf
                     <button type="submit" class="btn text-light" style="background-color: #54775e;">Finalizar a compra</button>
                 </form>
             </div>
