@@ -17,9 +17,9 @@ class CreatePagamentosTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->string('card_name');
-            $table->integer('card_number', 16);
+            $table->integer('card_number');
             $table->string('card_validate');
-            $table->integer('card_code', 3);
+            $table->integer('card_code');
             $table->timestamps();
         });
     }
