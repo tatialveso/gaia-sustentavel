@@ -29,11 +29,9 @@
                     <div class="card">
                         <img src="/img/lojas/{{$loja['image']}}" class="card-img-top" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/lojas/{{$loja['id']}}">{{$loja['name_store']}}</a></h5>
-                            <div class="btn-loja d-flex justify-content-between">
-                                <a href="#"><i class="align-middle material-icons">
-                                        favorite_border
-                                </i></a>
+                            <h5 class="card-title"><a class="text-dark text-decoration-none" href="/loja/{{$loja['id']}}">{{$loja['name_store']}}</a></h5>
+                            <div class="btn-produto d-flex justify-content-between">
+                                <a href="/loja/{{$loja['id']}}" class="btn text-light">Ir na loja</a>
                             </div>
                         </div>
                     </div>
