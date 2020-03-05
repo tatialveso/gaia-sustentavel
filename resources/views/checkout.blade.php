@@ -65,7 +65,6 @@
                 </form>
 
                 <form action="" method="POST" class="mt-4" id="checkout-form-novo">
-                    @foreach ($users as $user)
                     <div class="form-group">
                         <label><b>Endereço</b></label>
                         <input type="text" class="form-control" name="address" placeholder="Insira um endereço de entrega">
@@ -102,8 +101,7 @@
                             <label><b>CEP</b></label>
                             <input type="text" class="form-control" name="cep"  placeholder="Insira um CEP válido">
                         </div>
-                    </div> 
-                    @endforeach
+                    </div>
                 </form>
             </div>
 
