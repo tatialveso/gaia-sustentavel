@@ -70,7 +70,7 @@ class ProdutoController extends Controller
         $user = Auth::user();
         $product = \App\Produto::find($id);
         $category =  \App\Produto::find($id)->category_id;
-        $relacionados = Produto::where('category_id', $category)->get();
+        $relacionados = Produto::where('category_id', $category)->take(3)->get();
         $ratings = AvaliacaoProduto::where('product_id', $id)->get();
 
         return view('produto', compact('product', 'relacionados', 'ratings', 'user'));
